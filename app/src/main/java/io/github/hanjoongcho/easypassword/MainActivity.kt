@@ -1,6 +1,8 @@
 package io.github.hanjoongcho.easypassword
 
+import android.content.DialogInterface
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Window
@@ -59,14 +61,25 @@ class MainActivity : AppCompatActivity() {
         patterLockView.isInputEnabled = true
         patterLockView.addPatternLockListener(mPatternLockViewListener)
 
-        RxPatternLockView.patternComplete(patterLockView)
-                .subscribe(object : Consumer<PatternLockCompleteEvent> {
-                    @Throws(Exception::class)
-                    override fun accept(patternLockCompleteEvent: PatternLockCompleteEvent) {
-                        Log.d(javaClass.name, "Complete: " + patternLockCompleteEvent.pattern.toString())
-                        patterLockView.clearPattern()
-                    }
-                })
+        RxPatternLockView.patternComplete(patterLockView).subscribe({ patternLockCompleteEvent ->
+            Log.d(javaClass.name, "Complete: " + patternLockCompleteEvent.pattern.toString())
+            val builder: AlertDialog.Builder = AlertDialog.Builder(this@MainActivity)
+            builder.setMessage(patternLockCompleteEvent.pattern.toString())
+            builder.setPositiveButton("OK", null)
+            builder.create().show()
+            patterLockView.clearPattern()
+        })
+//                .subscribe(object : Consumer<PatternLockCompleteEvent> {
+//                    @Throws(Exception::class)
+//                    override fun accept(patternLockCompleteEvent: PatternLockCompleteEvent) {
+////                        Log.d(javaClass.name, "Complete: " + patternLockCompleteEvent.pattern.toString())
+//                        val builder: AlertDialog.Builder = AlertDialog.Builder(applicationContext)
+//                        builder.setMessage(patternLockCompleteEvent.pattern.toString())
+//                        builder.setPositiveButton("OK", null)
+//                        builder.create().show()
+//                        patterLockView.clearPattern()
+//                    }
+//                })
 
         RxPatternLockView.patternChanges(patterLockView)
                 .subscribe(object : Consumer<PatternLockCompoundEvent> {
