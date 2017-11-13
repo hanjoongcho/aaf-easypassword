@@ -16,6 +16,13 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig getSigningConfig()
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    def formattedDate = new Date().format('yyyyMMddHHmmss')
+                    outputFileName = "aaf-easypassword_${variant.versionName}_${formattedDate}.apk"
+                }
+            }
         }
     }
 }

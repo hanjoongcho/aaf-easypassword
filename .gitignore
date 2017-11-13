@@ -1,4 +1,7 @@
 # User-specific configurations
+.idea/
+.idea/misc.xml
+.idea/runConfigurations.xml
 .idea/libraries/
 .idea/inspectionProfiles/
 .idea/workspace.xml
@@ -16,11 +19,8 @@
 *.iml
 .gradle
 build
+app/release/
 app/build
 app/*.apk
 app/*.iml
-.idea/
-.idea/misc.xml
-.idea/runConfigurations.xml
-
 local.properties
