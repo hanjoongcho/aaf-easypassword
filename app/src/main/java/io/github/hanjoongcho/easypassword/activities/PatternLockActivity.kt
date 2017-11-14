@@ -1,6 +1,5 @@
-package io.github.hanjoongcho.easypassword
+package io.github.hanjoongcho.easypassword.activities
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -13,13 +12,13 @@ import com.andrognito.patternlockview.listener.PatternLockViewListener
 import com.andrognito.patternlockview.utils.PatternLockUtils
 import com.andrognito.patternlockview.utils.ResourceUtils
 import com.andrognito.rxpatternlockview.RxPatternLockView
-import com.andrognito.rxpatternlockview.events.PatternLockCompleteEvent
 import com.andrognito.rxpatternlockview.events.PatternLockCompoundEvent
-import kotlinx.android.synthetic.main.activity_main.*
+import io.github.hanjoongcho.easypassword.R
+import kotlinx.android.synthetic.main.activity_pattern_lock.*
 
 import io.reactivex.functions.Consumer
 
-class MainActivity : AppCompatActivity() {
+class PatternLockActivity : AppCompatActivity() {
 
     private val mPatternLockViewListener = object : PatternLockViewListener {
         override fun onStarted() {
@@ -44,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_pattern_lock)
 
         patterLockView.dotCount = 3
         patterLockView.dotNormalSize = ResourceUtils.getDimensionInPx(this, R.dimen.pattern_lock_dot_size).toInt()
@@ -63,7 +62,7 @@ class MainActivity : AppCompatActivity() {
 
         RxPatternLockView.patternComplete(patterLockView).subscribe({ patternLockCompleteEvent ->
             Log.d(javaClass.name, "Complete: " + patternLockCompleteEvent.pattern.toString())
-            val builder: AlertDialog.Builder = AlertDialog.Builder(this@MainActivity)
+            val builder: AlertDialog.Builder = AlertDialog.Builder(this@PatternLockActivity)
             builder.setMessage(patternLockCompleteEvent.pattern.toString())
             builder.setPositiveButton("OK", null)
             builder.create().show()

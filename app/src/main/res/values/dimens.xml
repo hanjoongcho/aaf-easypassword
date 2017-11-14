@@ -1,0 +1,19 @@
+<resources>
+
+    <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+    <!--++++ normal layout                                                        -->
+    <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="large_text_size">20dp</dimen>
+    <dimen name="medium_text_size">17dp</dimen>
+    <dimen name="small_text_size">14dp</dimen>
+
+    <dimen name="intro_company_text">15dp</dimen>
+    <dimen name="intro_app_text">20dp</dimen>
+
+    <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+    <!--++++ xlarge layout                                                        -->
+    <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+    <dimen name="xlarge_toolbar_icon_width_and_height">40dp</dimen>
+
+</resources>
