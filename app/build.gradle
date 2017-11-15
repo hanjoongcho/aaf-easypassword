@@ -6,6 +6,11 @@ apply plugin: 'realm-android'
 android {
     compileSdkVersion 25
     buildToolsVersion '25.0.0'
+
+    dataBinding {
+        enabled = true
+    }
+
     defaultConfig {
         applicationId "io.github.hanjoongcho.easypassword"
         minSdkVersion 15

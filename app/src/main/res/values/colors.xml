@@ -3,7 +3,11 @@
     <color name="colorPrimaryDark">#089C90</color>
     <color name="colorPrimary">#07ABB3</color>
     <color name="colorAccent">#131313</color>
-    <color name="mine_shaft">#303030</color>
 
+
+    <color name="appBackground">#3307ABB3</color>
+
+    <!-- common text color -->
     <color name="whiteText">#FFFFFF</color>
+
 </resources>
