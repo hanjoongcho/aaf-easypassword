@@ -28,6 +28,44 @@
                   android:orientation="vertical"
                   tools:ignore="Overdraw,UnusedAttribute">
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_player"
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            style="@style/Topeka.TextAppearance.Title"
+            android:background="@color/colorPrimary"
+            android:elevation="@dimen/elevation_header"
+            tools:ignore="UnusedAttribute">
+
+            <TextView android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='...'
+                tools:ignore="PrivateResource"
+                style="@style/Topeka.TextAppearance.Title.Inverse"
+                android:layout_gravity="center_vertical|start" />
+
+            <TextView android:id="@+id/score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Topeka.TextAppearance.Title.Inverse"
+                android:layout_gravity="center_vertical|end"
+                android:paddingEnd="@dimen/spacing_micro"
+                android:paddingStart="@dimen/spacing_micro"
+                tools:ignore="NewApi" />
+        </android.support.v7.widget.Toolbar>
+
+        <FrameLayout android:id="@+id/category_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="activity.QuizSelectionActivity"
+            tools:ignore="MergeRootFrame">
+            <ProgressBar android:id="@+id/progress"
+                android:layout_width="@dimen/size_fab"
+                android:layout_height="@dimen/size_fab"
+                android:layout_gravity="center"
+                android:indeterminateOnly="true" />
+        </FrameLayout>
 
     </LinearLayout>
 </layout>
