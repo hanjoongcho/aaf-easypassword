@@ -1,5 +1,6 @@
 package io.github.hanjoongcho.easypassword.activities
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -64,7 +65,10 @@ class PatternLockActivity : AppCompatActivity() {
             Log.d(javaClass.name, "Complete: " + patternLockCompleteEvent.pattern.toString())
             val builder: AlertDialog.Builder = AlertDialog.Builder(this@PatternLockActivity)
             builder.setMessage(patternLockCompleteEvent.pattern.toString())
-            builder.setPositiveButton("OK", null)
+            builder.setPositiveButton("OK", DialogInterface.OnClickListener({ _, _ ->
+                finish()
+                AccountSelectionActivity.start(this@PatternLockActivity)
+            }))
             builder.create().show()
             patterLockView.clearPattern()
         })

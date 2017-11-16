@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.PatternLockActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.AccountSelectionActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
