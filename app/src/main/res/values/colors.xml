@@ -10,6 +10,7 @@
     <!-- common text color -->
     <color name="whiteText">#FFFFFF</color>
 
+    <color name="touch_effect">#9ccc</color>
     <color name="text_light">@android:color/white</color>
     <color name="text_dark">#616161</color>
 

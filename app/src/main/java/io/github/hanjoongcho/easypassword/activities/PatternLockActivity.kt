@@ -69,8 +69,9 @@ class PatternLockActivity : AppCompatActivity() {
                 finish()
                 AccountSelectionActivity.start(this@PatternLockActivity)
             }))
-            builder.create().show()
+//            builder.create().show()
             patterLockView.clearPattern()
+            AccountSelectionActivity.start(this@PatternLockActivity)
         })
 //                .subscribe(object : Consumer<PatternLockCompleteEvent> {
 //                    @Throws(Exception::class)
