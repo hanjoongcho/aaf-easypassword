@@ -1,7 +1,7 @@
 # License
 
 ### aaf-aaf-easypassword
-https://github.com/hanjoongcho/aaf-aaf-easypassword
+https://github.com/hanjoongcho/aaf-easypassword
 ```
 Copyright 2017 Hanjoong Cho
 
