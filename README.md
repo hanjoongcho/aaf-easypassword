@@ -3,7 +3,7 @@
 
 <img src="screenshots/ic_launcher.png" >
 
-Easy Password is password management application.
+Easy Password is password management application.   
 This application uses pattern locks to manage information that requires security.
 
 # License
