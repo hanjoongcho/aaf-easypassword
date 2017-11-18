@@ -13,6 +13,12 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorAccent">@color/white</item>
+    </style>
+
     <!-- Exists for inheritance purposes -->
     <style name="Topeka" parent="Topeka.Base" />
 
@@ -109,6 +115,7 @@
 
     <style name="AccountDetailLabel">
         <item name="android:textColor">@color/blackText</item>
+        <item name="android:textSize">@dimen/large_text_size</item>
         <item name="android:paddingLeft">20dp</item>
         <item name="android:paddingTop">20dp</item>
         <item name="android:layout_width">match_parent</item>
@@ -117,6 +124,7 @@
 
     <style name="AccountDetailEditText">
         <item name="android:textColor">@color/blackTextLight</item>
+        <item name="android:textSize">@dimen/medium_text_size</item>
     </style>
 
 </resources>

@@ -14,6 +14,7 @@ import io.github.hanjoongcho.easypassword.databinding.ActivityAccountSelectionBi
 import io.github.hanjoongcho.easypassword.fragment.AccountSelectionFragment
 import io.github.hanjoongcho.easypassword.helper.findFragmentById
 import io.github.hanjoongcho.easypassword.helper.replaceFragment
+import io.github.hanjoongcho.easypassword.helper.database
 
 /**
  * Created by Administrator on 2017-11-15.
@@ -35,6 +36,7 @@ class AccountSelectionActivity : AppCompatActivity() {
             setProgressBarVisibility(View.GONE)
         }
         supportPostponeEnterTransition()
+        this@AccountSelectionActivity.database().initDatabase()
     }
 
     private fun setUpToolbar() {

@@ -13,6 +13,7 @@ import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.databinding.ItemAccountBinding
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Account
+import io.github.hanjoongcho.easypassword.models.Theme
 
 /**
  * Created by Administrator on 2017-11-17.
@@ -25,7 +26,7 @@ class AccountAdapter(
 
     private val resources = activity.resources
     private val layoutInflater = LayoutInflater.from(activity)
-    private var accounts = activity.database().getAccounts()
+    private var accounts = activity.database().selectAccountAll()
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder.binding) {
@@ -37,12 +38,12 @@ class AccountAdapter(
                 setTextColor(getColor(R.color.blackText))
             }
             with(accountSummary) {
-                setTextColor(getColor(account.theme.textPrimaryColor))
-                setBackgroundColor(getColor(account.theme.primaryColor))
+                setTextColor(getColor(Theme.white.textPrimaryColor))
+                setBackgroundColor(getColor(Theme.white.primaryColor))
             }
         }
         with(holder.itemView) {
-            setBackgroundColor(getColor(accounts[position].theme.windowBackgroundColor))
+            setBackgroundColor(getColor(Theme.white.windowBackgroundColor))
             setOnClickListener {
                 onItemClickListener.onItemClick(null, it, holder.adapterPosition, holder.itemId)
             }
