@@ -14,9 +14,11 @@ class DatabaseHelper private constructor(
 
     fun getAccounts(): List<Account> {
         return mutableListOf<Account>(
-                Account(Theme.blue, "entertainment", "123"),
-                Account(Theme.green, "food", "1234"),
-                Account(Theme.purple, "geography", "1234")
+                Account("Google", "https://www.google.com", Theme.white, "web", "entertainment", "123", 4),
+                Account("GitHub", "https://github.com/", Theme.white,"web", "geography", "1234", 4),
+                Account("네이버", "https://www.naver.com/", Theme.white, "web", "food", "1234", 2),
+                Account("카카오뱅크", "카카오뱅크 체크카드", Theme.white,"credit_card", "geography", "1234", 3),
+                Account("회사", "회사현관 출입번호", Theme.white,"home", "geography", "1234", 1)
         )
     }
 

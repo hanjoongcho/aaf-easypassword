@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Easy\nPassword</string>
 
+    <!--AccountSelectionActivity-->
+    <string name="account_selection_title">관리목록</string>
 
     <string name="last_initial">Last Initial</string>
     <string name="first_name">First Name</string>
@@ -14,4 +16,5 @@
     <string name="sign_out">Sign out</string>
     <string name="x_points">%1$d pts</string>
     <string name="back">back</string>
+
 </resources>

@@ -24,3 +24,5 @@ app/build
 app/*.apk
 app/*.iml
 local.properties
+
+app/src/main/res/drawable/ic*.xml

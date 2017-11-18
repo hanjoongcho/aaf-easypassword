@@ -27,4 +27,4 @@
         android:scrollbars="vertical"
         app:layoutManager="android.support.v7.widget.GridLayoutManager"
         android:transitionGroup="false"
-        app:spanCount="2" tools:ignore="UnusedAttribute" />
+        app:spanCount="1" tools:ignore="UnusedAttribute" />

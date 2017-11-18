@@ -9,10 +9,15 @@
 
     <!-- common text color -->
     <color name="whiteText">#FFFFFF</color>
+    <color name="blackText">#000000</color>
 
     <color name="touch_effect">#9ccc</color>
     <color name="text_light">@android:color/white</color>
     <color name="text_dark">#616161</color>
+
+    <color name="strength_default">#bcb9b9</color>
+    <color name="strength_good">#339ee1</color>
+    <color name="strength_bad">#f50622</color>
 
     <!-- theme colors -->
     <color name="theme_blue_background">#84ffff</color>
@@ -38,6 +43,12 @@
     <color name="theme_red_accent">#fffc19</color>
     <color name="theme_red_text">@color/text_light</color>
     <color name="theme_red_primary_dark">#e64a4a</color>
+
+    <color name="theme_white_background">#ffffff</color>
+    <color name="theme_white_primary">#ffffff</color>
+    <color name="theme_white_accent">#fffc19</color>
+    <color name="theme_white_text">#6c6666</color>
+    <color name="theme_white_primary_dark">#e64a4a</color>
 
     <color name="theme_yellow_background">#ffff8d</color>
     <color name="theme_yellow_primary">#ffeb3b</color>

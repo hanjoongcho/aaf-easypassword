@@ -32,7 +32,11 @@ class AccountAdapter(
             account = accounts[position]
             executePendingBindings()
             setCategoryIcon(account, categoryIcon)
-            with(categoryTitle) {
+            setPasswordStrengthLevel(account, level1, level2, level3, level4, level5)
+            with(accountTitle) {
+                setTextColor(getColor(R.color.blackText))
+            }
+            with(accountSummary) {
                 setTextColor(getColor(account.theme.textPrimaryColor))
                 setBackgroundColor(getColor(account.theme.primaryColor))
             }
@@ -56,8 +60,52 @@ class AccountAdapter(
     fun getItem(position: Int): Account = accounts[position]
 
     private fun setCategoryIcon(account: Account, icon: ImageView) {
-        val imageRes = resources.getIdentifier("icon_category_${account.id}", "drawable", activity.packageName)
+        val imageRes = resources.getIdentifier("ic_${account.category}", "drawable", activity.packageName)
         icon.setImageResource(imageRes)
+    }
+
+    private fun setPasswordStrengthLevel(account: Account, level1: ImageView, level2: ImageView, level3: ImageView, level4: ImageView, level5: ImageView) {
+        when (account.passwordStrengthLevel) {
+            1 -> {
+                setStrengthColor(level1, getColor(R.color.strength_bad))
+                setStrengthColor(level2, getColor(R.color.strength_default))
+                setStrengthColor(level3, getColor(R.color.strength_default))
+                setStrengthColor(level4, getColor(R.color.strength_default))
+                setStrengthColor(level5, getColor(R.color.strength_default))
+            }
+            2 -> {
+                setStrengthColor(level1, getColor(R.color.strength_bad))
+                setStrengthColor(level2, getColor(R.color.strength_bad))
+                setStrengthColor(level3, getColor(R.color.strength_default))
+                setStrengthColor(level4, getColor(R.color.strength_default))
+                setStrengthColor(level5, getColor(R.color.strength_default))
+            }
+            3 -> {
+                setStrengthColor(level1, getColor(R.color.strength_good))
+                setStrengthColor(level2, getColor(R.color.strength_good))
+                setStrengthColor(level3, getColor(R.color.strength_good))
+                setStrengthColor(level4, getColor(R.color.strength_default))
+                setStrengthColor(level5, getColor(R.color.strength_default))
+            }
+            4 -> {
+                setStrengthColor(level1, getColor(R.color.strength_good))
+                setStrengthColor(level2, getColor(R.color.strength_good))
+                setStrengthColor(level3, getColor(R.color.strength_good))
+                setStrengthColor(level4, getColor(R.color.strength_good))
+                setStrengthColor(level5, getColor(R.color.strength_default))
+            }
+            5 -> {
+                setStrengthColor(level1, getColor(R.color.strength_good))
+                setStrengthColor(level2, getColor(R.color.strength_good))
+                setStrengthColor(level3, getColor(R.color.strength_good))
+                setStrengthColor(level4, getColor(R.color.strength_good))
+                setStrengthColor(level5, getColor(R.color.strength_good))
+            }
+        }
+    }
+
+    private fun setStrengthColor(view: ImageView, colorId: Int) {
+        view.setBackgroundColor(colorId)
     }
 
     /**

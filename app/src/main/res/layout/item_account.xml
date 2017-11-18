@@ -2,31 +2,106 @@
     <data>
         <variable name="account" type="io.github.hanjoongcho.easypassword.models.Account" />
     </data>
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                 xmlns:tools="http://schemas.android.com/tools"
-                 android:id="@+id/category_item"
-                 android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
-                 android:foreground="@drawable/selector_subtle"
-                 tools:ignore="UseCompoundDrawables">
-
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="@drawable/selector_subtle"
+        tools:ignore="UseCompoundDrawables"
+        android:orientation="horizontal">
         <ImageView
-                android:id="@+id/category_icon"
+            android:layout_gravity="center"
+            android:id="@+id/category_icon"
+            android:padding="20dp"
+            app:srcCompat ="@drawable/ic_web"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </ImageView>
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/category_item"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:foreground="@drawable/selector_subtle"
+            tools:ignore="UseCompoundDrawables">
+            <TextView
+                android:id="@+id/account_title"
+                android:textSize="@dimen/large_text_size"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/size_avatar_toolbar"
-                android:contentDescription="@string/category" />
-
-        <TextView
-                android:id="@+id/category_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="name..."
-                android:layout_gravity="bottom"
+                android:layout_height="30dp"
+                android:gravity="center_vertical"
+                android:text="@{account.title}"
                 android:textAppearance="@style/Topeka.TextAppearance.CategoryItem"
                 android:transitionName="name..."
-                android:padding="@dimen/spacing_double"
                 tools:targetApi="lollipop"/>
-
-    </FrameLayout>
+            <TextView
+                android:id="@+id/account_summary"
+                android:textSize="@dimen/small_text_size"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="center_vertical"
+                android:text="@{account.summary}"
+                android:textAppearance="@style/Topeka.TextAppearance.CategoryItem"
+                android:transitionName="name..."
+                tools:targetApi="lollipop"/>
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="20dp">
+                <TextView
+                    android:text="BAD"
+                    android:textSize="@dimen/small_text_size"
+                    android:textColor="@color/strength_bad"
+                    android:layout_marginRight="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:background="@color/strength_default"
+                    android:id="@+id/level1"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="5dp" />
+                <ImageView
+                    android:background="@color/strength_default"
+                    android:id="@+id/level2"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="5dp" />
+                <ImageView
+                    android:background="@color/strength_default"
+                    android:id="@+id/level3"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="5dp" />
+                <ImageView
+                    android:background="@color/strength_default"
+                    android:id="@+id/level4"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="5dp" />
+                <ImageView
+                    android:background="@color/strength_default"
+                    android:id="@+id/level5"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="5dp" />
+                <TextView
+                    android:text="GOOD"
+                    android:textSize="@dimen/small_text_size"
+                    android:textColor="@color/strength_good"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </layout>

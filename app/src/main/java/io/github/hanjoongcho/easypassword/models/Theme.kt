@@ -30,6 +30,9 @@ enum class Theme(
     red(R.color.theme_red_primary, R.color.theme_red_primary_dark,
             R.color.theme_red_background, R.color.theme_red_text,
             R.color.theme_red_accent, R.style.Topeka_Red),
+    white(R.color.theme_white_primary, R.color.theme_white_primary_dark,
+            R.color.theme_white_background, R.color.theme_white_text,
+            R.color.theme_white_accent, R.style.Topeka_Red),
     yellow(R.color.theme_yellow_primary, R.color.theme_yellow_primary_dark,
             R.color.theme_yellow_background, R.color.theme_yellow_text,
             R.color.theme_yellow_accent, R.style.Topeka_Yellow)
