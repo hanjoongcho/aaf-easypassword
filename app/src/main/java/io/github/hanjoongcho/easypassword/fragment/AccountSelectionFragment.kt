@@ -29,6 +29,8 @@ import io.github.hanjoongcho.easypassword.widget.OffsetDecoration
 
 class AccountSelectionFragment : Fragment() {
 
+    var mRecyclerView: RecyclerView? = null
+
     private val adapter: AccountAdapter? by lazy(LazyThreadSafetyMode.NONE) {
         AccountAdapter(activity,
                 AdapterView.OnItemClickListener { _, v, position, _ ->
@@ -45,8 +47,14 @@ class AccountSelectionFragment : Fragment() {
             inflater.inflate(R.layout.fragment_categories, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        setUpGrid(view.findViewById<RecyclerView>(R.id.categories))
+        mRecyclerView = view.findViewById<RecyclerView>(R.id.categories)
+        mRecyclerView?.let { setUpGrid(it) }
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        adapter?.notifyDataSetChanged()
     }
 
     @SuppressLint("NewApi")

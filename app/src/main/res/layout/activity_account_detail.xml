@@ -1,116 +1,120 @@
 <layout>
-    <LinearLayout
+    <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical"
-        android:id="@+id/fragment_sign_in_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/fragment_sign_in_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <android.support.design.widget.AppBarLayout android:layout_height="wrap_content"
-            android:layout_width="match_parent" android:theme="@style/AppTheme.AppBarOverlay">
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar_player"
+            <android.support.design.widget.AppBarLayout android:layout_height="wrap_content"
+                android:layout_width="match_parent" android:theme="@style/AppTheme.AppBarOverlay">
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar_player"
+                    android:layout_width="match_parent"
+                    android:layout_height="?android:attr/actionBarSize"
+                    app:popupTheme="@style/AppTheme.PopupOverlay"
+                    android:background="@color/colorPrimary"
+                    android:elevation="@dimen/elevation_header"
+                    tools:ignore="UnusedAttribute">
+                    <TextView android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='@string/account_detail_title'
+                        tools:ignore="PrivateResource"
+                        style="@style/Topeka.TextAppearance.Title.Inverse"
+                        android:layout_gravity="center_vertical|start" />
+                </android.support.v7.widget.Toolbar>
+            </android.support.design.widget.AppBarLayout>
+
+            <TextView
+                android:text="@string/account_manage_target"
+                style="@style/AccountDetailLabel" />
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="?android:attr/actionBarSize"
-                app:popupTheme="@style/AppTheme.PopupOverlay"
-                android:background="@color/colorPrimary"
-                android:elevation="@dimen/elevation_header"
-                tools:ignore="UnusedAttribute">
-                <TextView android:id="@+id/title"
-                    android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="?android:attr/actionBarSize"
+                android:paddingStart="@dimen/spacing_double"
+                android:paddingEnd="@dimen/spacing_double"
+                android:clipToPadding="false"
+                android:transitionGroup="true"
+                tools:ignore="UnusedAttribute,NewApi">
+                <EditText
+                    style="@style/AccountDetailEditText"
+                    android:id="@+id/account_manage_target"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text='@string/account_detail_title'
-                    tools:ignore="PrivateResource"
-                    style="@style/Topeka.TextAppearance.Title.Inverse"
-                    android:layout_gravity="center_vertical|start" />
-            </android.support.v7.widget.Toolbar>
-        </android.support.design.widget.AppBarLayout>
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords" />
+            </android.support.design.widget.TextInputLayout>
 
-        <TextView
-            android:text="@string/account_manage_target"
-            style="@style/AccountDetailLabel" />
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?android:attr/actionBarSize"
-            android:paddingStart="@dimen/spacing_double"
-            android:paddingEnd="@dimen/spacing_double"
-            android:clipToPadding="false"
-            android:transitionGroup="true"
-            tools:ignore="UnusedAttribute,NewApi">
-            <EditText
-                style="@style/AccountDetailEditText"
-                android:id="@+id/account_manage_target"
+            <TextView
+                android:text="@string/account_id"
+                style="@style/AccountDetailLabel" />
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:imeOptions="actionNext"
-                android:inputType="textCapWords" />
-        </android.support.design.widget.TextInputLayout>
+                android:minHeight="?android:attr/actionBarSize"
+                android:paddingStart="@dimen/spacing_double"
+                android:paddingEnd="@dimen/spacing_double"
+                android:clipToPadding="false"
+                android:transitionGroup="true"
+                tools:ignore="UnusedAttribute,NewApi">
+                <EditText
+                    style="@style/AccountDetailEditText"
+                    android:id="@+id/account_id"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="textCapWords" />
+            </android.support.design.widget.TextInputLayout>
 
-        <TextView
-            android:text="@string/account_id"
-            style="@style/AccountDetailLabel" />
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?android:attr/actionBarSize"
-            android:paddingStart="@dimen/spacing_double"
-            android:paddingEnd="@dimen/spacing_double"
-            android:clipToPadding="false"
-            android:transitionGroup="true"
-            tools:ignore="UnusedAttribute,NewApi">
-            <EditText
-                style="@style/AccountDetailEditText"
-                android:id="@+id/account_id"
+            <TextView
+                android:text="@string/account_password"
+                style="@style/AccountDetailLabel" />
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:imeOptions="actionNext"
-                android:inputType="textCapWords" />
-        </android.support.design.widget.TextInputLayout>
+                android:minHeight="?android:attr/actionBarSize"
+                android:paddingStart="@dimen/spacing_double"
+                android:paddingEnd="@dimen/spacing_double"
+                android:clipToPadding="false"
+                android:transitionGroup="true"
+                tools:ignore="UnusedAttribute,NewApi">
+                <EditText
+                    style="@style/AccountDetailEditText"
+                    android:id="@+id/account_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionDone"
+                    android:inputType="textNoSuggestions|textCapWords" />
+            </android.support.design.widget.TextInputLayout>
 
-        <TextView
-            android:text="@string/account_password"
-            style="@style/AccountDetailLabel" />
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?android:attr/actionBarSize"
-            android:paddingStart="@dimen/spacing_double"
-            android:paddingEnd="@dimen/spacing_double"
-            android:clipToPadding="false"
-            android:transitionGroup="true"
-            tools:ignore="UnusedAttribute,NewApi">
-            <EditText
-                style="@style/AccountDetailEditText"
-                android:id="@+id/account_password"
+            <TextView
+                android:text="@string/account_summary"
+                style="@style/AccountDetailLabel" />
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:imeOptions="actionDone"
-                android:inputType="textNoSuggestions|textCapWords" />
-        </android.support.design.widget.TextInputLayout>
+                android:minHeight="?android:attr/actionBarSize"
+                android:paddingStart="@dimen/spacing_double"
+                android:paddingEnd="@dimen/spacing_double"
+                android:clipToPadding="false"
+                android:transitionGroup="true"
+                tools:ignore="UnusedAttribute,NewApi">
+                <EditText
+                    style="@style/AccountDetailEditText"
+                    android:id="@+id/account_summary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionDone"
+                    android:inputType="textNoSuggestions|textCapWords" />
+            </android.support.design.widget.TextInputLayout>
 
-        <TextView
-            android:text="@string/account_summary"
-            style="@style/AccountDetailLabel" />
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?android:attr/actionBarSize"
-            android:paddingStart="@dimen/spacing_double"
-            android:paddingEnd="@dimen/spacing_double"
-            android:clipToPadding="false"
-            android:transitionGroup="true"
-            tools:ignore="UnusedAttribute,NewApi">
-            <EditText
-                style="@style/AccountDetailEditText"
-                android:id="@+id/account_summary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:imeOptions="actionDone"
-                android:inputType="textNoSuggestions|textCapWords" />
-        </android.support.design.widget.TextInputLayout>
-
-    </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
 </layout>

@@ -61,6 +61,10 @@ class DatabaseHelper private constructor(
         return list
     }
 
+    fun updateAccount(account: Account) {
+        realmInstance.executeTransaction(Realm.Transaction { realm -> realm.insertOrUpdate(account) })
+    }
+
     fun selectAccountBy(sequence: Int): Account = realmInstance.where(Account::class.java).equalTo("sequence", sequence).findFirst()
 
     companion object {
