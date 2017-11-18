@@ -4,6 +4,12 @@
     <!--AccountSelectionActivity-->
     <string name="account_selection_title">관리목록</string>
 
+    <!--AccountDetailActivity-->
+    <string name="account_detail_title">상세정보</string>
+    <string name="account_id">계정정보(이메일)</string>
+    <string name="account_password">비밀번호</string>
+    <string name="account_summary">상세정보</string>
+
     <string name="last_initial">Last Initial</string>
     <string name="first_name">First Name</string>
     <string name="sign_in">Sign In</string>

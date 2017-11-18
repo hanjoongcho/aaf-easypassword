@@ -8,7 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -106,6 +105,18 @@
         </item>
         <item name="android:windowBackground">@color/theme_yellow_background</item>
         <item name="colorAccent">@color/theme_yellow_accent</item>
+    </style>
+
+    <style name="AccountDetailLabel">
+        <item name="android:textColor">@color/blackText</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="AccountDetailEditText">
+        <item name="android:textColor">@color/blackTextLight</item>
     </style>
 
 </resources>

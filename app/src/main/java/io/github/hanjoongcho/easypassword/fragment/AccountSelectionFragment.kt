@@ -16,8 +16,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import io.github.hanjoongcho.easypassword.R
+import io.github.hanjoongcho.easypassword.activities.AccountDetailActivity
 import io.github.hanjoongcho.easypassword.adpaters.AccountAdapter
+import io.github.hanjoongcho.easypassword.helper.TransitionHelper
 import io.github.hanjoongcho.easypassword.helper.beforeDrawing
+import io.github.hanjoongcho.easypassword.models.Account
 import io.github.hanjoongcho.easypassword.widget.OffsetDecoration
 
 /**
@@ -30,8 +33,8 @@ class AccountSelectionFragment : Fragment() {
         AccountAdapter(activity,
                 AdapterView.OnItemClickListener { _, v, position, _ ->
                     adapter?.getItem(position)?.let {
-//                        startQuizActivityWithTransition(activity,
-//                                v.findViewById(R.id.category_title), it)
+                        startAccountDetailActivityWithTransition(activity,
+                                v.findViewById(R.id.account_title), it)
                     }
                 })
     }
@@ -63,23 +66,23 @@ class AccountSelectionFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
     }
 
-//    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-//    private fun startQuizActivityWithTransition(activity: Activity, toolbar: View,
-//                                                category: Category) {
-//
-//        val animationBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
-//                *TransitionHelper.createSafeTransitionParticipants(activity,
-//                        false,
-//                        Pair(toolbar, activity.getString(R.string.transition_toolbar))))
-//                .toBundle()
-//
-//        // Start the activity with the participants, animating from one to the other.
-//        val startIntent = QuizActivity.getStartIntent(activity, category)
-//        ActivityCompat.startActivityForResult(activity,
-//                startIntent,
-//                REQUEST_CATEGORY,
-//                animationBundle)
-//    }
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private fun startAccountDetailActivityWithTransition(activity: Activity, toolbar: View,
+                                                category: Account) {
+
+        val animationBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
+                *TransitionHelper.createSafeTransitionParticipants(activity,
+                        false,
+                        Pair(toolbar, activity.getString(R.string.transition_toolbar))))
+                .toBundle()
+
+        // Start the activity with the participants, animating from one to the other.
+        val startIntent = AccountDetailActivity.getStartIntent(activity, category)
+        ActivityCompat.startActivityForResult(activity,
+                startIntent,
+                REQUEST_CATEGORY,
+                animationBundle)
+    }
 
     companion object {
 

@@ -10,10 +10,15 @@ data class Account(
         val category: String,
         val id: String,
         val password: String,
-        val passwordStrengthLevel: Int = 1
+        val passwordStrengthLevel: Int = 1,
+        val sequence: Int = -1
 ) {
     // web
     // credit_card
     // home
 
+    companion object {
+
+        const val TAG = "Account"
+    }
 }
