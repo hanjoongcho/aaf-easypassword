@@ -8,14 +8,15 @@ import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import io.github.hanjoongcho.easypassword.R
+import io.github.hanjoongcho.easypassword.models.Category
 
 /**
  * Created by CHO HANJOONG on 2017-11-19.
  */
 
 class AccountCategoryAdapter(
-        private val mContext: Context, private val mLayoutResourceId: Int, private val mList: List<String>
-) : ArrayAdapter<String>(mContext, mLayoutResourceId, mList) {
+        private val mContext: Context, private val mLayoutResourceId: Int, private val mList: List<Category>
+) : ArrayAdapter<Category>(mContext, mLayoutResourceId, mList) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
         return initRow(position, convertView, parent)
@@ -39,23 +40,23 @@ class AccountCategoryAdapter(
             holder = row.tag as ViewHolder
         }
 
-        holder.textView?.text = mList[position]
-        if (mList[position] == "") {
+        holder.textView?.text = mList[position].name
+        if (mList[position].name == "") {
             holder.imageView?.visibility = View.GONE
         } else {
             holder.imageView?.visibility = View.VISIBLE
         }
-        initCategoryIcon(holder.imageView, mList[position])
+        initCategoryIcon(holder.imageView, mList[position].resourceName)
 
         return row
     }
 
-    private fun initCategoryIcon(imageView: ImageView?, category: String) {
+    private fun initCategoryIcon(imageView: ImageView?, resourceName: String) {
         imageView?.let {
-            when (category) {
+            when (resourceName) {
                 "" -> it.setImageResource(0)
                 else -> {
-                    val imageRes = mContext.resources.getIdentifier("ic_${category}", "drawable", mContext.packageName)
+                    val imageRes = mContext.resources.getIdentifier("ic_$resourceName", "drawable", mContext.packageName)
                     it.setImageResource(imageRes)
                 }
             }

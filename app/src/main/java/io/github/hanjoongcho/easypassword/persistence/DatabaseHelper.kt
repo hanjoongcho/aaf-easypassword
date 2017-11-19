@@ -2,6 +2,7 @@ package io.github.hanjoongcho.easypassword.persistence
 
 import android.content.Context
 import io.github.hanjoongcho.easypassword.models.Account
+import io.github.hanjoongcho.easypassword.models.Category
 import io.github.hanjoongcho.easypassword.models.Theme
 import io.realm.Realm
 import io.realm.RealmConfiguration
@@ -33,11 +34,11 @@ class DatabaseHelper private constructor(
 
     fun initDatabase() {
         if (countAccounts() < 1) {
-            insertAccount(Account("Google", "https://www.google.com", "web", "entertainment", "123", 4))
-            insertAccount(Account("GitHub", "https://github.com/", "web", "geography", "1234", 4))
-            insertAccount(Account("네이버", "https://www.naver.com/", "web", "food", "1234", 2))
-            insertAccount(Account("카카오뱅크", "카카오뱅크 체크카드", "credit_card", "geography", "1234", 3))
-            insertAccount(Account("회사", "회사현관 출입번호", "home", "geography", "1234", 1))
+            insertAccount(Account("Google", "https://www.google.com", Category(0, "웹사이트", "web"), "entertainment", "123", 4))
+            insertAccount(Account("GitHub", "https://github.com/", Category(0, "웹사이트", "web"), "geography", "1234", 4))
+            insertAccount(Account("네이버", "https://www.naver.com/", Category(0, "웹사이트", "web"), "food", "1234", 2))
+            insertAccount(Account("카카오뱅크", "카카오뱅크 체크카드", Category(1, "신용카드", "credit_card"), "geography", "1234", 3))
+            insertAccount(Account("회사", "회사현관 출입번호", Category(2, "도어락", "home"), "geography", "1234", 1))
         }
     }
 

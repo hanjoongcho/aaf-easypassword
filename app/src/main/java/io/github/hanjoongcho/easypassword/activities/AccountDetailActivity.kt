@@ -5,13 +5,15 @@ import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ArrayAdapter
 import io.github.hanjoongcho.easypassword.R
+import io.github.hanjoongcho.easypassword.adpaters.AccountCategoryAdapter
 import io.github.hanjoongcho.easypassword.databinding.ActivityAccountDetailBinding
-import io.github.hanjoongcho.easypassword.models.Account
 import io.github.hanjoongcho.easypassword.helper.database
+import io.github.hanjoongcho.easypassword.models.Account
+import io.github.hanjoongcho.easypassword.models.Category
 
 /**
  * Created by CHO HANJOONG on 2017-11-18.
@@ -44,6 +46,18 @@ class AccountDetailActivity : AppCompatActivity() {
         })
     }
 
+    private fun initCategorySpinner() {
+        val listCategory: List<Category> = mutableListOf(
+                Category(0, "웹사이트", "web"),
+                Category(1, "신용카드", "credit_card"),
+                Category(2, "도어락", "home")
+        )
+        val adapter: ArrayAdapter<Category> = AccountCategoryAdapter(this@AccountDetailActivity, R.layout.item_category, listCategory)
+        mBinding?.accountManageCategory?.adapter = adapter
+        mBinding?.accountManageCategory?.setSelection(mAccount?.category?.index ?: 0)
+        mBinding?.accountManageCategory?.isEnabled = false
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> finish()
@@ -68,6 +82,7 @@ class AccountDetailActivity : AppCompatActivity() {
         mBinding?.accountPassword?.setText(mAccount?.password)
         mBinding?.accountSummary?.setText(mAccount?.summary)
         mBinding?.accountManageTarget?.setText(mAccount?.title)
+        initCategorySpinner()
     }
 
     override fun onResume() {

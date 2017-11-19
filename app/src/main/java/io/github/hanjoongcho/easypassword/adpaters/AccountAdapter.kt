@@ -66,7 +66,7 @@ class AccountAdapter(
     fun getItem(position: Int): Account = accounts[position]
 
     private fun setCategoryIcon(account: Account, icon: ImageView) {
-        val imageRes = resources.getIdentifier("ic_${account.category}", "drawable", activity.packageName)
+        val imageRes = resources.getIdentifier("ic_${account.category?.resourceName}", "drawable", activity.packageName)
         icon.setImageResource(imageRes)
     }
 

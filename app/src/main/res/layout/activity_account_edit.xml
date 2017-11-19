@@ -38,6 +38,19 @@
                 <LinearLayout
                     style="@style/AccountEditItemContainer">
                     <TextView
+                        android:text="@string/account_manage_category"
+                        style="@style/AccountEditLabel" />
+                    <Spinner
+                        android:id="@+id/account_manage_category"
+                        android:spinnerMode="dropdown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </Spinner>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/AccountEditItemContainer">
+                    <TextView
                         android:text="@string/account_manage_target"
                         style="@style/AccountEditLabel" />
                     <EditText

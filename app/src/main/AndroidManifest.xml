@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
+            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"
             android:name=".activities.IntroActivity">
             <intent-filter>
@@ -18,11 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.PatternLockActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.AccountSelectionActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.PatternLockActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
+        <activity android:name=".activities.AccountSelectionActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
         <activity android:name=".activities.AccountDetailActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.AccountEditActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".activities.AccountAddActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activities.AccountEditActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:windowSoftInputMode="adjustResize" android:screenOrientation="portrait" />
+        <activity android:name=".activities.AccountAddActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:windowSoftInputMode="adjustResize" android:screenOrientation="portrait" />
     </application>
 
 </manifest>

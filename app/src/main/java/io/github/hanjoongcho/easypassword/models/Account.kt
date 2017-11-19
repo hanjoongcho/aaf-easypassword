@@ -6,7 +6,7 @@ import io.realm.annotations.PrimaryKey
 /**
  * Created by Administrator on 2017-11-15.
  */
-open class Account (
+open class Account(
         var title: String = "",
         var summary: String = "",
 //        var theme: Theme = Theme.white,
@@ -14,7 +14,7 @@ open class Account (
         // web
         // credit_card
         // home
-        var category: String = "",
+        var category: Category? = null,
         var id: String = "",
         var password: String = "",
         var passwordStrengthLevel: Int = -1,
@@ -23,8 +23,5 @@ open class Account (
 
     companion object {
         const val SEQUENCE = "sequence"
-        const val CATEGORY_WEB = "web"
-        const val CATEGORY_CREDIT_CARD = "credit_card"
-        const val CATEGORY_HOME = "home"
     }
 }
