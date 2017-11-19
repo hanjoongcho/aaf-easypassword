@@ -52,11 +52,6 @@ class AccountAddActivity : AppCompatActivity() {
     }
 
     private fun initCategorySpinner() {
-        val listCategory: List<Category> = mutableListOf(
-                Category(0, "웹사이트", "web"),
-                Category(1, "신용카드", "credit_card"),
-                Category(2, "도어락", "home")
-        )
         val adapter: ArrayAdapter<Category> = AccountCategoryAdapter(this@AccountAddActivity, R.layout.item_category, listCategory)
         mBinding?.accountManageCategory?.adapter = adapter
     }
@@ -77,5 +72,20 @@ class AccountAddActivity : AppCompatActivity() {
 
     companion object {
         fun getStartIntent(context: Context): Intent = Intent(context, AccountAddActivity::class.java)
+        val listCategory: List<Category> = mutableListOf(
+                Category(0, "웹사이트", "web"),
+                Category(1, "신용카드", "credit_card"),
+                Category(2, "도어락", "home"),
+                Category(3, "자물쇠", "lock"),
+                Category(4, "전자문서", "folder"),
+                Category(5, "미분류", "password")
+        )
+        val listDummyAccount: List<Account> = mutableListOf(
+                Account("Google", "https://www.google.com", Category(0, "웹사이트", "web"), "entertainment", "123", 4),
+                Account("GitHub", "https://github.com/", Category(0, "웹사이트", "web"), "geography", "1234", 4),
+                Account("네이버", "https://www.naver.com/", Category(0, "웹사이트", "web"), "food", "1234", 2),
+                Account("카카오뱅크", "카카오뱅크 체크카드", Category(1, "신용카드", "credit_card"), "geography", "1234", 3),
+                Account("회사", "회사현관 출입번호", Category(2, "도어락", "home"), "geography", "1234", 1)
+        )
     }
 }

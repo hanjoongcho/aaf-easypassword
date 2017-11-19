@@ -47,12 +47,7 @@ class AccountDetailActivity : AppCompatActivity() {
     }
 
     private fun initCategorySpinner() {
-        val listCategory: List<Category> = mutableListOf(
-                Category(0, "웹사이트", "web"),
-                Category(1, "신용카드", "credit_card"),
-                Category(2, "도어락", "home")
-        )
-        val adapter: ArrayAdapter<Category> = AccountCategoryAdapter(this@AccountDetailActivity, R.layout.item_category, listCategory)
+        val adapter: ArrayAdapter<Category> = AccountCategoryAdapter(this@AccountDetailActivity, R.layout.item_category, AccountAddActivity.listCategory)
         mBinding?.accountManageCategory?.adapter = adapter
         mBinding?.accountManageCategory?.setSelection(mAccount?.category?.index ?: 0)
         mBinding?.accountManageCategory?.isEnabled = false

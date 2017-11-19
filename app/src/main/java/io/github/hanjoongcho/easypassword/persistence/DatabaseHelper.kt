@@ -1,6 +1,7 @@
 package io.github.hanjoongcho.easypassword.persistence
 
 import android.content.Context
+import io.github.hanjoongcho.easypassword.activities.AccountAddActivity
 import io.github.hanjoongcho.easypassword.models.Account
 import io.github.hanjoongcho.easypassword.models.Category
 import io.github.hanjoongcho.easypassword.models.Theme
@@ -34,11 +35,9 @@ class DatabaseHelper private constructor(
 
     fun initDatabase() {
         if (countAccounts() < 1) {
-            insertAccount(Account("Google", "https://www.google.com", Category(0, "웹사이트", "web"), "entertainment", "123", 4))
-            insertAccount(Account("GitHub", "https://github.com/", Category(0, "웹사이트", "web"), "geography", "1234", 4))
-            insertAccount(Account("네이버", "https://www.naver.com/", Category(0, "웹사이트", "web"), "food", "1234", 2))
-            insertAccount(Account("카카오뱅크", "카카오뱅크 체크카드", Category(1, "신용카드", "credit_card"), "geography", "1234", 3))
-            insertAccount(Account("회사", "회사현관 출입번호", Category(2, "도어락", "home"), "geography", "1234", 1))
+            AccountAddActivity.listDummyAccount.map {
+                insertAccount(it)
+            }
         }
     }
 
@@ -56,7 +55,7 @@ class DatabaseHelper private constructor(
     }
 
     fun selectAccountAll(): ArrayList<Account> {
-        val realmResults = realmInstance.where(Account::class.java).findAllSorted("sequence", Sort.ASCENDING)
+        val realmResults = realmInstance.where(Account::class.java).findAllSorted("title", Sort.ASCENDING)
         val list = ArrayList<Account>()
         list.addAll(realmResults.subList(0, realmResults.size))
         return list
