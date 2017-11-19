@@ -22,6 +22,9 @@ open class Account (
 ) : RealmObject() {
 
     companion object {
-        const val TAG = "Account"
+        const val SEQUENCE = "sequence"
+        const val CATEGORY_WEB = "web"
+        const val CATEGORY_CREDIT_CARD = "credit_card"
+        const val CATEGORY_HOME = "home"
     }
 }

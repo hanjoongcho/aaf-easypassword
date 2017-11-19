@@ -31,90 +31,59 @@
                 </android.support.v7.widget.Toolbar>
             </android.support.design.widget.AppBarLayout>
 
-            <TextView
-                android:text="@string/account_manage_target"
-                style="@style/AccountDetailLabel" />
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="?android:attr/actionBarSize"
-                android:paddingStart="@dimen/spacing_double"
-                android:paddingEnd="@dimen/spacing_double"
-                android:clipToPadding="false"
-                android:transitionGroup="true"
-                tools:ignore="UnusedAttribute,NewApi">
-                <EditText
-                    style="@style/AccountDetailEditText"
-                    android:id="@+id/account_manage_target"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:imeOptions="actionNext"
-                    android:inputType="textCapWords" />
-            </android.support.design.widget.TextInputLayout>
+            <LinearLayout
+                style="@style/AccountDetailItemContainer">
+                <TextView
+                    android:text="@string/account_manage_target"
+                    style="@style/AccountDetailLabel" />
+                <TextView
+                    style="@style/AccountDetailInputText"
+                    android:id="@+id/account_manage_target" />
+            </LinearLayout>
 
-            <TextView
-                android:text="@string/account_id"
-                style="@style/AccountDetailLabel" />
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="?android:attr/actionBarSize"
-                android:paddingStart="@dimen/spacing_double"
-                android:paddingEnd="@dimen/spacing_double"
-                android:clipToPadding="false"
-                android:transitionGroup="true"
-                tools:ignore="UnusedAttribute,NewApi">
-                <EditText
-                    style="@style/AccountDetailEditText"
-                    android:id="@+id/account_id"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:imeOptions="actionNext"
-                    android:inputType="textCapWords" />
-            </android.support.design.widget.TextInputLayout>
+            <LinearLayout
+                style="@style/AccountDetailItemContainer">
+                <TextView
+                    android:text="@string/account_id"
+                    style="@style/AccountDetailLabel" />
+                <TextView
+                    style="@style/AccountDetailInputText"
+                    android:id="@+id/account_id" />
+            </LinearLayout>
 
-            <TextView
-                android:text="@string/account_password"
-                style="@style/AccountDetailLabel" />
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="?android:attr/actionBarSize"
-                android:paddingStart="@dimen/spacing_double"
-                android:paddingEnd="@dimen/spacing_double"
-                android:clipToPadding="false"
-                android:transitionGroup="true"
-                tools:ignore="UnusedAttribute,NewApi">
-                <EditText
-                    style="@style/AccountDetailEditText"
-                    android:id="@+id/account_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:imeOptions="actionDone"
-                    android:inputType="textNoSuggestions|textCapWords" />
-            </android.support.design.widget.TextInputLayout>
+            <LinearLayout
+                style="@style/AccountDetailItemContainer">
+                <TextView
+                    android:text="@string/account_password"
+                    style="@style/AccountDetailLabel" />
+                <TextView
+                    style="@style/AccountDetailInputText"
+                    android:id="@+id/account_password" />
+            </LinearLayout>
 
-            <TextView
-                android:text="@string/account_summary"
-                style="@style/AccountDetailLabel" />
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="?android:attr/actionBarSize"
-                android:paddingStart="@dimen/spacing_double"
-                android:paddingEnd="@dimen/spacing_double"
-                android:clipToPadding="false"
-                android:transitionGroup="true"
-                tools:ignore="UnusedAttribute,NewApi">
-                <EditText
-                    style="@style/AccountDetailEditText"
-                    android:id="@+id/account_summary"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:imeOptions="actionDone"
-                    android:inputType="textNoSuggestions|textCapWords" />
-            </android.support.design.widget.TextInputLayout>
-
+            <LinearLayout
+                style="@style/AccountDetailItemContainer">
+                <TextView
+                    android:text="@string/account_summary"
+                    style="@style/AccountDetailLabel" />
+                <TextView
+                    style="@style/AccountDetailInputText"
+                    android:id="@+id/account_summary" />
+            </LinearLayout>
         </LinearLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/update"
+            app:fabSize="normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="@dimen/spacing_double"
+            android:layout_marginEnd="@dimen/spacing_double"
+            android:layout_marginRight="@dimen/spacing_double"
+            android:src="@drawable/edit_property"
+            app:backgroundTint="@color/colorPrimary" />
     </FrameLayout>
 </layout>

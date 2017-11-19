@@ -21,6 +21,8 @@
         <activity android:name=".activities.PatternLockActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.AccountSelectionActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.AccountDetailActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.AccountEditActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".activities.AccountAddActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

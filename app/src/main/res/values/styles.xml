@@ -1,4 +1,6 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -113,18 +115,36 @@
         <item name="colorAccent">@color/theme_yellow_accent</item>
     </style>
 
+    <!--AccountDetailActivity-->
+    <style name="AccountDetailItemContainer">
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingTop">@dimen/account_detail_padding</item>
+        <item name="android:paddingLeft">@dimen/account_detail_padding</item>
+        <item name="android:paddingRight">@dimen/account_detail_padding</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
     <style name="AccountDetailLabel">
         <item name="android:textColor">@color/blackText</item>
         <item name="android:textSize">@dimen/large_text_size</item>
-        <item name="android:paddingLeft">20dp</item>
-        <item name="android:paddingTop">20dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="AccountDetailInputText">
+        <item name="android:textColor">@color/blackTextLight</item>
+        <item name="android:textSize">@dimen/medium_text_size</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="AccountDetailEditText">
-        <item name="android:textColor">@color/blackTextLight</item>
-        <item name="android:textSize">@dimen/medium_text_size</item>
+    <!--AccountEditActivity-->
+    <style name="AccountEditItemContainer" parent="AccountDetailItemContainer">
+    </style>
+    <style name="AccountEditLabel" parent="AccountDetailLabel">
+    </style>
+    <style name="AccountEditInputText" parent="AccountDetailInputText">
+        <item name="android:imeOptions">actionNext</item>
+        <item name="android:inputType">textCapWords|textNoSuggestions|textCapWords</item>
     </style>
 
 </resources>

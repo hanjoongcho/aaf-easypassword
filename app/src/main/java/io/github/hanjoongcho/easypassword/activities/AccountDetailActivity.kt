@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.databinding.ActivityAccountDetailBinding
 import io.github.hanjoongcho.easypassword.models.Account
@@ -26,21 +27,21 @@ class AccountDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account_detail)
         mSequence = intent.getIntExtra("sequence", -1)
-        mAccount = this@AccountDetailActivity.database().selectAccountBy(mSequence)
+
 
         mBinding = DataBindingUtil
                 .setContentView<ActivityAccountDetailBinding>(this,
                         R.layout.activity_account_detail)
 
-        mBinding?.accountId?.setText(mAccount?.id)
-        mBinding?.accountPassword?.setText(mAccount?.password)
-        mBinding?.accountSummary?.setText(mAccount?.summary)
-        mBinding?.accountManageTarget?.setText(mAccount?.title)
-
         setSupportActionBar(mBinding?.toolbarPlayer)
         supportActionBar?.run {
             setDisplayHomeAsUpEnabled(true)
         }
+
+        mBinding?.update?.setOnClickListener(View.OnClickListener { _ ->
+            startActivity(AccountEditActivity.getStartIntent(this@AccountDetailActivity, mSequence))
+//            finish()
+        })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -49,16 +50,6 @@ class AccountDetailActivity : AppCompatActivity() {
             R.id.edit -> {
             }
             R.id.save -> {
-                val account: Account = Account(
-                        mBinding?.accountManageTarget?.text.toString(),
-                        mBinding?.accountSummary?.text.toString(),
-                        "web",
-                        mBinding?.accountId?.text.toString(),
-                        mBinding?.accountPassword?.text.toString(),
-                        4,
-                        mAccount?.sequence!!
-                )
-                this@AccountDetailActivity.database().updateAccount(account)
             }
             else -> {
             }
@@ -66,16 +57,28 @@ class AccountDetailActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.account_detail, menu)
-        return true
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        menuInflater.inflate(R.menu.account_detail, menu)
+//        return true
+//    }
+
+    private fun refreshItem() {
+        mAccount = this@AccountDetailActivity.database().selectAccountBy(mSequence)
+        mBinding?.accountId?.setText(mAccount?.id)
+        mBinding?.accountPassword?.setText(mAccount?.password)
+        mBinding?.accountSummary?.setText(mAccount?.summary)
+        mBinding?.accountManageTarget?.setText(mAccount?.title)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        refreshItem()
     }
 
     companion object {
-
         fun getStartIntent(context: Context, account: Account): Intent {
             return Intent(context, AccountDetailActivity::class.java)
-                    .apply { putExtra(Account.TAG, account.sequence) }
+                    .apply { putExtra(Account.SEQUENCE, account.sequence) }
         }
     }
 }

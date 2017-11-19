@@ -6,6 +6,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.app.Fragment
@@ -16,6 +17,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import io.github.hanjoongcho.easypassword.R
+import io.github.hanjoongcho.easypassword.activities.AccountAddActivity
 import io.github.hanjoongcho.easypassword.activities.AccountDetailActivity
 import io.github.hanjoongcho.easypassword.adpaters.AccountAdapter
 import io.github.hanjoongcho.easypassword.helper.TransitionHelper
@@ -29,7 +31,7 @@ import io.github.hanjoongcho.easypassword.widget.OffsetDecoration
 
 class AccountSelectionFragment : Fragment() {
 
-    var mRecyclerView: RecyclerView? = null
+    private var mRecyclerView: RecyclerView? = null
 
     private val adapter: AccountAdapter? by lazy(LazyThreadSafetyMode.NONE) {
         AccountAdapter(activity,
@@ -50,10 +52,12 @@ class AccountSelectionFragment : Fragment() {
         mRecyclerView = view.findViewById<RecyclerView>(R.id.categories)
         mRecyclerView?.let { setUpGrid(it) }
         super.onViewCreated(view, savedInstanceState)
+        view.findViewById<FloatingActionButton>(R.id.add).setOnClickListener { startActivity(AccountAddActivity.getStartIntent(context)) }
     }
 
     override fun onResume() {
         super.onResume()
+        adapter?.selectAccounts()
         adapter?.notifyDataSetChanged()
     }
 

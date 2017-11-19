@@ -26,7 +26,12 @@ class AccountAdapter(
 
     private val resources = activity.resources
     private val layoutInflater = LayoutInflater.from(activity)
-    private var accounts = activity.database().selectAccountAll()
+    private var accounts = mutableListOf<Account>()
+
+    fun selectAccounts() {
+        accounts.clear()
+        accounts.addAll(activity.database().selectAccountAll())
+    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder.binding) {
