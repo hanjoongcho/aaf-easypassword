@@ -3,11 +3,9 @@ package test.io.github.hanjoongcho.easypassword
 import org.junit.Test
 
 import org.junit.Assert.*
-import com.tozny.crypto.android.AesCbcWithIntegrity
-import com.tozny.crypto.android.AesCbcWithIntegrity.generateSalt
-import com.tozny.crypto.android.AesCbcWithIntegrity.saltString
-
-
+import me.gosimple.nbvcxz.Nbvcxz
+import me.gosimple.nbvcxz.scoring.Result
+import me.gosimple.nbvcxz.scoring.TimeEstimate
 
 
 /**
@@ -18,7 +16,16 @@ import com.tozny.crypto.android.AesCbcWithIntegrity.saltString
 class CommonUnitTest {
 
     @Test
-    fun test01() {
-        assertTrue(true)
+    fun test01Estimate() {
+        var result: Result
+        val nbvcxz = Nbvcxz()
+
+        result = nbvcxz.estimate("correcthorsebatterystaple");
+        assertEquals("13 hours", TimeEstimate.getTimeToCrackFormatted(result, "ONLINE_THROTTLED"))
+        assertEquals("16 minutes", TimeEstimate.getTimeToCrackFormatted(result, "ONLINE_UNTHROTTLED"))
+        assertEquals("13 minutes", TimeEstimate.getTimeToCrackFormatted(result, "OFFLINE_BCRYPT_14"))
+        assertEquals("3 minutes", TimeEstimate.getTimeToCrackFormatted(result, "OFFLINE_BCRYPT_12"))
+        assertEquals("50 seconds", TimeEstimate.getTimeToCrackFormatted(result, "OFFLINE_BCRYPT_10"))
     }
+
 }
