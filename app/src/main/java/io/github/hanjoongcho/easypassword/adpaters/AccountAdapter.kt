@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ImageView
 import io.github.hanjoongcho.easypassword.R
+import io.github.hanjoongcho.easypassword.activities.AccountAddActivity
 import io.github.hanjoongcho.easypassword.databinding.ItemAccountBinding
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Account
@@ -38,17 +39,17 @@ class AccountAdapter(
             account = accounts[position]
             executePendingBindings()
             setCategoryIcon(account, categoryIcon)
-            setPasswordStrengthLevel(account, level1, level2, level3, level4, level5)
+            AccountAddActivity.setPasswordStrengthLevel(activity, account, included.level1, included.level2, included.level3, included.level4, included.level5)
             with(accountTitle) {
-                setTextColor(getColor(R.color.blackText))
+                setTextColor(AccountAddActivity.getColor(R.color.blackText, activity))
             }
             with(accountSummary) {
-                setTextColor(getColor(Theme.white.textPrimaryColor))
-                setBackgroundColor(getColor(Theme.white.primaryColor))
+                setTextColor(AccountAddActivity.getColor(Theme.white.textPrimaryColor, activity))
+                setBackgroundColor(AccountAddActivity.getColor(Theme.white.primaryColor, activity))
             }
         }
         with(holder.itemView) {
-            setBackgroundColor(getColor(Theme.white.windowBackgroundColor))
+            setBackgroundColor(AccountAddActivity.getColor(Theme.white.windowBackgroundColor, activity))
             setOnClickListener {
                 onItemClickListener.onItemClick(null, it, holder.adapterPosition, holder.itemId)
             }
@@ -69,59 +70,6 @@ class AccountAdapter(
         val imageRes = resources.getIdentifier("ic_${account.category?.resourceName}", "drawable", activity.packageName)
         icon.setImageResource(imageRes)
     }
-
-    private fun setPasswordStrengthLevel(account: Account, level1: ImageView, level2: ImageView, level3: ImageView, level4: ImageView, level5: ImageView) {
-        when (account.passwordStrengthLevel) {
-            1 -> {
-                setStrengthColor(level1, getColor(R.color.strength_bad))
-                setStrengthColor(level2, getColor(R.color.strength_default))
-                setStrengthColor(level3, getColor(R.color.strength_default))
-                setStrengthColor(level4, getColor(R.color.strength_default))
-                setStrengthColor(level5, getColor(R.color.strength_default))
-            }
-            2 -> {
-                setStrengthColor(level1, getColor(R.color.strength_bad))
-                setStrengthColor(level2, getColor(R.color.strength_bad))
-                setStrengthColor(level3, getColor(R.color.strength_default))
-                setStrengthColor(level4, getColor(R.color.strength_default))
-                setStrengthColor(level5, getColor(R.color.strength_default))
-            }
-            3 -> {
-                setStrengthColor(level1, getColor(R.color.strength_good))
-                setStrengthColor(level2, getColor(R.color.strength_good))
-                setStrengthColor(level3, getColor(R.color.strength_good))
-                setStrengthColor(level4, getColor(R.color.strength_default))
-                setStrengthColor(level5, getColor(R.color.strength_default))
-            }
-            4 -> {
-                setStrengthColor(level1, getColor(R.color.strength_good))
-                setStrengthColor(level2, getColor(R.color.strength_good))
-                setStrengthColor(level3, getColor(R.color.strength_good))
-                setStrengthColor(level4, getColor(R.color.strength_good))
-                setStrengthColor(level5, getColor(R.color.strength_default))
-            }
-            5 -> {
-                setStrengthColor(level1, getColor(R.color.strength_good))
-                setStrengthColor(level2, getColor(R.color.strength_good))
-                setStrengthColor(level3, getColor(R.color.strength_good))
-                setStrengthColor(level4, getColor(R.color.strength_good))
-                setStrengthColor(level5, getColor(R.color.strength_good))
-            }
-        }
-    }
-
-    private fun setStrengthColor(view: ImageView, colorId: Int) {
-        view.setBackgroundColor(colorId)
-    }
-
-    /**
-     * Convenience method for color loading.
-
-     * @param colorRes The resource id of the color to load.
-     *
-     * @return The loaded color.
-     */
-    private fun getColor(@ColorRes colorRes: Int) = ContextCompat.getColor(activity, colorRes)
 
     class ViewHolder(val binding: ItemAccountBinding) : RecyclerView.ViewHolder(binding.root)
 }

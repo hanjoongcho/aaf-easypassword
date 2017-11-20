@@ -1,13 +1,17 @@
 package io.github.hanjoongcho.easypassword.activities
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.annotation.ColorRes
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.adpaters.AccountCategoryAdapter
 import io.github.hanjoongcho.easypassword.databinding.ActivityAccountAddBinding
@@ -87,5 +91,58 @@ class AccountAddActivity : AppCompatActivity() {
                 Account("카카오뱅크", "카카오뱅크 체크카드", Category(1, "신용카드", "credit_card"), "geography", "1234", 3),
                 Account("회사", "회사현관 출입번호", Category(2, "도어락", "home"), "geography", "1234", 1)
         )
+
+        /**
+         * Convenience method for color loading.
+
+         * @param colorRes The resource id of the color to load.
+         *
+         * @return The loaded color.
+         */
+        fun getColor(@ColorRes colorRes: Int, activity: Activity) = ContextCompat.getColor(activity, colorRes)
+
+        fun setStrengthColor(view: ImageView, colorId: Int) {
+            view.setBackgroundColor(colorId)
+        }
+
+        fun setPasswordStrengthLevel(activity: Activity, account: Account, level1: ImageView, level2: ImageView, level3: ImageView, level4: ImageView, level5: ImageView) {
+            when (account.passwordStrengthLevel) {
+                1 -> {
+                    setStrengthColor(level1, getColor(R.color.strength_bad, activity))
+                    setStrengthColor(level2, getColor(R.color.strength_default, activity))
+                    setStrengthColor(level3, getColor(R.color.strength_default, activity))
+                    setStrengthColor(level4, getColor(R.color.strength_default, activity))
+                    setStrengthColor(level5, getColor(R.color.strength_default, activity))
+                }
+                2 -> {
+                    setStrengthColor(level1, getColor(R.color.strength_bad, activity))
+                    setStrengthColor(level2, getColor(R.color.strength_bad, activity))
+                    setStrengthColor(level3, getColor(R.color.strength_default, activity))
+                    setStrengthColor(level4, getColor(R.color.strength_default, activity))
+                    setStrengthColor(level5, getColor(R.color.strength_default, activity))
+                }
+                3 -> {
+                    setStrengthColor(level1, getColor(R.color.strength_good, activity))
+                    setStrengthColor(level2, getColor(R.color.strength_good, activity))
+                    setStrengthColor(level3, getColor(R.color.strength_good, activity))
+                    setStrengthColor(level4, getColor(R.color.strength_default, activity))
+                    setStrengthColor(level5, getColor(R.color.strength_default, activity))
+                }
+                4 -> {
+                    setStrengthColor(level1, getColor(R.color.strength_good, activity))
+                    setStrengthColor(level2, getColor(R.color.strength_good, activity))
+                    setStrengthColor(level3, getColor(R.color.strength_good, activity))
+                    setStrengthColor(level4, getColor(R.color.strength_good, activity))
+                    setStrengthColor(level5, getColor(R.color.strength_default, activity))
+                }
+                5 -> {
+                    setStrengthColor(level1, getColor(R.color.strength_good, activity))
+                    setStrengthColor(level2, getColor(R.color.strength_good, activity))
+                    setStrengthColor(level3, getColor(R.color.strength_good, activity))
+                    setStrengthColor(level4, getColor(R.color.strength_good, activity))
+                    setStrengthColor(level5, getColor(R.color.strength_good, activity))
+                }
+            }
+        }
     }
 }

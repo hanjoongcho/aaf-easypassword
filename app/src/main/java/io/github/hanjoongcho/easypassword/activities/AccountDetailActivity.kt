@@ -73,11 +73,16 @@ class AccountDetailActivity : AppCompatActivity() {
 
     private fun refreshItem() {
         mAccount = this@AccountDetailActivity.database().selectAccountBy(mSequence)
-        mBinding?.accountId?.setText(mAccount?.id)
-        mBinding?.accountPassword?.setText(mAccount?.password)
-        mBinding?.accountSummary?.setText(mAccount?.summary)
-        mBinding?.accountManageTarget?.setText(mAccount?.title)
-        initCategorySpinner()
+        mAccount?.let { account ->
+            mBinding?.accountId?.text = account.id
+            mBinding?.accountPassword?.text = account.password
+            mBinding?.accountSummary?.text = account.summary
+            mBinding?.accountManageTarget?.text = account.title
+            initCategorySpinner()
+            mBinding?.let { binding ->
+                AccountAddActivity.setPasswordStrengthLevel(this@AccountDetailActivity, account, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
+            }
+        }
     }
 
     override fun onResume() {

@@ -34,10 +34,15 @@ class AccountEditActivity : AppCompatActivity() {
         mBinding = DataBindingUtil.setContentView<ActivityAccountEditBinding>(this,
                 R.layout.activity_account_edit)
 
-        mBinding?.accountId?.setText(mAccount?.id)
-        mBinding?.accountPassword?.setText(mAccount?.password)
-        mBinding?.accountSummary?.setText(mAccount?.summary)
-        mBinding?.accountManageTarget?.setText(mAccount?.title)
+        mAccount?.let { account ->
+            mBinding?.let { binding ->
+                binding.accountId.setText(account.id)
+                binding.accountPassword.setText(account.password)
+                binding.accountSummary.setText(account.summary)
+                binding.accountManageTarget.setText(account.title)
+                AccountAddActivity.setPasswordStrengthLevel(this@AccountEditActivity, account, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
+            }
+        }
 
         setSupportActionBar(mBinding?.toolbarPlayer)
         supportActionBar?.run {
@@ -61,11 +66,6 @@ class AccountEditActivity : AppCompatActivity() {
     }
 
     private fun initCategorySpinner() {
-        val listCategory: List<Category> = mutableListOf(
-                Category(0, "웹사이트", "web"),
-                Category(1, "신용카드", "credit_card"),
-                Category(2, "도어락", "home")
-        )
         val adapter: ArrayAdapter<Category> = AccountCategoryAdapter(this@AccountEditActivity, R.layout.item_category, AccountAddActivity.listCategory)
         mBinding?.accountManageCategory?.adapter = adapter
         mBinding?.accountManageCategory?.setSelection(mAccount?.category?.index ?: 0)
