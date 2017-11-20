@@ -8,6 +8,13 @@
     <string name="account_password">비밀번호</string>
     <string name="account_summary">상세정보</string>
 
+
+    <!--PatternLockActivity-->
+    <string name="pattern_lock_activity_unlock_message">잠금 패턴을 입력하세요.</string>
+    <string name="pattern_lock_activity_setting_lock_message">잠금 패턴을 설정하세요.</string>
+    <string name="pattern_lock_activity_verify_message">설정된 잠금 패턴을 한번 더 입력하세요.</string>
+    <string name="pattern_lock_activity_verify_reject">잠금 패턴 검증에 실패했습니다.</string>
+
     <!--AccountSelectionActivity-->
     <string name="account_selection_title">관리목록</string>
 

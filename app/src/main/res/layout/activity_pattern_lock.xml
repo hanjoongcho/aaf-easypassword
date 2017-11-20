@@ -16,15 +16,13 @@
         android:src="@drawable/padlock_10"/>
 
     <TextView
-        android:id="@+id/profile_name"
+        android:id="@+id/guide_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="36dp"
-        android:fontFamily="sans-serif-thin"
         android:gravity="center"
         android:maxLines="1"
-        android:text="Easy Password"
         android:textColor="@color/white"
         android:textSize="20dp"/>
 

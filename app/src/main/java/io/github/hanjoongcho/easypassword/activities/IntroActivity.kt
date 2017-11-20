@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import io.github.hanjoongcho.easypassword.R
+import io.github.hanjoongcho.utils.CommonUtils
 
 /**
  * Created by CHO HANJOONG on 2016-12-31.
@@ -26,7 +27,13 @@ class IntroActivity : Activity(), Handler.Callback {
     override fun handleMessage(message: Message): Boolean {
         when (message.what) {
             START_MAIN_ACTIVITY -> {
-                startActivity(Intent(this, PatternLockActivity::class.java))
+                val savedPattern =  CommonUtils.loadStringPreference(this@IntroActivity, PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
+                val intent = Intent(this, PatternLockActivity::class.java)
+                when (savedPattern) {
+                    PatternLockActivity.SAVED_PATTERN_DEFAULT -> intent.putExtra(PatternLockActivity.MODE, PatternLockActivity.SETTING_LOCK)
+                    else -> intent.putExtra(PatternLockActivity.MODE, PatternLockActivity.UNLOCK)
+                }
+                startActivity(intent)
                 finish()
             }
             else -> {

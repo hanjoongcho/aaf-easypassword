@@ -8,6 +8,8 @@ import android.databinding.DataBindingUtil
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.widget.Toolbar
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.databinding.ActivityAccountSelectionBinding
@@ -37,6 +39,25 @@ class AccountSelectionActivity : AppCompatActivity() {
         }
         supportPostponeEnterTransition()
         this@AccountSelectionActivity.database().initDatabase()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.account_selection, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.requestPattern -> {
+                val intent = Intent(this, PatternLockActivity::class.java)
+                intent.putExtra(PatternLockActivity.MODE, PatternLockActivity.SETTING_LOCK)
+                startActivity(intent)
+                finish()
+            }
+            else -> {
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun setUpToolbar() {
