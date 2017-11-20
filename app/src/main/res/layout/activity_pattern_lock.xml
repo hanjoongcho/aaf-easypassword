@@ -9,6 +9,7 @@
 
     <ImageView
         android:id="@+id/profile_image"
+        android:transitionName="@string/transition_app_icon"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"

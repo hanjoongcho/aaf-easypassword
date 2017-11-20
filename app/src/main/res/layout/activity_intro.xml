@@ -24,6 +24,7 @@
 
         <ImageView
             android:src="@drawable/padlock_10"
+            android:id="@+id/app_icon"
             android:layout_width="100dp"
             android:layout_height="100dp" />
 

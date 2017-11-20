@@ -38,7 +38,7 @@ class AccountSelectionFragment : Fragment() {
                 AdapterView.OnItemClickListener { _, v, position, _ ->
                     adapter?.getItem(position)?.let {
                         startAccountDetailActivityWithTransition(activity,
-                                v.findViewById(R.id.account_title), it)
+                                v.findViewById(R.id.category_icon), it)
                     }
                 })
     }
@@ -85,16 +85,13 @@ class AccountSelectionFragment : Fragment() {
         val animationBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
                 *TransitionHelper.createSafeTransitionParticipants(activity,
                         false,
-                        Pair(toolbar, activity.getString(R.string.transition_toolbar))))
+                        Pair(toolbar, getString(R.string.transition_category))))
                 .toBundle()
 
         // Start the activity with the participants, animating from one to the other.
         val startIntent = AccountDetailActivity.getStartIntent(activity, account)
         startIntent.putExtra("sequence", account.sequence)
-        ActivityCompat.startActivityForResult(activity,
-                startIntent,
-                REQUEST_CATEGORY,
-                animationBundle)
+        ActivityCompat.startActivity(activity, startIntent, animationBundle)
     }
 
     companion object {

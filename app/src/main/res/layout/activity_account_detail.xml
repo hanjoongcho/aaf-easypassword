@@ -37,6 +37,7 @@
                     android:text="@string/account_manage_category"
                     style="@style/AccountEditLabel" />
                 <Spinner
+                    android:transitionName="@string/transition_category"
                     android:id="@+id/account_manage_category"
                     android:spinnerMode="dropdown"
                     android:layout_width="match_parent"
