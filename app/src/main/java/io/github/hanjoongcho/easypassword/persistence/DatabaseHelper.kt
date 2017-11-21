@@ -3,8 +3,6 @@ package io.github.hanjoongcho.easypassword.persistence
 import android.content.Context
 import io.github.hanjoongcho.easypassword.activities.AccountAddActivity
 import io.github.hanjoongcho.easypassword.models.Account
-import io.github.hanjoongcho.easypassword.models.Category
-import io.github.hanjoongcho.easypassword.models.Theme
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.realm.Sort
@@ -24,7 +22,7 @@ class DatabaseHelper private constructor(
         get() {
             if (realmConfiguration == null) {
                 realmConfiguration = RealmConfiguration.Builder()
-                        .name("easypassword.realm")
+                        .name(DIARY_DB_NAME)
                         .schemaVersion(1)
                         .migration(DatabaseMigration())
                         .modules(Realm.getDefaultModule())
@@ -32,6 +30,21 @@ class DatabaseHelper private constructor(
             }
             return Realm.getInstance(realmConfiguration)
         }
+
+    fun getDatabasePath(): String = realmInstance.path
+
+    fun getMimeType(): String {
+        return "text/aaf_v" + realmInstance.version
+    }
+
+    fun getMimeTypeAll(): Array<String?> {
+        val currentVersion = realmInstance.version.toInt()
+        val easyDiaryMimeType = arrayOfNulls<String>(currentVersion)
+        for (i in 0 until currentVersion) {
+            easyDiaryMimeType[i] = "text/aaf_v" + (i + 1)
+        }
+        return easyDiaryMimeType
+    }
 
     fun initDatabase() {
         if (countAccounts() < 1) {
@@ -68,6 +81,8 @@ class DatabaseHelper private constructor(
     fun selectAccountBy(sequence: Int): Account = realmInstance.where(Account::class.java).equalTo("sequence", sequence).findFirst()
 
     companion object {
+
+        const val DIARY_DB_NAME = "easy-password.realm"
 
         private var _instance: DatabaseHelper? = null
 

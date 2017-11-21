@@ -86,6 +86,9 @@ dependencies {
 
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
+    // google gms
+    compile 'com.google.android.gms:play-services-drive:8.4.0'
+
     // jetbrains
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
@@ -98,4 +101,8 @@ dependencies {
 
     implementation 'com.andrognito.patternlockview:patternlockview:1.0.0'
     implementation 'com.andrognito.patternlockview:patternlockview-reactive:1.0.0'
+
+    // apache commons
+    compile 'org.apache.commons:commons-lang3:3.0'
+    compile group: 'commons-io', name: 'commons-io', version: '2.4'
 }

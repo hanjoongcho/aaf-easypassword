@@ -11,6 +11,8 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import com.google.android.gms.drive.GoogleDriveDownloader
+import com.google.android.gms.drive.GoogleDriveUploader
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.databinding.ActivityAccountSelectionBinding
 import io.github.hanjoongcho.easypassword.fragment.AccountSelectionFragment
@@ -53,6 +55,14 @@ class AccountSelectionActivity : AppCompatActivity() {
                 intent.putExtra(PatternLockActivity.MODE, PatternLockActivity.SETTING_LOCK)
                 startActivity(intent)
                 finish()
+            }
+            R.id.backup -> {
+                val googleDriveUploader = Intent(this, GoogleDriveUploader::class.java)
+                startActivity(googleDriveUploader)
+            }
+            R.id.recovery -> {
+                val googleDriveDownloader = Intent(this, GoogleDriveDownloader::class.java)
+                startActivity(googleDriveDownloader)
             }
             else -> {
             }

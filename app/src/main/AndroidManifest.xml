@@ -24,6 +24,8 @@
         <activity android:name=".activities.AccountDetailActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activities.AccountEditActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:windowSoftInputMode="adjustResize" android:screenOrientation="portrait" />
         <activity android:name=".activities.AccountAddActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:windowSoftInputMode="adjustResize" android:screenOrientation="portrait" />
+        <activity android:name="com.google.android.gms.drive.GoogleDriveUploader" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
+        <activity android:name="com.google.android.gms.drive.GoogleDriveDownloader" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
     </application>
 
 </manifest>
