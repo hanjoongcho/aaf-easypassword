@@ -25,12 +25,16 @@ class AesUtils {
             return civ.toString()
         }
 
-        fun decryptPassword(context: Context, cipherText: String): String {
+        fun decryptPassword(context: Context, cipherText: String): String? {
             val savedPattern = CommonUtils.loadStringPreference(context , PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
             val key: AesCbcWithIntegrity.SecretKeys = AesCbcWithIntegrity.generateKeyFromPassword(savedPattern, SALT_STRING)
-
-            val cipherTextIvMac = CipherTextIvMac(cipherText)
-            return AesCbcWithIntegrity.decryptString(cipherTextIvMac, AesCbcWithIntegrity.keys(keyString(key)))
+            var plainText:String? = null
+            try {
+                val cipherTextIvMac = CipherTextIvMac(cipherText)
+                plainText = AesCbcWithIntegrity.decryptString(cipherTextIvMac, AesCbcWithIntegrity.keys(keyString(key)))
+            } catch (e: Exception) {
+            }
+            return plainText
         }
     }
 }

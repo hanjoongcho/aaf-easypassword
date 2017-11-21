@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
@@ -50,8 +52,14 @@ class AccountDetailActivity : AppCompatActivity() {
         mBinding?.let { binding ->
             binding.decryptPassword?.setOnClickListener { view ->
                 view.visibility = View.INVISIBLE
-                val decryptedPassword = AesUtils.decryptPassword(this@AccountDetailActivity, binding.accountPassword.text.toString())
-                binding.accountPassword.text = decryptedPassword
+                binding.decProgress.visibility = View.VISIBLE
+                Thread(Runnable {
+                    val decryptedPassword = AesUtils.decryptPassword(this@AccountDetailActivity, binding.accountPassword.text.toString())
+                    Handler(Looper.getMainLooper()).post(Runnable {
+                        binding.accountPassword.text = decryptedPassword
+                        binding.decProgress.visibility = View.INVISIBLE
+                    })
+                }).start()
             }
         }
     }
