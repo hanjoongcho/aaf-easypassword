@@ -14,6 +14,8 @@ import io.github.hanjoongcho.easypassword.databinding.ActivityAccountDetailBindi
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Account
 import io.github.hanjoongcho.easypassword.models.Category
+import io.github.hanjoongcho.utils.AesUtils
+import kotlinx.android.synthetic.main.activity_account_detail.view.*
 
 /**
  * Created by CHO HANJOONG on 2017-11-18.
@@ -44,6 +46,13 @@ class AccountDetailActivity : AppCompatActivity() {
             startActivity(AccountEditActivity.getStartIntent(this@AccountDetailActivity, mSequence))
 //            finish()
         })
+
+        mBinding?.let { binding ->
+            binding.decryptPassword?.setOnClickListener {
+                val decryptedPassword = AesUtils.decryptPassword(this@AccountDetailActivity, binding.accountPassword.text.toString())
+                binding.accountPassword.text = decryptedPassword
+            }
+        }
     }
 
     private fun initCategorySpinner() {

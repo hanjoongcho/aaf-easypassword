@@ -14,10 +14,11 @@ class AesUtils {
 
     companion object {
 
+        const val SALT_STRING = "RjaXrZURG40sMzDlVjaRKIdCT7vfok1u8gAOmwnaedDUpyAENeDTCWnc62y33seezkdqzXhAnDqzrTi+mvvDIRHYdLVllQmhXmUbFAnwyG9jkWgWkfk49ieM6QsM7LcsFU79auMK84ELHRQT1pj0ABJnDFVokePKA3C6wysd6P8="
+
         fun encryptPassword(context: Context, plainText: String): String {
-            val salt = AesCbcWithIntegrity.saltString(AesCbcWithIntegrity.generateSalt())
             val savedPattern = CommonUtils.loadStringPreference(context , PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
-            val key: AesCbcWithIntegrity.SecretKeys = AesCbcWithIntegrity.generateKeyFromPassword(savedPattern, salt)
+            val key: AesCbcWithIntegrity.SecretKeys = AesCbcWithIntegrity.generateKeyFromPassword(savedPattern, SALT_STRING)
 
             // The encryption / storage & display:
             val civ = AesCbcWithIntegrity.encrypt(plainText, AesCbcWithIntegrity.keys(keyString(key)))
@@ -25,12 +26,8 @@ class AesUtils {
         }
 
         fun decryptPassword(context: Context, cipherText: String): String {
-            val salt = AesCbcWithIntegrity.saltString(AesCbcWithIntegrity.generateSalt())
             val savedPattern = CommonUtils.loadStringPreference(context , PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
-            val key: AesCbcWithIntegrity.SecretKeys = AesCbcWithIntegrity.generateKeyFromPassword(savedPattern, salt)
-
-            Log.i("*keyC*", cipherText);
-            Log.i("*keyS*", savedPattern );
+            val key: AesCbcWithIntegrity.SecretKeys = AesCbcWithIntegrity.generateKeyFromPassword(savedPattern, SALT_STRING)
 
             val cipherTextIvMac = CipherTextIvMac(cipherText)
             return AesCbcWithIntegrity.decryptString(cipherTextIvMac, AesCbcWithIntegrity.keys(keyString(key)))

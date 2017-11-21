@@ -26,8 +26,8 @@ class CommonUnitTest {
 
     companion object {
         val TAG = "EASY_PASSWORD"
-//        val KEY_STRING_DEVICE1 = "sKmUCoW/4Vnr0wcwtTukBQ==:GaETP9FEo4wddvNxX5KaOEW+HtHpCcojzZCPT2LJHN0="
-        val KEY_STRING_DEVICE1 = "ekqYSR9af5qHwfD3m4sqdQ==:HQhzmxqz335F3mY2PGgW+SY99hTp14gQjeJyqGXVk+g="
+        val KEY_STRING_DEVICE1 = "sKmUCoW/4Vnr0wcwtTukBQ==:GaETP9FEo4wddvNxX5KaOEW+HtHpCcojzZCPT2LJHN0="
+        val SALT_STRING = "RjaXrZURG40sMzDlVjaRKIdCT7vfok1u8gAOmwnaedDUpyAENeDTCWnc62y33seezkdqzXhAnDqzrTi+mvvDIRHYdLVllQmhXmUbFAnwyG9jkWgWkfk49ieM6QsM7LcsFU79auMK84ELHRQT1pj0ABJnDFVokePKA3C6wysd6P8="
         val EXAMPLE_PASSWORD = "always use passphrases for passwords wherever possible!"
         val PLAIN_TEXT = "Testing shows the presence, not the absence of bugs.\n\n  Edsger W. Dijkstra"
         val listEncryptString = listOf<String>(
@@ -82,4 +82,22 @@ class CommonUnitTest {
         }
     }
 
+    @Test
+    fun test05RandomSalt() {
+        repeat(10, {
+            val saltString = AesCbcWithIntegrity.saltString(AesCbcWithIntegrity.generateSalt())
+            Log.i(TAG, "${saltString.length} $saltString")
+            assertTrue(saltString.length == 172)
+        })
+    }
+
+    @Test
+    fun test06KeyStringWithPassword() {
+        repeat(5, {
+            val key: AesCbcWithIntegrity.SecretKeys = AesCbcWithIntegrity.generateKeyFromPassword(EXAMPLE_PASSWORD, SALT_STRING)
+            // The encryption / storage & display:
+            Log.i(TAG, "${keyString(key)}")
+            assertEquals("co/goE9oGoVFs1oixyZwHQ==:FxG/Acjzqk++kNC9WzlUlk79UHUsTPTb3sn/ZcuGU8g=", keyString(key))
+        })
+    }
 }

@@ -80,7 +80,10 @@ class DatabaseHelper private constructor(
     }
 
     fun updateAccount(account: Account) {
-        realmInstance.executeTransaction(Realm.Transaction { realm -> realm.insertOrUpdate(account) })
+        realmInstance.executeTransaction(Realm.Transaction { realm ->
+            account.password = AesUtils.encryptPassword(context, account.password)
+            realm.insertOrUpdate(account)
+        })
     }
 
     fun selectAccountBy(sequence: Int): Account {
