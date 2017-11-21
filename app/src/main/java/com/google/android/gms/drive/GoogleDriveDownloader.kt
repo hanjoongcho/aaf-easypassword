@@ -18,11 +18,6 @@ import java.io.FileOutputStream
 
 class GoogleDriveDownloader : GoogleDriveUtils() {
 
-    /**
-     * File that is selected with the open file activity.
-     */
-    private var mSelectedFileDriveId: DriveId? = null
-
     override fun onConnected(connectionHint: Bundle?) {
         super.onConnected(connectionHint)
         // If there is a selected file, open its contents.

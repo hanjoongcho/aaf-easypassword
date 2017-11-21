@@ -26,7 +26,8 @@ class CommonUnitTest {
 
     companion object {
         val TAG = "EASY_PASSWORD"
-        val KEY_STRING_DEVICE1 = "sKmUCoW/4Vnr0wcwtTukBQ==:GaETP9FEo4wddvNxX5KaOEW+HtHpCcojzZCPT2LJHN0="
+//        val KEY_STRING_DEVICE1 = "sKmUCoW/4Vnr0wcwtTukBQ==:GaETP9FEo4wddvNxX5KaOEW+HtHpCcojzZCPT2LJHN0="
+        val KEY_STRING_DEVICE1 = "ekqYSR9af5qHwfD3m4sqdQ==:HQhzmxqz335F3mY2PGgW+SY99hTp14gQjeJyqGXVk+g="
         val EXAMPLE_PASSWORD = "always use passphrases for passwords wherever possible!"
         val PLAIN_TEXT = "Testing shows the presence, not the absence of bugs.\n\n  Edsger W. Dijkstra"
         val listEncryptString = listOf<String>(
@@ -55,6 +56,7 @@ class CommonUnitTest {
     @Test
     fun test01Encrypt() {
         assertEquals(69, keyString.length)
+        Log.i("KEYSTRING", keyString)
     }
 
     @Test

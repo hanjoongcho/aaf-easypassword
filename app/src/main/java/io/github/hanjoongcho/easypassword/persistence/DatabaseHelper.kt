@@ -1,8 +1,12 @@
 package io.github.hanjoongcho.easypassword.persistence
 
 import android.content.Context
+import com.tozny.crypto.android.AesCbcWithIntegrity
 import io.github.hanjoongcho.easypassword.activities.AccountAddActivity
+import io.github.hanjoongcho.easypassword.activities.PatternLockActivity
 import io.github.hanjoongcho.easypassword.models.Account
+import io.github.hanjoongcho.utils.AesUtils
+import io.github.hanjoongcho.utils.CommonUtils
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.realm.Sort
@@ -13,7 +17,7 @@ import java.util.ArrayList
  */
 
 class DatabaseHelper private constructor(
-        context: Context
+        val context: Context
 ) {
 
     private var realmConfiguration: RealmConfiguration? = null
@@ -63,6 +67,7 @@ class DatabaseHelper private constructor(
             sequence = max.toInt() + 1
         }
         account.sequence = sequence
+        account.password = AesUtils.encryptPassword(context, account.password)
         realmInstance.insert(account)
         realmInstance.commitTransaction()
     }
@@ -78,7 +83,11 @@ class DatabaseHelper private constructor(
         realmInstance.executeTransaction(Realm.Transaction { realm -> realm.insertOrUpdate(account) })
     }
 
-    fun selectAccountBy(sequence: Int): Account = realmInstance.where(Account::class.java).equalTo("sequence", sequence).findFirst()
+    fun selectAccountBy(sequence: Int): Account {
+        val account: Account = realmInstance.where(Account::class.java).equalTo("sequence", sequence).findFirst()
+//        account.password = AesUtils.decryptPassword(context, account.password)
+        return account
+    }
 
     companion object {
 

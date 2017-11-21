@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.content.IntentSender
 import android.os.Bundle
+import android.os.Parcelable
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.common.api.GoogleApiClient
@@ -18,6 +19,11 @@ open class GoogleDriveUtils : Activity(), GoogleApiClient.ConnectionCallbacks, G
      * Google API client.
      */
     private var mGoogleApiClient: GoogleApiClient? = null
+
+    /**
+     * File that is selected with the open file activity.
+     */
+    protected var mSelectedFileDriveId: DriveId? = null
 
     /**
      * Called when `mGoogleApiClient` is connected.
@@ -94,6 +100,10 @@ open class GoogleDriveUtils : Activity(), GoogleApiClient.ConnectionCallbacks, G
                 mGoogleApiClient?.connect()
             } else if (requestCode == REQUEST_CODE_GOOGLE_DRIVE_UPLOAD) {
                 finish()
+            } else if (requestCode == REQUEST_CODE_GOOGLE_DRIVE_DOWNLOAD) {
+                data?.let {
+                    mSelectedFileDriveId = it.getParcelableExtra(OpenFileActivityBuilder.EXTRA_RESPONSE_DRIVE_ID)
+                }
             }
         } else if (resultCode == Activity.RESULT_CANCELED) {
             finish()
