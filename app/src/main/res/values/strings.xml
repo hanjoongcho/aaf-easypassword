@@ -27,6 +27,17 @@
     <!--AccountAddActivity-->
     <string name="account_add_title">관리항목 추가</string>
 
+    <!--SettingActivity-->
+    <string name="setting_title">환경설정</string>
+    <string name="setting_pattern_lock">잠금패턴 설정</string>
+    <string name="setting_pattern_lock_summary">어플리케이션 잠금, 관리계정 암호화에 사용될 패턴정보를 설정합니다.</string>
+    <string name="setting_rate_app">어플평가</string>
+    <string name="setting_rate_app_summary">어플리케이션 잠금, 관리계정 암호화에 사용될 패턴정보를 설정합니다.</string>
+    <string name="setting_google_drive_backup">관리계정 백업</string>
+    <string name="setting_google_drive_backup_summary">현재 관리중인 계정목록을 구글드라이브에 백업합니다. 현재사용중인 잠금패턴을 이용하여 암호화된 데이터가 저장됩니다.</string>
+    <string name="setting_google_drive_recovery">관리계정 복구</string>
+    <string name="setting_google_drive_recovery_summary">구글드라이브에 저장된 관리계정 데이터를 복구합니다.</string>
+
     <string name="last_initial">Last Initial</string>
     <string name="first_name">First Name</string>
     <string name="sign_in">Sign In</string>

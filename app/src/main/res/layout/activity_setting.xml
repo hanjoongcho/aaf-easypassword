@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="Application Setting"
+                    style="@style/SettingActivityCategory" />
+
+                <LinearLayout
+                    android:id="@+id/pref1"
+                    android:orientation="vertical"
+                    style="@style/SettingActivityItem">
+                    <TextView
+                        android:id="@+id/prefTitle1"
+                        android:text="@string/setting_pattern_lock"
+                        style="@style/SettingActivityTitle" />
+                    <TextView
+                        android:id="@+id/prefSummary1"
+                        android:text="@string/setting_pattern_lock_summary"
+                        style="@style/SettingActivitySummary" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/SettingActivityDivider" />
+
+                <LinearLayout
+                    android:id="@+id/pref2"
+                    android:orientation="vertical"
+                    style="@style/SettingActivityItem">
+                    <TextView
+                        android:id="@+id/prefTitle2"
+                        android:text="@string/setting_google_drive_backup"
+                        style="@style/SettingActivityTitle" />
+                    <TextView
+                        android:id="@+id/prefSummary2"
+                        android:text="@string/setting_google_drive_backup_summary"
+                        style="@style/SettingActivitySummary" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/SettingActivityDivider" />
+
+                <LinearLayout
+                    android:id="@+id/pref3"
+                    android:orientation="vertical"
+                    style="@style/SettingActivityItem">
+                    <TextView
+                        android:id="@+id/prefTitle3"
+                        android:text="@string/setting_google_drive_recovery"
+                        style="@style/SettingActivityTitle" />
+                    <TextView
+                        android:id="@+id/prefSummary3"
+                        android:text="@string/setting_google_drive_recovery_summary"
+                        style="@style/SettingActivitySummary" />
+                </LinearLayout>
+
+                <TextView
+                    android:text="Application Information"
+                    style="@style/SettingActivityCategory" />
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/pref8"
+                    android:orientation="vertical"
+                    style="@style/SettingActivityItem">
+                    <TextView
+                        android:id="@+id/prefTitle8"
+                        android:text="@string/setting_rate_app"
+                        style="@style/SettingActivityTitle" />
+                    <TextView
+                        android:id="@+id/prefSummary8"
+                        android:text=""
+                        style="@style/SettingActivitySummary" />
+                </LinearLayout>
+
+                <TextView
+                    style="@style/SettingActivityDivider" />
+
+                <LinearLayout
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/pref9"
+                    android:orientation="vertical"
+                    style="@style/SettingActivityItem">
+                    <TextView
+                        android:text="Open Source Licenses"
+                        style="@style/SettingActivityTitle" />
+                    <TextView
+                        android:text="open source software notices"
+                        style="@style/SettingActivitySummary" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

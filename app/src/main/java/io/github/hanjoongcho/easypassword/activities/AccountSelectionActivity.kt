@@ -1,12 +1,15 @@
 package io.github.hanjoongcho.easypassword.activities
 
+import android.annotation.TargetApi
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.databinding.DataBindingUtil
+import android.os.Build
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityOptionsCompat
+import android.support.v4.util.Pair
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
@@ -16,9 +19,11 @@ import com.google.android.gms.drive.GoogleDriveUploader
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.databinding.ActivityAccountSelectionBinding
 import io.github.hanjoongcho.easypassword.fragment.AccountSelectionFragment
+import io.github.hanjoongcho.easypassword.helper.TransitionHelper
 import io.github.hanjoongcho.easypassword.helper.findFragmentById
 import io.github.hanjoongcho.easypassword.helper.replaceFragment
 import io.github.hanjoongcho.easypassword.helper.database
+import kotlinx.android.synthetic.main.activity_intro.*
 
 /**
  * Created by Administrator on 2017-11-15.
@@ -50,19 +55,8 @@ class AccountSelectionActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.requestPattern -> {
-                val intent = Intent(this, PatternLockActivity::class.java)
-                intent.putExtra(PatternLockActivity.MODE, PatternLockActivity.SETTING_LOCK)
-                startActivity(intent)
-                finish()
-            }
-            R.id.backup -> {
-                val googleDriveUploader = Intent(this, GoogleDriveUploader::class.java)
-                startActivity(googleDriveUploader)
-            }
-            R.id.recovery -> {
-                val googleDriveDownloader = Intent(this, GoogleDriveDownloader::class.java)
-                startActivity(googleDriveDownloader)
+            R.id.setting -> {
+                TransitionHelper.startSettingActivityWithTransition(this@AccountSelectionActivity, SettingActivity::class.java)
             }
             else -> {
             }
@@ -84,6 +78,18 @@ class AccountSelectionActivity : AppCompatActivity() {
     private fun setProgressBarVisibility(visibility: Int) {
         findViewById<View>(R.id.progress).visibility = visibility
     }
+
+//    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+//    private fun startSettingActivityWithTransition() {
+//
+//        val animationBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(this@AccountSelectionActivity,
+//                *TransitionHelper.createSafeTransitionParticipants(this@AccountSelectionActivity,
+//                        false)).toBundle()
+//
+//        // Start the activity with the participants, animating from one to the other.
+//        val intent = Intent(this, SettingActivity::class.java)
+//        ActivityCompat.startActivity(this@AccountSelectionActivity, intent, animationBundle)
+//    }
 
     companion object {
         fun start(activity: Activity) {

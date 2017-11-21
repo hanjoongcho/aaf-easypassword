@@ -48,7 +48,8 @@ class AccountDetailActivity : AppCompatActivity() {
         })
 
         mBinding?.let { binding ->
-            binding.decryptPassword?.setOnClickListener {
+            binding.decryptPassword?.setOnClickListener { view ->
+                view.visibility = View.INVISIBLE
                 val decryptedPassword = AesUtils.decryptPassword(this@AccountDetailActivity, binding.accountPassword.text.toString())
                 binding.accountPassword.text = decryptedPassword
             }
@@ -64,7 +65,7 @@ class AccountDetailActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            android.R.id.home -> finish()
+            android.R.id.home ->  this@AccountDetailActivity.onBackPressed()
             R.id.edit -> {
             }
             R.id.save -> {

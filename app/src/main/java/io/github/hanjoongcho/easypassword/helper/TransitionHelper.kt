@@ -2,10 +2,14 @@ package io.github.hanjoongcho.easypassword.helper
 
 import android.annotation.TargetApi
 import android.app.Activity
+import android.content.Intent
 import android.os.Build
 import android.support.annotation.IdRes
+import android.support.v4.app.ActivityCompat
+import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.util.Pair
 import android.view.View
+import io.github.hanjoongcho.easypassword.activities.SettingActivity
 
 /**
  * Created by CHO HANJOONG on 2017-11-18.
@@ -47,5 +51,17 @@ object TransitionHelper {
                             participants: ArrayList<Pair<View, String>>) {
         val view = activity.window.decorView.findViewById<View>(viewId)
         view?.transitionName?.let { participants.add(Pair(view, it)) }
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    fun startSettingActivityWithTransition(activity: Activity, clazz: Class<*>) {
+
+        val animationBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
+                *createSafeTransitionParticipants(activity,
+                        false)).toBundle()
+
+        // Start the activity with the participants, animating from one to the other.
+        val intent = Intent(activity, clazz)
+        ActivityCompat.startActivity(activity, intent, animationBundle)
     }
 }

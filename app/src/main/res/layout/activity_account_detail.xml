@@ -89,8 +89,8 @@
                         <ImageView
                             android:id="@+id/decrypt_password"
                             android:src="@drawable/eye_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" />
+                            android:layout_width="25dp"
+                            android:layout_height="25dp" />
                     </LinearLayout>
                 </LinearLayout>
                 <TextView
