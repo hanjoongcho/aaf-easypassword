@@ -58,7 +58,7 @@ class DatabaseHelper private constructor(
         }
     }
 
-    private fun countAccounts() = realmInstance.where(Account::class.java).count().toInt()
+    fun countAccounts() = realmInstance.where(Account::class.java).count().toInt()
 
     fun insertAccount(account: Account) {
         realmInstance.beginTransaction()

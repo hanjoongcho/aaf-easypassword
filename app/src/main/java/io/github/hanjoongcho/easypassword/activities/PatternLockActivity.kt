@@ -17,6 +17,7 @@ import com.andrognito.rxpatternlockview.RxPatternLockView
 import com.andrognito.rxpatternlockview.events.PatternLockCompoundEvent
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.helper.TransitionHelper
+import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.utils.CommonUtils
 import kotlinx.android.synthetic.main.activity_pattern_lock.*
 
@@ -111,7 +112,9 @@ class PatternLockActivity : AppCompatActivity() {
                     if (intent.getStringExtra(PatternLockActivity.REQUEST_PATTERN) == patternLockCompleteEvent.pattern.toString()) {
                         CommonUtils.saveStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, patternLockCompleteEvent.pattern.toString())
 //                        AccountSelectionActivity.start(this@PatternLockActivity)
-                        TransitionHelper.startSettingActivityWithTransition(this@PatternLockActivity, AccountSelectionActivity::class.java)
+                        if (this@PatternLockActivity.database().countAccounts() < 1) {
+                            TransitionHelper.startSettingActivityWithTransition(this@PatternLockActivity, AccountSelectionActivity::class.java)
+                        }
                         finish()
                     } else {
                         val builder: AlertDialog.Builder = AlertDialog.Builder(this@PatternLockActivity)

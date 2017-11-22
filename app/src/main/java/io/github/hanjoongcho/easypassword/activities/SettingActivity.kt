@@ -50,8 +50,7 @@ class SettingActivity : AppCompatActivity() {
         pref1.setOnClickListener {
             val intent = Intent(this, PatternLockActivity::class.java)
             intent.putExtra(PatternLockActivity.MODE, PatternLockActivity.SETTING_LOCK)
-            startActivity(intent)
-            finish()
+            TransitionHelper.startSettingActivityWithTransition(this@SettingActivity, intent)
         }
 
         pref2.setOnClickListener {
