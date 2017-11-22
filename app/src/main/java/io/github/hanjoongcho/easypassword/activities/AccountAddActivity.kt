@@ -74,7 +74,7 @@ class AccountAddActivity : AppCompatActivity() {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    val level = PasswordStrengthUtils.getStrengthLevel(s.toString(), PasswordStrengthUtils.ONLINE_THROTTLED)
+                    val level = PasswordStrengthUtils.getScore(s.toString())
                     if (level != mTempStrengthLevel) {
                         mTempStrengthLevel = level
                         AccountAddActivity.setPasswordStrengthLevel(this@AccountAddActivity, mTempStrengthLevel, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)

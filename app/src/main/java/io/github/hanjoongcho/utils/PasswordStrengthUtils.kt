@@ -1,5 +1,6 @@
 package io.github.hanjoongcho.utils
 
+import com.nulabinc.zxcvbn.Zxcvbn
 import me.gosimple.nbvcxz.Nbvcxz
 import me.gosimple.nbvcxz.resources.Configuration
 import me.gosimple.nbvcxz.resources.ConfigurationBuilder
@@ -49,6 +50,10 @@ object PasswordStrengthUtils {
         Nbvcxz(mConfiguration)
     }
 
+    private val zxcvbn: Zxcvbn by lazy {
+        Zxcvbn()
+    }
+
     fun getTimeToCrack(requestPassword: String, guessType: String): Long {
         val result = nbvcxz.estimate(requestPassword)
         val bigDecimal = TimeEstimate.getTimeToCrack(result, guessType)
@@ -60,15 +65,22 @@ object PasswordStrengthUtils {
         return TimeEstimate.getTimeToCrackFormatted(result, guessType)
     }
 
-    fun getStrengthLevel(requestPassword: String, guessType: String): Int {
-        return when (getTimeToCrack(requestPassword, guessType)) {
-            in 0..86400 -> 1
-            in 86401..2592000 -> 2
-            in 2592001..31104000 -> 3
-            in 31104001..155520000 -> 4
-            else -> 5
-        }
-    }
+//    fun getStrengthLevel(requestPassword: String, guessType: String): Int {
+//        return when (getTimeToCrack(requestPassword, guessType)) {
+//            in 0..86400 -> 1
+//            in 86401..2592000 -> 2
+//            in 2592001..31104000 -> 3
+//            in 31104001..155520000 -> 4
+//            else -> 5
+//        }
+//    }
+
+//    # 0 Weak        （guesses < ^ 3 10）
+//    # 1 Fair        （guesses <^ 6 10）
+//    # 2 Good        （guesses <^ 8 10）
+//    # 3 Strong      （guesses < 10 ^ 10）
+//    # 4 Very strong （guesses >= 10 ^ 10）
+    fun getScore(requestPassword: String): Int = zxcvbn.measure(requestPassword).score + 1
 
 }
 

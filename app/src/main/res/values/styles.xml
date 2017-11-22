@@ -169,7 +169,7 @@
     </style>
     <style name="AccountEditInputText" parent="AccountDetailInputText">
         <item name="android:imeOptions">actionNext</item>
-        <item name="android:inputType">textCapWords|textNoSuggestions|textCapWords</item>
+        <item name="android:inputType">textNoSuggestions|textCapWords</item>
     </style>
 
     <!--SettingActivity-->

@@ -106,6 +106,7 @@ open class GoogleDriveUtils : Activity(), GoogleApiClient.ConnectionCallbacks, G
                 }
             }
         } else if (resultCode == Activity.RESULT_CANCELED) {
+//            this@GoogleDriveUtils.onBackPressed()
             finish()
         }
     }

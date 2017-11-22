@@ -89,6 +89,7 @@
                         style="@style/AccountEditLabel" />
                     <EditText
                         style="@style/AccountEditInputText"
+                        android:inputType="textMultiLine"
                         android:id="@+id/account_summary" />
                 </LinearLayout>
             </LinearLayout>

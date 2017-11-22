@@ -55,13 +55,11 @@ class SettingActivity : AppCompatActivity() {
         }
 
         pref2.setOnClickListener {
-            val googleDriveUploader = Intent(this, GoogleDriveUploader::class.java)
-            startActivity(googleDriveUploader)
+            TransitionHelper.startSettingActivityWithTransition(this@SettingActivity, GoogleDriveUploader::class.java)
         }
 
         pref3.setOnClickListener {
-            val googleDriveDownloader = Intent(this, GoogleDriveDownloader::class.java)
-            startActivity(googleDriveDownloader)
+            TransitionHelper.startSettingActivityWithTransition(this@SettingActivity, GoogleDriveDownloader::class.java)
         }
     }
 
