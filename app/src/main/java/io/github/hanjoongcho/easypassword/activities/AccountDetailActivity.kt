@@ -46,8 +46,8 @@ class AccountDetailActivity : AppCompatActivity() {
         }
 
         mBinding?.update?.setOnClickListener(View.OnClickListener { _ ->
-//            startActivity(AccountEditActivity.getStartIntent(this@AccountDetailActivity, mSequence))
-            TransitionHelper.startSettingActivityWithTransition(this@AccountDetailActivity, AccountEditActivity.getStartIntent(this@AccountDetailActivity, mSequence))
+            startActivity(AccountEditActivity.getStartIntent(this@AccountDetailActivity, mSequence))
+//            TransitionHelper.startSettingActivityWithTransition(this@AccountDetailActivity, AccountEditActivity.getStartIntent(this@AccountDetailActivity, mSequence))
         })
 
         mBinding?.let { binding ->

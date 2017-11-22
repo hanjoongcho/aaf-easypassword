@@ -16,6 +16,7 @@ import com.andrognito.patternlockview.utils.ResourceUtils
 import com.andrognito.rxpatternlockview.RxPatternLockView
 import com.andrognito.rxpatternlockview.events.PatternLockCompoundEvent
 import io.github.hanjoongcho.easypassword.R
+import io.github.hanjoongcho.easypassword.helper.TransitionHelper
 import io.github.hanjoongcho.utils.CommonUtils
 import kotlinx.android.synthetic.main.activity_pattern_lock.*
 
@@ -85,7 +86,8 @@ class PatternLockActivity : AppCompatActivity() {
                 UNLOCK -> {
                     val savedPattern = CommonUtils.loadStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
                     if (savedPattern == patternLockCompleteEvent.pattern.toString()) {
-                        AccountSelectionActivity.start(this@PatternLockActivity)
+//                        AccountSelectionActivity.start(this@PatternLockActivity)
+                        TransitionHelper.startSettingActivityWithTransition(this@PatternLockActivity, AccountSelectionActivity::class.java)
                         finish()
                     } else {
                         patterLockView.clearPattern()
@@ -102,13 +104,14 @@ class PatternLockActivity : AppCompatActivity() {
                     val intent = Intent(this, PatternLockActivity::class.java)
                     intent.putExtra(PatternLockActivity.MODE, PatternLockActivity.VERIFY)
                     intent.putExtra(PatternLockActivity.REQUEST_PATTERN, patternLockCompleteEvent.pattern.toString())
-                    startActivity(intent)
+                    TransitionHelper.startSettingActivityWithTransition(this@PatternLockActivity, intent)
                     finish()
                 }
                 VERIFY -> {
                     if (intent.getStringExtra(PatternLockActivity.REQUEST_PATTERN) == patternLockCompleteEvent.pattern.toString()) {
                         CommonUtils.saveStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, patternLockCompleteEvent.pattern.toString())
-                        AccountSelectionActivity.start(this@PatternLockActivity)
+//                        AccountSelectionActivity.start(this@PatternLockActivity)
+                        TransitionHelper.startSettingActivityWithTransition(this@PatternLockActivity, AccountSelectionActivity::class.java)
                         finish()
                     } else {
                         val builder: AlertDialog.Builder = AlertDialog.Builder(this@PatternLockActivity)

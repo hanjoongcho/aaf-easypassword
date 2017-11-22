@@ -45,7 +45,6 @@ class AccountSelectionActivity : AppCompatActivity() {
             setProgressBarVisibility(View.GONE)
         }
         supportPostponeEnterTransition()
-        this@AccountSelectionActivity.database().initDatabase()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

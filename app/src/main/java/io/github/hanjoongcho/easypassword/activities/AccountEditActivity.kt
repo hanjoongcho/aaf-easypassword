@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
@@ -41,18 +43,6 @@ class AccountEditActivity : AppCompatActivity() {
         mBinding = DataBindingUtil.setContentView<ActivityAccountEditBinding>(this,
                 R.layout.activity_account_edit)
 
-        mAccount?.let { account ->
-            mTempStrengthLevel = account.passwordStrengthLevel
-            mBinding?.let { binding ->
-                binding.accountId.setText(account.id)
-                val decryptedPassword = AesUtils.decryptPassword(this@AccountEditActivity, account.password)
-                binding.accountPassword.setText(decryptedPassword)
-                binding.accountSummary.setText(account.summary)
-                binding.accountManageTarget.setText(account.title)
-                AccountAddActivity.setPasswordStrengthLevel(this@AccountEditActivity, account.passwordStrengthLevel, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
-            }
-        }
-
         setSupportActionBar(mBinding?.toolbarPlayer)
         supportActionBar?.run {
             setDisplayHomeAsUpEnabled(true)
@@ -60,6 +50,25 @@ class AccountEditActivity : AppCompatActivity() {
 
         bindEvent()
         initCategorySpinner()
+
+        val encryptedPassword = mAccount?.password
+        Thread({
+            val decryptedPassword = AesUtils.decryptPassword(this@AccountEditActivity, encryptedPassword!!)
+            Handler(Looper.getMainLooper()).post {
+                mBinding?.accountPassword?.setText(decryptedPassword)
+                mBinding?.loadingProgress?.visibility = View.INVISIBLE
+            }
+        }).start()
+
+        mAccount?.let { account ->
+            mTempStrengthLevel = account.passwordStrengthLevel
+            mBinding?.let { binding ->
+                binding.accountId.setText(account.id)
+                binding.accountSummary.setText(account.summary)
+                binding.accountManageTarget.setText(account.title)
+                AccountAddActivity.setPasswordStrengthLevel(this@AccountEditActivity, account.passwordStrengthLevel, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
+            }
+        }
     }
 
     private fun bindEvent() {

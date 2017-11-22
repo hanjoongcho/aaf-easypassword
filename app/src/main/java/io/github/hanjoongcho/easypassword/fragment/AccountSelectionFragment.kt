@@ -6,6 +6,8 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityOptionsCompat
@@ -16,12 +18,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.ProgressBar
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.activities.AccountAddActivity
 import io.github.hanjoongcho.easypassword.activities.AccountDetailActivity
 import io.github.hanjoongcho.easypassword.adpaters.AccountAdapter
 import io.github.hanjoongcho.easypassword.helper.TransitionHelper
 import io.github.hanjoongcho.easypassword.helper.beforeDrawing
+import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Account
 import io.github.hanjoongcho.easypassword.widget.OffsetDecoration
 
@@ -60,8 +64,14 @@ class AccountSelectionFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        adapter?.selectAccounts()
-        adapter?.notifyDataSetChanged()
+        Thread({
+            activity.database().initDatabase()
+            Handler(Looper.getMainLooper()).post {
+                adapter?.selectAccounts()
+                adapter?.notifyDataSetChanged()
+                view?.findViewById<ProgressBar>(R.id.loading_progress)?.visibility = View.INVISIBLE
+            }
+        }).start()
     }
 
     @SuppressLint("NewApi")

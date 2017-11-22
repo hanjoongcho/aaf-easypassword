@@ -33,4 +33,9 @@
         android:src="@drawable/add_list"
         app:backgroundTint="@color/colorPrimary" />
 
+    <ProgressBar
+        android:id="@+id/loading_progress"
+        android:layout_gravity="center"
+        android:layout_width="20dp"
+        android:layout_height="20dp" />
 </FrameLayout>
