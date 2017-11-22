@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.adpaters.AccountCategoryAdapter
 import io.github.hanjoongcho.easypassword.databinding.ActivityAccountDetailBinding
+import io.github.hanjoongcho.easypassword.helper.TransitionHelper
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Account
 import io.github.hanjoongcho.easypassword.models.Category
@@ -45,8 +46,8 @@ class AccountDetailActivity : AppCompatActivity() {
         }
 
         mBinding?.update?.setOnClickListener(View.OnClickListener { _ ->
-            startActivity(AccountEditActivity.getStartIntent(this@AccountDetailActivity, mSequence))
-//            finish()
+//            startActivity(AccountEditActivity.getStartIntent(this@AccountDetailActivity, mSequence))
+            TransitionHelper.startSettingActivityWithTransition(this@AccountDetailActivity, AccountEditActivity.getStartIntent(this@AccountDetailActivity, mSequence))
         })
 
         mBinding?.let { binding ->
@@ -98,7 +99,7 @@ class AccountDetailActivity : AppCompatActivity() {
             mBinding?.accountManageTarget?.text = account.title
             initCategorySpinner()
             mBinding?.let { binding ->
-                AccountAddActivity.setPasswordStrengthLevel(this@AccountDetailActivity, account, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
+                AccountAddActivity.setPasswordStrengthLevel(this@AccountDetailActivity, account.passwordStrengthLevel, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
             }
         }
     }

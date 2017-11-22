@@ -49,10 +49,13 @@ class AccountSelectionFragment : Fragment() {
             inflater.inflate(R.layout.fragment_categories, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         mRecyclerView = view.findViewById<RecyclerView>(R.id.categories)
         mRecyclerView?.let { setUpGrid(it) }
-        super.onViewCreated(view, savedInstanceState)
-        view.findViewById<FloatingActionButton>(R.id.add).setOnClickListener { startActivity(AccountAddActivity.getStartIntent(context)) }
+        view.findViewById<FloatingActionButton>(R.id.add).setOnClickListener {
+//            startActivity(AccountAddActivity.getStartIntent(context))
+            TransitionHelper.startSettingActivityWithTransition(activity, AccountAddActivity::class.java)
+        }
     }
 
     override fun onResume() {

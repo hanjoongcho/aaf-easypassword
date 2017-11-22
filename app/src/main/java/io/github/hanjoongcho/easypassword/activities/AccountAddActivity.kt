@@ -8,6 +8,9 @@ import android.os.Bundle
 import android.support.annotation.ColorRes
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
@@ -18,6 +21,7 @@ import io.github.hanjoongcho.easypassword.databinding.ActivityAccountAddBinding
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Account
 import io.github.hanjoongcho.easypassword.models.Category
+import io.github.hanjoongcho.utils.PasswordStrengthUtils
 
 /**
  * Created by CHO HANJOONG on 2017-11-18.
@@ -26,6 +30,7 @@ import io.github.hanjoongcho.easypassword.models.Category
 class AccountAddActivity : AppCompatActivity() {
 
     private var mBinding: ActivityAccountAddBinding? = null
+    private var mTempStrengthLevel = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,20 +44,44 @@ class AccountAddActivity : AppCompatActivity() {
             setDisplayHomeAsUpEnabled(true)
         }
 
-        mBinding?.save?.setOnClickListener(View.OnClickListener { _ ->
-            val account: Account = Account(
-                    mBinding?.accountManageTarget?.text.toString(),
-                    mBinding?.accountSummary?.text.toString(),
-                    mBinding?.accountManageCategory?.selectedItem as Category,
-                    mBinding?.accountId?.text.toString(),
-                    mBinding?.accountPassword?.text.toString(),
-                    4
-            )
-            this@AccountAddActivity.database().insertAccount(account)
-            finish()
-        })
-
+        bindEvent()
         initCategorySpinner()
+    }
+
+    private fun bindEvent() {
+
+        mBinding?.let { binding ->
+
+            binding.save.setOnClickListener(View.OnClickListener { _ ->
+                val account: Account = Account(
+                        binding.accountManageTarget.text.toString(),
+                        binding.accountSummary.text.toString(),
+                        binding.accountManageCategory.selectedItem as Category,
+                        binding.accountId.text.toString(),
+                        binding.accountPassword.text.toString(),
+                        mTempStrengthLevel
+                )
+                this@AccountAddActivity.database().insertAccount(account)
+                this@AccountAddActivity.onBackPressed()
+//                finish()
+            })
+
+            binding.accountPassword.addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(s: Editable?) {
+                }
+
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    val level = PasswordStrengthUtils.getStrengthLevel(s.toString(), PasswordStrengthUtils.ONLINE_THROTTLED)
+                    if (level != mTempStrengthLevel) {
+                        mTempStrengthLevel = level
+                        AccountAddActivity.setPasswordStrengthLevel(this@AccountAddActivity, mTempStrengthLevel, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
+                    }
+                }
+            })
+        }
     }
 
     private fun initCategorySpinner() {
@@ -62,7 +91,7 @@ class AccountAddActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            android.R.id.home -> finish()
+            android.R.id.home -> this@AccountAddActivity.onBackPressed()
             else -> {
             }
         }
@@ -105,8 +134,8 @@ class AccountAddActivity : AppCompatActivity() {
             view.setBackgroundColor(colorId)
         }
 
-        fun setPasswordStrengthLevel(activity: Activity, account: Account, level1: ImageView, level2: ImageView, level3: ImageView, level4: ImageView, level5: ImageView) {
-            when (account.passwordStrengthLevel) {
+        fun setPasswordStrengthLevel(activity: Activity, passwordStrengthLevel: Int, level1: ImageView, level2: ImageView, level3: ImageView, level4: ImageView, level5: ImageView) {
+            when (passwordStrengthLevel) {
                 1 -> {
                     setStrengthColor(level1, getColor(R.color.strength_bad, activity))
                     setStrengthColor(level2, getColor(R.color.strength_default, activity))

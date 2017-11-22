@@ -39,7 +39,7 @@ class AccountAdapter(
             account = accounts[position]
             executePendingBindings()
             setCategoryIcon(account, categoryIcon)
-            AccountAddActivity.setPasswordStrengthLevel(activity, account, included.level1, included.level2, included.level3, included.level4, included.level5)
+            AccountAddActivity.setPasswordStrengthLevel(activity, account.passwordStrengthLevel, included.level1, included.level2, included.level3, included.level4, included.level5)
             with(accountTitle) {
                 setTextColor(AccountAddActivity.getColor(R.color.blackText, activity))
             }

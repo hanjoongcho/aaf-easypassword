@@ -64,4 +64,14 @@ object TransitionHelper {
         val intent = Intent(activity, clazz)
         ActivityCompat.startActivity(activity, intent, animationBundle)
     }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    fun startSettingActivityWithTransition(activity: Activity, intent: Intent) {
+
+        val animationBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
+                *createSafeTransitionParticipants(activity,
+                        false)).toBundle()
+
+        ActivityCompat.startActivity(activity, intent, animationBundle)
+    }
 }

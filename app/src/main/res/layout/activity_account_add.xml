@@ -76,6 +76,9 @@
                     <EditText
                         style="@style/AccountEditInputText"
                         android:id="@+id/account_password" />
+                    <include
+                        android:id="@+id/included"
+                        layout="@layout/view_password_strength" />
                 </LinearLayout>
 
                 <LinearLayout
