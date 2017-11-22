@@ -1,5 +1,6 @@
 package test.io.github.hanjoongcho.easypassword
 
+import io.github.hanjoongcho.utils.PasswordStrengthUtils
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -20,66 +21,91 @@ import org.junit.runners.MethodSorters
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class CommonUnitTest {
 
-    val configuration: Configuration = ConfigurationBuilder().
-            setGuessTypes(mapOf(
-                    "OFFLINE_SIMPLE_LOCK" to 1L,
-                    "ONLINE_THROTTLED" to 2L,
-                    "ONLINE_UNTHROTTLED" to 100L,
-                    "OFFLINE_BCRYPT_14" to 125L,
-                    "OFFLINE_BCRYPT_12" to 500L,
-                    "OFFLINE_BCRYPT_10" to 2000L,
-                    "OFFLINE_BCRYPT_5" to 64000L,
-                    "OFFLINE_SHA512" to 5000000000L,
-                    "OFFLINE_SHA1" to 37336000000L,
-                    "OFFLINE_MD5" to 115840000000L
-            )).
-            createConfiguration()
-
-    val nbvcxz: Nbvcxz by lazy {
-        Nbvcxz(configuration)
-    }
-
     @Test
     fun test01Estimate_01_ONLINE_THROTTLED() {
-        var result: Result
-        result = nbvcxz.estimate("easypassword");
-        assertEquals("9 minutes", TimeEstimate.getTimeToCrackFormatted(result, "ONLINE_THROTTLED"))
+        assertEquals(
+                "9 minutes",
+                PasswordStrengthUtils.getTimeToCrackFormatted("easypassword", PasswordStrengthUtils.ONLINE_THROTTLED)
+        )
     }
 
     @Test
     fun test01Estimate_02_ONLINE_THROTTLED() {
-        var result: Result
-        result = nbvcxz.estimate("joong12#GG");
-        assertEquals("41 centuries", TimeEstimate.getTimeToCrackFormatted(result, "ONLINE_THROTTLED"))
+        assertEquals(
+                "1 days",
+                PasswordStrengthUtils.getTimeToCrackFormatted("easypassWORD", PasswordStrengthUtils.ONLINE_THROTTLED)
+        )
+    }
+
+    @Test
+    fun test01Estimate_03_ONLINE_THROTTLED() {
+        assertEquals(
+                "2 days",
+                PasswordStrengthUtils.getTimeToCrackFormatted("easypassword!#", PasswordStrengthUtils.ONLINE_THROTTLED)
+        )
+    }
+
+    @Test
+    fun test01Estimate_04_ONLINE_THROTTLED() {
+        assertEquals(
+                "11 months",
+                PasswordStrengthUtils.getTimeToCrackFormatted("easypassWORD!#", PasswordStrengthUtils.ONLINE_THROTTLED)
+        )
+    }
+
+    @Test
+    fun test01Estimate_05_ONLINE_THROTTLED() {
+        assertEquals(
+                "9 years",
+                PasswordStrengthUtils.getTimeToCrackFormatted("easypassWORD!#1", PasswordStrengthUtils.ONLINE_THROTTLED)
+        )
+    }
+
+    @Test
+    fun test01Estimate_06_ONLINE_THROTTLED() {
+        assertEquals(
+                "4 years",
+                PasswordStrengthUtils.getTimeToCrackFormatted("eAsypassWORD!#", PasswordStrengthUtils.ONLINE_THROTTLED)
+        )
     }
 
     @Test
     fun test02Estimate_ONLINE_UNTHROTTLED() {
-        var result: Result
-        result = nbvcxz.estimate("easypassword");
-        assertEquals("11 seconds", TimeEstimate.getTimeToCrackFormatted(result, "ONLINE_UNTHROTTLED"))
+        assertEquals(
+                "11 seconds",
+                PasswordStrengthUtils.getTimeToCrackFormatted("easypassword", PasswordStrengthUtils.ONLINE_UNTHROTTLED)
+        )
     }
 
     @Test
     fun test03Estimate_OFFLINE_BCRYPT_14() {
-        var result: Result
-        result = nbvcxz.estimate("easypassword");
-        assertEquals("8 seconds", TimeEstimate.getTimeToCrackFormatted(result, "OFFLINE_BCRYPT_14"))
+        assertEquals(
+                "8 seconds",
+                PasswordStrengthUtils.getTimeToCrackFormatted("easypassword", PasswordStrengthUtils.OFFLINE_BCRYPT_14)
+        )
     }
 
     @Test
     fun test04Estimate_OFFLINE_BCRYPT_12() {
-        var result: Result
-        result = nbvcxz.estimate("easypassword");
-        assertEquals("2 seconds", TimeEstimate.getTimeToCrackFormatted(result, "OFFLINE_BCRYPT_12"))
+        assertEquals(
+                "2 seconds",
+                PasswordStrengthUtils.getTimeToCrackFormatted("easypassword", PasswordStrengthUtils.OFFLINE_BCRYPT_12)
+        )
     }
 
     @Test
     fun test05Estimate_OFFLINE_BCRYPT_10() {
-        var result: Result
-        result = nbvcxz.estimate("easypassword");
-        assertEquals("instant", TimeEstimate.getTimeToCrackFormatted(result, "OFFLINE_BCRYPT_10"))
+        assertEquals(
+                "instant",
+                PasswordStrengthUtils.getTimeToCrackFormatted("easypassword", PasswordStrengthUtils.OFFLINE_BCRYPT_10)
+        )
     }
+
+    @Test
+    fun test06Estimate_OFFLINE_BCRYPT_12() {
+        assertTrue(116L == PasswordStrengthUtils.getTimeToCrack("AeasypassworD", PasswordStrengthUtils.OFFLINE_BCRYPT_12))
+    }
+
 
 //    @Test
 //    fun test06Estimate_OFFLINE_SIMPLE_LOCK() {
