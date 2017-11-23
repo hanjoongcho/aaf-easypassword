@@ -2,8 +2,6 @@ package io.github.hanjoongcho.easypassword.adpaters
 
 import android.app.Activity
 import android.databinding.DataBindingUtil
-import android.support.annotation.ColorRes
-import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -58,7 +56,7 @@ class AccountAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
             ViewHolder(DataBindingUtil.inflate<ItemAccountBinding>(layoutInflater,
-                    R.layout.item_account,
+                    R.layout.item_security,
                     parent,
                     false))
 

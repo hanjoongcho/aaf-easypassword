@@ -13,10 +13,12 @@ import android.widget.ArrayAdapter
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.adpaters.AccountCategoryAdapter
 import io.github.hanjoongcho.easypassword.databinding.ActivityAccountDetailBinding
+import io.github.hanjoongcho.easypassword.helper.SecurityItemBindingHelper
 import io.github.hanjoongcho.easypassword.helper.TransitionHelper
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Account
 import io.github.hanjoongcho.easypassword.models.Category
+import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.utils.AesUtils
 import kotlinx.android.synthetic.main.activity_account_detail.view.*
 
@@ -27,13 +29,13 @@ import kotlinx.android.synthetic.main.activity_account_detail.view.*
 class AccountDetailActivity : AppCompatActivity() {
 
     private var mBinding: ActivityAccountDetailBinding? = null
-    private var mAccount: Account? = null
+    private var mSecurity: Security? = null
     private var mSequence:Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account_detail)
-        mSequence = intent.getIntExtra("sequence", -1)
+        mSequence = intent.getIntExtra(Security.PRIMARY_KEY, -1)
 
 
         mBinding = DataBindingUtil
@@ -68,7 +70,7 @@ class AccountDetailActivity : AppCompatActivity() {
     private fun initCategorySpinner() {
         val adapter: ArrayAdapter<Category> = AccountCategoryAdapter(this@AccountDetailActivity, R.layout.item_category, AccountAddActivity.listCategory)
         mBinding?.accountManageCategory?.adapter = adapter
-        mBinding?.accountManageCategory?.setSelection(mAccount?.category?.index ?: 0)
+        mBinding?.accountManageCategory?.setSelection(mSecurity?.category?.index ?: 0)
         mBinding?.accountManageCategory?.isEnabled = false
     }
 
@@ -91,17 +93,9 @@ class AccountDetailActivity : AppCompatActivity() {
 //    }
 
     private fun refreshItem() {
-        mAccount = this@AccountDetailActivity.database().selectAccountBy(mSequence)
-        mAccount?.let { account ->
-            mBinding?.accountId?.text = account.id
-            mBinding?.accountPassword?.text = account.password
-            mBinding?.accountSummary?.text = account.summary
-            mBinding?.accountManageTarget?.text = account.title
-            initCategorySpinner()
-            mBinding?.let { binding ->
-                AccountAddActivity.setPasswordStrengthLevel(this@AccountDetailActivity, account.passwordStrengthLevel, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
-            }
-        }
+        mSecurity = this@AccountDetailActivity.database().selectSecurityBy(mSequence)
+        SecurityItemBindingHelper.activityAccountDetailBinding(this@AccountDetailActivity, mBinding, mSecurity)
+        initCategorySpinner()
     }
 
     override fun onResume() {
@@ -110,9 +104,9 @@ class AccountDetailActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun getStartIntent(context: Context, account: Account): Intent {
+        fun getStartIntent(context: Context, security: Security): Intent {
             return Intent(context, AccountDetailActivity::class.java)
-                    .apply { putExtra(Account.SEQUENCE, account.sequence) }
+                    .apply { putExtra(Security.PRIMARY_KEY, security.sequence) }
         }
     }
 }

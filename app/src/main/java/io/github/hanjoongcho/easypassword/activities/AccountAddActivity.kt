@@ -67,33 +67,33 @@ class AccountAddActivity : AppCompatActivity() {
 
             binding.save.setOnClickListener(View.OnClickListener { _ ->
                 val item: Category = binding.accountManageCategory.selectedItem as Category
-                val securityItem: SecurityItem = when (item.index) {
+                val security = when (item.index) {
                     0 -> {
-                        Account(
-                                binding.securityAccount.accountManageTarget.text.toString(),
-                                binding.securityAccount.accountId.text.toString(),
-                                binding.securityAccount.accountPassword.text.toString(),
+                        Security(
+                                null,
+                                binding.securityAccount.accountManageTarget.toString(),
+                                binding.securityAccount.accountPassword.toString(),
                                 mTempStrengthLevel,
-                                binding.securityAccount.accountSummary.text.toString()
+                                binding.securityAccount.accountSummary.toString(),
+                                binding.accountManageCategory.selectedItem as Category,
+                                Account(binding.securityAccount.accountId.toString()),
+                                null
                         )
                     }
                     else -> {
-                        CreditCard(
-                                binding.securityCreditCard.creditCardSerial.text.toString(),
-                                binding.securityCreditCard.creditCardExpireDate.text.toString(),
-                                System.currentTimeMillis(),
-                                binding.securityCreditCard.creditCardTarget.text.toString(),
-                                binding.securityCreditCard.creditCardPassword.text.toString(),
+                        Security(
+                                null,
+                                binding.securityCreditCard.creditCardTarget.toString(),
+                                binding.securityCreditCard.creditCardPassword.toString(),
                                 mTempStrengthLevel,
-                                binding.securityCreditCard.creditCardSummary.text.toString()
+                                binding.securityCreditCard.creditCardSummary.toString(),
+                                binding.accountManageCategory.selectedItem as Category,
+                                null,
+                                CreditCard(binding.securityCreditCard.creditCardSerial.toString(),binding.securityCreditCard.creditCardExpireDate.toString())
                         )
                     }
                 }
-                val security = Security(
-                        null,
-                        binding.accountManageCategory.selectedItem as Category,
-                        securityItem
-                )
+
                 this@AccountAddActivity.database().insertSecurity(security)
                 this@AccountAddActivity.onBackPressed()
             })
@@ -168,15 +168,24 @@ class AccountAddActivity : AppCompatActivity() {
         val listDummySecurity: List<Security> = mutableListOf(
                 Security(
                         null,
+                        "Google",
+                        "google!@",
+                        1,
+                        "https://www.google.com",
                         listCategory[0],
-                        Account("Google", "aafgoogle", "google!@", 1, "https://www.google.com")
+                        Account("Google"),
+                        null
                 ),
-                Security(
+                        Security(
                         null,
+                        "카카오뱅크",
+                        "9999",
+                        2,
+                        "카뱅 체크카드",
                         listCategory[1],
-                        CreditCard("12-32-111-331","2020 08 01", System.currentTimeMillis(), "카카오뱅크", "9999", 1, "카뱅 체크카드")
+                        null,
+                        CreditCard("12-32-111-331","2020 08 01")
                 )
-
 //                Account("GitHub", "https://github.com/", Category(0, "웹사이트", "web"), "geography", "1234", 4),
 //                Account("네이버", "https://www.naver.com/", Category(0, "웹사이트", "web"), "food", "1234", 2),
 //                Account("카카오뱅크", "카카오뱅크 체크카드", Category(1, "신용카드", "credit_card"), "geography", "1234", 3),                Account("회사", "회사현관 출입번호", Category(2, "도어락", "home"), "geography", "1234", 1)

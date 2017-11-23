@@ -59,21 +59,13 @@ class DatabaseHelper private constructor(
 
     fun insertSecurity(security: Security) {
 
-//        security.securityItem?.let {
-//            if (it is CreditCard) {
-//                println(it.expireDate)
-//            }
-//        }
-
         realmInstance.beginTransaction()
         var sequence = 1
         realmInstance.where(Security::class.java)?.max(Security.PRIMARY_KEY)?.let { max ->
             sequence = max.toInt() + 1
         }
         security.sequence = sequence
-        security.securityItem?.let { item ->
-            item.password = AesUtils.encryptPassword(context, item.password)
-        }
+        security.password = AesUtils.encryptPassword(context, security.password)
         realmInstance.insert(security)
         realmInstance.commitTransaction()
     }
@@ -87,9 +79,7 @@ class DatabaseHelper private constructor(
 
     fun updateSecurity(security: Security) {
         realmInstance.executeTransaction(Realm.Transaction { realm ->
-            security.securityItem?.let { item ->
-                item.password = AesUtils.encryptPassword(context, item.password)
-            }
+            security.password = AesUtils.encryptPassword(context, security.password)
             realm.insertOrUpdate(security)
         })
     }
