@@ -45,6 +45,7 @@
                 </Spinner>
             </LinearLayout>
 
+            <!--Security Account-->
             <LinearLayout
                 style="@style/AccountDetailItemContainer">
                 <TextView
@@ -118,8 +119,67 @@
                     style="@style/AccountDetailInputText"
                     android:id="@+id/account_summary" />
             </LinearLayout>
+
+            <!--Security Credit Card-->
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/credit_card_container"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    style="@style/AccountEditItemContainer">
+                    <TextView
+                        android:text="@string/credit_card_target"
+                        style="@style/AccountEditLabel" />
+                    <TextView
+                        style="@style/AccountEditInputText"
+                        android:id="@+id/credit_card_target" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/AccountEditItemContainer">
+                    <TextView
+                        android:text="@string/credit_card_serial"
+                        style="@style/AccountEditLabel" />
+                    <TextView
+                        style="@style/AccountEditInputText"
+                        android:id="@+id/credit_card_serial" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/AccountEditItemContainer">
+                    <TextView
+                        android:text="@string/credit_card_expire_date"
+                        style="@style/AccountEditLabel" />
+                    <TextView
+                        style="@style/AccountEditInputText"
+                        android:id="@+id/credit_card_expire_date" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/AccountEditItemContainer">
+                    <TextView
+                        android:text="@string/credit_card_password"
+                        style="@style/AccountEditLabel" />
+                    <TextView
+                        style="@style/AccountEditInputText"
+                        android:id="@+id/credit_card_password" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/AccountEditItemContainer">
+                    <TextView
+                        android:text="@string/credit_card_summary"
+                        style="@style/AccountEditLabel" />
+                    <TextView
+                        style="@style/AccountEditInputText"
+                        android:id="@+id/credit_card_summary" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
+        <!--Security Credit Card-->
         <android.support.design.widget.FloatingActionButton
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"

@@ -73,7 +73,7 @@ class AccountAddActivity : AppCompatActivity() {
                 }
             })
 
-            binding.securityAccount.accountPassword.addTextChangedListener(object : TextWatcher {
+            binding.accountPassword.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
                 }
 
@@ -87,11 +87,11 @@ class AccountAddActivity : AppCompatActivity() {
                         AccountAddActivity.setPasswordStrengthLevel(
                                 this@AccountAddActivity,
                                 mTempStrengthLevel,
-                                binding.securityAccount.included.level1,
-                                binding.securityAccount.included.level2,
-                                binding.securityAccount.included.level3,
-                                binding.securityAccount.included.level4,
-                                binding.securityAccount.included.level5
+                                binding.included.level1,
+                                binding.included.level2,
+                                binding.included.level3,
+                                binding.included.level4,
+                                binding.included.level5
                         )
                     }
                 }
@@ -104,12 +104,12 @@ class AccountAddActivity : AppCompatActivity() {
             val item: Category = binding.accountManageCategory.selectedItem as Category
             when (item.index) {
                 0 -> {
-                    binding.securityAccount.accountContainer.visibility = View.VISIBLE
-                    binding.securityCreditCard.creditCardContainer.visibility = View.GONE
+                    binding.accountContainer.visibility = View.VISIBLE
+                    binding.creditCardContainer.visibility = View.GONE
                 }
                 else -> {
-                    binding.securityAccount.accountContainer.visibility = View.GONE
-                    binding.securityCreditCard.creditCardContainer.visibility = View.VISIBLE
+                    binding.accountContainer.visibility = View.GONE
+                    binding.creditCardContainer.visibility = View.VISIBLE
                 }
             }
         }

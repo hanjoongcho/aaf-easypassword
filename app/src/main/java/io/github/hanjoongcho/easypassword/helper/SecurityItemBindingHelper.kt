@@ -82,25 +82,25 @@ class SecurityItemBindingHelper {
                     0 -> {
                         Security(
                                 null,
-                                binding.securityAccount.accountManageTarget.toString(),
-                                binding.securityAccount.accountPassword.toString(),
+                                binding.accountManageTarget.text.toString(),
+                                binding.accountPassword.text.toString(),
                                 strengthLevel,
-                                binding.securityAccount.accountSummary.toString(),
+                                binding.accountSummary.text.toString(),
                                 binding.accountManageCategory.selectedItem as Category,
-                                Account(binding.securityAccount.accountId.toString()),
+                                Account(binding.accountId.text.toString()),
                                 null
                         )
                     }
                     else -> {
                         Security(
                                 null,
-                                binding.securityCreditCard.creditCardTarget.toString(),
-                                binding.securityCreditCard.creditCardPassword.toString(),
+                                binding.creditCardTarget.text.toString(),
+                                binding.creditCardPassword.text.toString(),
                                 strengthLevel,
-                                binding.securityCreditCard.creditCardSummary.toString(),
+                                binding.creditCardSummary.text.toString(),
                                 binding.accountManageCategory.selectedItem as Category,
                                 null,
-                                CreditCard(binding.securityCreditCard.creditCardSerial.toString(),binding.securityCreditCard.creditCardExpireDate.toString())
+                                CreditCard(binding.creditCardSerial.toString(),binding.creditCardExpireDate.text.toString())
                         )
                     }
                 }
