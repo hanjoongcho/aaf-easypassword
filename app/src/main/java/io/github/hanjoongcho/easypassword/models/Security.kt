@@ -13,4 +13,7 @@ open class Security(
     var securityItem: SecurityItem? = null
 ) : RealmObject() {
 
+    companion object {
+        const val PRIMARY_KEY = "sequence"
+    }
 }
