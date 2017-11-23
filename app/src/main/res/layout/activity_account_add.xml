@@ -11,7 +11,6 @@
             android:layout_height="wrap_content">
             <LinearLayout
                 android:orientation="vertical"
-                android:id="@+id/fragment_sign_in_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -48,48 +47,11 @@
                     </Spinner>
                 </LinearLayout>
 
-                <LinearLayout
-                    style="@style/AccountEditItemContainer">
-                    <TextView
-                        android:text="@string/account_manage_target"
-                        style="@style/AccountEditLabel" />
-                    <EditText
-                        style="@style/AccountEditInputText"
-                        android:id="@+id/account_manage_target" />
-                </LinearLayout>
+                <!--Security Account-->
+                <include android:id="@+id/security_account" layout="@layout/view_security_account" />
 
-                <LinearLayout
-                    style="@style/AccountEditItemContainer">
-                    <TextView
-                        android:text="@string/account_id"
-                        style="@style/AccountEditLabel" />
-                    <EditText
-                        style="@style/AccountEditInputText"
-                        android:id="@+id/account_id" />
-                </LinearLayout>
-
-                <LinearLayout
-                    style="@style/AccountEditItemContainer">
-                    <TextView
-                        android:text="@string/account_password"
-                        style="@style/AccountEditLabel" />
-                    <EditText
-                        style="@style/AccountEditInputText"
-                        android:id="@+id/account_password" />
-                    <include
-                        android:id="@+id/included"
-                        layout="@layout/view_password_strength" />
-                </LinearLayout>
-
-                <LinearLayout
-                    style="@style/AccountEditItemContainer">
-                    <TextView
-                        android:text="@string/account_summary"
-                        style="@style/AccountEditLabel" />
-                    <EditText
-                        style="@style/AccountEditInputText"
-                        android:id="@+id/account_summary" />
-                </LinearLayout>
+                <!--Security Credit Card-->
+                <include android:id="@+id/security_credit_card" layout="@layout/view_security_credit_card" />
             </LinearLayout>
         </ScrollView>
 

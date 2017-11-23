@@ -11,9 +11,6 @@ open class Account(
         var summary: String = "",
 //        var theme: Theme = Theme.white,
 
-        // web
-        // credit_card
-        // home
         var category: Category? = null,
         var id: String = "",
         var password: String = "",

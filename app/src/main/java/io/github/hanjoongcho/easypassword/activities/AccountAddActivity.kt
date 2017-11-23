@@ -10,9 +10,9 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import io.github.hanjoongcho.easypassword.R
@@ -48,17 +48,31 @@ class AccountAddActivity : AppCompatActivity() {
         initCategorySpinner()
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> this@AccountAddActivity.onBackPressed()
+            else -> {
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    //    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        menuInflater.inflate(R.menu.account_detail, menu)
+//        return true
+//    }
+
     private fun bindEvent() {
 
         mBinding?.let { binding ->
 
             binding.save.setOnClickListener(View.OnClickListener { _ ->
                 val account: Account = Account(
-                        binding.accountManageTarget.text.toString(),
-                        binding.accountSummary.text.toString(),
+                        binding.securityAccount.accountManageTarget.text.toString(),
+                        binding.securityAccount.accountSummary.text.toString(),
                         binding.accountManageCategory.selectedItem as Category,
-                        binding.accountId.text.toString(),
-                        binding.accountPassword.text.toString(),
+                        binding.securityAccount.accountId.text.toString(),
+                        binding.securityAccount.accountPassword.text.toString(),
                         mTempStrengthLevel
                 )
                 this@AccountAddActivity.database().insertAccount(account)
@@ -66,7 +80,7 @@ class AccountAddActivity : AppCompatActivity() {
 //                finish()
             })
 
-            binding.accountPassword.addTextChangedListener(object : TextWatcher {
+            binding.securityAccount.accountPassword.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
                 }
 
@@ -77,31 +91,51 @@ class AccountAddActivity : AppCompatActivity() {
                     val level = PasswordStrengthUtils.getScore(s.toString())
                     if (level != mTempStrengthLevel) {
                         mTempStrengthLevel = level
-                        AccountAddActivity.setPasswordStrengthLevel(this@AccountAddActivity, mTempStrengthLevel, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
+                        AccountAddActivity.setPasswordStrengthLevel(
+                                this@AccountAddActivity,
+                                mTempStrengthLevel,
+                                binding.securityAccount.included.level1,
+                                binding.securityAccount.included.level2,
+                                binding.securityAccount.included.level3,
+                                binding.securityAccount.included.level4,
+                                binding.securityAccount.included.level5
+                        )
                     }
                 }
             })
         }
     }
 
-    private fun initCategorySpinner() {
-        val adapter: ArrayAdapter<Category> = AccountCategoryAdapter(this@AccountAddActivity, R.layout.item_category, listCategory)
-        mBinding?.accountManageCategory?.adapter = adapter
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> this@AccountAddActivity.onBackPressed()
-            else -> {
+    private fun changeCategoryContainer() {
+        mBinding?.let { binding ->
+            val item: Category = binding.accountManageCategory.selectedItem as Category
+            when (item.index) {
+                0 -> {
+                    binding.securityAccount.accountContainer.visibility = View.VISIBLE
+                    binding.securityCreditCard.creditCardContainer.visibility = View.GONE
+                }
+                else -> {
+                    binding.securityAccount.accountContainer.visibility = View.GONE
+                    binding.securityCreditCard.creditCardContainer.visibility = View.VISIBLE
+                }
             }
         }
-        return super.onOptionsItemSelected(item)
     }
 
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        menuInflater.inflate(R.menu.account_detail, menu)
-//        return true
-//    }
+    private fun initCategorySpinner() {
+        val adapter: ArrayAdapter<Category> = AccountCategoryAdapter(this@AccountAddActivity, R.layout.item_category, listCategory)
+        mBinding?.let { binding ->
+            binding.accountManageCategory.adapter = adapter
+            binding.accountManageCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    changeCategoryContainer()
+                }
+            }
+        }
+    }
 
     companion object {
         fun getStartIntent(context: Context): Intent = Intent(context, AccountAddActivity::class.java)
@@ -175,3 +209,4 @@ class AccountAddActivity : AppCompatActivity() {
         }
     }
 }
+

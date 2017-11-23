@@ -8,6 +8,12 @@
     <string name="account_password">비밀번호</string>
     <string name="account_summary">상세정보</string>
 
+    <string name="credit_card_target">관리대상</string>
+    <string name="credit_card_serial">카드번호</string>
+    <string name="credit_card_expire_date">만료일</string>
+    <string name="credit_card_password">비밀번호</string>
+    <string name="credit_card_summary">상세정보</string>
+
 
     <!--PatternLockActivity-->
     <string name="pattern_lock_activity_unlock_message">잠금 패턴을 입력하세요.</string>
