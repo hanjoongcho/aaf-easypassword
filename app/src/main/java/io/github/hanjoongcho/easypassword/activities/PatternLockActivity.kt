@@ -112,7 +112,7 @@ class PatternLockActivity : AppCompatActivity() {
                     if (intent.getStringExtra(PatternLockActivity.REQUEST_PATTERN) == patternLockCompleteEvent.pattern.toString()) {
                         CommonUtils.saveStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, patternLockCompleteEvent.pattern.toString())
 //                        AccountSelectionActivity.start(this@PatternLockActivity)
-                        if (this@PatternLockActivity.database().countSecurity() < 1) {
+                        if (this@PatternLockActivity.database().countAccounts() < 1) {
                             TransitionHelper.startSettingActivityWithTransition(this@PatternLockActivity, AccountSelectionActivity::class.java)
                         }
                         finish()

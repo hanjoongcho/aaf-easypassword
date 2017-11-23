@@ -27,7 +27,6 @@ import io.github.hanjoongcho.easypassword.helper.TransitionHelper
 import io.github.hanjoongcho.easypassword.helper.beforeDrawing
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Account
-import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.easypassword.widget.OffsetDecoration
 
 /**
@@ -94,7 +93,7 @@ class AccountSelectionFragment : Fragment() {
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private fun startAccountDetailActivityWithTransition(activity: Activity, toolbar: View,
-                                                         security: Security) {
+                                                         account: Account) {
 
         val animationBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
                 *TransitionHelper.createSafeTransitionParticipants(activity,
@@ -103,8 +102,8 @@ class AccountSelectionFragment : Fragment() {
                 .toBundle()
 
         // Start the activity with the participants, animating from one to the other.
-        val startIntent = AccountDetailActivity.getStartIntent(activity, security)
-        startIntent.putExtra(Security.PRIMARY_KEY, security.sequence)
+        val startIntent = AccountDetailActivity.getStartIntent(activity, account)
+        startIntent.putExtra("sequence", account.sequence)
         ActivityCompat.startActivity(activity, startIntent, animationBundle)
     }
 
