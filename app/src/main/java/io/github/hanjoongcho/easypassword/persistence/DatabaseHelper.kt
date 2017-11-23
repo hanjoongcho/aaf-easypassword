@@ -5,6 +5,8 @@ import com.tozny.crypto.android.AesCbcWithIntegrity
 import io.github.hanjoongcho.easypassword.activities.AccountAddActivity
 import io.github.hanjoongcho.easypassword.activities.PatternLockActivity
 import io.github.hanjoongcho.easypassword.models.Account
+import io.github.hanjoongcho.easypassword.models.CreditCard
+import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.utils.AesUtils
 import io.github.hanjoongcho.utils.CommonUtils
 import io.realm.Realm
@@ -53,22 +55,29 @@ class DatabaseHelper private constructor(
     fun initDatabase() {
         if (countAccounts() < 1) {
             AccountAddActivity.listDummyAccount.map {
-                insertAccount(it)
+                insertSecurity(it)
             }
         }
     }
 
     fun countAccounts() = realmInstance.where(Account::class.java).count().toInt()
 
-    fun insertAccount(account: Account) {
+    fun insertSecurity(security: Security) {
+
+//        security.securityItem?.let {
+//            if (it is CreditCard) {
+//                println(it.expireDate)
+//            }
+//        }
+
         realmInstance.beginTransaction()
         var sequence = 1
-        realmInstance.where(Account::class.java)?.max("sequence")?.let { max ->
+        realmInstance.where(Security::class.java)?.max("sequence")?.let { max ->
             sequence = max.toInt() + 1
         }
-        account.sequence = sequence
-        account.password = AesUtils.encryptPassword(context, account.password)
-        realmInstance.insert(account)
+        security.sequence = sequence
+        security.securityItem?.password = AesUtils.encryptPassword(context, security.securityItem?.password!!)
+        realmInstance.insert(security)
         realmInstance.commitTransaction()
     }
 

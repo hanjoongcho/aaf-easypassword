@@ -21,6 +21,8 @@ import io.github.hanjoongcho.easypassword.databinding.ActivityAccountAddBinding
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Account
 import io.github.hanjoongcho.easypassword.models.Category
+import io.github.hanjoongcho.easypassword.models.CreditCard
+import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.utils.PasswordStrengthUtils
 
 /**
@@ -147,12 +149,21 @@ class AccountAddActivity : AppCompatActivity() {
                 Category(4, "전자문서", "folder"),
                 Category(5, "미분류", "password")
         )
-        val listDummyAccount: List<Account> = mutableListOf(
-                Account("Google", "https://www.google.com", Category(0, "웹사이트", "web"), "entertainment", "123", 4),
-                Account("GitHub", "https://github.com/", Category(0, "웹사이트", "web"), "geography", "1234", 4),
-                Account("네이버", "https://www.naver.com/", Category(0, "웹사이트", "web"), "food", "1234", 2),
-                Account("카카오뱅크", "카카오뱅크 체크카드", Category(1, "신용카드", "credit_card"), "geography", "1234", 3),
-                Account("회사", "회사현관 출입번호", Category(2, "도어락", "home"), "geography", "1234", 1)
+        val listDummyAccount: List<Security> = mutableListOf(
+                Security(
+                        null,
+                        listCategory[0],
+                        Account("Google", "aafgoogle", "google!@", 1, "https://www.google.com")
+                ),
+                Security(
+                        null,
+                        listCategory[1],
+                        CreditCard("12-32-111-331","2020 08 01", System.currentTimeMillis(), "카카오뱅크", "9999", 1, "카뱅 체크카드")
+                )
+
+//                Account("GitHub", "https://github.com/", Category(0, "웹사이트", "web"), "geography", "1234", 4),
+//                Account("네이버", "https://www.naver.com/", Category(0, "웹사이트", "web"), "food", "1234", 2),
+//                Account("카카오뱅크", "카카오뱅크 체크카드", Category(1, "신용카드", "credit_card"), "geography", "1234", 3),                Account("회사", "회사현관 출입번호", Category(2, "도어락", "home"), "geography", "1234", 1)
         )
 
         /**
