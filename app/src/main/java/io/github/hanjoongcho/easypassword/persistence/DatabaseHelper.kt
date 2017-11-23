@@ -1,16 +1,13 @@
 package io.github.hanjoongcho.easypassword.persistence
 
 import android.content.Context
-import com.tozny.crypto.android.AesCbcWithIntegrity
 import io.github.hanjoongcho.easypassword.activities.AccountAddActivity
-import io.github.hanjoongcho.easypassword.activities.PatternLockActivity
-import io.github.hanjoongcho.easypassword.models.Account
+import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.utils.AesUtils
-import io.github.hanjoongcho.utils.CommonUtils
 import io.realm.Realm
 import io.realm.RealmConfiguration
 import io.realm.Sort
-import java.util.ArrayList
+import java.util.*
 
 /**
  * Created by Administrator on 2017-11-17.
@@ -51,45 +48,56 @@ class DatabaseHelper private constructor(
     }
 
     fun initDatabase() {
-        if (countAccounts() < 1) {
-            AccountAddActivity.listDummyAccount.map {
-                insertAccount(it)
+        if (countSecurity() < 1) {
+            AccountAddActivity.listDummySecurity.map {
+                insertSecurity(it)
             }
         }
     }
 
-    fun countAccounts() = realmInstance.where(Account::class.java).count().toInt()
+    fun countSecurity() = realmInstance.where(Security::class.java).count().toInt()
 
-    fun insertAccount(account: Account) {
+    fun insertSecurity(security: Security) {
+
+//        security.securityItem?.let {
+//            if (it is CreditCard) {
+//                println(it.expireDate)
+//            }
+//        }
+
         realmInstance.beginTransaction()
         var sequence = 1
-        realmInstance.where(Account::class.java)?.max("sequence")?.let { max ->
+        realmInstance.where(Security::class.java)?.max(Security.PRIMARY_KEY)?.let { max ->
             sequence = max.toInt() + 1
         }
-        account.sequence = sequence
-        account.password = AesUtils.encryptPassword(context, account.password)
-        realmInstance.insert(account)
+        security.sequence = sequence
+        security.securityItem?.let { item ->
+            item.password = AesUtils.encryptPassword(context, item.password)
+        }
+        realmInstance.insert(security)
         realmInstance.commitTransaction()
     }
 
-    fun selectAccountAll(): ArrayList<Account> {
-        val realmResults = realmInstance.where(Account::class.java).findAllSorted("title", Sort.ASCENDING)
-        val list = ArrayList<Account>()
+    fun selectSecurityAll(): ArrayList<Security> {
+        val realmResults = realmInstance.where(Security::class.java).findAllSorted("securityItem.title", Sort.ASCENDING)
+        val list = ArrayList<Security>()
         list.addAll(realmResults.subList(0, realmResults.size))
         return list
     }
 
-    fun updateAccount(account: Account) {
+    fun updateSecurity(security: Security) {
         realmInstance.executeTransaction(Realm.Transaction { realm ->
-            account.password = AesUtils.encryptPassword(context, account.password)
-            realm.insertOrUpdate(account)
+            security.securityItem?.let { item ->
+                item.password = AesUtils.encryptPassword(context, item.password)
+            }
+            realm.insertOrUpdate(security)
         })
     }
 
-    fun selectAccountBy(sequence: Int): Account {
-        val account: Account = realmInstance.where(Account::class.java).equalTo("sequence", sequence).findFirst()
+    fun selectSecurityBy(sequence: Int): Security {
+        val security: Security = realmInstance.where(Security::class.java).equalTo(Security.PRIMARY_KEY, sequence).findFirst()
 //        account.password = AesUtils.decryptPassword(context, account.password)
-        return account
+        return security
     }
 
     companion object {

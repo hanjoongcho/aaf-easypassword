@@ -12,7 +12,7 @@ class DatabaseMigration : RealmMigration {
         var currentVersion = oldVersion as Int
         val schema = realm.schema
         if (currentVersion == 1) {
-            val diarySchema = schema.get("Account")
+            val diarySchema = schema.get("Security")
             currentVersion++
         }
     }
