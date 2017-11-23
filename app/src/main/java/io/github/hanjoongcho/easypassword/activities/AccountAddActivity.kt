@@ -18,6 +18,7 @@ import android.widget.ImageView
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.adpaters.AccountCategoryAdapter
 import io.github.hanjoongcho.easypassword.databinding.ActivityAccountAddBinding
+import io.github.hanjoongcho.easypassword.helper.SecurityItemBindingHelper
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.*
 import io.github.hanjoongcho.utils.PasswordStrengthUtils
@@ -64,38 +65,12 @@ class AccountAddActivity : AppCompatActivity() {
     private fun bindEvent() {
 
         mBinding?.let { binding ->
-
             binding.save.setOnClickListener(View.OnClickListener { _ ->
-                val item: Category = binding.accountManageCategory.selectedItem as Category
-                val security = when (item.index) {
-                    0 -> {
-                        Security(
-                                null,
-                                binding.securityAccount.accountManageTarget.toString(),
-                                binding.securityAccount.accountPassword.toString(),
-                                mTempStrengthLevel,
-                                binding.securityAccount.accountSummary.toString(),
-                                binding.accountManageCategory.selectedItem as Category,
-                                Account(binding.securityAccount.accountId.toString()),
-                                null
-                        )
-                    }
-                    else -> {
-                        Security(
-                                null,
-                                binding.securityCreditCard.creditCardTarget.toString(),
-                                binding.securityCreditCard.creditCardPassword.toString(),
-                                mTempStrengthLevel,
-                                binding.securityCreditCard.creditCardSummary.toString(),
-                                binding.accountManageCategory.selectedItem as Category,
-                                null,
-                                CreditCard(binding.securityCreditCard.creditCardSerial.toString(),binding.securityCreditCard.creditCardExpireDate.toString())
-                        )
-                    }
+                val security: Security? = SecurityItemBindingHelper.getSecurityFromLayout(mBinding, binding.accountManageCategory.selectedItem as Category, mTempStrengthLevel)
+                security?.let {
+                    this@AccountAddActivity.database().insertSecurity(it)
+                    this@AccountAddActivity.onBackPressed()
                 }
-
-                this@AccountAddActivity.database().insertSecurity(security)
-                this@AccountAddActivity.onBackPressed()
             })
 
             binding.securityAccount.accountPassword.addTextChangedListener(object : TextWatcher {

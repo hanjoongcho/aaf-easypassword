@@ -71,7 +71,7 @@ class DatabaseHelper private constructor(
     }
 
     fun selectSecurityAll(): ArrayList<Security> {
-        val realmResults = realmInstance.where(Security::class.java).findAllSorted("securityItem.title", Sort.ASCENDING)
+        val realmResults = realmInstance.where(Security::class.java).findAllSorted("title", Sort.ASCENDING)
         val list = ArrayList<Security>()
         list.addAll(realmResults.subList(0, realmResults.size))
         return list

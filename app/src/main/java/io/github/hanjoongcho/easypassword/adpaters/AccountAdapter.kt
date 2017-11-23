@@ -9,9 +9,10 @@ import android.widget.AdapterView
 import android.widget.ImageView
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.activities.AccountAddActivity
-import io.github.hanjoongcho.easypassword.databinding.ItemAccountBinding
+import io.github.hanjoongcho.easypassword.databinding.ItemSecurityBinding
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Account
+import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.easypassword.models.Theme
 
 /**
@@ -25,19 +26,19 @@ class AccountAdapter(
 
     private val resources = activity.resources
     private val layoutInflater = LayoutInflater.from(activity)
-    private var accounts = mutableListOf<Account>()
+    private var securities = mutableListOf<Security>()
 
     fun selectAccounts() {
-        accounts.clear()
-        accounts.addAll(activity.database().selectAccountAll())
+        securities.clear()
+        securities.addAll(activity.database().selectSecurityAll())
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder.binding) {
-            account = accounts[position]
+            security = securities[position]
             executePendingBindings()
-            setCategoryIcon(account, categoryIcon)
-            AccountAddActivity.setPasswordStrengthLevel(activity, account.passwordStrengthLevel, included.level1, included.level2, included.level3, included.level4, included.level5)
+            setCategoryIcon(security, categoryIcon)
+            AccountAddActivity.setPasswordStrengthLevel(activity, security.passwordStrengthLevel, included.level1, included.level2, included.level3, included.level4, included.level5)
             with(accountTitle) {
                 setTextColor(AccountAddActivity.getColor(R.color.blackText, activity))
             }
@@ -55,19 +56,19 @@ class AccountAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
-            ViewHolder(DataBindingUtil.inflate<ItemAccountBinding>(layoutInflater,
+            ViewHolder(DataBindingUtil.inflate<ItemSecurityBinding>(layoutInflater,
                     R.layout.item_security,
                     parent,
                     false))
 
-    override fun getItemCount() = accounts.size
+    override fun getItemCount() = securities.size
 
-    fun getItem(position: Int): Account = accounts[position]
+    fun getItem(position: Int): Security = securities[position]
 
-    private fun setCategoryIcon(account: Account, icon: ImageView) {
-        val imageRes = resources.getIdentifier("ic_${account.category?.resourceName}", "drawable", activity.packageName)
+    private fun setCategoryIcon(security: Security, icon: ImageView) {
+        val imageRes = resources.getIdentifier("ic_${security.category?.resourceName}", "drawable", activity.packageName)
         icon.setImageResource(imageRes)
     }
 
-    class ViewHolder(val binding: ItemAccountBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: ItemSecurityBinding) : RecyclerView.ViewHolder(binding.root)
 }
