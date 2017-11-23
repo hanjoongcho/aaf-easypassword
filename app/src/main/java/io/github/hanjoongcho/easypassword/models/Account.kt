@@ -7,11 +7,15 @@ import io.realm.annotations.PrimaryKey
  */
 open class Account : SecurityItem {
 
+    var id: String? = null
+
     constructor(
             id: String,
             title: String,
             password: String,
             passwordStrengthLevel: Int,
             summary: String
-    ) : super(title, password, passwordStrengthLevel, summary)
+    ) : super(title, password, passwordStrengthLevel, summary) {
+        this.id = id;
+    }
 }

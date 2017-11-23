@@ -17,8 +17,7 @@ import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.adpaters.AccountCategoryAdapter
 import io.github.hanjoongcho.easypassword.databinding.ActivityAccountEditBinding
 import io.github.hanjoongcho.easypassword.helper.database
-import io.github.hanjoongcho.easypassword.models.Account
-import io.github.hanjoongcho.easypassword.models.Category
+import io.github.hanjoongcho.easypassword.models.*
 import io.github.hanjoongcho.utils.AesUtils
 import io.github.hanjoongcho.utils.PasswordStrengthUtils
 
@@ -29,15 +28,15 @@ import io.github.hanjoongcho.utils.PasswordStrengthUtils
 class AccountEditActivity : AppCompatActivity() {
 
     private var mBinding: ActivityAccountEditBinding? = null
-    private var mAccount: Account? = null
+    private var mSecurity: Security? = null
     private var mSequence:Int = -1
     private var mTempStrengthLevel = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account_edit)
-        mSequence = intent.getIntExtra(Account.SEQUENCE, -1)
-        mAccount = this@AccountEditActivity.database().selectAccountBy(mSequence)
+        mSequence = intent.getIntExtra(Security.PRIMARY_KEY, -1)
+        mSecurity = this@AccountEditActivity.database().selectSecurityBy(mSequence)
 
 
         mBinding = DataBindingUtil.setContentView<ActivityAccountEditBinding>(this,
@@ -51,7 +50,8 @@ class AccountEditActivity : AppCompatActivity() {
         bindEvent()
         initCategorySpinner()
 
-        val encryptedPassword = mAccount?.password
+        val encryptedPassword = mSecurity?.securityItem?.password
+
         Thread({
             val decryptedPassword = AesUtils.decryptPassword(this@AccountEditActivity, encryptedPassword!!)
             Handler(Looper.getMainLooper()).post {
@@ -60,13 +60,18 @@ class AccountEditActivity : AppCompatActivity() {
             }
         }).start()
 
-        mAccount?.let { account ->
-            mTempStrengthLevel = account.passwordStrengthLevel
+        mSecurity?.let { security ->
+            mTempStrengthLevel = security.securityItem?.passwordStrengthLevel ?: 1
             mBinding?.let { binding ->
-                binding.accountId.setText(account.id)
-                binding.accountSummary.setText(account.summary)
-                binding.accountManageTarget.setText(account.title)
-                AccountAddActivity.setPasswordStrengthLevel(this@AccountEditActivity, account.passwordStrengthLevel, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
+                security?.securityItem?.let { item ->
+                    if (item is Account) {
+                        binding.accountId.setText(item.id)
+                        binding.accountSummary.setText(item.summary)
+                        binding.accountManageTarget.setText(item.title)
+                        AccountAddActivity.setPasswordStrengthLevel(this@AccountEditActivity, item.passwordStrengthLevel, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
+                    }
+                }
+
             }
         }
     }
@@ -75,16 +80,44 @@ class AccountEditActivity : AppCompatActivity() {
 
         mBinding?.let { binding ->
             binding.save.setOnClickListener(View.OnClickListener { _ ->
-                val account: Account = Account(
-                        binding.accountManageTarget?.text.toString(),
-                        binding.accountSummary?.text.toString(),
-                        binding.accountManageCategory?.selectedItem as Category,
-                        binding.accountId?.text.toString(),
-                        binding.accountPassword?.text.toString(),
-                        mTempStrengthLevel,
-                        mAccount?.sequence!!
+                val item: Category = binding.accountManageCategory.selectedItem as Category
+                val securityItem: SecurityItem = when (item.index) {
+                    0 -> {
+                        Account(
+                                binding.accountManageTarget.text.toString(),
+                                binding.accountId.text.toString(),
+                                binding.accountPassword.text.toString(),
+                                mTempStrengthLevel,
+                                binding.accountSummary.text.toString()
+                        )
+                    }
+                    else -> {
+                        Account(
+                                binding.accountManageTarget.text.toString(),
+                                binding.accountId.text.toString(),
+                                binding.accountPassword.text.toString(),
+                                mTempStrengthLevel,
+                                binding.accountSummary.text.toString()
+                        )
+                    }
+                }
+
+                val security = Security(
+                        null,
+                        binding.accountManageCategory.selectedItem as Category,
+                        securityItem
                 )
-                this@AccountEditActivity.database().updateAccount(account)
+
+//                val account: Account = Account(
+//                        binding.accountManageTarget?.text.toString(),
+//                        binding.accountSummary?.text.toString(),
+//                        binding.accountManageCategory?.selectedItem as Category,
+//                        binding.accountId?.text.toString(),
+//                        binding.accountPassword?.text.toString(),
+//                        mTempStrengthLevel,
+//                        mAccount?.sequence!!
+//                )
+                this@AccountEditActivity.database().updateSecurity(security)
                 this@AccountEditActivity.onBackPressed()
 //                finish()
             })
@@ -119,7 +152,7 @@ class AccountEditActivity : AppCompatActivity() {
     private fun initCategorySpinner() {
         val adapter: ArrayAdapter<Category> = AccountCategoryAdapter(this@AccountEditActivity, R.layout.item_category, AccountAddActivity.listCategory)
         mBinding?.accountManageCategory?.adapter = adapter
-        mBinding?.accountManageCategory?.setSelection(mAccount?.category?.index ?: 0)
+        mBinding?.accountManageCategory?.setSelection(mSecurity?.category?.index ?: 0)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -141,7 +174,7 @@ class AccountEditActivity : AppCompatActivity() {
 
         fun getStartIntent(context: Context, sequence: Int): Intent {
             return Intent(context, AccountEditActivity::class.java)
-                    .apply { putExtra(Account.SEQUENCE, sequence) }
+                    .apply { putExtra(Security.PRIMARY_KEY, sequence) }
         }
     }
 }

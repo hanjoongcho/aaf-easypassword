@@ -1,6 +1,6 @@
 <layout>
     <data>
-        <variable name="account" type="io.github.hanjoongcho.easypassword.models.Account" />
+        <variable name="security" type="io.github.hanjoongcho.easypassword.models.Security" />
     </data>
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:gravity="center_vertical"
-                android:text="@{account.title}"
+                android:text="@{security.securityItem.title}"
                 android:textAppearance="@style/Topeka.TextAppearance.CategoryItem"
                 android:transitionName="name..."
                 tools:targetApi="lollipop"/>
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:gravity="center_vertical"
-                android:text="@{account.summary}"
+                android:text="@{security.securityItem.summary}"
                 android:textAppearance="@style/Topeka.TextAppearance.CategoryItem"
                 android:transitionName="name..."
                 tools:targetApi="lollipop"/>
