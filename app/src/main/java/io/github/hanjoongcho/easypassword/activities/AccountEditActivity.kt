@@ -12,6 +12,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.adpaters.AccountCategoryAdapter
@@ -52,12 +53,13 @@ class AccountEditActivity : AppCompatActivity() {
 
         bindEvent()
         initCategorySpinner()
+        changeCategoryContainer()
 
         val encryptedPassword = mSecurity?.password
         Thread({
             val decryptedPassword = AesUtils.decryptPassword(this@AccountEditActivity, encryptedPassword!!)
             Handler(Looper.getMainLooper()).post {
-                mBinding?.accountPassword?.setText(decryptedPassword)
+                mBinding?.securityPassword?.setText(decryptedPassword)
                 mBinding?.loadingProgress?.visibility = View.INVISIBLE
             }
         }).start()
@@ -65,12 +67,27 @@ class AccountEditActivity : AppCompatActivity() {
         SecurityItemBindingHelper.activityAccountEditBinding(this@AccountEditActivity, mBinding, mSecurity)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> this@AccountEditActivity.onBackPressed()
+            else -> {
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    //    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        menuInflater.inflate(R.menu.account_detail, menu)
+//        return true
+//    }
+
     private fun bindEvent() {
 
         mBinding?.let { binding ->
             binding.save.setOnClickListener(View.OnClickListener { _ ->
-                val security: Security? = SecurityItemBindingHelper.getSecurityFromLayout(mBinding, binding.accountManageCategory.selectedItem as Category, mTempStrengthLevel)
+                val security: Security? = SecurityItemBindingHelper.getSecurityFromLayout(mBinding, binding.securityCategory.selectedItem as Category, mTempStrengthLevel)
                 security?.let {
+                    it.sequence = mSequence
                     this@AccountEditActivity.database().updateSecurity(it)
                     this@AccountEditActivity.onBackPressed()
                 }
@@ -84,7 +101,7 @@ class AccountEditActivity : AppCompatActivity() {
 //                }
 //            })
 
-            binding.accountPassword.addTextChangedListener(object : TextWatcher {
+            binding.securityPassword.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
                 }
 
@@ -105,23 +122,35 @@ class AccountEditActivity : AppCompatActivity() {
 
     private fun initCategorySpinner() {
         val adapter: ArrayAdapter<Category> = AccountCategoryAdapter(this@AccountEditActivity, R.layout.item_category, AccountAddActivity.listCategory)
-        mBinding?.accountManageCategory?.adapter = adapter
-        mBinding?.accountManageCategory?.setSelection(mSecurity?.category?.index ?: 0)
+        mBinding?.let { binding ->
+            binding.securityCategory.adapter = adapter
+            binding.securityCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
+
+                override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                    changeCategoryContainer()
+                }
+            }
+            binding.securityCategory?.setSelection(mSecurity?.category?.index ?: 0)
+        }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            android.R.id.home -> this@AccountEditActivity.onBackPressed()
-            else -> {
+    private fun changeCategoryContainer() {
+        mBinding?.let { binding ->
+            val item: Category = binding.securityCategory.selectedItem as Category
+            when (item.index) {
+                0 -> {
+                    binding.accountContainer.visibility = View.VISIBLE
+                    binding.creditCardContainer.visibility = View.GONE
+                }
+                else -> {
+                    binding.accountContainer.visibility = View.GONE
+                    binding.creditCardContainer.visibility = View.VISIBLE
+                }
             }
         }
-        return super.onOptionsItemSelected(item)
     }
-
-//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        menuInflater.inflate(R.menu.account_detail, menu)
-//        return true
-//    }
 
     companion object {
         const val TAG = "AccountEditActivity"

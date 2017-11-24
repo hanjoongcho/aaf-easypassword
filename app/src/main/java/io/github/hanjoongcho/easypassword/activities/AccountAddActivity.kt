@@ -148,7 +148,7 @@ class AccountAddActivity : AppCompatActivity() {
                         1,
                         "https://www.google.com",
                         listCategory[0],
-                        Account("Google"),
+                        Account("bulbasaur"),
                         null
                 ),
                         Security(

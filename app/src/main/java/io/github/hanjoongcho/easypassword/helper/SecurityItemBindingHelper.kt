@@ -20,19 +20,20 @@ class SecurityItemBindingHelper {
     companion object {
 
         fun activityAccountDetailBinding(activity: Activity, binding: ActivityAccountDetailBinding?, security: Security?) {
-            val category = binding?.securityCategory?.selectedItem as Category
-            security?.let { security ->
-                binding?.let { binding ->
-                    binding.securityPassword.text = security.password
-                    binding.securitySummary.text = security.summary
-                    binding.securityTitle.text = security.title
-                    AccountAddActivity.setPasswordStrengthLevel(activity, security.passwordStrengthLevel, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
+
+            security?.let { safetySecurity ->
+                binding?.let { it ->
+                    val category = it.securityCategory?.selectedItem as Category
+                    it.securityPassword.text = safetySecurity.password
+                    it.securitySummary.text = safetySecurity.summary
+                    it.securityTitle.text = safetySecurity.title
+                    AccountAddActivity.setPasswordStrengthLevel(activity, safetySecurity.passwordStrengthLevel, it.included.level1, it.included.level2, it.included.level3, it.included.level4, it.included.level5)
 
                     when (category.index) {
-                        0 -> binding.accountId?.text = security.account?.id
+                        0 -> it.accountId?.text = safetySecurity.account?.id
                         else -> {
-                            binding.creditCardSerial.text = security.creditCard?.serial
-                            binding.creditCardExpireDate.text = security.creditCard?.expireDate
+                            it.creditCardSerial.text = safetySecurity.creditCard?.serial
+                            it.creditCardExpireDate.text = safetySecurity.creditCard?.expireDate
                         }
                     }
                 }
@@ -40,43 +41,51 @@ class SecurityItemBindingHelper {
         }
 
         fun activityAccountEditBinding(activity: Activity, binding: ActivityAccountEditBinding?, security: Security?) {
-            security?.let { security ->
-                binding?.let { binding ->
-                    binding.accountId?.setText(security.account?.id)
-                    binding.accountPassword?.setText(security.password)
-                    binding.accountSummary?.setText(security.summary)
-                    binding.accountManageTarget?.setText(security.title)
-                    AccountAddActivity.setPasswordStrengthLevel(activity, security.passwordStrengthLevel, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
+            security?.let { safetySecurity ->
+                binding?.let { it ->
+                    val category = it.securityCategory?.selectedItem as Category
+                    it.securityPassword.setText(safetySecurity.password)
+                    it.securitySummary.setText(safetySecurity.summary)
+                    it.securityTitle.setText(safetySecurity.title)
+                    AccountAddActivity.setPasswordStrengthLevel(activity, safetySecurity.passwordStrengthLevel, it.included.level1, it.included.level2, it.included.level3, it.included.level4, it.included.level5)
+
+                    when (category.index) {
+                        0 -> it.accountId?.setText(safetySecurity.account?.id)
+                        else -> {
+                            it.creditCardSerial.setText(safetySecurity.creditCard?.serial)
+                            it.creditCardExpireDate.setText(safetySecurity.creditCard?.expireDate)
+                        }
+                    }
                 }
             }
         }
 
         fun getSecurityFromLayout(binding: ActivityAccountEditBinding?, category: Category, strengthLevel: Int): Security? {
             var security: Security? = null
-            binding?.let {
+            binding?.let { it ->
                 security = when (category.index) {
                     0 -> {
                         Security(
                                 null,
-                                binding.accountManageTarget.toString(),
-                                binding.accountPassword.toString(),
+                                it.securityTitle.text.toString(),
+                                it.securityPassword.text.toString(),
                                 strengthLevel,
-                                binding.accountSummary.toString(),
-                                binding.accountManageCategory.selectedItem as Category,
-                                Account(binding.accountId.toString()),
+                                it.securitySummary.text.toString(),
+                                it.securityCategory.selectedItem as Category,
+                                Account(it.accountId.text.toString()),
                                 null
                         )
                     }
                     else -> {
                         Security(
                                 null,
-                                binding.accountManageTarget.toString(),
-                                binding.accountPassword.toString(),
+                                it.securityTitle.text.toString(),
+                                it.securityPassword.text.toString(),
                                 strengthLevel,
-                                binding.accountSummary.toString(),
-                                binding.accountManageCategory.selectedItem as Category,
-                                Account(binding.accountId.toString()),
-                                null
+                                it.securitySummary.text.toString(),
+                                it.securityCategory.selectedItem as Category,
+                                null,
+                                CreditCard(it.creditCardSerial.text.toString(), it.creditCardExpireDate.text.toString())
                         )
                     }
                 }
@@ -86,30 +95,30 @@ class SecurityItemBindingHelper {
 
         fun getSecurityFromLayout(binding: ActivityAccountAddBinding?, category: Category, strengthLevel: Int): Security? {
             var security: Security? = null
-            binding?.let {
+            binding?.let { it ->
                 security = when (category.index) {
                     0 -> {
                         Security(
                                 null,
-                                binding.securityTitle.text.toString(),
-                                binding.securityPassword.text.toString(),
+                                it.securityTitle.text.toString(),
+                                it.securityPassword.text.toString(),
                                 strengthLevel,
-                                binding.securitySummary.text.toString(),
-                                binding.securityCategory.selectedItem as Category,
-                                Account(binding.accountId.text.toString()),
+                                it.securitySummary.text.toString(),
+                                it.securityCategory.selectedItem as Category,
+                                Account(it.accountId.text.toString()),
                                 null
                         )
                     }
                     else -> {
                         Security(
                                 null,
-                                binding.securityTitle.text.toString(),
-                                binding.securityPassword.text.toString(),
+                                it.securityTitle.text.toString(),
+                                it.securityPassword.text.toString(),
                                 strengthLevel,
-                                binding.securitySummary.text.toString(),
-                                binding.securityCategory.selectedItem as Category,
+                                it.securitySummary.text.toString(),
+                                it.securityCategory.selectedItem as Category,
                                 null,
-                                CreditCard(binding.creditCardSerial.toString(),binding.creditCardExpireDate.text.toString())
+                                CreditCard(it.creditCardSerial.toString(),it.creditCardExpireDate.text.toString())
                         )
                     }
                 }

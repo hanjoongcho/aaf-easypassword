@@ -65,8 +65,6 @@ class AccountDetailActivity : AppCompatActivity() {
                 }).start()
             }
         }
-
-        changeCategoryContainer()
     }
 
     private fun initCategorySpinner() {
@@ -96,8 +94,9 @@ class AccountDetailActivity : AppCompatActivity() {
 
     private fun refreshItem() {
         mSecurity = this@AccountDetailActivity.database().selectSecurityBy(mSequence)
-        SecurityItemBindingHelper.activityAccountDetailBinding(this@AccountDetailActivity, mBinding, mSecurity)
         initCategorySpinner()
+        changeCategoryContainer()
+        SecurityItemBindingHelper.activityAccountDetailBinding(this@AccountDetailActivity, mBinding, mSecurity)
     }
 
     override fun onResume() {

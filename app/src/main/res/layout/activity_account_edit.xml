@@ -7,12 +7,10 @@
         android:layout_height="match_parent">
 
         <ScrollView
-            android:id="@+id/scroll_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:orientation="vertical"
-                android:id="@+id/fragment_sign_in_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -36,19 +34,19 @@
                     </android.support.v7.widget.Toolbar>
                 </android.support.design.widget.AppBarLayout>
 
+                <!--Common-->
                 <LinearLayout
                     style="@style/AccountEditItemContainer">
                     <TextView
                         android:text="@string/account_manage_category"
                         style="@style/AccountEditLabel" />
                     <Spinner
-                        android:id="@+id/account_manage_category"
+                        android:id="@+id/security_category"
                         android:spinnerMode="dropdown"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                     </Spinner>
                 </LinearLayout>
-
                 <LinearLayout
                     style="@style/AccountEditItemContainer">
                     <TextView
@@ -56,19 +54,8 @@
                         style="@style/AccountEditLabel" />
                     <EditText
                         style="@style/AccountEditInputText"
-                        android:id="@+id/account_manage_target" />
+                        android:id="@+id/security_title" />
                 </LinearLayout>
-
-                <LinearLayout
-                    style="@style/AccountEditItemContainer">
-                    <TextView
-                        android:text="@string/account_id"
-                        style="@style/AccountEditLabel" />
-                    <EditText
-                        style="@style/AccountEditInputText"
-                        android:id="@+id/account_id" />
-                </LinearLayout>
-
                 <LinearLayout
                     style="@style/AccountEditItemContainer">
                     <TextView
@@ -76,12 +63,11 @@
                         style="@style/AccountEditLabel" />
                     <EditText
                         style="@style/AccountEditInputText"
-                        android:id="@+id/account_password" />
+                        android:id="@+id/security_password" />
                     <include
                         android:id="@+id/included"
                         layout="@layout/view_password_strength" />
                 </LinearLayout>
-
                 <LinearLayout
                     style="@style/AccountEditItemContainer">
                     <TextView
@@ -89,8 +75,53 @@
                         style="@style/AccountEditLabel" />
                     <EditText
                         style="@style/AccountEditInputText"
-                        android:inputType="textMultiLine"
-                        android:id="@+id/account_summary" />
+                        android:id="@+id/security_summary" />
+                </LinearLayout>
+
+                <!--Security Account-->
+                <LinearLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/account_container"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        style="@style/AccountEditItemContainer">
+                        <TextView
+                            android:text="@string/account_id"
+                            style="@style/AccountEditLabel" />
+                        <EditText
+                            style="@style/AccountEditInputText"
+                            android:id="@+id/account_id" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!--Security Credit Card-->
+                <LinearLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/credit_card_container"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        style="@style/AccountEditItemContainer">
+                        <TextView
+                            android:text="@string/credit_card_serial"
+                            style="@style/AccountEditLabel" />
+                        <EditText
+                            style="@style/AccountEditInputText"
+                            android:id="@+id/credit_card_serial" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/AccountEditItemContainer">
+                        <TextView
+                            android:text="@string/credit_card_expire_date"
+                            style="@style/AccountEditLabel" />
+                        <EditText
+                            style="@style/AccountEditInputText"
+                            android:id="@+id/credit_card_expire_date" />
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
