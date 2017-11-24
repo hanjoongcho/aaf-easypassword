@@ -1,11 +1,15 @@
 package io.github.hanjoongcho.easypassword.activities
 
+import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
 import android.view.Window
 import android.view.WindowManager
 
@@ -18,12 +22,13 @@ import com.andrognito.rxpatternlockview.events.PatternLockCompoundEvent
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.helper.TransitionHelper
 import io.github.hanjoongcho.easypassword.helper.database
+import io.github.hanjoongcho.utils.AesUtils
 import io.github.hanjoongcho.utils.CommonUtils
 import kotlinx.android.synthetic.main.activity_pattern_lock.*
 
 import io.reactivex.functions.Consumer
 
-class PatternLockActivity : AppCompatActivity() {
+class PatternLockActivity : CommonActivity() {
 
     private var mMode: Int? = -1
 
@@ -110,18 +115,41 @@ class PatternLockActivity : AppCompatActivity() {
                 }
                 VERIFY -> {
                     if (intent.getStringExtra(PatternLockActivity.REQUEST_PATTERN) == patternLockCompleteEvent.pattern.toString()) {
+                        val previousPattern = CommonUtils.loadStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
                         CommonUtils.saveStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, patternLockCompleteEvent.pattern.toString())
-//                        SecuritySelectionActivity.start(this@PatternLockActivity)
                         if (this@PatternLockActivity.database().countSecurity() < 1) {
                             TransitionHelper.startSettingActivityWithTransition(this@PatternLockActivity, SecuritySelectionActivity::class.java)
+                            finish()
+                        } else {
+                            progressBar.visibility = View.VISIBLE
+                            guide_message.text = getString(R.string.pattern_lock_progress_message)
+                            patterLockView.clearPattern()
+                            Thread(Runnable {
+                                val listSecurity = this@PatternLockActivity.database().selectSecurityAll()
+                                this@PatternLockActivity.database().beginTransaction()
+                                listSecurity.map {
+
+                                    val previousCipher = it.password
+                                    Log.i(TAG, "previousCipher: $previousCipher")
+                                    val previousPlain = AesUtils.decryptPassword(this@PatternLockActivity, previousCipher, previousPattern)
+                                    Log.i(TAG, "previousPlain: $previousPlain")
+                                    val currentCipher = AesUtils.encryptPassword(this@PatternLockActivity, previousPlain)
+                                    Log.i(TAG, "currentCipher: $currentCipher")
+                                    it.password = currentCipher
+                                }
+                                this@PatternLockActivity.database().commitTransaction()
+                                Handler(Looper.getMainLooper()).post(Runnable {
+                                    progressBar.visibility = View.INVISIBLE
+                                    this@PatternLockActivity.onBackPressed()
+                                })
+                            }).start()
                         }
-                        finish()
                     } else {
                         val builder: AlertDialog.Builder = AlertDialog.Builder(this@PatternLockActivity)
                         builder.setMessage(getString(R.string.pattern_lock_activity_verify_reject))
                         builder.setPositiveButton("OK", DialogInterface.OnClickListener({ _, _ ->
                             intent.putExtra(PatternLockActivity.MODE, PatternLockActivity.SETTING_LOCK)
-                            startActivity(intent)
+                            TransitionHelper.startSettingActivityWithTransition(this@PatternLockActivity, intent)
                             finish()
                         }))
                         builder.create().show()
@@ -156,6 +184,7 @@ class PatternLockActivity : AppCompatActivity() {
     }
 
     companion object {
+        const val TAG = "PatternLockActivity"
         const val MODE = "mMode"
         const val REQUEST_PATTERN = "request_pattern"
         const val SAVED_PATTERN = "saved_pattern"

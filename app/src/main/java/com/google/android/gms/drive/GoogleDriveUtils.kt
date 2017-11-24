@@ -8,6 +8,8 @@ import android.os.Parcelable
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.common.api.GoogleApiClient
+import io.github.hanjoongcho.easypassword.activities.CommonActivity
+import io.github.hanjoongcho.utils.CommonUtils
 
 /**
  * Created by Administrator on 2017-11-21.
@@ -95,14 +97,15 @@ open class GoogleDriveUtils : Activity(), GoogleApiClient.ConnectionCallbacks, G
      */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
+        CommonUtils.saveLongPreference(this@GoogleDriveUtils, CommonActivity.SETTING_PAUSE_MILLIS, System.currentTimeMillis())
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == REQUEST_CODE_RESOLUTION) {
-                mGoogleApiClient?.connect()
-            } else if (requestCode == REQUEST_CODE_GOOGLE_DRIVE_UPLOAD) {
-                finish()
-            } else if (requestCode == REQUEST_CODE_GOOGLE_DRIVE_DOWNLOAD) {
-                data?.let {
-                    mSelectedFileDriveId = it.getParcelableExtra(OpenFileActivityBuilder.EXTRA_RESPONSE_DRIVE_ID)
+            when (requestCode) {
+                REQUEST_CODE_RESOLUTION ->  mGoogleApiClient?.connect()
+                REQUEST_CODE_GOOGLE_DRIVE_UPLOAD -> finish()
+                REQUEST_CODE_GOOGLE_DRIVE_DOWNLOAD -> {
+                    data?.let {
+                        mSelectedFileDriveId = it.getParcelableExtra(OpenFileActivityBuilder.EXTRA_RESPONSE_DRIVE_ID)
+                    }
                 }
             }
         } else if (resultCode == Activity.RESULT_CANCELED) {

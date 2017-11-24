@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.activity_setting.*
  * Created by CHO HANJOONG on 2017-11-21.
  */
 
-class SettingActivity : AppCompatActivity() {
+class SettingActivity : CommonActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 

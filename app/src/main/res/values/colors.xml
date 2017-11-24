@@ -3,9 +3,7 @@
     <color name="colorPrimaryDark">#089C90</color>
     <color name="colorPrimary">#07ABB3</color>
     <color name="colorPrimaryWithAlpha">#1007ABB3</color>
-    <color name="colorAccent">#050505</color>
-
-
+    <color name="colorAccent">#0f90e1</color>
     <color name="appBackground">#3307ABB3</color>
 
     <!-- common text color -->
@@ -20,6 +18,9 @@
     <color name="strength_default">#bcb9b9</color>
     <color name="strength_good">#339ee1</color>
     <color name="strength_bad">#f50622</color>
+
+    <!--common view color-->
+    <color name="progress_white">#ffffff</color>
 
     <!-- theme colors -->
     <color name="theme_blue_background">#84ffff</color>

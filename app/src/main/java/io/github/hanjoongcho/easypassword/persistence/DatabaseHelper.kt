@@ -90,6 +90,14 @@ class DatabaseHelper private constructor(
         return security
     }
 
+    fun beginTransaction() {
+        realmInstance.beginTransaction()
+    }
+
+    fun commitTransaction() {
+        realmInstance.commitTransaction()
+    }
+
     companion object {
 
         const val SECURITY_TITLE = "title"

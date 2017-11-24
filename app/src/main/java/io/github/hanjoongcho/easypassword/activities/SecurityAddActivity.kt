@@ -30,7 +30,7 @@ import io.github.hanjoongcho.utils.PasswordStrengthUtils
  * Created by CHO HANJOONG on 2017-11-18.
  */
 
-class SecurityAddActivity : AppCompatActivity() {
+class SecurityAddActivity : CommonActivity() {
 
     private var mBinding: ActivitySecurityAddBinding? = null
     private var mTempStrengthLevel = 1
@@ -110,9 +110,13 @@ class SecurityAddActivity : AppCompatActivity() {
                     binding.accountContainer.visibility = View.VISIBLE
                     binding.creditCardContainer.visibility = View.GONE
                 }
-                else -> {
+                1 -> {
                     binding.accountContainer.visibility = View.GONE
                     binding.creditCardContainer.visibility = View.VISIBLE
+                }
+                else -> {
+                    binding.accountContainer.visibility = View.GONE
+                    binding.creditCardContainer.visibility = View.GONE
                 }
             }
         }
@@ -147,26 +151,63 @@ class SecurityAddActivity : AppCompatActivity() {
                 Security(
                         null,
                         "Google",
-                        "google!@",
-                        1,
+                        "google!@123",
+                        3,
                         "https://www.google.com",
                         listCategory[0],
-                        Account("bulbasaur"),
+                        Account("bulbasaur@mail.com"),
                         null
                 ),
-                        Security(
+                Security(
                         null,
                         "카카오뱅크",
-                        "9999",
-                        2,
+                        "1901",
+                        1,
                         "카뱅 체크카드",
                         listCategory[1],
                         null,
-                        CreditCard("12-32-111-331","2020 08 01")
+                        CreditCard("132-3574-123-09","12/2025")
+                ),
+                Security(
+                        null,
+                        "회사현관",
+                        "157809",
+                        1,
+                        "회사 현관 출입번호",
+                        listCategory[2],
+                        null,
+                        null
+                ),
+                Security(
+                        null,
+                        "여행가방",
+                        "0000",
+                        2,
+                        "노랑색 캐리어",
+                        listCategory[1],
+                        null,
+                        null
+                ),
+                Security(
+                        null,
+                        "프로젝트 기획서",
+                        "proDoc12@!2",
+                        5,
+                        "2018 모바일 프로젝트 화면정의서",
+                        listCategory[4],
+                        null,
+                        null
+                ),
+                Security(
+                        null,
+                        "VOD 인증번호",
+                        "9999",
+                        1,
+                        "VOD 결재 인증번호",
+                        listCategory[5],
+                        null,
+                        null
                 )
-//                Account("GitHub", "https://github.com/", Category(0, "웹사이트", "web"), "geography", "1234", 4),
-//                Account("네이버", "https://www.naver.com/", Category(0, "웹사이트", "web"), "food", "1234", 2),
-//                Account("카카오뱅크", "카카오뱅크 체크카드", Category(1, "신용카드", "credit_card"), "geography", "1234", 3),                Account("회사", "회사현관 출입번호", Category(2, "도어락", "home"), "geography", "1234", 1)
         )
 
         /**

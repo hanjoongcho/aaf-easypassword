@@ -10,8 +10,10 @@
     <dimen name="intro_company_text">15dp</dimen>
     <dimen name="intro_app_text">20dp</dimen>
 
-    SecurityDetailActivityvity-->
+    <!--SecurityDetailActivity-->
     <dimen name="account_detail_padding">20dp</dimen>
+
+    <!--PatternActivity-->
 
     <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
     <!--++++ xlarge layout                                                        -->

@@ -28,7 +28,7 @@ import io.github.hanjoongcho.utils.PasswordStrengthUtils
  * Created by CHO HANJOONG on 2017-11-18.
  */
 
-class SecurityEditActivity : AppCompatActivity() {
+class SecurityEditActivity : CommonActivity() {
 
     private var mBinding: ActivitySecurityEditBinding? = null
     private var mSecurity: Security? = null
@@ -144,9 +144,13 @@ class SecurityEditActivity : AppCompatActivity() {
                     binding.accountContainer.visibility = View.VISIBLE
                     binding.creditCardContainer.visibility = View.GONE
                 }
-                else -> {
+                1 -> {
                     binding.accountContainer.visibility = View.GONE
                     binding.creditCardContainer.visibility = View.VISIBLE
+                }
+                else -> {
+                    binding.accountContainer.visibility = View.GONE
+                    binding.creditCardContainer.visibility = View.GONE
                 }
             }
         }

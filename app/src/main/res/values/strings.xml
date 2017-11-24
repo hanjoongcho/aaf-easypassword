@@ -19,14 +19,15 @@
     <string name="pattern_lock_activity_setting_lock_message">잠금 패턴을 설정하세요.</string>
     <string name="pattern_lock_activity_verify_message">설정된 잠금 패턴을 한번 더 입력하세요.</string>
     <string name="pattern_lock_activity_verify_reject">잠금 패턴 검증에 실패했습니다.</string>
+    <string name="pattern_lock_progress_message">관리목록 암호화중...</string>
 
-    SecuritySelectionActivityvity-->
+    <!--SecuritySelectionActivityvity-->
     <string name="account_selection_title">관리목록</string>
 
-    SecurityDetailActivityvity-->
+    <!--SecurityDetailActivityvity-->
     <string name="account_detail_title">상세정보</string>
 
-    SecurityEditActivityvity-->
+    <!--SecurityEditActivityvity-->
     <string name="account_edit_title">관리항목 수정</string>
 
     <!--AccountAddActivity-->
@@ -44,17 +45,6 @@
     <string name="setting_google_drive_recovery_summary">구글드라이브에 저장된 관리계정 데이터를 복구합니다.</string>
     <string name="setting_license_url">https://github.com/hanjoongcho/aaf-easypassword/blob/master/LICENSE.md</string>
 
-    <string name="last_initial">Last Initial</string>
-    <string name="first_name">First Name</string>
-    <string name="sign_in">Sign In</string>
-    <string name="choose_avatar">Choose an Avatar</string>
-    <string name="an_avatar">An Avatar</string>
-    <string name="quiz_of_quizzes">%1$d / %2$d</string>
-    <string name="btn_true">True</string>
-    <string name="btn_false">False</string>
-    <string name="category">Category</string>
-    <string name="sign_out">Sign out</string>
-    <string name="x_points">%1$d pts</string>
-    <string name="back">back</string>
-
+    <!--AesUtils-->
+    <string name="aes_utils_decrypt_error">암호화된 데이터를 현재 설정한 패턴으로 복호화 할 수 없습니다.</string>
 </resources>

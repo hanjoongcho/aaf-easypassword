@@ -19,7 +19,6 @@ class SecurityItemBindingHelper {
     companion object {
 
         fun activityAccountDetailBinding(activity: Activity, binding: ActivitySecurityDetailBinding?, security: Security?) {
-
             security?.let { safetySecurity ->
                 binding?.let { it ->
                     val category = it.securityCategory?.selectedItem as Category
@@ -30,9 +29,12 @@ class SecurityItemBindingHelper {
 
                     when (category.index) {
                         0 -> it.accountId?.text = safetySecurity.account?.id
-                        else -> {
+                        1 -> {
                             it.creditCardSerial.text = safetySecurity.creditCard?.serial
                             it.creditCardExpireDate.text = safetySecurity.creditCard?.expireDate
+                        }
+                        else -> {
+
                         }
                     }
                 }
@@ -50,9 +52,12 @@ class SecurityItemBindingHelper {
 
                     when (category.index) {
                         0 -> it.accountId?.setText(safetySecurity.account?.id)
-                        else -> {
+                        1 -> {
                             it.creditCardSerial.setText(safetySecurity.creditCard?.serial)
                             it.creditCardExpireDate.setText(safetySecurity.creditCard?.expireDate)
+                        }
+                        else -> {
+
                         }
                     }
                 }
@@ -75,7 +80,7 @@ class SecurityItemBindingHelper {
                                 null
                         )
                     }
-                    else -> {
+                    1 -> {
                         Security(
                                 null,
                                 it.securityTitle.text.toString(),
@@ -85,6 +90,18 @@ class SecurityItemBindingHelper {
                                 it.securityCategory.selectedItem as Category,
                                 null,
                                 CreditCard(it.creditCardSerial.text.toString(), it.creditCardExpireDate.text.toString())
+                        )
+                    }
+                    else -> {
+                        Security(
+                                null,
+                                it.securityTitle.text.toString(),
+                                it.securityPassword.text.toString(),
+                                strengthLevel,
+                                it.securitySummary.text.toString(),
+                                it.securityCategory.selectedItem as Category,
+                                null,
+                                null
                         )
                     }
                 }
@@ -108,7 +125,7 @@ class SecurityItemBindingHelper {
                                 null
                         )
                     }
-                    else -> {
+                    1 -> {
                         Security(
                                 null,
                                 it.securityTitle.text.toString(),
@@ -120,10 +137,21 @@ class SecurityItemBindingHelper {
                                 CreditCard(it.creditCardSerial.toString(),it.creditCardExpireDate.text.toString())
                         )
                     }
+                    else -> {
+                        Security(
+                                null,
+                                it.securityTitle.text.toString(),
+                                it.securityPassword.text.toString(),
+                                strengthLevel,
+                                it.securitySummary.text.toString(),
+                                it.securityCategory.selectedItem as Category,
+                                null,
+                                null
+                        )
+                    }
                 }
             }
             return security
         }
-
     }
 }

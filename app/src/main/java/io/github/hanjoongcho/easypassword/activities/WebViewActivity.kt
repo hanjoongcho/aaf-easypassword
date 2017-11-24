@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_web_view.*
  * Created by CHO HANJOONG on 2017-11-24.
  */
 
-class WebViewActivity : AppCompatActivity() {
+class WebViewActivity : CommonActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

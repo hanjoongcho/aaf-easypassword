@@ -22,7 +22,7 @@ import io.github.hanjoongcho.easypassword.helper.replaceFragment
  * Created by Administrator on 2017-11-15.
  */
 
-class SecuritySelectionActivity : AppCompatActivity() {
+class SecuritySelectionActivity : CommonActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

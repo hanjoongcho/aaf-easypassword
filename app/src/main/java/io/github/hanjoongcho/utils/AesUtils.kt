@@ -6,6 +6,8 @@ import io.github.hanjoongcho.easypassword.activities.PatternLockActivity
 import com.tozny.crypto.android.AesCbcWithIntegrity
 import com.tozny.crypto.android.AesCbcWithIntegrity.CipherTextIvMac
 import com.tozny.crypto.android.AesCbcWithIntegrity.keyString
+import io.github.hanjoongcho.easypassword.R
+
 /**
  * Created by Administrator on 2017-11-21.
  */
@@ -25,14 +27,19 @@ class AesUtils {
             return civ.toString()
         }
 
-        fun decryptPassword(context: Context, cipherText: String): String? {
+        fun decryptPassword(context: Context, cipherText: String): String {
             val savedPattern = CommonUtils.loadStringPreference(context , PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
-            val key: AesCbcWithIntegrity.SecretKeys = AesCbcWithIntegrity.generateKeyFromPassword(savedPattern, SALT_STRING)
-            var plainText:String? = null
+            return decryptPassword(context, cipherText, savedPattern)
+        }
+
+        fun decryptPassword(context: Context, cipherText: String, patternString: String): String {
+            val key: AesCbcWithIntegrity.SecretKeys = AesCbcWithIntegrity.generateKeyFromPassword(patternString, SALT_STRING)
+            var plainText:String = ""
             try {
                 val cipherTextIvMac = CipherTextIvMac(cipherText)
                 plainText = AesCbcWithIntegrity.decryptString(cipherTextIvMac, AesCbcWithIntegrity.keys(keyString(key)))
             } catch (e: Exception) {
+                plainText = context.getString(R.string.aes_utils_decrypt_error)
             }
             return plainText
         }
