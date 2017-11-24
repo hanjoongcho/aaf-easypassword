@@ -34,17 +34,48 @@
                     </android.support.v7.widget.Toolbar>
                 </android.support.design.widget.AppBarLayout>
 
+                <!--Common-->
                 <LinearLayout
                     style="@style/AccountEditItemContainer">
                     <TextView
                         android:text="@string/account_manage_category"
                         style="@style/AccountEditLabel" />
                     <Spinner
-                        android:id="@+id/account_manage_category"
+                        android:id="@+id/security_category"
                         android:spinnerMode="dropdown"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                     </Spinner>
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/AccountEditItemContainer">
+                    <TextView
+                        android:text="@string/account_manage_target"
+                        style="@style/AccountEditLabel" />
+                    <EditText
+                        style="@style/AccountEditInputText"
+                        android:id="@+id/security_title" />
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/AccountEditItemContainer">
+                    <TextView
+                        android:text="@string/account_password"
+                        style="@style/AccountEditLabel" />
+                    <EditText
+                        style="@style/AccountEditInputText"
+                        android:id="@+id/security_password" />
+                    <include
+                        android:id="@+id/included"
+                        layout="@layout/view_password_strength" />
+                </LinearLayout>
+                <LinearLayout
+                    style="@style/AccountEditItemContainer">
+                    <TextView
+                        android:text="@string/account_summary"
+                        style="@style/AccountEditLabel" />
+                    <EditText
+                        style="@style/AccountEditInputText"
+                        android:id="@+id/security_summary" />
                 </LinearLayout>
 
                 <!--Security Account-->
@@ -57,44 +88,11 @@
                     <LinearLayout
                         style="@style/AccountEditItemContainer">
                         <TextView
-                            android:text="@string/account_manage_target"
-                            style="@style/AccountEditLabel" />
-                        <EditText
-                            style="@style/AccountEditInputText"
-                            android:id="@+id/account_manage_target" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        style="@style/AccountEditItemContainer">
-                        <TextView
                             android:text="@string/account_id"
                             style="@style/AccountEditLabel" />
                         <EditText
                             style="@style/AccountEditInputText"
                             android:id="@+id/account_id" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        style="@style/AccountEditItemContainer">
-                        <TextView
-                            android:text="@string/account_password"
-                            style="@style/AccountEditLabel" />
-                        <EditText
-                            style="@style/AccountEditInputText"
-                            android:id="@+id/account_password" />
-                        <include
-                            android:id="@+id/included"
-                            layout="@layout/view_password_strength" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        style="@style/AccountEditItemContainer">
-                        <TextView
-                            android:text="@string/account_summary"
-                            style="@style/AccountEditLabel" />
-                        <EditText
-                            style="@style/AccountEditInputText"
-                            android:id="@+id/account_summary" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -105,16 +103,6 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <LinearLayout
-                        style="@style/AccountEditItemContainer">
-                        <TextView
-                            android:text="@string/credit_card_target"
-                            style="@style/AccountEditLabel" />
-                        <EditText
-                            style="@style/AccountEditInputText"
-                            android:id="@+id/credit_card_target" />
-                    </LinearLayout>
-
                     <LinearLayout
                         style="@style/AccountEditItemContainer">
                         <TextView
@@ -133,26 +121,6 @@
                         <EditText
                             style="@style/AccountEditInputText"
                             android:id="@+id/credit_card_expire_date" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        style="@style/AccountEditItemContainer">
-                        <TextView
-                            android:text="@string/credit_card_password"
-                            style="@style/AccountEditLabel" />
-                        <EditText
-                            style="@style/AccountEditInputText"
-                            android:id="@+id/credit_card_password" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        style="@style/AccountEditItemContainer">
-                        <TextView
-                            android:text="@string/credit_card_summary"
-                            style="@style/AccountEditLabel" />
-                        <EditText
-                            style="@style/AccountEditInputText"
-                            android:id="@+id/credit_card_summary" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

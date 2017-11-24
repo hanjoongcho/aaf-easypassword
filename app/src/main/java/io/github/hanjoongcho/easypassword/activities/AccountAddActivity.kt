@@ -66,14 +66,14 @@ class AccountAddActivity : AppCompatActivity() {
 
         mBinding?.let { binding ->
             binding.save.setOnClickListener(View.OnClickListener { _ ->
-                val security: Security? = SecurityItemBindingHelper.getSecurityFromLayout(mBinding, binding.accountManageCategory.selectedItem as Category, mTempStrengthLevel)
+                val security: Security? = SecurityItemBindingHelper.getSecurityFromLayout(mBinding, binding.securityCategory.selectedItem as Category, mTempStrengthLevel)
                 security?.let {
                     this@AccountAddActivity.database().insertSecurity(it)
                     this@AccountAddActivity.onBackPressed()
                 }
             })
 
-            binding.accountPassword.addTextChangedListener(object : TextWatcher {
+            binding.securityPassword.addTextChangedListener(object : TextWatcher {
                 override fun afterTextChanged(s: Editable?) {
                 }
 
@@ -101,7 +101,7 @@ class AccountAddActivity : AppCompatActivity() {
 
     private fun changeCategoryContainer() {
         mBinding?.let { binding ->
-            val item: Category = binding.accountManageCategory.selectedItem as Category
+            val item: Category = binding.securityCategory.selectedItem as Category
             when (item.index) {
                 0 -> {
                     binding.accountContainer.visibility = View.VISIBLE
@@ -118,8 +118,8 @@ class AccountAddActivity : AppCompatActivity() {
     private fun initCategorySpinner() {
         val adapter: ArrayAdapter<Category> = AccountCategoryAdapter(this@AccountAddActivity, R.layout.item_category, listCategory)
         mBinding?.let { binding ->
-            binding.accountManageCategory.adapter = adapter
-            binding.accountManageCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            binding.securityCategory.adapter = adapter
+            binding.securityCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) {
                 }
 

@@ -1,6 +1,7 @@
 package io.github.hanjoongcho.easypassword.helper
 
 import android.app.Activity
+import android.view.View
 import io.github.hanjoongcho.easypassword.activities.AccountAddActivity
 import io.github.hanjoongcho.easypassword.databinding.ActivityAccountAddBinding
 import io.github.hanjoongcho.easypassword.databinding.ActivityAccountDetailBinding
@@ -19,13 +20,21 @@ class SecurityItemBindingHelper {
     companion object {
 
         fun activityAccountDetailBinding(activity: Activity, binding: ActivityAccountDetailBinding?, security: Security?) {
+            val category = binding?.securityCategory?.selectedItem as Category
             security?.let { security ->
                 binding?.let { binding ->
-                    binding.accountId?.text = security.account?.id
-                    binding.accountPassword?.text = security.password
-                    binding.accountSummary?.text = security.summary
-                    binding.accountManageTarget?.text = security.title
+                    binding.securityPassword.text = security.password
+                    binding.securitySummary.text = security.summary
+                    binding.securityTitle.text = security.title
                     AccountAddActivity.setPasswordStrengthLevel(activity, security.passwordStrengthLevel, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
+
+                    when (category.index) {
+                        0 -> binding.accountId?.text = security.account?.id
+                        else -> {
+                            binding.creditCardSerial.text = security.creditCard?.serial
+                            binding.creditCardExpireDate.text = security.creditCard?.expireDate
+                        }
+                    }
                 }
             }
         }
@@ -82,11 +91,11 @@ class SecurityItemBindingHelper {
                     0 -> {
                         Security(
                                 null,
-                                binding.accountManageTarget.text.toString(),
-                                binding.accountPassword.text.toString(),
+                                binding.securityTitle.text.toString(),
+                                binding.securityPassword.text.toString(),
                                 strengthLevel,
-                                binding.accountSummary.text.toString(),
-                                binding.accountManageCategory.selectedItem as Category,
+                                binding.securitySummary.text.toString(),
+                                binding.securityCategory.selectedItem as Category,
                                 Account(binding.accountId.text.toString()),
                                 null
                         )
@@ -94,11 +103,11 @@ class SecurityItemBindingHelper {
                     else -> {
                         Security(
                                 null,
-                                binding.creditCardTarget.text.toString(),
-                                binding.creditCardPassword.text.toString(),
+                                binding.securityTitle.text.toString(),
+                                binding.securityPassword.text.toString(),
                                 strengthLevel,
-                                binding.creditCardSummary.text.toString(),
-                                binding.accountManageCategory.selectedItem as Category,
+                                binding.securitySummary.text.toString(),
+                                binding.securityCategory.selectedItem as Category,
                                 null,
                                 CreditCard(binding.creditCardSerial.toString(),binding.creditCardExpireDate.text.toString())
                         )

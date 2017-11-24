@@ -57,21 +57,23 @@ class AccountDetailActivity : AppCompatActivity() {
                 view.visibility = View.INVISIBLE
                 binding.decProgress.visibility = View.VISIBLE
                 Thread(Runnable {
-                    val decryptedPassword = AesUtils.decryptPassword(this@AccountDetailActivity, binding.accountPassword.text.toString())
+                    val decryptedPassword = AesUtils.decryptPassword(this@AccountDetailActivity, binding.securityPassword.text.toString())
                     Handler(Looper.getMainLooper()).post(Runnable {
-                        binding.accountPassword.text = decryptedPassword
+                        binding.securityPassword.text = decryptedPassword
                         binding.decProgress.visibility = View.INVISIBLE
                     })
                 }).start()
             }
         }
+
+        changeCategoryContainer()
     }
 
     private fun initCategorySpinner() {
         val adapter: ArrayAdapter<Category> = AccountCategoryAdapter(this@AccountDetailActivity, R.layout.item_category, AccountAddActivity.listCategory)
-        mBinding?.accountManageCategory?.adapter = adapter
-        mBinding?.accountManageCategory?.setSelection(mSecurity?.category?.index ?: 0)
-        mBinding?.accountManageCategory?.isEnabled = false
+        mBinding?.securityCategory?.adapter = adapter
+        mBinding?.securityCategory?.setSelection(mSecurity?.category?.index ?: 0)
+        mBinding?.securityCategory?.isEnabled = false
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -101,6 +103,22 @@ class AccountDetailActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         refreshItem()
+    }
+
+    private fun changeCategoryContainer() {
+        mBinding?.let { binding ->
+            val item: Category = binding.securityCategory.selectedItem as Category
+            when (item.index) {
+                0 -> {
+                    binding.accountContainer.visibility = View.VISIBLE
+                    binding.creditCardContainer.visibility = View.GONE
+                }
+                else -> {
+                    binding.accountContainer.visibility = View.GONE
+                    binding.creditCardContainer.visibility = View.VISIBLE
+                }
+            }
+        }
     }
 
     companion object {
