@@ -19,10 +19,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.PatternLockActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
-        <activity android:name=".activities.AccountSelectionActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
-        <activity android:name=".activities.AccountDetailActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activities.AccountEditActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:windowSoftInputMode="adjustResize" android:screenOrientation="portrait" />
-        <activity android:name=".activities.AccountAddActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:windowSoftInputMode="adjustResize" android:screenOrientation="portrait" />
+        <activity android:name=".activities.SecuritySelectionActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
+        <activity android:name=".activities.SecurityDetailActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activities.SecurityEditActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:windowSoftInputMode="adjustResize" android:screenOrientation="portrait" />
+        <activity android:name=".activities.SecurityAddActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:windowSoftInputMode="adjustResize" android:screenOrientation="portrait" />
         <activity android:name="com.google.android.gms.drive.GoogleDriveUploader" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
         <activity android:name="com.google.android.gms.drive.GoogleDriveDownloader" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
         <activity android:name=".activities.SettingActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />

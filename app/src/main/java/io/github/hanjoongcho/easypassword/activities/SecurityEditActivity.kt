@@ -15,11 +15,10 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import io.github.hanjoongcho.easypassword.R
-import io.github.hanjoongcho.easypassword.adpaters.AccountCategoryAdapter
-import io.github.hanjoongcho.easypassword.databinding.ActivityAccountEditBinding
+import io.github.hanjoongcho.easypassword.adpaters.SecurityCategoryAdapter
+import io.github.hanjoongcho.easypassword.databinding.ActivitySecurityEditBinding
 import io.github.hanjoongcho.easypassword.helper.SecurityItemBindingHelper
 import io.github.hanjoongcho.easypassword.helper.database
-import io.github.hanjoongcho.easypassword.models.Account
 import io.github.hanjoongcho.easypassword.models.Category
 import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.utils.AesUtils
@@ -29,22 +28,22 @@ import io.github.hanjoongcho.utils.PasswordStrengthUtils
  * Created by CHO HANJOONG on 2017-11-18.
  */
 
-class AccountEditActivity : AppCompatActivity() {
+class SecurityEditActivity : AppCompatActivity() {
 
-    private var mBinding: ActivityAccountEditBinding? = null
+    private var mBinding: ActivitySecurityEditBinding? = null
     private var mSecurity: Security? = null
     private var mSequence:Int = -1
     private var mTempStrengthLevel = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_account_edit)
+        setContentView(R.layout.activity_security_edit)
         mSequence = intent.getIntExtra(Security.PRIMARY_KEY, -1)
-        mSecurity = this@AccountEditActivity.database().selectSecurityBy(mSequence)
+        mSecurity = this@SecurityEditActivity.database().selectSecurityBy(mSequence)
         mTempStrengthLevel = mSecurity?.passwordStrengthLevel ?: 1
 
-        mBinding = DataBindingUtil.setContentView<ActivityAccountEditBinding>(this,
-                R.layout.activity_account_edit)
+        mBinding = DataBindingUtil.setContentView<ActivitySecurityEditBinding>(this,
+                R.layout.activity_security_edit)
 
         setSupportActionBar(mBinding?.toolbarPlayer)
         supportActionBar?.run {
@@ -57,19 +56,19 @@ class AccountEditActivity : AppCompatActivity() {
 
         val encryptedPassword = mSecurity?.password
         Thread({
-            val decryptedPassword = AesUtils.decryptPassword(this@AccountEditActivity, encryptedPassword!!)
+            val decryptedPassword = AesUtils.decryptPassword(this@SecurityEditActivity, encryptedPassword!!)
             Handler(Looper.getMainLooper()).post {
                 mBinding?.securityPassword?.setText(decryptedPassword)
                 mBinding?.loadingProgress?.visibility = View.INVISIBLE
             }
         }).start()
 
-        SecurityItemBindingHelper.activityAccountEditBinding(this@AccountEditActivity, mBinding, mSecurity)
+        SecurityItemBindingHelper.activityAccountEditBinding(this@SecurityEditActivity, mBinding, mSecurity)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            android.R.id.home -> this@AccountEditActivity.onBackPressed()
+            android.R.id.home -> this@SecurityEditActivity.onBackPressed()
             else -> {
             }
         }
@@ -77,7 +76,7 @@ class AccountEditActivity : AppCompatActivity() {
     }
 
     //    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        menuInflater.inflate(R.menu.account_detail, menu)
+//        menuInflater.inflate(R.menu.security_detail, menu)
 //        return true
 //    }
 
@@ -88,8 +87,8 @@ class AccountEditActivity : AppCompatActivity() {
                 val security: Security? = SecurityItemBindingHelper.getSecurityFromLayout(mBinding, binding.securityCategory.selectedItem as Category, mTempStrengthLevel)
                 security?.let {
                     it.sequence = mSequence
-                    this@AccountEditActivity.database().updateSecurity(it)
-                    this@AccountEditActivity.onBackPressed()
+                    this@SecurityEditActivity.database().updateSecurity(it)
+                    this@SecurityEditActivity.onBackPressed()
                 }
             })
 
@@ -112,7 +111,7 @@ class AccountEditActivity : AppCompatActivity() {
                     val level = PasswordStrengthUtils.getScore(s.toString())
                     if (level != mTempStrengthLevel) {
                         mTempStrengthLevel = level
-                        AccountAddActivity.setPasswordStrengthLevel(this@AccountEditActivity, mTempStrengthLevel, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
+                        SecurityAddActivity.setPasswordStrengthLevel(this@SecurityEditActivity, mTempStrengthLevel, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
                     }
                     Log.i(TAG, level.toString())
                 }
@@ -121,7 +120,7 @@ class AccountEditActivity : AppCompatActivity() {
     }
 
     private fun initCategorySpinner() {
-        val adapter: ArrayAdapter<Category> = AccountCategoryAdapter(this@AccountEditActivity, R.layout.item_category, AccountAddActivity.listCategory)
+        val adapter: ArrayAdapter<Category> = SecurityCategoryAdapter(this@SecurityEditActivity, R.layout.item_category, SecurityAddActivity.listCategory)
         mBinding?.let { binding ->
             binding.securityCategory.adapter = adapter
             binding.securityCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -153,10 +152,10 @@ class AccountEditActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val TAG = "AccountEditActivity"
+        const val TAG = "SecurityEditActivity"
 
         fun getStartIntent(context: Context, sequence: Int): Intent {
-            return Intent(context, AccountEditActivity::class.java)
+            return Intent(context, SecurityEditActivity::class.java)
                     .apply { putExtra(Security.PRIMARY_KEY, sequence) }
         }
     }

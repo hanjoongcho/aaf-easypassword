@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_intro.*
 
 class IntroActivity : AppCompatActivity(), Handler.Callback {
 
-    var initCount = 0;
+    private var mInitCount = 0;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +31,7 @@ class IntroActivity : AppCompatActivity(), Handler.Callback {
 
     override fun onResume() {
         super.onResume()
-        if (initCount++ < 1) {
+        if (mInitCount++ < 1) {
             Handler(this).sendEmptyMessageDelayed(START_MAIN_ACTIVITY, 1500)
         } else {
             finish()

@@ -21,13 +21,13 @@
     <string name="pattern_lock_activity_verify_message">설정된 잠금 패턴을 한번 더 입력하세요.</string>
     <string name="pattern_lock_activity_verify_reject">잠금 패턴 검증에 실패했습니다.</string>
 
-    <!--AccountSelectionActivity-->
+    SecuritySelectionActivityvity-->
     <string name="account_selection_title">관리목록</string>
 
-    <!--AccountDetailActivity-->
+    SecurityDetailActivityvity-->
     <string name="account_detail_title">상세정보</string>
 
-    <!--AccountEditActivity-->
+    SecurityEditActivityvity-->
     <string name="account_edit_title">관리항목 수정</string>
 
     <!--AccountAddActivity-->

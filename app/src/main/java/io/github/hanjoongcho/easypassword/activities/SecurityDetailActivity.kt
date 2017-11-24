@@ -11,36 +11,34 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
 import io.github.hanjoongcho.easypassword.R
-import io.github.hanjoongcho.easypassword.adpaters.AccountCategoryAdapter
-import io.github.hanjoongcho.easypassword.databinding.ActivityAccountDetailBinding
+import io.github.hanjoongcho.easypassword.adpaters.SecurityCategoryAdapter
+import io.github.hanjoongcho.easypassword.databinding.ActivitySecurityDetailBinding
 import io.github.hanjoongcho.easypassword.helper.SecurityItemBindingHelper
 import io.github.hanjoongcho.easypassword.helper.TransitionHelper
 import io.github.hanjoongcho.easypassword.helper.database
-import io.github.hanjoongcho.easypassword.models.Account
 import io.github.hanjoongcho.easypassword.models.Category
 import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.utils.AesUtils
-import kotlinx.android.synthetic.main.activity_account_detail.view.*
 
 /**
  * Created by CHO HANJOONG on 2017-11-18.
  */
 
-class AccountDetailActivity : AppCompatActivity() {
+class SecurityDetailActivity : AppCompatActivity() {
 
-    private var mBinding: ActivityAccountDetailBinding? = null
+    private var mBinding: ActivitySecurityDetailBinding? = null
     private var mSecurity: Security? = null
     private var mSequence:Int = -1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_account_detail)
+        setContentView(R.layout.activity_security_detail)
         mSequence = intent.getIntExtra(Security.PRIMARY_KEY, -1)
 
 
         mBinding = DataBindingUtil
-                .setContentView<ActivityAccountDetailBinding>(this,
-                        R.layout.activity_account_detail)
+                .setContentView<ActivitySecurityDetailBinding>(this,
+                        R.layout.activity_security_detail)
 
         setSupportActionBar(mBinding?.toolbarPlayer)
         supportActionBar?.run {
@@ -48,8 +46,9 @@ class AccountDetailActivity : AppCompatActivity() {
         }
 
         mBinding?.update?.setOnClickListener(View.OnClickListener { _ ->
-            startActivity(AccountEditActivity.getStartIntent(this@AccountDetailActivity, mSequence))
-//            TransitionHelper.startSettingActivityWithTransition(this@AccountDetailActivity, AccountEditActivity.getStartIntent(this@AccountDetailActivity, mSequence))
+//            val intent = SecurityEditActivity.getStartIntent(this@SecurityDetailActivity, mSequence)
+//            startActivity(intent)
+            TransitionHelper.startSettingActivityWithTransition(this@SecurityDetailActivity, SecurityEditActivity.getStartIntent(this@SecurityDetailActivity, mSequence))
         })
 
         mBinding?.let { binding ->
@@ -57,7 +56,7 @@ class AccountDetailActivity : AppCompatActivity() {
                 view.visibility = View.INVISIBLE
                 binding.decProgress.visibility = View.VISIBLE
                 Thread(Runnable {
-                    val decryptedPassword = AesUtils.decryptPassword(this@AccountDetailActivity, binding.securityPassword.text.toString())
+                    val decryptedPassword = AesUtils.decryptPassword(this@SecurityDetailActivity, binding.securityPassword.text.toString())
                     Handler(Looper.getMainLooper()).post(Runnable {
                         binding.securityPassword.text = decryptedPassword
                         binding.decProgress.visibility = View.INVISIBLE
@@ -68,7 +67,7 @@ class AccountDetailActivity : AppCompatActivity() {
     }
 
     private fun initCategorySpinner() {
-        val adapter: ArrayAdapter<Category> = AccountCategoryAdapter(this@AccountDetailActivity, R.layout.item_category, AccountAddActivity.listCategory)
+        val adapter: ArrayAdapter<Category> = SecurityCategoryAdapter(this@SecurityDetailActivity, R.layout.item_category, SecurityAddActivity.listCategory)
         mBinding?.securityCategory?.adapter = adapter
         mBinding?.securityCategory?.setSelection(mSecurity?.category?.index ?: 0)
         mBinding?.securityCategory?.isEnabled = false
@@ -76,7 +75,7 @@ class AccountDetailActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            android.R.id.home ->  this@AccountDetailActivity.onBackPressed()
+            android.R.id.home ->  this@SecurityDetailActivity.onBackPressed()
             R.id.edit -> {
             }
             R.id.save -> {
@@ -88,15 +87,15 @@ class AccountDetailActivity : AppCompatActivity() {
     }
 
 //    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        menuInflater.inflate(R.menu.account_detail, menu)
+//        menuInflater.inflate(R.menu.security_detail, menu)
 //        return true
 //    }
 
     private fun refreshItem() {
-        mSecurity = this@AccountDetailActivity.database().selectSecurityBy(mSequence)
+        mSecurity = this@SecurityDetailActivity.database().selectSecurityBy(mSequence)
         initCategorySpinner()
         changeCategoryContainer()
-        SecurityItemBindingHelper.activityAccountDetailBinding(this@AccountDetailActivity, mBinding, mSecurity)
+        SecurityItemBindingHelper.activityAccountDetailBinding(this@SecurityDetailActivity, mBinding, mSecurity)
     }
 
     override fun onResume() {
@@ -122,7 +121,7 @@ class AccountDetailActivity : AppCompatActivity() {
 
     companion object {
         fun getStartIntent(context: Context, security: Security): Intent {
-            return Intent(context, AccountDetailActivity::class.java)
+            return Intent(context, SecurityDetailActivity::class.java)
                     .apply { putExtra(Security.PRIMARY_KEY, security.sequence) }
         }
     }

@@ -16,28 +16,31 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import io.github.hanjoongcho.easypassword.R
-import io.github.hanjoongcho.easypassword.adpaters.AccountCategoryAdapter
-import io.github.hanjoongcho.easypassword.databinding.ActivityAccountAddBinding
+import io.github.hanjoongcho.easypassword.adpaters.SecurityCategoryAdapter
+import io.github.hanjoongcho.easypassword.databinding.ActivitySecurityAddBinding
 import io.github.hanjoongcho.easypassword.helper.SecurityItemBindingHelper
 import io.github.hanjoongcho.easypassword.helper.database
-import io.github.hanjoongcho.easypassword.models.*
+import io.github.hanjoongcho.easypassword.models.Account
+import io.github.hanjoongcho.easypassword.models.Category
+import io.github.hanjoongcho.easypassword.models.CreditCard
+import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.utils.PasswordStrengthUtils
 
 /**
  * Created by CHO HANJOONG on 2017-11-18.
  */
 
-class AccountAddActivity : AppCompatActivity() {
+class SecurityAddActivity : AppCompatActivity() {
 
-    private var mBinding: ActivityAccountAddBinding? = null
+    private var mBinding: ActivitySecurityAddBinding? = null
     private var mTempStrengthLevel = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_account_add)
+        setContentView(R.layout.activity_security_add)
 
-        mBinding = DataBindingUtil.setContentView<ActivityAccountAddBinding>(this,
-                R.layout.activity_account_add)
+        mBinding = DataBindingUtil.setContentView<ActivitySecurityAddBinding>(this,
+                R.layout.activity_security_add)
 
         setSupportActionBar(mBinding?.toolbarPlayer)
         supportActionBar?.run {
@@ -50,7 +53,7 @@ class AccountAddActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            android.R.id.home -> this@AccountAddActivity.onBackPressed()
+            android.R.id.home -> this@SecurityAddActivity.onBackPressed()
             else -> {
             }
         }
@@ -58,7 +61,7 @@ class AccountAddActivity : AppCompatActivity() {
     }
 
     //    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-//        menuInflater.inflate(R.menu.account_detail, menu)
+//        menuInflater.inflate(R.menu.security_detail, menu)
 //        return true
 //    }
 
@@ -68,8 +71,8 @@ class AccountAddActivity : AppCompatActivity() {
             binding.save.setOnClickListener(View.OnClickListener { _ ->
                 val security: Security? = SecurityItemBindingHelper.getSecurityFromLayout(mBinding, binding.securityCategory.selectedItem as Category, mTempStrengthLevel)
                 security?.let {
-                    this@AccountAddActivity.database().insertSecurity(it)
-                    this@AccountAddActivity.onBackPressed()
+                    this@SecurityAddActivity.database().insertSecurity(it)
+                    this@SecurityAddActivity.onBackPressed()
                 }
             })
 
@@ -84,8 +87,8 @@ class AccountAddActivity : AppCompatActivity() {
                     val level = PasswordStrengthUtils.getScore(s.toString())
                     if (level != mTempStrengthLevel) {
                         mTempStrengthLevel = level
-                        AccountAddActivity.setPasswordStrengthLevel(
-                                this@AccountAddActivity,
+                        SecurityAddActivity.setPasswordStrengthLevel(
+                                this@SecurityAddActivity,
                                 mTempStrengthLevel,
                                 binding.included.level1,
                                 binding.included.level2,
@@ -116,7 +119,7 @@ class AccountAddActivity : AppCompatActivity() {
     }
 
     private fun initCategorySpinner() {
-        val adapter: ArrayAdapter<Category> = AccountCategoryAdapter(this@AccountAddActivity, R.layout.item_category, listCategory)
+        val adapter: ArrayAdapter<Category> = SecurityCategoryAdapter(this@SecurityAddActivity, R.layout.item_category, listCategory)
         mBinding?.let { binding ->
             binding.securityCategory.adapter = adapter
             binding.securityCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -131,7 +134,7 @@ class AccountAddActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun getStartIntent(context: Context): Intent = Intent(context, AccountAddActivity::class.java)
+        fun getStartIntent(context: Context): Intent = Intent(context, SecurityAddActivity::class.java)
         val listCategory: List<Category> = mutableListOf(
                 Category(0, "웹사이트", "web"),
                 Category(1, "신용카드", "credit_card"),

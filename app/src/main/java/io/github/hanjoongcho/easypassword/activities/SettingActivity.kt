@@ -5,16 +5,12 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.telecom.Call
-import android.view.KeyEvent
 import android.view.MenuItem
 import com.google.android.gms.drive.GoogleDriveDownloader
 import com.google.android.gms.drive.GoogleDriveUploader
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.helper.TransitionHelper
 import kotlinx.android.synthetic.main.activity_setting.*
-import android.view.KeyEvent.KEYCODE_BACK
-
 
 
 /**
@@ -63,7 +59,7 @@ class SettingActivity : AppCompatActivity() {
     }
 
     private fun initPreference() {
-        prefSummary8.text = "Easy Diary v ${getPackageVersion()}"
+        prefSummary8.text = "Easy Password v ${getPackageVersion()}"
     }
 
     private fun getPackageVersion(): String? {

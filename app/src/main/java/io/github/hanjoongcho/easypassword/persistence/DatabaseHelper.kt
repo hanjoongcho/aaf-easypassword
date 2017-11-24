@@ -1,7 +1,7 @@
 package io.github.hanjoongcho.easypassword.persistence
 
 import android.content.Context
-import io.github.hanjoongcho.easypassword.activities.AccountAddActivity
+import io.github.hanjoongcho.easypassword.activities.SecurityAddActivity
 import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.utils.AesUtils
 import io.realm.Realm
@@ -49,7 +49,7 @@ class DatabaseHelper private constructor(
 
     fun initDatabase() {
         if (countSecurity() < 1) {
-            AccountAddActivity.listDummySecurity.map {
+            SecurityAddActivity.listDummySecurity.map {
                 insertSecurity(it)
             }
         }
@@ -71,7 +71,7 @@ class DatabaseHelper private constructor(
     }
 
     fun selectSecurityAll(): ArrayList<Security> {
-        val realmResults = realmInstance.where(Security::class.java).findAllSorted("title", Sort.ASCENDING)
+        val realmResults = realmInstance.where(Security::class.java).findAllSorted(SECURITY_TITLE, Sort.ASCENDING)
         val list = ArrayList<Security>()
         list.addAll(realmResults.subList(0, realmResults.size))
         return list
@@ -92,6 +92,7 @@ class DatabaseHelper private constructor(
 
     companion object {
 
+        const val SECURITY_TITLE = "title"
         const val DIARY_DB_NAME = "easy-password.realm"
 
         private var _instance: DatabaseHelper? = null

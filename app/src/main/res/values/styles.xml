@@ -138,9 +138,9 @@
         <item name="android:layout_height">5dp</item>
     </style>
 
-    <!--AccountSelectionFragment-->
+    SecuritySelectionFragmentment-->
 
-    <!--AccountDetailActivity-->
+    SecurityDetailActivityvity-->
     <style name="AccountDetailItemContainer">
         <item name="android:orientation">vertical</item>
         <item name="android:paddingTop">@dimen/account_detail_padding</item>
@@ -162,7 +162,7 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <!--AccountEditActivity-->
+    SecurityEditActivityvity-->
     <style name="AccountEditItemContainer" parent="AccountDetailItemContainer">
     </style>
     <style name="AccountEditLabel" parent="AccountDetailLabel">

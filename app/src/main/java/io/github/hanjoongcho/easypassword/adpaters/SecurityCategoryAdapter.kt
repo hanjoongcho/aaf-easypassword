@@ -14,7 +14,7 @@ import io.github.hanjoongcho.easypassword.models.Category
  * Created by CHO HANJOONG on 2017-11-19.
  */
 
-class AccountCategoryAdapter(
+class SecurityCategoryAdapter(
         private val mContext: Context, private val mLayoutResourceId: Int, private val mList: List<Category>
 ) : ArrayAdapter<Category>(mContext, mLayoutResourceId, mList) {
 

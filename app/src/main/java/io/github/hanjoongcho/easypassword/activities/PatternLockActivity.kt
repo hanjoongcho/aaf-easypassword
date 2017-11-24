@@ -80,15 +80,15 @@ class PatternLockActivity : AppCompatActivity() {
 //            builder.setMessage(patternLockCompleteEvent.pattern.toString())
 //            builder.setPositiveButton("OK", DialogInterface.OnClickListener({ _, _ ->
 //                finish()
-//                AccountSelectionActivity.start(this@PatternLockActivity)
+//                SecuritySelectionActivity.start(this@PatternLockActivity)
 //            }))
 //            builder.create().show()
             when (mMode) {
                 UNLOCK -> {
                     val savedPattern = CommonUtils.loadStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
                     if (savedPattern == patternLockCompleteEvent.pattern.toString()) {
-//                        AccountSelectionActivity.start(this@PatternLockActivity)
-                        TransitionHelper.startSettingActivityWithTransition(this@PatternLockActivity, AccountSelectionActivity::class.java)
+//                        SecuritySelectionActivity.start(this@PatternLockActivity)
+                        TransitionHelper.startSettingActivityWithTransition(this@PatternLockActivity, SecuritySelectionActivity::class.java)
                         finish()
                     } else {
                         patterLockView.clearPattern()
@@ -111,9 +111,9 @@ class PatternLockActivity : AppCompatActivity() {
                 VERIFY -> {
                     if (intent.getStringExtra(PatternLockActivity.REQUEST_PATTERN) == patternLockCompleteEvent.pattern.toString()) {
                         CommonUtils.saveStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, patternLockCompleteEvent.pattern.toString())
-//                        AccountSelectionActivity.start(this@PatternLockActivity)
+//                        SecuritySelectionActivity.start(this@PatternLockActivity)
                         if (this@PatternLockActivity.database().countSecurity() < 1) {
-                            TransitionHelper.startSettingActivityWithTransition(this@PatternLockActivity, AccountSelectionActivity::class.java)
+                            TransitionHelper.startSettingActivityWithTransition(this@PatternLockActivity, SecuritySelectionActivity::class.java)
                         }
                         finish()
                     } else {
