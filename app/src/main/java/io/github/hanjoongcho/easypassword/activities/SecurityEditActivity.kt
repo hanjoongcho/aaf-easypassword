@@ -58,8 +58,26 @@ class SecurityEditActivity : AppCompatActivity() {
         Thread({
             val decryptedPassword = AesUtils.decryptPassword(this@SecurityEditActivity, encryptedPassword!!)
             Handler(Looper.getMainLooper()).post {
-                mBinding?.securityPassword?.setText(decryptedPassword)
-                mBinding?.loadingProgress?.visibility = View.INVISIBLE
+                mBinding?.let { binding ->
+                    binding.securityPassword?.setText(decryptedPassword)
+                    binding.loadingProgress?.visibility = View.INVISIBLE
+                    binding.securityPassword.addTextChangedListener(object : TextWatcher {
+                        override fun afterTextChanged(s: Editable?) {
+                        }
+
+                        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                        }
+
+                        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                            val level = PasswordStrengthUtils.getScore(s.toString())
+                            if (level != mTempStrengthLevel) {
+                                mTempStrengthLevel = level
+                                SecurityAddActivity.setPasswordStrengthLevel(this@SecurityEditActivity, mTempStrengthLevel, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
+                            }
+                            Log.i(TAG, level.toString())
+                        }
+                    })
+                }
             }
         }).start()
 
@@ -99,23 +117,6 @@ class SecurityEditActivity : AppCompatActivity() {
 //                    }
 //                }
 //            })
-
-            binding.securityPassword.addTextChangedListener(object : TextWatcher {
-                override fun afterTextChanged(s: Editable?) {
-                }
-
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    val level = PasswordStrengthUtils.getScore(s.toString())
-                    if (level != mTempStrengthLevel) {
-                        mTempStrengthLevel = level
-                        SecurityAddActivity.setPasswordStrengthLevel(this@SecurityEditActivity, mTempStrengthLevel, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
-                    }
-                    Log.i(TAG, level.toString())
-                }
-            })
         }
     }
 
