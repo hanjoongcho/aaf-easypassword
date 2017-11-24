@@ -1,6 +1,6 @@
 # License
 
-### aaf-aaf-easypassword
+### aaf-easypassword
 https://github.com/hanjoongcho/aaf-easypassword
 ```
 Copyright 2017 Hanjoong Cho
@@ -98,4 +98,74 @@ of this document.
 Graphic Resources S.L
 Commercial Registry of Málaga, volume 4994, sheet 217, page number MA-113059, with Tax Number B-
 93183366 and registered office at 13 Molina Lario Street, 5th floor, 29015 Málaga, Spain.
+```
+
+### realm-java
+https://github.com/realm/realm-java
+```
+Realm Java is published under the Apache 2.0 license.
+
+Realm Core is also published under the Apache 2.0 license and is available here.
+
+This product is not being made available to any person located in Cuba, Iran, North Korea, Sudan, Syria or the Crimea region, or to any other person that is not eligible to receive the product under U.S. law.
+```
+
+### commons-lang
+https://github.com/apache/commons-lang
+```
+Code is under the Apache Licence v2.
+```
+
+### commons-io
+https://github.com/apache/commons-io
+```
+Code is under the Apache Licence v2.
+```
+
+### java-aes-crypto
+https://github.com/tozny/java-aes-crypto
+```
+The included MIT license is compatible with open source or commercial products. Tozny also offers custom support and licensing terms if your organization has different needs. Contact us at info@tozny.com for more details.
+```
+
+### nbvcxz
+https://github.com/GoSimpleLLC/nbvcxz
+```
+http://www.opensource.org/licenses/mit-license.php
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
+
+### zxcvbn4j
+https://github.com/nulab/zxcvbn4j
+```
+http://www.opensource.org/licenses/mit-license.php
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+```
+
+### PatternLockView
+https://github.com/aritraroy/PatternLockView
+```
+Copyright 2017 aritraroy
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 ```
