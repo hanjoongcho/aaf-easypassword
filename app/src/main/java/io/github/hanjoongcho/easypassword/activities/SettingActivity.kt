@@ -1,8 +1,10 @@
 package io.github.hanjoongcho.easypassword.activities
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
@@ -55,6 +57,25 @@ class SettingActivity : AppCompatActivity() {
 
         pref3.setOnClickListener {
             TransitionHelper.startSettingActivityWithTransition(this@SettingActivity, GoogleDriveDownloader::class.java)
+        }
+
+        pref8.setOnClickListener {
+            val uri = Uri.parse("market://details?id=io.github.hanjoongcho.easypassword")
+            val goToMarket = Intent(Intent.ACTION_VIEW, uri)
+            goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY or
+                    Intent.FLAG_ACTIVITY_NEW_DOCUMENT or
+                    Intent.FLAG_ACTIVITY_MULTIPLE_TASK)
+            try {
+                TransitionHelper.startSettingActivityWithTransition(this@SettingActivity, goToMarket)
+            } catch (e: ActivityNotFoundException) {
+                val browser = Intent(Intent.ACTION_VIEW,
+                        Uri.parse("http://play.google.com/store/apps/details?id=io.github.hanjoongcho.easypassword"))
+                TransitionHelper.startSettingActivityWithTransition(this@SettingActivity, browser)
+            }
+        }
+
+        pref9.setOnClickListener {
+            TransitionHelper.startSettingActivityWithTransition(this@SettingActivity, WebViewActivity.getStartIntent(this@SettingActivity, getString(R.string.setting_license_url)))
         }
     }
 

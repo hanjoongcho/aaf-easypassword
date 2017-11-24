@@ -26,6 +26,8 @@
         <activity android:name="com.google.android.gms.drive.GoogleDriveUploader" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
         <activity android:name="com.google.android.gms.drive.GoogleDriveDownloader" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
         <activity android:name=".activities.SettingActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
+        <activity android:name=".activities.WebViewActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
