@@ -18,15 +18,12 @@ class SecurityCategoryAdapter(
         private val mContext: Context, private val mLayoutResourceId: Int, private val mList: List<Category>
 ) : ArrayAdapter<Category>(mContext, mLayoutResourceId, mList) {
 
-    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? {
-        return initRow(position, convertView, parent)
-    }
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View? = initRow(position, convertView, parent)
 
-    override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View? {
-        return initRow(position, convertView, parent)
-    }
+    override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View? = initRow(position, convertView, parent)
 
     private fun initRow(position: Int, convertView: View?, parent: ViewGroup): View? {
+
         var row = convertView
         val holder: ViewHolder
         if (row == null) {
@@ -52,6 +49,7 @@ class SecurityCategoryAdapter(
     }
 
     private fun initCategoryIcon(imageView: ImageView?, resourceName: String) {
+
         imageView?.let {
             when (resourceName) {
                 "" -> it.setImageResource(0)

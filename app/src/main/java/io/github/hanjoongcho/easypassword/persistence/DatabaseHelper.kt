@@ -1,7 +1,7 @@
 package io.github.hanjoongcho.easypassword.persistence
 
 import android.content.Context
-import io.github.hanjoongcho.easypassword.activities.SecurityAddActivity
+import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.utils.AesUtils
 import io.realm.Realm
@@ -49,7 +49,7 @@ class DatabaseHelper private constructor(
 
     fun initDatabase() {
         if (countSecurity() < 1) {
-            SecurityAddActivity.listDummySecurity.map {
+            EasyPasswordHelper.listDummySecurity.map {
                 insertSecurity(it)
             }
         }
@@ -85,9 +85,17 @@ class DatabaseHelper private constructor(
     }
 
     fun selectSecurityBy(sequence: Int): Security {
-        val security: Security = realmInstance.where(Security::class.java).equalTo(Security.PRIMARY_KEY, sequence).findFirst()
+//        val security: Security = realmInstance.where(Security::class.java).equalTo(Security.PRIMARY_KEY, sequence).findFirst()
 //        account.password = AesUtils.decryptPassword(context, account.password)
-        return security
+        return realmInstance.where(Security::class.java).equalTo(Security.PRIMARY_KEY, sequence).findFirst()
+    }
+
+    fun deleteSecurityBy(sequence: Int) {
+        beginTransaction()
+        realmInstance.where(Security::class.java).equalTo(Security.PRIMARY_KEY, sequence).findFirst()?.let {
+            it.deleteFromRealm()
+        }
+        commitTransaction()
     }
 
     fun beginTransaction() {

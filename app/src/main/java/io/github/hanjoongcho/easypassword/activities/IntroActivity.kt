@@ -11,7 +11,7 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.util.Pair
 import android.support.v7.app.AppCompatActivity
 import io.github.hanjoongcho.easypassword.R
-import io.github.hanjoongcho.easypassword.helper.TransitionHelper
+import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.utils.CommonUtils
 import kotlinx.android.synthetic.main.activity_intro.*
 
@@ -24,12 +24,14 @@ class IntroActivity : AppCompatActivity(), Handler.Callback {
     private var mInitCount = 0;
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_intro)
 
     }
 
     override fun onResume() {
+
         super.onResume()
         if (mInitCount++ < 1 || intent.getBooleanExtra(FORWARD_ACTIVITY, false)) {
             intent.putExtra(FORWARD_ACTIVITY, false)
@@ -40,11 +42,13 @@ class IntroActivity : AppCompatActivity(), Handler.Callback {
     }
 
     override fun onPause() {
+
         super.onPause()
         CommonUtils.saveLongPreference(this@IntroActivity, CommonActivity.SETTING_PAUSE_MILLIS, System.currentTimeMillis())
     }
 
     override fun handleMessage(message: Message): Boolean {
+
         when (message.what) {
             START_MAIN_ACTIVITY -> {
                 val savedPattern =  CommonUtils.loadStringPreference(this@IntroActivity, PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
@@ -63,7 +67,7 @@ class IntroActivity : AppCompatActivity(), Handler.Callback {
     private fun startActivityWithTransition(mode: Int) {
 
         val animationBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(this@IntroActivity,
-                *TransitionHelper.createSafeTransitionParticipants(this@IntroActivity,
+                *EasyPasswordHelper.createSafeTransitionParticipants(this@IntroActivity,
                         false,
                         Pair(app_icon, getString(R.string.transition_app_icon))))
                 .toBundle()
@@ -72,7 +76,6 @@ class IntroActivity : AppCompatActivity(), Handler.Callback {
         val intent = Intent(this, PatternLockActivity::class.java)
         intent.putExtra(PatternLockActivity.MODE, mode)
         ActivityCompat.startActivity(this@IntroActivity, intent, animationBundle)
-//        finish()
     }
 
     companion object {

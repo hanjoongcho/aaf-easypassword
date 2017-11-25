@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ImageView
 import io.github.hanjoongcho.easypassword.R
-import io.github.hanjoongcho.easypassword.activities.SecurityAddActivity
 import io.github.hanjoongcho.easypassword.databinding.ItemSecurityBinding
+import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.easypassword.models.Theme
@@ -28,26 +28,28 @@ class SecurityAdapter(
     private var securities = mutableListOf<Security>()
 
     fun selectAccounts() {
+
         securities.clear()
         securities.addAll(activity.database().selectSecurityAll())
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         with(holder.binding) {
             security = securities[position]
             executePendingBindings()
             setCategoryIcon(security, categoryIcon)
-            SecurityAddActivity.setPasswordStrengthLevel(activity, security.passwordStrengthLevel, included.level1, included.level2, included.level3, included.level4, included.level5)
+            EasyPasswordHelper.setPasswordStrengthLevel(activity, security.passwordStrengthLevel, included.level1, included.level2, included.level3, included.level4, included.level5)
             with(accountTitle) {
-                setTextColor(SecurityAddActivity.getColor(R.color.blackText, activity))
+                setTextColor(EasyPasswordHelper.getColor(R.color.blackText, activity))
             }
             with(accountSummary) {
-                setTextColor(SecurityAddActivity.getColor(Theme.white.textPrimaryColor, activity))
-                setBackgroundColor(SecurityAddActivity.getColor(Theme.white.primaryColor, activity))
+                setTextColor(EasyPasswordHelper.getColor(Theme.white.textPrimaryColor, activity))
+                setBackgroundColor(EasyPasswordHelper.getColor(Theme.white.primaryColor, activity))
             }
         }
         with(holder.itemView) {
-            setBackgroundColor(SecurityAddActivity.getColor(Theme.white.windowBackgroundColor, activity))
+            setBackgroundColor(EasyPasswordHelper.getColor(Theme.white.windowBackgroundColor, activity))
             setOnClickListener {
                 onItemClickListener.onItemClick(null, it, holder.adapterPosition, holder.itemId)
             }
@@ -65,6 +67,7 @@ class SecurityAdapter(
     fun getItem(position: Int): Security = securities[position]
 
     private fun setCategoryIcon(security: Security, icon: ImageView) {
+
         val imageRes = resources.getIdentifier("ic_${security.category?.resourceName}", "drawable", activity.packageName)
         icon.setImageResource(imageRes)
     }

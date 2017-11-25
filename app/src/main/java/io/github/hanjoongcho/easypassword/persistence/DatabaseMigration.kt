@@ -8,7 +8,9 @@ import io.realm.RealmMigration
  */
 
 class DatabaseMigration : RealmMigration {
+
     override fun migrate(realm: DynamicRealm, oldVersion: Long, newVersion: Long) {
+
         var currentVersion = oldVersion as Int
         val schema = realm.schema
         if (currentVersion == 1) {

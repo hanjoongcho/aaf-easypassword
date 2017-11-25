@@ -1,18 +1,15 @@
 package io.github.hanjoongcho.easypassword.activities
 
-import android.app.ProgressDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.support.v7.app.AlertDialog
-import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
-
 import com.andrognito.patternlockview.PatternLockView
 import com.andrognito.patternlockview.listener.PatternLockViewListener
 import com.andrognito.patternlockview.utils.PatternLockUtils
@@ -20,37 +17,19 @@ import com.andrognito.patternlockview.utils.ResourceUtils
 import com.andrognito.rxpatternlockview.RxPatternLockView
 import com.andrognito.rxpatternlockview.events.PatternLockCompoundEvent
 import io.github.hanjoongcho.easypassword.R
-import io.github.hanjoongcho.easypassword.helper.TransitionHelper
+import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.utils.AesUtils
 import io.github.hanjoongcho.utils.CommonUtils
-import kotlinx.android.synthetic.main.activity_pattern_lock.*
-
 import io.reactivex.functions.Consumer
+import kotlinx.android.synthetic.main.activity_pattern_lock.*
 
 class PatternLockActivity : CommonActivity() {
 
     private var mMode: Int? = -1
 
-    private val mPatternLockViewListener = object : PatternLockViewListener {
-        override fun onStarted() {
-            Log.d(javaClass.name, "Pattern drawing started")
-        }
-
-        override fun onProgress(progressPattern: List<PatternLockView.Dot>) {
-            Log.d(javaClass.name, "Pattern progress: " + PatternLockUtils.patternToString(patterLockView, progressPattern))
-        }
-
-        override fun onComplete(pattern: List<PatternLockView.Dot>) {
-            Log.d(javaClass.name, "Pattern complete: " + PatternLockUtils.patternToString(patterLockView, pattern))
-        }
-
-        override fun onCleared() {
-            Log.d(javaClass.name, "Pattern has been cleared")
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -64,20 +43,22 @@ class PatternLockActivity : CommonActivity() {
             VERIFY -> guide_message.text = getString(R.string.pattern_lock_activity_verify_message)
         }
 
-        patterLockView.dotCount = 3
-        patterLockView.dotNormalSize = ResourceUtils.getDimensionInPx(this, R.dimen.pattern_lock_dot_size).toInt()
-        patterLockView.dotSelectedSize = ResourceUtils.getDimensionInPx(this, R.dimen.pattern_lock_dot_selected_size).toInt()
-        patterLockView.pathWidth = ResourceUtils.getDimensionInPx(this, R.dimen.pattern_lock_path_width).toInt()
-        patterLockView.isAspectRatioEnabled = true
-        patterLockView.aspectRatio = PatternLockView.AspectRatio.ASPECT_RATIO_HEIGHT_BIAS
-        patterLockView.setViewMode(PatternLockView.PatternViewMode.CORRECT)
-        patterLockView.dotAnimationDuration = 150
-        patterLockView.pathEndAnimationDuration = 100
-        patterLockView.correctStateColor = ResourceUtils.getColor(this, R.color.white)
-        patterLockView.isInStealthMode = false
-        patterLockView.isTactileFeedbackEnabled = true
-        patterLockView.isInputEnabled = true
-        patterLockView.addPatternLockListener(mPatternLockViewListener)
+        with(patterLockView) {
+            dotCount = 3
+            dotNormalSize = ResourceUtils.getDimensionInPx(this@PatternLockActivity, R.dimen.pattern_lock_dot_size).toInt()
+            dotSelectedSize = ResourceUtils.getDimensionInPx(this@PatternLockActivity, R.dimen.pattern_lock_dot_selected_size).toInt()
+            pathWidth = ResourceUtils.getDimensionInPx(this@PatternLockActivity, R.dimen.pattern_lock_path_width).toInt()
+            isAspectRatioEnabled = true
+            aspectRatio = PatternLockView.AspectRatio.ASPECT_RATIO_HEIGHT_BIAS
+            setViewMode(PatternLockView.PatternViewMode.CORRECT)
+            dotAnimationDuration = 150
+            pathEndAnimationDuration = 100
+            correctStateColor = ResourceUtils.getColor(this@PatternLockActivity, R.color.white)
+            isInStealthMode = false
+            isTactileFeedbackEnabled = true
+            isInputEnabled = true
+            addPatternLockListener(mPatternLockViewListener)
+        }
 
         RxPatternLockView.patternComplete(patterLockView).subscribe({ patternLockCompleteEvent ->
             Log.d(javaClass.name, "Complete: " + patternLockCompleteEvent.pattern.toString())
@@ -93,16 +74,17 @@ class PatternLockActivity : CommonActivity() {
                     val savedPattern = CommonUtils.loadStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
                     if (savedPattern == patternLockCompleteEvent.pattern.toString()) {
 //                        SecuritySelectionActivity.start(this@PatternLockActivity)
-                        TransitionHelper.startSettingActivityWithTransition(this@PatternLockActivity, SecuritySelectionActivity::class.java)
+                        EasyPasswordHelper.startSettingActivityWithTransition(this@PatternLockActivity, SecuritySelectionActivity::class.java)
                         finish()
                     } else {
                         patterLockView.clearPattern()
-                        val unlockBuilder: AlertDialog.Builder = AlertDialog.Builder(this@PatternLockActivity)
-                        unlockBuilder.setMessage(getString(R.string.pattern_lock_activity_verify_reject))
-                        unlockBuilder.setPositiveButton("OK", DialogInterface.OnClickListener({ _, _ ->
-                            finish()
-                        }))
-                        unlockBuilder.setCancelable(false)
+                        val unlockBuilder: AlertDialog.Builder = AlertDialog.Builder(this@PatternLockActivity).apply {
+                            setMessage(getString(R.string.pattern_lock_activity_verify_reject))
+                            setPositiveButton("OK", DialogInterface.OnClickListener({ _, _ ->
+                                finish()
+                            }))
+                            setCancelable(false)
+                        }
                         unlockBuilder.create().show()
                     }
                 }
@@ -110,7 +92,7 @@ class PatternLockActivity : CommonActivity() {
                     val intent = Intent(this, PatternLockActivity::class.java)
                     intent.putExtra(PatternLockActivity.MODE, PatternLockActivity.VERIFY)
                     intent.putExtra(PatternLockActivity.REQUEST_PATTERN, patternLockCompleteEvent.pattern.toString())
-                    TransitionHelper.startSettingActivityWithTransition(this@PatternLockActivity, intent)
+                    EasyPasswordHelper.startSettingActivityWithTransition(this@PatternLockActivity, intent)
                     finish()
                 }
                 VERIFY -> {
@@ -118,7 +100,7 @@ class PatternLockActivity : CommonActivity() {
                         val previousPattern = CommonUtils.loadStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
                         CommonUtils.saveStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, patternLockCompleteEvent.pattern.toString())
                         if (this@PatternLockActivity.database().countSecurity() < 1) {
-                            TransitionHelper.startSettingActivityWithTransition(this@PatternLockActivity, SecuritySelectionActivity::class.java)
+                            EasyPasswordHelper.startSettingActivityWithTransition(this@PatternLockActivity, SecuritySelectionActivity::class.java)
                             finish()
                         } else {
                             progressBar.visibility = View.VISIBLE
@@ -149,7 +131,7 @@ class PatternLockActivity : CommonActivity() {
                         builder.setMessage(getString(R.string.pattern_lock_activity_verify_reject))
                         builder.setPositiveButton("OK", DialogInterface.OnClickListener({ _, _ ->
                             intent.putExtra(PatternLockActivity.MODE, PatternLockActivity.SETTING_LOCK)
-                            TransitionHelper.startSettingActivityWithTransition(this@PatternLockActivity, intent)
+                            EasyPasswordHelper.startSettingActivityWithTransition(this@PatternLockActivity, intent)
                             finish()
                         }))
                         builder.create().show()
@@ -169,6 +151,7 @@ class PatternLockActivity : CommonActivity() {
 //                    }
 //                })
 
+
         RxPatternLockView.patternChanges(patterLockView)
                 .subscribe(object : Consumer<PatternLockCompoundEvent> {
                     @Throws(Exception::class)
@@ -183,7 +166,27 @@ class PatternLockActivity : CommonActivity() {
                 })
     }
 
+    private val mPatternLockViewListener = object : PatternLockViewListener {
+
+        override fun onStarted() {
+            Log.d(javaClass.name, "Pattern drawing started")
+        }
+
+        override fun onProgress(progressPattern: List<PatternLockView.Dot>) {
+            Log.d(javaClass.name, "Pattern progress: " + PatternLockUtils.patternToString(patterLockView, progressPattern))
+        }
+
+        override fun onComplete(pattern: List<PatternLockView.Dot>) {
+            Log.d(javaClass.name, "Pattern complete: " + PatternLockUtils.patternToString(patterLockView, pattern))
+        }
+
+        override fun onCleared() {
+            Log.d(javaClass.name, "Pattern has been cleared")
+        }
+    }
+
     companion object {
+
         const val TAG = "PatternLockActivity"
         const val MODE = "mMode"
         const val REQUEST_PATTERN = "request_pattern"

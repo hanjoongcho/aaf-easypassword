@@ -23,7 +23,7 @@ import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.activities.SecurityAddActivity
 import io.github.hanjoongcho.easypassword.activities.SecurityDetailActivity
 import io.github.hanjoongcho.easypassword.adpaters.SecurityAdapter
-import io.github.hanjoongcho.easypassword.helper.TransitionHelper
+import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.helper.beforeDrawing
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Security
@@ -53,16 +53,18 @@ class SecuritySelectionFragment : Fragment() {
             inflater.inflate(R.layout.fragment_securities, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
         mRecyclerView = view.findViewById<RecyclerView>(R.id.categories)
         mRecyclerView?.let { setUpGrid(it) }
         view.findViewById<FloatingActionButton>(R.id.add).setOnClickListener {
 //            startActivity(SecurityAddActivity.getStartIntent(context))
-            TransitionHelper.startSettingActivityWithTransition(activity, SecurityAddActivity::class.java)
+            EasyPasswordHelper.startSettingActivityWithTransition(activity, SecurityAddActivity::class.java)
         }
     }
 
     override fun onResume() {
+
         super.onResume()
         Thread({
             activity.database().initDatabase()
@@ -96,7 +98,7 @@ class SecuritySelectionFragment : Fragment() {
                                                          security: Security) {
 
         val animationBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
-                *TransitionHelper.createSafeTransitionParticipants(activity,
+                *EasyPasswordHelper.createSafeTransitionParticipants(activity,
                         false,
                         Pair(toolbar, getString(R.string.transition_category))))
                 .toBundle()
@@ -106,10 +108,4 @@ class SecuritySelectionFragment : Fragment() {
         startIntent.putExtra("sequence", security.sequence)
         ActivityCompat.startActivity(activity, startIntent, animationBundle)
     }
-
-    companion object {
-
-        private const val REQUEST_CATEGORY = 0x2300
-    }
-
 }

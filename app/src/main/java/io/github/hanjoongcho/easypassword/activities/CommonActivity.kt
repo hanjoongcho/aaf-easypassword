@@ -2,7 +2,7 @@ package io.github.hanjoongcho.easypassword.activities
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
-import io.github.hanjoongcho.easypassword.helper.TransitionHelper
+import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.utils.CommonUtils
 
 /**
@@ -25,7 +25,7 @@ open class CommonActivity : AppCompatActivity() {
                 intent.putExtra(PatternLockActivity.MODE, PatternLockActivity.UNLOCK)
                 intent.putExtra(IntroActivity.FORWARD_ACTIVITY, true)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                TransitionHelper.startSettingActivityWithTransition(this@CommonActivity, intent)
+                EasyPasswordHelper.startSettingActivityWithTransition(this@CommonActivity, intent)
             }
         }
     }
