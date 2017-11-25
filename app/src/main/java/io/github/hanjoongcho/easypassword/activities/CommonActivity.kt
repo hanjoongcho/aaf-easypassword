@@ -21,10 +21,11 @@ open class CommonActivity : AppCompatActivity() {
         val pauseMillis = CommonUtils.loadLongPreference(this@CommonActivity, SETTING_PAUSE_MILLIS, 0L)
         if (pauseMillis != 0L) {
             if (System.currentTimeMillis() - pauseMillis > 1000) {
-                val intent = Intent(this@CommonActivity, IntroActivity::class.java)
-                intent.putExtra(PatternLockActivity.MODE, PatternLockActivity.UNLOCK)
-                intent.putExtra(IntroActivity.FORWARD_ACTIVITY, true)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                val intent = Intent(this@CommonActivity, IntroActivity::class.java).apply {
+                    putExtra(PatternLockActivity.MODE, PatternLockActivity.UNLOCK)
+                    putExtra(IntroActivity.FORWARD_ACTIVITY, true)
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                }
                 EasyPasswordHelper.startSettingActivityWithTransition(this@CommonActivity, intent)
             }
         }

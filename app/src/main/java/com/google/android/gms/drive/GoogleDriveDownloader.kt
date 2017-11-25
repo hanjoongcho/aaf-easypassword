@@ -8,6 +8,9 @@ import android.content.IntentSender
 import android.os.Bundle
 import com.google.android.gms.common.api.ResultCallback
 import io.github.hanjoongcho.easypassword.activities.IntroActivity
+import io.github.hanjoongcho.easypassword.activities.PatternLockActivity
+import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
+import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.persistence.DatabaseHelper
 import org.apache.commons.io.IOUtils
 import java.io.FileOutputStream
@@ -60,14 +63,12 @@ class GoogleDriveDownloader : GoogleDriveUtils() {
             }
 
         }
-        val context = this@GoogleDriveDownloader
-        val introActivity = Intent(context, IntroActivity::class.java)
-        introActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-        val mPendingIntentId = 123456
-        val mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId, introActivity, PendingIntent.FLAG_CANCEL_CURRENT)
-        val mgr = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-        mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent)
-        System.exit(0)
-    }
 
+        val intent = Intent(this@GoogleDriveDownloader, IntroActivity::class.java).apply {
+            putExtra(PatternLockActivity.MODE, PatternLockActivity.UNLOCK)
+            putExtra(IntroActivity.FORWARD_ACTIVITY, true)
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        EasyPasswordHelper.startSettingActivityWithTransition(this@GoogleDriveDownloader, intent)
+    }
 }
