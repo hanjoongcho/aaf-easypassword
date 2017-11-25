@@ -85,6 +85,7 @@ class SecurityDetailActivity : CommonActivity() {
     private fun refreshItem() {
 
         mSecurity = this@SecurityDetailActivity.database().selectSecurityBy(mSequence)
+        mBinding?.decryptPassword?.visibility = View.VISIBLE
         initCategorySpinner()
         changeCategoryContainer()
         EasyPasswordHelper.activityAccountDetailBinding(this@SecurityDetailActivity, mBinding, mSecurity)
