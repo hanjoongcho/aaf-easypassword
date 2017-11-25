@@ -11,24 +11,16 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <android.support.design.widget.AppBarLayout android:layout_height="wrap_content"
-                android:layout_width="match_parent" android:theme="@style/AppTheme.AppBarOverlay">
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme.AppBarOverlay">
                 <android.support.v7.widget.Toolbar
-                    android:id="@+id/toolbar_player"
+                    android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="?android:attr/actionBarSize"
-                    app:popupTheme="@style/AppTheme.PopupOverlay"
-                    android:background="@color/colorPrimary"
-                    android:elevation="@dimen/elevation_header"
-                    tools:ignore="UnusedAttribute">
-                    <TextView android:id="@+id/title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text='@string/account_add_title'
-                        tools:ignore="PrivateResource"
-                        style="@style/Topeka.TextAppearance.Title.Inverse"
-                        android:layout_gravity="center_vertical|start" />
-                </android.support.v7.widget.Toolbar>
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    app:popupTheme="@style/AppTheme.PopupOverlay" />
             </android.support.design.widget.AppBarLayout>
 
             <ScrollView
@@ -42,7 +34,7 @@
                     <LinearLayout
                         style="@style/AccountEditItemContainer">
                         <TextView
-                            android:text="@string/account_manage_category"
+                            android:text="@string/security_manage_category"
                             style="@style/AccountEditLabel" />
                         <Spinner
                             android:id="@+id/security_category"
@@ -54,7 +46,7 @@
                     <LinearLayout
                         style="@style/AccountEditItemContainer">
                         <TextView
-                            android:text="@string/account_manage_target"
+                            android:text="@string/security_manage_target"
                             style="@style/AccountEditLabel" />
                         <EditText
                             style="@style/AccountEditInputText"
@@ -63,7 +55,7 @@
                     <LinearLayout
                         style="@style/AccountEditItemContainer">
                         <TextView
-                            android:text="@string/account_password"
+                            android:text="@string/security_password"
                             style="@style/AccountEditLabel" />
                         <EditText
                             style="@style/AccountEditInputText"
@@ -75,7 +67,7 @@
                     <LinearLayout
                         style="@style/AccountEditItemContainer">
                         <TextView
-                            android:text="@string/account_summary"
+                            android:text="@string/security_summary"
                             style="@style/AccountEditLabel" />
                         <EditText
                             style="@style/AccountEditInputText"
@@ -92,7 +84,7 @@
                         <LinearLayout
                             style="@style/AccountEditItemContainer">
                             <TextView
-                                android:text="@string/account_id"
+                                android:text="@string/security_id"
                                 style="@style/AccountEditLabel" />
                             <EditText
                                 style="@style/AccountEditInputText"

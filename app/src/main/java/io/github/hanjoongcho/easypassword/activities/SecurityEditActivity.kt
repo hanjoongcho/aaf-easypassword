@@ -22,6 +22,7 @@ import io.github.hanjoongcho.easypassword.models.Category
 import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.utils.AesUtils
 import io.github.hanjoongcho.utils.PasswordStrengthUtils
+import kotlinx.android.synthetic.main.activity_setting.*
 
 /**
  * Created by CHO HANJOONG on 2017-11-18.
@@ -45,8 +46,9 @@ class SecurityEditActivity : CommonActivity() {
         mBinding = DataBindingUtil.setContentView<ActivitySecurityEditBinding>(this,
                 R.layout.activity_security_edit)
 
-        setSupportActionBar(mBinding?.toolbarPlayer)
+        setSupportActionBar(toolbar)
         supportActionBar?.run {
+            title = getString(R.string.security_edit_title)
             setDisplayHomeAsUpEnabled(true)
         }
 

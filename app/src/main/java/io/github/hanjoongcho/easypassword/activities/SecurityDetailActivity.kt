@@ -20,6 +20,7 @@ import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Category
 import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.utils.AesUtils
+import kotlinx.android.synthetic.main.activity_setting.*
 
 /**
  * Created by CHO HANJOONG on 2017-11-18.
@@ -42,8 +43,9 @@ class SecurityDetailActivity : CommonActivity() {
                 .setContentView<ActivitySecurityDetailBinding>(this,
                         R.layout.activity_security_detail)
 
-        setSupportActionBar(mBinding?.toolbarPlayer)
+        setSupportActionBar(toolbar)
         supportActionBar?.run {
+            title = getString(R.string.security_detail_title)
             setDisplayHomeAsUpEnabled(true)
         }
 
