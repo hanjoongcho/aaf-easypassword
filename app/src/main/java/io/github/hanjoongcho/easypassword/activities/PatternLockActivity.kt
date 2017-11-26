@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -39,7 +40,7 @@ class PatternLockActivity : AppCompatActivity() {
 
         mMode = intent.getIntExtra(MODE, -1)
         when (mMode) {
-            UNLOCK -> guide_message.text = getString(R.string.pattern_lock_activity_unlock_message)
+            UNLOCK, UNLOCK_RESUME -> guide_message.text = getString(R.string.pattern_lock_activity_unlock_message)
             SETTING_LOCK -> guide_message.text = getString(R.string.pattern_lock_activity_setting_lock_message)
             VERIFY -> guide_message.text = getString(R.string.pattern_lock_activity_verify_message)
         }
@@ -70,9 +71,9 @@ class PatternLockActivity : AppCompatActivity() {
 //                SecuritySelectionActivity.start(this@PatternLockActivity)
 //            }))
 //            builder.create().show()
+            val savedPattern = CommonUtils.loadStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
             when (mMode) {
                 UNLOCK -> {
-                    val savedPattern = CommonUtils.loadStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
                     if (savedPattern == patternLockCompleteEvent.pattern.toString()) {
 //                        SecuritySelectionActivity.start(this@PatternLockActivity)
                         EasyPasswordHelper.startSettingActivityWithTransition(this@PatternLockActivity, SecuritySelectionActivity::class.java)
@@ -123,7 +124,8 @@ class PatternLockActivity : AppCompatActivity() {
                                 this@PatternLockActivity.database().commitTransaction()
                                 Handler(Looper.getMainLooper()).post(Runnable {
                                     progressBar.visibility = View.INVISIBLE
-                                    this@PatternLockActivity.onBackPressed()
+                                    finish()
+                                    overridePendingTransition(0, 0)
                                 })
                             }).start()
                         }
@@ -136,6 +138,22 @@ class PatternLockActivity : AppCompatActivity() {
                             finish()
                         }))
                         builder.create().show()
+                    }
+                }
+                UNLOCK_RESUME -> {
+                    if (savedPattern == patternLockCompleteEvent.pattern.toString()) {
+                        finish()
+                        overridePendingTransition(0, 0)
+                    } else {
+                        patterLockView.clearPattern()
+                        val unlockBuilder: AlertDialog.Builder = AlertDialog.Builder(this@PatternLockActivity).apply {
+                            setMessage(getString(R.string.pattern_lock_activity_verify_reject))
+                            setPositiveButton("OK", DialogInterface.OnClickListener({ _, _ ->
+                                ActivityCompat.finishAffinity(this@PatternLockActivity);
+                            }))
+                            setCancelable(false)
+                        }
+                        unlockBuilder.create().show()
                     }
                 }
             }
@@ -172,6 +190,10 @@ class PatternLockActivity : AppCompatActivity() {
         CommonUtils.saveLongPreference(this@PatternLockActivity, CommonActivity.SETTING_PAUSE_MILLIS, System.currentTimeMillis())
     }
 
+    override fun onBackPressed() {
+        ActivityCompat.finishAffinity(this@PatternLockActivity);
+    }
+
     private val mPatternLockViewListener = object : PatternLockViewListener {
 
         override fun onStarted() {
@@ -201,5 +223,6 @@ class PatternLockActivity : AppCompatActivity() {
         const val UNLOCK = 1
         const val SETTING_LOCK = 2
         const val VERIFY = 3
+        const val UNLOCK_RESUME = 4
     }
 }

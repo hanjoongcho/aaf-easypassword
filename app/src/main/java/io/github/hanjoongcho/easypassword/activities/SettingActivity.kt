@@ -6,6 +6,7 @@ import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import com.google.android.gms.drive.GoogleDriveDownloader
 import com.google.android.gms.drive.GoogleDriveUploader
@@ -42,6 +43,11 @@ class SettingActivity : CommonActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onResume() {
+        Log.i(IntroActivity.TAG, "SettingActivity")
+        super.onResume()
     }
 
     private fun bindEvent() {

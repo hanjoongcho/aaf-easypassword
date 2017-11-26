@@ -1,6 +1,9 @@
 package io.github.hanjoongcho.easypassword.activities
 
 import android.annotation.TargetApi
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -34,10 +37,24 @@ class IntroActivity : AppCompatActivity(), Handler.Callback {
     override fun onResume() {
         super.onResume()
         mInitCount++
-        Log.i(TAG, "mInitCount: $mInitCount, FORWARD_ACTIVITY: ${intent.getBooleanExtra(FORWARD_ACTIVITY, false)}")
-        if (mInitCount == 1 || intent.getBooleanExtra(FORWARD_ACTIVITY, false)) {
-            intent.putExtra(FORWARD_ACTIVITY, false)
-            Handler(this).sendEmptyMessageDelayed(START_MAIN_ACTIVITY, 1500)
+        Log.i(TAG, "mInitCount: $mInitCount, FORWARD_ACTIVITY: ${intent.getIntExtra(INTRO_MODE, INTRO_MODE_DEFAULT)}")
+        if (mInitCount == 1) {
+            when (intent.getIntExtra(INTRO_MODE, INTRO_MODE_DEFAULT)) {
+                INTRO_MODE_DEFAULT -> Handler(this).sendEmptyMessageDelayed(START_MAIN_ACTIVITY, 1500)
+                INTRO_MODE_RESTART -> {
+                    val context = this@IntroActivity
+                    val introActivity = Intent(context, IntroActivity::class.java)
+                    val mPendingIntentId = 123456
+                    val mPendingIntent = PendingIntent.getActivity(context, mPendingIntentId, introActivity, PendingIntent.FLAG_CANCEL_CURRENT)
+                    val mgr = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+                    mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 1000, mPendingIntent)
+                    intent.putExtra(INTRO_MODE, INTRO_MODE_DEFAULT)
+
+                    ActivityCompat.finishAffinity(this);
+                    System.runFinalizersOnExit(true);
+                    System.exit(0);
+                }
+            }
         } else {
             finish()
         }
@@ -78,6 +95,8 @@ class IntroActivity : AppCompatActivity(), Handler.Callback {
 
         const val TAG = "RESTORE"
         const val START_MAIN_ACTIVITY = 0
-        const val FORWARD_ACTIVITY = "forward_activity"
+        const val INTRO_MODE = "intro_mode"
+        const val INTRO_MODE_DEFAULT = 0
+        const val INTRO_MODE_RESTART = 1
     }
 }

@@ -6,6 +6,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityOptionsCompat
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import io.github.hanjoongcho.easypassword.R
@@ -54,6 +55,11 @@ class SecuritySelectionActivity : CommonActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onResume() {
+        Log.i(IntroActivity.TAG, "SecuritySelectionActivity")
+        super.onResume()
     }
 
     private fun attachCategoryGridFragment() {

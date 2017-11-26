@@ -8,6 +8,7 @@ import android.os.Parcelable
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.common.api.GoogleApiClient
+import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.activities.CommonActivity
 import io.github.hanjoongcho.utils.CommonUtils
 
@@ -37,7 +38,12 @@ open class GoogleDriveUtils : Activity(), GoogleApiClient.ConnectionCallbacks, G
      */
     override fun onConnectionSuspended(cause: Int) {}
 
-    /**
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_google_drive)
+    }
+
+            /**
      * Called when `mGoogleApiClient` is trying to connect but failed.
      * Handle `result.getResolution()` if there is a resolution is
      * available.
