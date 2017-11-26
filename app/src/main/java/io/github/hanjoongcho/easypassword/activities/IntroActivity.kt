@@ -10,6 +10,7 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.util.Pair
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.utils.CommonUtils
@@ -31,20 +32,15 @@ class IntroActivity : AppCompatActivity(), Handler.Callback {
     }
 
     override fun onResume() {
-
         super.onResume()
-        if (mInitCount++ < 1 || intent.getBooleanExtra(FORWARD_ACTIVITY, false)) {
+        mInitCount++
+        Log.i(TAG, "mInitCount: $mInitCount, FORWARD_ACTIVITY: ${intent.getBooleanExtra(FORWARD_ACTIVITY, false)}")
+        if (mInitCount == 1 || intent.getBooleanExtra(FORWARD_ACTIVITY, false)) {
             intent.putExtra(FORWARD_ACTIVITY, false)
             Handler(this).sendEmptyMessageDelayed(START_MAIN_ACTIVITY, 1500)
         } else {
             finish()
         }
-    }
-
-    override fun onPause() {
-
-        super.onPause()
-        CommonUtils.saveLongPreference(this@IntroActivity, CommonActivity.SETTING_PAUSE_MILLIS, System.currentTimeMillis())
     }
 
     override fun handleMessage(message: Message): Boolean {
@@ -80,6 +76,7 @@ class IntroActivity : AppCompatActivity(), Handler.Callback {
 
     companion object {
 
+        const val TAG = "RESTORE"
         const val START_MAIN_ACTIVITY = 0
         const val FORWARD_ACTIVITY = "forward_activity"
     }

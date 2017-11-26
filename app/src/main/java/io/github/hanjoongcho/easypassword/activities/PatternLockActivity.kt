@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.support.v7.app.AlertDialog
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import android.view.Window
@@ -24,7 +25,7 @@ import io.github.hanjoongcho.utils.CommonUtils
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.activity_pattern_lock.*
 
-class PatternLockActivity : CommonActivity() {
+class PatternLockActivity : AppCompatActivity() {
 
     private var mMode: Int? = -1
 
@@ -164,6 +165,11 @@ class PatternLockActivity : CommonActivity() {
                         }
                     }
                 })
+    }
+
+    override fun onPause() {
+        super.onPause()
+        CommonUtils.saveLongPreference(this@PatternLockActivity, CommonActivity.SETTING_PAUSE_MILLIS, System.currentTimeMillis())
     }
 
     private val mPatternLockViewListener = object : PatternLockViewListener {

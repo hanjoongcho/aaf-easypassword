@@ -2,6 +2,7 @@ package io.github.hanjoongcho.easypassword.activities
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.utils.CommonUtils
 
@@ -19,6 +20,7 @@ open class CommonActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         val pauseMillis = CommonUtils.loadLongPreference(this@CommonActivity, SETTING_PAUSE_MILLIS, 0L)
+        Log.i(IntroActivity.TAG, "pauseMillis: ${System.currentTimeMillis() - pauseMillis}")
         if (pauseMillis != 0L) {
             if (System.currentTimeMillis() - pauseMillis > 1000) {
                 val intent = Intent(this@CommonActivity, IntroActivity::class.java).apply {
