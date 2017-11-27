@@ -11,6 +11,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import io.github.hanjoongcho.easypassword.R
@@ -77,12 +78,24 @@ class SecurityEditActivity : CommonActivity() {
     private fun bindEvent() {
 
         mBinding?.let { binding ->
-            binding.save.setOnClickListener(View.OnClickListener { _ ->
+            binding.save.setOnClickListener(View.OnClickListener { view ->
+                view.visibility = View.INVISIBLE
                 val security: Security? = EasyPasswordHelper.getSecurityFromLayout(mBinding, binding.securityCategory.selectedItem as Category, mTempStrengthLevel)
                 security?.let {
+                    val view = this.currentFocus
+                    if (view != null) {
+                        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        imm.hideSoftInputFromWindow(view.windowToken, 0)
+                    }
                     it.sequence = mSequence
-                    this@SecurityEditActivity.database().updateSecurity(it)
-                    this@SecurityEditActivity.onBackPressed()
+                    binding.loadingProgress.visibility = View.VISIBLE
+
+                    Thread(Runnable {
+                        this@SecurityEditActivity.database().updateSecurity(it)
+                        Handler(Looper.getMainLooper()).post({
+                            this@SecurityEditActivity.onBackPressed()
+                        })
+                    }).start()
                 }
             })
 
@@ -98,14 +111,26 @@ class SecurityEditActivity : CommonActivity() {
 
     private fun decryptField() {
 
-        val encryptedPassword = mSecurity?.password
+        val password = mSecurity?.password ?: ""
+        val serial = mSecurity?.creditCard?.serial ?: ""
+        val expireDate = mSecurity?.creditCard?.expireDate ?: ""
+        val cardValidationCode = mSecurity?.creditCard?.cardValidationCode ?: ""
+
         Thread({
-            val decryptedPassword = AesUtils.decryptPassword(this@SecurityEditActivity, encryptedPassword!!)
+
+            val decryptedPassword = AesUtils.decryptPassword(this@SecurityEditActivity, password)
+            val decryptedSerial = AesUtils.decryptPassword(this@SecurityEditActivity, serial)
+            val decryptedExpireDate = AesUtils.decryptPassword(this@SecurityEditActivity, expireDate)
+            val decryptedCardValidationCode = AesUtils.decryptPassword(this@SecurityEditActivity, cardValidationCode)
+
             Handler(Looper.getMainLooper()).post {
-                mBinding?.let { binding ->
-                    binding.securityPassword?.setText(decryptedPassword)
-                    binding.loadingProgress?.visibility = View.INVISIBLE
-                    binding.securityPassword.addTextChangedListener(object : TextWatcher {
+                mBinding?.run{
+                    securityPassword?.setText(decryptedPassword)
+                    creditCardSerial?.setText(decryptedSerial)
+                    creditCardExpireDate?.setText(decryptedExpireDate)
+                    creditCardCvc?.setText(decryptedCardValidationCode)
+                    loadingProgress?.visibility = View.INVISIBLE
+                    securityPassword.addTextChangedListener(object : TextWatcher {
                         override fun afterTextChanged(s: Editable?) {
                         }
 
@@ -116,7 +141,7 @@ class SecurityEditActivity : CommonActivity() {
                             val level = PasswordStrengthUtils.getScore(s.toString())
                             if (level != mTempStrengthLevel) {
                                 mTempStrengthLevel = level
-                                EasyPasswordHelper.setPasswordStrengthLevel(this@SecurityEditActivity, mTempStrengthLevel, binding.included.level1, binding.included.level2, binding.included.level3, binding.included.level4, binding.included.level5)
+                                EasyPasswordHelper.setPasswordStrengthLevel(this@SecurityEditActivity, mTempStrengthLevel, included.level1, included.level2, included.level3, included.level4, included.level5)
                             }
                             Log.i(TAG, level.toString())
                         }

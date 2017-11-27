@@ -57,7 +57,7 @@ object EasyPasswordHelper {
                     "카뱅 체크카드",
                     listCategory[1],
                     null,
-                    CreditCard("132-3574-123-09","12/2025")
+                    CreditCard("132-3574-123-09","12/2025", "901")
             ),
             Security(
                     null,
@@ -227,6 +227,7 @@ object EasyPasswordHelper {
                     1 -> {
                         it.creditCardSerial.text = safetySecurity.creditCard?.serial
                         it.creditCardExpireDate.text = safetySecurity.creditCard?.expireDate
+                        it.creditCardCvc.text = safetySecurity.creditCard?.cardValidationCode
                     }
                     else -> {
 
@@ -250,6 +251,7 @@ object EasyPasswordHelper {
                     1 -> {
                         it.creditCardSerial.setText(safetySecurity.creditCard?.serial)
                         it.creditCardExpireDate.setText(safetySecurity.creditCard?.expireDate)
+                        it.creditCardCvc.setText(safetySecurity.creditCard?.cardValidationCode)
                     }
                     else -> {
 
@@ -284,7 +286,11 @@ object EasyPasswordHelper {
                             it.securitySummary.text.toString(),
                             it.securityCategory.selectedItem as Category,
                             null,
-                            CreditCard(it.creditCardSerial.text.toString(), it.creditCardExpireDate.text.toString())
+                            CreditCard(
+                                    it.creditCardSerial.text.toString(),
+                                    it.creditCardExpireDate.text.toString(),
+                                    it.creditCardCvc.text.toString()
+                            )
                     )
                 }
                 else -> {
@@ -329,7 +335,11 @@ object EasyPasswordHelper {
                             it.securitySummary.text.toString(),
                             it.securityCategory.selectedItem as Category,
                             null,
-                            CreditCard(it.creditCardSerial.toString(),it.creditCardExpireDate.text.toString())
+                            CreditCard(
+                                    it.creditCardSerial.text.toString(),
+                                    it.creditCardExpireDate.text.toString(),
+                                    it.creditCardCvc.text.toString()
+                            )
                     )
                 }
                 else -> {

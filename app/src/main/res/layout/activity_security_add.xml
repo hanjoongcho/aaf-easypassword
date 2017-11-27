@@ -112,6 +112,16 @@
                         <LinearLayout
                             style="@style/AccountEditItemContainer">
                             <TextView
+                                android:text="@string/credit_card_cvc"
+                                style="@style/AccountEditLabel" />
+                            <EditText
+                                style="@style/AccountEditInputText"
+                                android:id="@+id/credit_card_cvc" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/AccountEditItemContainer">
+                            <TextView
                                 android:text="@string/credit_card_expire_date"
                                 style="@style/AccountEditLabel" />
                             <EditText

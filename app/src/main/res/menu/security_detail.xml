@@ -2,6 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:icon="@drawable/eye_3"
+        android:id="@+id/decrypt_field"
+        android:orderInCategory="100"
+        android:title=""
+        app:showAsAction="always" />
+    <item
         android:icon="@drawable/delete"
         android:id="@+id/delete"
         android:orderInCategory="100"

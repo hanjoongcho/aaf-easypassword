@@ -24,8 +24,8 @@ class DatabaseHelper private constructor(
             if (realmConfiguration == null) {
                 realmConfiguration = RealmConfiguration.Builder()
                         .name(DIARY_DB_NAME)
-                        .schemaVersion(1)
-                        .migration(DatabaseMigration())
+                        .schemaVersion(2)
+                        .migration(DatabaseMigration(context))
                         .modules(Realm.getDefaultModule())
                         .build()
             }
@@ -66,6 +66,11 @@ class DatabaseHelper private constructor(
         }
         security.sequence = sequence
         security.password = AesUtils.encryptPassword(context, security.password)
+        security.creditCard?.run {
+            serial = AesUtils.encryptPassword(context, serial)
+            expireDate = AesUtils.encryptPassword(context, expireDate)
+            cardValidationCode = AesUtils.encryptPassword(context, cardValidationCode)
+        }
         realmInstance.insert(security)
         realmInstance.commitTransaction()
     }
@@ -80,6 +85,11 @@ class DatabaseHelper private constructor(
     fun updateSecurity(security: Security) {
         realmInstance.executeTransaction(Realm.Transaction { realm ->
             security.password = AesUtils.encryptPassword(context, security.password)
+            security.creditCard?.run {
+                serial = AesUtils.encryptPassword(context, serial)
+                expireDate = AesUtils.encryptPassword(context, expireDate)
+                cardValidationCode = AesUtils.encryptPassword(context, cardValidationCode)
+            }
             realm.insertOrUpdate(security)
         })
     }

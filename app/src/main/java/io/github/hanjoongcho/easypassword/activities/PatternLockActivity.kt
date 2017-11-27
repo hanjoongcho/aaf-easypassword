@@ -113,13 +113,28 @@ class PatternLockActivity : AppCompatActivity() {
                                 this@PatternLockActivity.database().beginTransaction()
                                 listSecurity.map {
 
-                                    val previousCipher = it.password
-                                    Log.i(TAG, "previousCipher: $previousCipher")
-                                    val previousPlain = AesUtils.decryptPassword(this@PatternLockActivity, previousCipher, previousPattern)
-                                    Log.i(TAG, "previousPlain: $previousPlain")
-                                    val currentCipher = AesUtils.encryptPassword(this@PatternLockActivity, previousPlain)
-                                    Log.i(TAG, "currentCipher: $currentCipher")
-                                    it.password = currentCipher
+                                    val previousCipherPassword = it.password
+                                    val previousPlainPassword = AesUtils.decryptPassword(this@PatternLockActivity, previousCipherPassword, previousPattern)
+                                    val currentCipherPassword = AesUtils.encryptPassword(this@PatternLockActivity, previousPlainPassword)
+                                    it.password = currentCipherPassword
+
+                                    it.creditCard?.let { cc ->
+                                        val previousCipherSerial = cc.serial
+                                        val previousCipherExpireDate = cc.expireDate
+                                        val previousCipherCardValidationCode = cc.cardValidationCode
+
+                                        val previousPlainSerial = AesUtils.decryptPassword(this@PatternLockActivity, previousCipherSerial, previousPattern)
+                                        val previousPlainExpireDate = AesUtils.decryptPassword(this@PatternLockActivity, previousCipherExpireDate, previousPattern)
+                                        val previousPlainCardValidationCode = AesUtils.decryptPassword(this@PatternLockActivity, previousCipherCardValidationCode, previousPattern)
+
+                                        val currentCipherSerial = AesUtils.encryptPassword(this@PatternLockActivity, previousPlainSerial)
+                                        val currentCipherExpireDate = AesUtils.encryptPassword(this@PatternLockActivity, previousPlainExpireDate)
+                                        val currentCipherCardValidationCode = AesUtils.encryptPassword(this@PatternLockActivity, previousPlainCardValidationCode)
+
+                                        cc.serial = currentCipherSerial
+                                        cc.expireDate = currentCipherExpireDate
+                                        cc.cardValidationCode = currentCipherCardValidationCode
+                                    }
                                 }
                                 this@PatternLockActivity.database().commitTransaction()
                                 Handler(Looper.getMainLooper()).post(Runnable {
