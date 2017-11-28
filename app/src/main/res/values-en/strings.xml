@@ -1,0 +1,114 @@
+<resources>
+    <string name="app_name">Easy\nPassword</string>
+
+    <!--Common-->
+    <string name="security_manage_category">Classification</string>
+    <string name="security_manage_target">Management name</string>
+    <string name="security_id">Account(Email)</string>
+    <string name="security_password">Password</string>
+    <string name="security_summary">Management Summary</string>
+
+    <string name="credit_card_serial">Card Number</string>
+    <string name="credit_card_expire_date">Expiration Date</string>
+    <string name="credit_card_cvc">CVC Number</string>
+
+    <!--PatternLockActivity-->
+    <string name="pattern_lock_activity_unlock_message">Please enter lock pattern.</string>
+    <string name="pattern_lock_activity_setting_lock_message">Please setting lock pattern.</string>
+    <string name="pattern_lock_activity_verify_message">Enter the set lock pattern again.</string>
+    <string name="pattern_lock_activity_verify_reject">Lock pattern verification failed.</string>
+    <string name="pattern_lock_progress_message">Encrypting management list...</string>
+
+    <!--SecuritySelectionActivityvity-->
+    <string name="security_selection_title">Item List</string>
+
+    <!--SecuritySelectionFragment-->
+    <string name="security_selection_init_item_message">Generating sample data...</string>
+
+    <!--SecurityDetailActivityvity-->
+    <string name="security_detail_title">Item Detail</string>
+    <string name="security_item_delete_confirm">Are you sure you want to delete the selected managed item?</string>
+
+    <!--SecurityEditActivityvity-->
+    <string name="security_edit_title">Item Edit</string>
+
+    <!--SecurityAddActivity-->
+    <string name="security_add_title">Item Add</string>
+
+    <!--SettingActivity-->
+    <string name="setting_title">Preferences</string>
+    <string name="setting_pattern_lock">Set Lock Pattern</string>
+    <string name="setting_pattern_lock_summary">Application lock and management pattern setting to be used for account encryption.</string>
+    <string name="setting_rate_app">App rating</string>
+    <string name="setting_rate_app_summary">Set a pattern lock for application lock or administrative account encryption.</string>
+    <string name="setting_google_drive_backup">Backup management account</string>
+    <string name="setting_google_drive_backup_summary">Backup all management items to Google Drive.</string>
+    <string name="setting_google_drive_recovery">Recover managed account</string>
+    <string name="setting_google_drive_recovery_summary">Recover your managed items stored on Google Drive. Recovered management items can only be decrypted using the lock pattern used at the time of backup.</string>
+    <string name="setting_license_url">https://github.com/hanjoongcho/aaf-easypassword/blob/master/LICENSE.md</string>
+
+    <!--AesUtils-->
+    <string name="aes_utils_decrypt_error">Encrypted data can not be decrypted with the lock pattern currently set.</string>
+
+    <!--GoogleDriveUtils-->
+    <string name="google_drive_connect_message">Google Drive in sync...</string>
+
+    <!--EasyPasswordHelper-->
+    <array name="array_category_name">
+        <item>Website</item>
+        <item>Credit card</item>
+        <item>Door lock</item>
+        <item>Lock</item>
+        <item>Electronic document</item>
+        <item>ETC</item>
+    </array>
+
+    <array name="array_sample_security_title">
+        <item>Google</item>
+        <item>Good Bank</item>
+        <item>Company entrance</item>
+        <item>Luggage</item>
+        <item>Project plan</item>
+        <item>VOD authorization number</item>
+    </array>
+
+    <array name="array_sample_security_summary">
+        <item>https://www.google.com</item>
+        <item>Good Bank credit card</item>
+        <item>Company entrance security number</item>
+        <item>Yellow carrier</item>
+        <item>2018 Mobile Project Screen Definition Statement</item>
+        <item>VOD approval authorization number</item>
+    </array>
+
+    <!-- Strings displayed only on Google Play Store. Optional, but good to have -->
+    <!-- Short description has to have less than 80 chars -->
+    <!--
+    Easy Password is an application that helps you to manage various types of passwords using a single lock pattern.
+    -->
+
+    <!-- Long description has to have less than 4000 chars-->
+    <!--
+        This is a third series after Easy Photomap, Easy diary.
+        Easy Password is an application that helps you manage passwords used for login, document security, door lock, lock, credit card, account management, etc. by using one pattern lock set by the user.
+        All passwords managed by Easy Password are encrypted and stored using the lock pattern set by the user.
+
+        Do not write your password on your notepad dangerously.
+        Do not set multiple passwords the same for easier remembering.
+        From now on, you can safely manage your password with a single lock pattern using Easy Password.
+
+        Easy Password does not collect or store your personal information.
+        The password management information registered by the user is stored in the user's device and is not transmitted to other server.
+        When using the Google Drive Backup feature, the Realm Backup File is stored in the drive of the user account, but it is stored in the user's personal account and can not be collected or stored externally.
+        Also, since the password information is AES password, it can not be decrypted without the lock pattern information set by the user.
+
+        <b>[Support Feature]</b>
+        <b><font color="#185A32">01. Application lock with pattern</font></b>
+        <b><font color="#185A32">02. Password decryption of managed object using lock pattern(AES)</font></b>
+        <b><font color="#185A32">03. Backup and recovery of management list using Google Drive</font></b>
+    -->
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/hanjoongcho/aaf-easypassword/tree/master/app/src/main/res
+    -->
+</resources>
