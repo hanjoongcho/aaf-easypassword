@@ -84,28 +84,28 @@
     <!-- Strings displayed only on Google Play Store. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
     <!--
-    Easy Password is an application that helps you to manage various types of passwords using a single lock pattern.
+    Manage various types of passwords using a single lock pattern.
     -->
 
     <!-- Long description has to have less than 4000 chars-->
     <!--
-        This is a third series after Easy Photomap, Easy diary.
-        Easy Password is an application that helps you manage passwords used for login, document security, door lock, lock, credit card, account management, etc. by using one pattern lock set by the user.
-        All passwords managed by Easy Password are encrypted and stored using the lock pattern set by the user.
+This is a third series after Easy Photomap, Easy diary.
+Easy Password is an application that helps you manage passwords used for login, document security, door lock, lock, credit card, account management, etc. by using one pattern lock set by the user.
+All passwords managed by Easy Password are encrypted and stored using the lock pattern set by the user.
 
-        Do not write your password on your notepad dangerously.
-        Do not set multiple passwords the same for easier remembering.
-        From now on, you can safely manage your password with a single lock pattern using Easy Password.
+Do not write your password on your notepad dangerously.
+Do not set multiple passwords the same for easier remembering.
+From now on, you can safely manage your password with a single lock pattern using Easy Password.
 
-        Easy Password does not collect or store your personal information.
-        The password management information registered by the user is stored in the user's device and is not transmitted to other server.
-        When using the Google Drive Backup feature, the Realm Backup File is stored in the drive of the user account, but it is stored in the user's personal account and can not be collected or stored externally.
-        Also, since the password information is AES password, it can not be decrypted without the lock pattern information set by the user.
+Easy Password does not collect or store your personal information.
+The password management information registered by the user is stored in the user's device and is not transmitted to other server.
+When using the Google Drive Backup feature, the Realm Backup File is stored in the drive of the user account, but it is stored in the user's personal account and can not be collected or stored externally.
+Also, since the password information is AES password, it can not be decrypted without the lock pattern information set by the user.
 
-        <b>[Support Feature]</b>
-        <b><font color="#185A32">01. Application lock with pattern</font></b>
-        <b><font color="#185A32">02. Password decryption of managed object using lock pattern(AES)</font></b>
-        <b><font color="#185A32">03. Backup and recovery of management list using Google Drive</font></b>
+<b>[Support Feature]</b>
+<b><font color="#185A32">01. Application lock with pattern</font></b>
+<b><font color="#185A32">02. Password decryption of managed object using lock pattern(AES)</font></b>
+<b><font color="#185A32">03. Backup and recovery of management list using Google Drive</font></b>
     -->
     <!--
         Haven't found some strings? There's more at
