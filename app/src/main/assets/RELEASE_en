@@ -5,16 +5,16 @@
 ---------------------------------------------------
 
 # Changes in 0.1.4 (date: 2017/11/28)
-  * 영문지원 추가
-
+  * Add English support
+  
 # Changes in 0.1.3 (date: 2017/11/28)
-  * 신용카드 보안정보 암호화 필드추가
+  * Add credit card security information encryption field
 
 # Changes in 0.1.2 (date: 2017/11/27)
-  * 구글드라이브를 이용한 관리항목 백업기능 개선
+  * Improved backup of management items using Google Drive
 
 # Changes in 0.1.1 (date: 2017/11/26)
-  * 관리항목 삭제기능 추가
+  * Add ability to delete managed items
 
 # Changes in 0.1.0 (date: 2017/11/25)
-  * 베타버전 최초배포
+  * Initial beta release
