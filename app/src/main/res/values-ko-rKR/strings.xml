@@ -58,30 +58,30 @@
 
     <!--EasyPasswordHelper-->
     <array name="array_category_name">
-        <item>Website</item>
-        <item>Credit card</item>
-        <item>Door lock</item>
-        <item>Lock</item>
-        <item>Electronic document</item>
-        <item>ETC</item>
+        <item>웹사이트</item>
+        <item>신용카드</item>
+        <item>도어락</item>
+        <item>자물쇠</item>
+        <item>전자문서</item>
+        <item>미분류</item>
     </array>
 
     <array name="array_sample_security_title">
         <item>Google</item>
-        <item>Good Bank</item>
-        <item>Company entrance</item>
-        <item>Luggage</item>
-        <item>Project plan</item>
-        <item>VOD authorization number</item>
+        <item>카카오뱅크</item>
+        <item>회사현관</item>
+        <item>여행가방</item>
+        <item>프로젝트 기획서</item>
+        <item>VOD 인증번호</item>
     </array>
 
     <array name="array_sample_security_summary">
         <item>https://www.google.com</item>
-        <item>Good Bank credit card</item>
-        <item>Company entrance security number</item>
-        <item>Yellow carrier</item>
-        <item>2018 Mobile Project Screen Definition Statement</item>
-        <item>VOD approval authorization number</item>
+        <item>카뱅 체크카드</item>
+        <item>회사 현관 출입번호</item>
+        <item>노랑색 캐리어</item>
+        <item>2018 모바일 프로젝트 화면정의서</item>
+        <item>VOD 결재 인증번호</item>
     </array>
 
     <!-- Strings displayed only on Google Play Store. Optional, but good to have -->

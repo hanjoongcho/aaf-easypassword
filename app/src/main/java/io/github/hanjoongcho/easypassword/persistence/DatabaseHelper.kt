@@ -49,7 +49,7 @@ class DatabaseHelper private constructor(
 
     fun initDatabase() {
         if (countSecurity() < 1) {
-            EasyPasswordHelper.listDummySecurity.map {
+            EasyPasswordHelper.getSampleSecurities(context).map {
                 insertSecurity(it)
             }
         }

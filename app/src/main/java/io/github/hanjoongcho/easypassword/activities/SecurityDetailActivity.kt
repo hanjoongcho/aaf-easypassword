@@ -157,7 +157,7 @@ class SecurityDetailActivity : CommonActivity() {
 
     private fun initCategorySpinner() {
 
-        val adapter: ArrayAdapter<Category> = SecurityCategoryAdapter(this@SecurityDetailActivity, R.layout.item_category, EasyPasswordHelper.listCategory)
+        val adapter: ArrayAdapter<Category> = SecurityCategoryAdapter(this@SecurityDetailActivity, R.layout.item_category, EasyPasswordHelper.getCategories(this@SecurityDetailActivity))
         mBinding?.run {
             securityCategory.adapter = adapter
             securityCategory.setSelection(mSecurity?.category?.index ?: 0)

@@ -2,6 +2,7 @@ package io.github.hanjoongcho.easypassword.helper
 
 import android.annotation.TargetApi
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.support.annotation.ColorRes
@@ -13,8 +14,6 @@ import android.support.v4.util.Pair
 import android.view.View
 import android.widget.ImageView
 import io.github.hanjoongcho.easypassword.R
-import io.github.hanjoongcho.easypassword.activities.SecurityAddActivity
-import io.github.hanjoongcho.easypassword.activities.SettingActivity
 import io.github.hanjoongcho.easypassword.databinding.ActivitySecurityAddBinding
 import io.github.hanjoongcho.easypassword.databinding.ActivitySecurityDetailBinding
 import io.github.hanjoongcho.easypassword.databinding.ActivitySecurityEditBinding
@@ -22,84 +21,106 @@ import io.github.hanjoongcho.easypassword.models.Account
 import io.github.hanjoongcho.easypassword.models.Category
 import io.github.hanjoongcho.easypassword.models.CreditCard
 import io.github.hanjoongcho.easypassword.models.Security
+import io.github.hanjoongcho.utils.PasswordStrengthUtils
+import me.gosimple.nbvcxz.resources.Configuration
+import me.gosimple.nbvcxz.resources.ConfigurationBuilder
+import me.gosimple.nbvcxz.resources.Dictionary
 
 /**
  * Created by CHO HANJOONG on 2017-11-18.
  */
 
 object EasyPasswordHelper {
+//    var listCategory: List<Category> = mutableListOf(
+//            Category(0, "웹사이트", "web"),
+//            Category(1, "신용카드", "credit_card"),
+//            Category(2, "도어락", "home"),
+//            Category(3, "자물쇠", "lock"),
+//            Category(4, "전자문서", "folder"),
+//            Category(5, "미분류", "password")
+//    )
 
-    val listCategory: List<Category> = mutableListOf(
-            Category(0, "웹사이트", "web"),
-            Category(1, "신용카드", "credit_card"),
-            Category(2, "도어락", "home"),
-            Category(3, "자물쇠", "lock"),
-            Category(4, "전자문서", "folder"),
-            Category(5, "미분류", "password")
-    )
+    private var listCategory: MutableList<Category>? = null
 
-    val listDummySecurity: List<Security> = mutableListOf(
-            Security(
-                    null,
-                    "Google",
-                    "google!@123",
-                    3,
-                    "https://www.google.com",
-                    listCategory[0],
-                    Account("bulbasaur@mail.com"),
-                    null
-            ),
-            Security(
-                    null,
-                    "카카오뱅크",
-                    "1901",
-                    1,
-                    "카뱅 체크카드",
-                    listCategory[1],
-                    null,
-                    CreditCard("132-3574-123-09","12/2025", "901")
-            ),
-            Security(
-                    null,
-                    "회사현관",
-                    "157809",
-                    1,
-                    "회사 현관 출입번호",
-                    listCategory[2],
-                    null,
-                    null
-            ),
-            Security(
-                    null,
-                    "여행가방",
-                    "0000",
-                    2,
-                    "노랑색 캐리어",
-                    listCategory[1],
-                    null,
-                    null
-            ),
-            Security(
-                    null,
-                    "프로젝트 기획서",
-                    "proDoc12@!2",
-                    5,
-                    "2018 모바일 프로젝트 화면정의서",
-                    listCategory[4],
-                    null,
-                    null
-            ),
-            Security(
-                    null,
-                    "VOD 인증번호",
-                    "9999",
-                    1,
-                    "VOD 결재 인증번호",
-                    listCategory[5],
-                    null,
-                    null
-            )
-    )
+    fun getCategories(context: Context): MutableList<Category> {
+        val categories = context.resources.getStringArray(R.array.array_category_name)
+        return listCategory ?: mutableListOf(
+                Category(0, categories[0], "web"),
+                Category(1, categories[1], "credit_card"),
+                Category(2, categories[2], "home"),
+                Category(3, categories[3], "lock"),
+                Category(4, categories[4], "folder"),
+                Category(5, categories[5], "password")
+        )
+    }
+
+    fun getSampleSecurities(context: Context): MutableList<Security> {
+        var categories = getCategories(context)
+        val titles = context.resources.getStringArray(R.array.array_sample_security_title)
+        var summaries = context.resources.getStringArray(R.array.array_sample_security_summary)
+        return mutableListOf(
+                Security(
+                        null,
+                        titles[0],
+                        "google!@123",
+                        3,
+                        summaries[0],
+                        categories[0],
+                        Account("bulbasaur@mail.com"),
+                        null
+                ),
+                Security(
+                        null,
+                        titles[1],
+                        "1901",
+                        1,
+                        summaries[1],
+                        categories[1],
+                        null,
+                        CreditCard("132-3574-123-09","12/2025", "901")
+                ),
+                Security(
+                        null,
+                        titles[2],
+                        "157809",
+                        1,
+                        summaries[2],
+                        categories[2],
+                        null,
+                        null
+                ),
+                Security(
+                        null,
+                        titles[3],
+                        "0000",
+                        2,
+                        summaries[3],
+                        categories[3],
+                        null,
+                        null
+                ),
+                Security(
+                        null,
+                        titles[4],
+                        "proDoc12@!2",
+                        5,
+                        summaries[4],
+                        categories[4],
+                        null,
+                        null
+                ),
+                Security(
+                        null,
+                        titles[5],
+                        "9999",
+                        1,
+                        summaries[5],
+                        categories[5],
+                        null,
+                        null
+                )
+        )
+    }
 
     /**
      * Create the transition participants required during a activity transition while

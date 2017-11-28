@@ -40,6 +40,7 @@
                 android:text="@{security.title}"
                 android:textAppearance="@style/Topeka.TextAppearance.CategoryItem"
                 android:transitionName="name..."
+                android:ellipsize="end"
                 tools:targetApi="lollipop"/>
             <TextView
                 android:id="@+id/account_summary"
@@ -50,6 +51,7 @@
                 android:text="@{security.summary}"
                 android:textAppearance="@style/Topeka.TextAppearance.CategoryItem"
                 android:transitionName="name..."
+                android:ellipsize="end"
                 tools:targetApi="lollipop"/>
             <include
                 android:id="@+id/included"
