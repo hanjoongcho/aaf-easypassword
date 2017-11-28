@@ -1,48 +1,45 @@
 <resources>
-    <string name="app_name">이지\n패스워드</string>
+    <string name="app_name">Easy\nPassword</string>
 
     <!--Common-->
-    <string name="security_manage_category">관리항목 분류</string>
-    <string name="security_manage_target">관리대상</string>
-    <string name="security_id">계정(이메일)</string>
-    <string name="security_password">비밀번호</string>
-    <string name="security_summary">관리항목 요약</string>
+    <string name="security_manage_category">Classification</string>
+    <string name="security_manage_target">Management name</string>
+    <string name="security_id">Account(Email)</string>
+    <string name="security_password">Password</string>
+    <string name="security_summary">Management Summary</string>
 
-    <string name="credit_card_target">관리대상</string>
-    <string name="credit_card_serial">카드번호</string>
-    <string name="credit_card_expire_date">만료일</string>
-    <string name="credit_card_password">비밀번호</string>
-    <string name="credit_card_summary">상세정보</string>
-    <string name="credit_card_cvc">CVC코드</string>
+    <string name="credit_card_serial">Card Number</string>
+    <string name="credit_card_expire_date">Expiration Date</string>
+    <string name="credit_card_cvc">CVC Number</string>
 
     <!--PatternLockActivity-->
-    <string name="pattern_lock_activity_unlock_message">잠금 패턴을 입력하세요.</string>
-    <string name="pattern_lock_activity_setting_lock_message">잠금 패턴을 설정하세요.</string>
-    <string name="pattern_lock_activity_verify_message">설정된 잠금 패턴을 한번 더 입력하세요.</string>
-    <string name="pattern_lock_activity_verify_reject">잠금 패턴 검증에 실패했습니다.</string>
-    <string name="pattern_lock_progress_message">관리목록 암호화중...</string>
+    <string name="pattern_lock_activity_unlock_message">Please enter lock pattern.</string>
+    <string name="pattern_lock_activity_setting_lock_message">Please setting lock pattern.</string>
+    <string name="pattern_lock_activity_verify_message">Enter the set lock pattern again.</string>
+    <string name="pattern_lock_activity_verify_reject">Lock pattern verification failed.</string>
+    <string name="pattern_lock_progress_message">Encrypting management list...</string>
 
     <!--SecuritySelectionActivityvity-->
-    <string name="security_selection_title">관리목록</string>
+    <string name="security_selection_title">Item List</string>
 
     <!--SecuritySelectionFragment-->
-    <string name="security_selection_init_item_message">샘플 데이터 생성중...</string>
+    <string name="security_selection_init_item_message">Generating sample data...</string>
 
     <!--SecurityDetailActivityvity-->
-    <string name="security_detail_title">상세정보</string>
-    <string name="security_item_delete_confirm">선택된 관리항목을 삭제 하시겠습니까?</string>
+    <string name="security_detail_title">Item Detail</string>
+    <string name="security_item_delete_confirm">Are you sure you want to delete the selected managed item?</string>
 
     <!--SecurityEditActivityvity-->
-    <string name="security_edit_title">관리항목 수정</string>
+    <string name="security_edit_title">Item Edit</string>
 
     <!--SecurityAddActivity-->
-    <string name="security_add_title">관리항목 추가</string>
+    <string name="security_add_title">Item Add</string>
 
     <!--SettingActivity-->
-    <string name="setting_title">환경설정</string>
-    <string name="setting_pattern_lock">잠금패턴 설정</string>
-    <string name="setting_pattern_lock_summary">어플리케이션 잠금 및 관리계정 암호화에 사용될 패턴정보를 설정합니다.</string>
-    <string name="setting_rate_app">어플평가</string>
+    <string name="setting_title">Preferences</string>
+    <string name="setting_pattern_lock">Set Lock Pattern</string>
+    <string name="setting_pattern_lock_summary">Application lock and management pattern setting to be used for account encryption.</string>
+    <string name="setting_rate_app">App rating</string>
     <string name="setting_rate_app_summary">어플리케이션 잠금, 관리계정 암호화에 사용될 패턴정보를 설정합니다.</string>
     <string name="setting_google_drive_backup">관리계정 백업</string>
     <string name="setting_google_drive_backup_summary">이지 패스워드에 저장된 모든 관리항목을 구글드라이브에 백업합니다.</string>
