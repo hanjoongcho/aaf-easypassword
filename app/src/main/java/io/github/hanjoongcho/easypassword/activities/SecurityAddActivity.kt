@@ -32,7 +32,7 @@ class SecurityAddActivity : CommonActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_security_add)
 
-        mBinding = DataBindingUtil.setContentView<ActivitySecurityAddBinding>(this,
+        mBinding = DataBindingUtil.setContentView(this,
                 R.layout.activity_security_add)
 
         setSupportActionBar(toolbar)
@@ -62,7 +62,7 @@ class SecurityAddActivity : CommonActivity() {
     private fun bindEvent() {
 
         mBinding?.let { binding ->
-            binding.save.setOnClickListener(View.OnClickListener { _ ->
+            binding.save.setOnClickListener({ _ ->
                 val security: Security? = EasyPasswordHelper.getSecurityFromLayout(binding, binding.securityCategory.selectedItem as Category, mTempStrengthLevel)
                 security?.let {
                     this@SecurityAddActivity.database().insertSecurity(it)

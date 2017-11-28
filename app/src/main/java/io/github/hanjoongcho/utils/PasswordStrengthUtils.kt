@@ -5,10 +5,7 @@ import me.gosimple.nbvcxz.Nbvcxz
 import me.gosimple.nbvcxz.resources.Configuration
 import me.gosimple.nbvcxz.resources.ConfigurationBuilder
 import me.gosimple.nbvcxz.resources.Dictionary
-import me.gosimple.nbvcxz.scoring.Result
 import me.gosimple.nbvcxz.scoring.TimeEstimate
-import java.math.BigDecimal
-import java.util.ArrayList
 
 /**
  * Created by Administrator on 2017-11-22.

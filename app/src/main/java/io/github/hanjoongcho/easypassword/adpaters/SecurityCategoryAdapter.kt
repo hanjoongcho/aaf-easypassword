@@ -30,8 +30,8 @@ class SecurityCategoryAdapter(
             val inflater = (this.mContext as Activity).layoutInflater
             row = inflater.inflate(this.mLayoutResourceId, parent, false)
             holder = ViewHolder()
-            holder.textView = row?.findViewById<TextView>(R.id.textView)
-            holder.imageView = row?.findViewById<ImageView>(R.id.imageView)
+            holder.textView = row?.findViewById(R.id.textView)
+            holder.imageView = row?.findViewById(R.id.imageView)
             row.tag = holder
         } else {
             holder = row.tag as ViewHolder

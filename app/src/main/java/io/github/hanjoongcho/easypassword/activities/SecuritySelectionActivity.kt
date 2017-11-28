@@ -26,7 +26,7 @@ class SecuritySelectionActivity : CommonActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        val binding = DataBindingUtil
+        DataBindingUtil
                 .setContentView<ActivitySecuritySelectionBinding>(this,
                         R.layout.activity_security_selection)
 

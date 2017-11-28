@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.activity_intro.*
 
 class IntroActivity : AppCompatActivity(), Handler.Callback {
 
-    private var mInitCount = 0;
+    private var mInitCount = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -50,9 +50,9 @@ class IntroActivity : AppCompatActivity(), Handler.Callback {
                     mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 1000, mPendingIntent)
                     intent.putExtra(INTRO_MODE, INTRO_MODE_DEFAULT)
 
-                    ActivityCompat.finishAffinity(this);
-                    System.runFinalizersOnExit(true);
-                    System.exit(0);
+                    ActivityCompat.finishAffinity(this)
+                    System.runFinalizersOnExit(true)
+                    System.exit(0)
                 }
             }
         } else {

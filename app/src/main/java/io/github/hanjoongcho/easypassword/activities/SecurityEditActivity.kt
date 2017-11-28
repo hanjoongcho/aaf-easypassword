@@ -44,7 +44,7 @@ class SecurityEditActivity : CommonActivity() {
         mSecurity = this@SecurityEditActivity.database().selectSecurityBy(mSequence)
         mTempStrengthLevel = mSecurity?.passwordStrengthLevel ?: 1
 
-        mBinding = DataBindingUtil.setContentView<ActivitySecurityEditBinding>(this,
+        mBinding = DataBindingUtil.setContentView(this,
                 R.layout.activity_security_edit)
 
         setSupportActionBar(toolbar)
@@ -78,14 +78,14 @@ class SecurityEditActivity : CommonActivity() {
     private fun bindEvent() {
 
         mBinding?.let { binding ->
-            binding.save.setOnClickListener(View.OnClickListener { view ->
+            binding.save.setOnClickListener({ view ->
                 view.visibility = View.INVISIBLE
                 val security: Security? = EasyPasswordHelper.getSecurityFromLayout(mBinding, binding.securityCategory.selectedItem as Category, mTempStrengthLevel)
                 security?.let {
-                    val view = this.currentFocus
-                    if (view != null) {
+                    val focusView = this.currentFocus
+                    if (focusView != null) {
                         val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                        imm.hideSoftInputFromWindow(view.windowToken, 0)
+                        imm.hideSoftInputFromWindow(focusView.windowToken, 0)
                     }
                     it.sequence = mSequence
                     binding.loadingProgress.visibility = View.VISIBLE

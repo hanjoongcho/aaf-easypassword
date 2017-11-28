@@ -1,13 +1,9 @@
 package io.github.hanjoongcho.easypassword.persistence
 
 import android.content.Context
-import android.util.Log
-import io.github.hanjoongcho.easypassword.activities.IntroActivity
 import io.github.hanjoongcho.utils.AesUtils
 import io.realm.DynamicRealm
-import io.realm.DynamicRealmObject
 import io.realm.RealmMigration
-import io.realm.RealmObjectSchema
 
 /**
  * Created by CHO HANJOONG on 2017-11-18.

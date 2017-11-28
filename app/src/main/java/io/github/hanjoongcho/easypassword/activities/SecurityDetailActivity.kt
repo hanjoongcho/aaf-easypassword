@@ -63,8 +63,8 @@ class SecurityDetailActivity : CommonActivity() {
             R.id.delete -> {
                 val confirmBuilder: AlertDialog.Builder = AlertDialog.Builder(this@SecurityDetailActivity).apply {
                     setMessage(getString(R.string.security_item_delete_confirm))
-                    setPositiveButton("OK", DialogInterface.OnClickListener({ _, _ ->
-                        this@SecurityDetailActivity.database().deleteSecurityBy(mSequence);
+                    setPositiveButton("OK", ({ _, _ ->
+                        this@SecurityDetailActivity.database().deleteSecurityBy(mSequence)
                         this@SecurityDetailActivity.onBackPressed()
                     }))
                     setNegativeButton("CANCEL", null)
@@ -128,7 +128,7 @@ class SecurityDetailActivity : CommonActivity() {
     private fun bindEvent() {
 
         mBinding?.run {
-            update?.setOnClickListener(View.OnClickListener { _ ->
+            update?.setOnClickListener({ _ ->
                 EasyPasswordHelper.startSettingActivityWithTransition(this@SecurityDetailActivity, SecurityEditActivity.getStartIntent(this@SecurityDetailActivity, mSequence))
             })
         }

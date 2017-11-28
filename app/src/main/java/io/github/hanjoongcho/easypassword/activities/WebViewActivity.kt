@@ -3,9 +3,7 @@ package io.github.hanjoongcho.easypassword.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import io.github.hanjoongcho.easypassword.R
-import io.github.hanjoongcho.easypassword.models.Security
 import kotlinx.android.synthetic.main.activity_web_view.*
 
 /**

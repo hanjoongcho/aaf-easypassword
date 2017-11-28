@@ -55,7 +55,7 @@ class SecuritySelectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
-        mRecyclerView = view.findViewById<RecyclerView>(R.id.categories)
+        mRecyclerView = view.findViewById(R.id.categories)
         mRecyclerView?.let { setUpGrid(it) }
         view.findViewById<FloatingActionButton>(R.id.add).setOnClickListener {
 //            startActivity(SecurityAddActivity.getStartIntent(context))
@@ -86,12 +86,12 @@ class SecuritySelectionFragment : Fragment() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
 //        if (requestCode == REQUEST_CATEGORY && resultCode == R.id.solved) {
 //            adapter?.notifyItemChanged(data.getStringExtra(JsonAttributes.ID))
 //        }
-        super.onActivityResult(requestCode, resultCode, data)
-    }
+//        super.onActivityResult(requestCode, resultCode, data)
+//    }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private fun startAccountDetailActivityWithTransition(activity: Activity, toolbar: View,
