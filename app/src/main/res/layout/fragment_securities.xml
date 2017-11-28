@@ -8,7 +8,7 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/categories"
+            android:id="@+id/securities"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="@dimen/spacing_nano"
@@ -33,9 +33,24 @@
         android:src="@drawable/add_list"
         app:backgroundTint="@color/colorPrimary" />
 
-    <ProgressBar
-        android:id="@+id/loading_progress"
-        android:layout_gravity="center"
-        android:layout_width="20dp"
-        android:layout_height="20dp" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/loadingProgressMessage"
+            android:visibility="invisible"
+            android:text="@string/security_selection_init_item_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="@dimen/medium_text_size"/>
+        <ProgressBar
+            android:id="@+id/loadingProgress"
+            android:visibility="invisible"
+            android:layout_marginTop="10dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp" />
+    </LinearLayout>
 </FrameLayout>

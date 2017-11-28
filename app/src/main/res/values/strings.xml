@@ -25,6 +25,9 @@
     <!--SecuritySelectionActivityvity-->
     <string name="security_selection_title">관리목록</string>
 
+    <!--SecuritySelectionFragment-->
+    <string name="security_selection_init_item_message">샘플 데이터 생성중...</string>
+
     <!--SecurityDetailActivityvity-->
     <string name="security_detail_title">상세정보</string>
     <string name="security_item_delete_confirm">선택된 관리항목을 삭제 하시겠습니까?</string>

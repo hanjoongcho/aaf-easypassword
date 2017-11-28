@@ -3,7 +3,6 @@ package io.github.hanjoongcho.easypassword.fragment
 import android.annotation.SuppressLint
 import android.annotation.TargetApi
 import android.app.Activity
-import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -18,7 +17,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.ProgressBar
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.activities.SecurityAddActivity
 import io.github.hanjoongcho.easypassword.activities.SecurityDetailActivity
@@ -28,14 +26,13 @@ import io.github.hanjoongcho.easypassword.helper.beforeDrawing
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.easypassword.widget.OffsetDecoration
+import kotlinx.android.synthetic.main.fragment_securities.*
 
 /**
  * Created by CHO HANJOONG on 2017-11-17.
  */
 
 class SecuritySelectionFragment : Fragment() {
-
-    private var mRecyclerView: RecyclerView? = null
 
     private val adapter: SecurityAdapter? by lazy(LazyThreadSafetyMode.NONE) {
         SecurityAdapter(activity,
@@ -55,30 +52,36 @@ class SecuritySelectionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
-        mRecyclerView = view.findViewById(R.id.categories)
-        mRecyclerView?.let { setUpGrid(it) }
-        view.findViewById<FloatingActionButton>(R.id.add).setOnClickListener {
-//            startActivity(SecurityAddActivity.getStartIntent(context))
+        setUpGrid(securities)
+        add.setOnClickListener {
             EasyPasswordHelper.startSettingActivityWithTransition(activity, SecurityAddActivity::class.java)
         }
     }
 
     override fun onResume() {
-
+        loadingProgress.visibility = View.VISIBLE
         super.onResume()
         Thread({
-            activity.database().initDatabase()
+            if (activity.database().countSecurity() == 0) {
+                Handler(Looper.getMainLooper()).post({
+                    securities.visibility = View.INVISIBLE
+                    loadingProgressMessage.visibility = View.VISIBLE
+                })
+                activity.database().initDatabase()
+            }
             Handler(Looper.getMainLooper()).post {
                 adapter?.selectAccounts()
                 adapter?.notifyDataSetChanged()
-                view?.findViewById<ProgressBar>(R.id.loading_progress)?.visibility = View.INVISIBLE
+                securities.visibility = View.VISIBLE
+                loadingProgress.visibility = View.INVISIBLE
+                loadingProgressMessage.visibility = View.INVISIBLE
             }
         }).start()
     }
 
     @SuppressLint("NewApi")
-    private fun setUpGrid(categoriesView: RecyclerView) {
-        with(categoriesView) {
+    private fun setUpGrid(securitiesView: RecyclerView) {
+        with(securitiesView) {
             addItemDecoration(OffsetDecoration(context.resources
                     .getDimensionPixelSize(R.dimen.spacing_nano)))
             adapter = this@SecuritySelectionFragment.adapter
