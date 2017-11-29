@@ -2,11 +2,11 @@
     <string name="app_name">Easy\nPassword</string>
 
     <!--Common-->
-    <string name="security_manage_category">Classification</string>
-    <string name="security_manage_target">Management name</string>
-    <string name="security_id">Account(Email)</string>
-    <string name="security_password">Password</string>
-    <string name="security_summary">Management Summary</string>
+    <string name="security_manage_category">分类</string>
+    <string name="security_manage_target">管理名称</string>
+    <string name="security_id">帐户(电子邮件)</string>
+    <string name="security_password">密码</string>
+    <string name="security_summary">管理总结</string>
 
     <string name="credit_card_serial">Card Number</string>
     <string name="credit_card_expire_date">Expiration Date</string>

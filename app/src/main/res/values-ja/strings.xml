@@ -1,0 +1,114 @@
+<resources>
+    <string name="app_name">Easy\nPassword</string>
+
+    <!--Common-->
+    <string name="security_manage_category">分類</string>
+    <string name="security_manage_target">管理名</string>
+    <string name="security_id">アカウント(メール)</string>
+    <string name="security_password">パスワード</string>
+    <string name="security_summary">管理要約</string>
+
+    <string name="credit_card_serial">カード番号</string>
+    <string name="credit_card_expire_date">有効期限</string>
+    <string name="credit_card_cvc">CVC 番号</string>
+
+    <!--PatternLockActivity-->
+    <string name="pattern_lock_activity_unlock_message">ロックパターンを入力してください.</string>
+    <string name="pattern_lock_activity_setting_lock_message">ロックパターンを設定してください.</string>
+    <string name="pattern_lock_activity_verify_message">設定したロックパターンをもう一度入力してください.</string>
+    <string name="pattern_lock_activity_verify_reject">ロックパターンの確認に失敗しました.</string>
+    <string name="pattern_lock_progress_message">管理リストの暗号化...</string>
+
+    <!--SecuritySelectionActivityvity-->
+    <string name="security_selection_title">アイテムリスト</string>
+
+    <!--SecuritySelectionFragment-->
+    <string name="security_selection_init_item_message">サンプルデータの生成...</string>
+
+    <!--SecurityDetailActivityvity-->
+    <string name="security_detail_title">商品詳細</string>
+    <string name="security_item_delete_confirm">選択した管理対象アイテムを削除してもよろしいですか?</string>
+
+    <!--SecurityEditActivityvity-->
+    <string name="security_edit_title">アイテム編集</string>
+
+    <!--SecurityAddActivity-->
+    <string name="security_add_title">アイテム追加</string>
+
+    <!--SettingActivity-->
+    <string name="setting_title">設定</string>
+    <string name="setting_pattern_lock">ロックパターンを設定する</string>
+    <string name="setting_pattern_lock_summary">アカウントの暗号化に使用するアプリケーションのロックと管理パターンの設定.</string>
+    <string name="setting_rate_app">アプリの評価</string>
+    <string name="setting_rate_app_summary">アプリケーションロックまたは管理者アカウントの暗号化のためのパターンロックを設定する.</string>
+    <string name="setting_google_drive_backup">バックアップ管理アカウント</string>
+    <string name="setting_google_drive_backup_summary">すべての管理項目をGoogleドライブにバックアップする.</string>
+    <string name="setting_google_drive_recovery">管理アカウントを回復する</string>
+    <string name="setting_google_drive_recovery_summary">Googleドライブに保存された管理対象アイテムを復元する. 復元された管理項目は、バックアップ時に使用されたロックパターンを使用してのみ解読できます.</string>
+    <string name="setting_license_url">https://github.com/hanjoongcho/aaf-easypassword/blob/master/LICENSE.md</string>
+
+    <!--AesUtils-->
+    <string name="aes_utils_decrypt_error">現在設定されているロックパターンで暗号化されたデータを復号することはできません.</string>
+
+    <!--GoogleDriveUtils-->
+    <string name="google_drive_connect_message">Googleドライブの同期...</string>
+
+    <!--EasyPasswordHelper-->
+    <array name="array_category_name">
+        <item>ウェブサイト</item>
+        <item>クレジットカード</item>
+        <item>ドアロック</item>
+        <item>ロック</item>
+        <item>電子文書</item>
+        <item>未分類</item>
+    </array>
+
+    <array name="array_sample_security_title">
+        <item>Google</item>
+        <item>グッドバンク</item>
+        <item>会社の入り口</item>
+        <item>荷物</item>
+        <item>プロジェクト計画</item>
+        <item>VOD 承認番号</item>
+    </array>
+
+    <array name="array_sample_security_summary">
+        <item>https://www.google.com</item>
+        <item>グッドバンクのクレジットカード</item>
+        <item>企業入館保安番号</item>
+        <item>イエローキャリア</item>
+        <item>2018 モバイルプロジェクト画面定義ステートメント</item>
+        <item>VOD 承認承認番号</item>
+    </array>
+
+    <!-- Strings displayed only on Google Play Store. Optional, but good to have -->
+    <!-- Short description has to have less than 80 chars -->
+    <!--
+    単一のロックパターンを使用してさまざまな種類のパスワードを管理する.
+    -->
+
+    <!-- Long description has to have less than 4000 chars-->
+    <!--
+これは、Easy Photomap、Easy diary の後の第3シリーズです.
+Easy Passwordは、ユーザーが設定した1つのパターンロックを使用して、ログイン、文書セキュリティ、ドアロック、ロック、クレジットカード、アカウント管理などに使用されるパスワードの管理を支援するアプリケーションです.
+Easy Passwordで管理されるすべてのパスワードは、ユーザーが設定したロックパターンを使用して暗号化されて保存されます.
+
+あなたのメモ帳にパスワードを危険に書き込まないでください.
+覚えやすいように複数のパスワードを同じに設定しないでください.
+これからは、Easy Passwordを使用して、単一のロックパターンでパスワードを安全に管理できます.
+
+このアプリケーションはあなたの個人情報を収集または保存しません.
+ユーザが登録したパスワード管理情報は、ユーザの機器に格納され、他のサーバには送信されない.
+Googleドライブバックアップ機能を使用する場合、レルムバックアップファイルはユーザーアカウントのドライブに保存されますが、ユーザーの個人アカウントに保存され、外部で収集または保存することはできません.
+また、パスワード情報はAESパスワードであるため、ユーザが設定したロックパターン情報がなければ復号することができない.
+
+<b>[サポート機能]</b>
+<b><font color="#185A32">01. パターンによるアプリケーションロック</font></b>
+<b><font color="#185A32">02. ロックパターンを使用して管理するパスワードのAESによる暗号化と復号化</font></b>
+<b><font color="#185A32">03. Googleドライブを使用した管理リストのバックアップと復元</font></b>
+    -->
+    <!--
+        Haven't found some strings? There's more at
+        https://github.com/hanjoongcho/aaf-easypassword/tree/master/app/src/main/res
+    -->
+</resources>
