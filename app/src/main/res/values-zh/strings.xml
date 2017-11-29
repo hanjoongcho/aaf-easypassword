@@ -2,110 +2,110 @@
     <string name="app_name">Easy\nPassword</string>
 
     <!--Common-->
-    <string name="security_manage_category">分类</string>
-    <string name="security_manage_target">管理名称</string>
+    <string name="security_manage_category">托管实体分类</string>
+    <string name="security_manage_target">管理的</string>
     <string name="security_id">帐户(电子邮件)</string>
     <string name="security_password">密码</string>
-    <string name="security_summary">管理总结</string>
+    <string name="security_summary">托管项目摘要</string>
 
-    <string name="credit_card_serial">Card Number</string>
-    <string name="credit_card_expire_date">Expiration Date</string>
-    <string name="credit_card_cvc">CVC Number</string>
+    <string name="credit_card_serial">卡号</string>
+    <string name="credit_card_expire_date">到期日期</string>
+    <string name="credit_card_cvc">CVC代码</string>
 
     <!--PatternLockActivity-->
-    <string name="pattern_lock_activity_unlock_message">Please enter lock pattern.</string>
-    <string name="pattern_lock_activity_setting_lock_message">Please setting lock pattern.</string>
-    <string name="pattern_lock_activity_verify_message">Enter the set lock pattern again.</string>
-    <string name="pattern_lock_activity_verify_reject">Lock pattern verification failed.</string>
-    <string name="pattern_lock_progress_message">Encrypting management list...</string>
+    <string name="pattern_lock_activity_unlock_message">请输入锁定模式.</string>
+    <string name="pattern_lock_activity_setting_lock_message">设置的锁定模式.</string>
+    <string name="pattern_lock_activity_verify_message">再次输入锁定模式.</string>
+    <string name="pattern_lock_activity_verify_reject">锁定模式验证失败.</string>
+    <string name="pattern_lock_progress_message">加密管理列表...</string>
 
     <!--SecuritySelectionActivityvity-->
-    <string name="security_selection_title">Item List</string>
+    <string name="security_selection_title">管理列表</string>
 
     <!--SecuritySelectionFragment-->
-    <string name="security_selection_init_item_message">Generating sample data...</string>
+    <string name="security_selection_init_item_message">生成示例数据...</string>
 
     <!--SecurityDetailActivityvity-->
-    <string name="security_detail_title">Item Detail</string>
-    <string name="security_item_delete_confirm">Are you sure you want to delete the selected managed item?</string>
+    <string name="security_detail_title">详情</string>
+    <string name="security_item_delete_confirm">你确定要删除所选的管理项目?</string>
 
     <!--SecurityEditActivityvity-->
-    <string name="security_edit_title">Item Edit</string>
+    <string name="security_edit_title">修改托管项目</string>
 
     <!--SecurityAddActivity-->
-    <string name="security_add_title">Item Add</string>
+    <string name="security_add_title">添加托管项目</string>
 
     <!--SettingActivity-->
-    <string name="setting_title">Preferences</string>
-    <string name="setting_pattern_lock">Set Lock Pattern</string>
-    <string name="setting_pattern_lock_summary">Application lock and management pattern setting to be used for account encryption.</string>
-    <string name="setting_rate_app">App rating</string>
-    <string name="setting_rate_app_summary">Set a pattern lock for application lock or administrative account encryption.</string>
-    <string name="setting_google_drive_backup">Backup management account</string>
-    <string name="setting_google_drive_backup_summary">Backup all management items to Google Drive.</string>
-    <string name="setting_google_drive_recovery">Recover managed account</string>
-    <string name="setting_google_drive_recovery_summary">Recover your managed items stored on Google Drive. Recovered management items can only be decrypted using the lock pattern used at the time of backup.</string>
+    <string name="setting_title">首选项</string>
+    <string name="setting_pattern_lock">设置锁定模式</string>
+    <string name="setting_pattern_lock_summary">设置在应用程序的锁定和加密管理帐目要使用的图案信息.</string>
+    <string name="setting_rate_app">应用评分</string>
+    <string name="setting_rate_app_summary">设置在应用程序锁中使用的图案信息, 加密管理帐户.</string>
+    <string name="setting_google_drive_backup">备份管理帐户</string>
+    <string name="setting_google_drive_backup_summary">存储在备份密码的所有管理项目是不是在谷歌驱动器.</string>
+    <string name="setting_google_drive_recovery">恢复管理帐户</string>
+    <string name="setting_google_drive_recovery_summary">恢复存储在Google云端硬盘中的托管项目. 恢复的管理条目只能使用备份期间使用的锁定模式进行解密.</string>
     <string name="setting_license_url">https://github.com/hanjoongcho/aaf-easypassword/blob/master/LICENSE.md</string>
 
     <!--AesUtils-->
-    <string name="aes_utils_decrypt_error">Encrypted data can not be decrypted with the lock pattern currently set.</string>
+    <string name="aes_utils_decrypt_error">不能被解码成锁定模式本组加密数据.</string>
 
     <!--GoogleDriveUtils-->
-    <string name="google_drive_connect_message">Google Drive in sync...</string>
+    <string name="google_drive_connect_message">Google云端硬盘集成...</string>
 
     <!--EasyPasswordHelper-->
     <array name="array_category_name">
-        <item>Website</item>
-        <item>Credit card</item>
-        <item>Door lock</item>
-        <item>Lock</item>
-        <item>Electronic document</item>
-        <item>ETC</item>
+        <item>网站</item>
+        <item>信用卡</item>
+        <item>门锁</item>
+        <item>锁定</item>
+        <item>电子文件</item>
+        <item>未分类</item>
     </array>
 
     <array name="array_sample_security_title">
         <item>Google</item>
-        <item>Good Bank</item>
-        <item>Company entrance</item>
-        <item>Luggage</item>
-        <item>Project plan</item>
-        <item>VOD authorization number</item>
+        <item>可可银行</item>
+        <item>公司入口</item>
+        <item>旅行包</item>
+        <item>项目计划</item>
+        <item>VOD 证书号码</item>
     </array>
 
     <array name="array_sample_security_summary">
         <item>https://www.google.com</item>
-        <item>Good Bank credit card</item>
-        <item>Company entrance security number</item>
-        <item>Yellow carrier</item>
-        <item>2018 Mobile Project Screen Definition Statement</item>
-        <item>VOD approval authorization number</item>
+        <item>好银行信用卡</item>
+        <item>公司入口安全号码</item>
+        <item>黄色的载体</item>
+        <item>2018 移动项目屏幕定义声明</item>
+        <item>VOD 批准授权号码</item>
     </array>
 
     <!-- Strings displayed only on Google Play Store. Optional, but good to have -->
     <!-- Short description has to have less than 80 chars -->
     <!--
-    Manage various types of passwords using a single lock pattern.
+    简易密码是一个应用程序，可帮助您使用单一锁定模式管理各种类型的密码.
     -->
 
     <!-- Long description has to have less than 4000 chars-->
     <!--
-This is a third series after Easy Photomap, Easy diary.
-Easy Password is an application that helps you manage passwords used for login, document security, door lock, lock, credit card, account management, etc. by using one pattern lock set by the user.
-All passwords managed by Easy Password are encrypted and stored using the lock pattern set by the user.
+这是 Easy Photomap 和 Easy Diary 之后的第三个应用程序.
+Easy Password 是一个应用程序, 通过使用用户设置的一个模式锁, 帮助您管理用于登录, 文档安全, 门锁, 锁, 信用卡, 帐户管理等的密码.
+Easy Password 管理的所有密码都是使用用户设置的锁定模式进行加密和存储的.
 
-Do not write your password on your notepad dangerously.
-Do not set multiple passwords the same for easier remembering.
-From now on, you can safely manage your password with a single lock pattern using Easy Password.
+不要在你的记事本上危险地写你的密码.
+不要将多个密码设置为相同, 以便于记忆.
+从现在开始, 您可以使用简易密码以单一锁定模式安全地管理您的密码.
 
-Easy Password does not collect or store your personal information.
-The password management information registered by the user is stored in the user's device and is not transmitted to other server.
-When using the Google Drive Backup feature, the Realm Backup File is stored in the drive of the user account, but it is stored in the user's personal account and can not be collected or stored externally.
-Also, since the password information is AES password, it can not be decrypted without the lock pattern information set by the user.
+Easy Password 不收集或存储您的个人信息。
+用户注册的密码管理信息被存储在用户的设备中，并且不被发送到其他服务器.
+使用Google云端硬盘备份功能时, 领域备份文件存储在用户帐户的驱动器中, 但存储在用户的个人帐户中, 无法从外部收集或存储.
+而且, 由于密码信息是AES密码, 所以在没有用户设定的锁定模式信息的情况下不能解密密码信息.
 
-<b>[Support Feature]</b>
-<b><font color="#185A32">01. Application lock with pattern</font></b>
-<b><font color="#185A32">02. Encryption and decryption with AES of passwords to be managed using lock pattern</font></b>
-<b><font color="#185A32">03. Backup and recovery of management list using Google Drive</font></b>
+<b>[支持功能]</b>
+<b><font color="#185A32">01. 使用模式锁定应用程序</font></b>
+<b><font color="#185A32">02. 用密码AES加密和解密使用锁定模式进行管理</font></b>
+<b><font color="#185A32">03. 使用Google云端硬盘备份和恢复您的管理列表</font></b>
     -->
     <!--
         Haven't found some strings? There's more at
