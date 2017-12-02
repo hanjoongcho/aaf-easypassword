@@ -7,6 +7,8 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityOptionsCompat
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -51,6 +53,21 @@ class SecuritySelectionActivity : CommonActivity() {
             if (focusView != null) {
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.hideSoftInputFromWindow(focusView.windowToken, 0)
+                supportActionBar?.run {
+                    subtitle = searchView.text
+                }
+            }
+        })
+
+        searchView.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                filteringItems(p0.toString())
             }
         })
     }
@@ -81,8 +98,14 @@ class SecuritySelectionActivity : CommonActivity() {
     }
 
     override fun onResume() {
-        Log.i(IntroActivity.TAG, "SecuritySelectionActivity")
         super.onResume()
+    }
+
+    private fun filteringItems(searchKey: String) {
+        val fragment = findFragmentById(R.id.category_container) ?: SecuritySelectionFragment()
+        if (fragment is SecuritySelectionFragment) {
+            fragment.filteringItems(searchKey)
+        }
     }
 
     private fun attachCategoryGridFragment() {
@@ -91,7 +114,7 @@ class SecuritySelectionActivity : CommonActivity() {
     }
 
     companion object {
-
+        const val TAG = "input test"
         fun start(activity: Activity) {
             ActivityCompat.startActivity(activity,
                     Intent(activity, SecuritySelectionActivity::class.java),

@@ -26,9 +26,9 @@
             <LinearLayout
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:visibility="visible"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:visibility="gone"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:id="@+id/searchViewContainer"
@@ -36,12 +36,13 @@
                 android:layout_height="?attr/actionBarSize">
                 <EditText
                     android:id="@+id/searchView"
+                    android:textSize="@dimen/medium_text_size"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent" />
                 <ImageView
                     android:id="@+id/toggleToolBar"
-                    android:src="@drawable/logout_w"
+                    android:src="@drawable/checkmark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>

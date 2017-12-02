@@ -33,6 +33,12 @@ class SecurityAdapter(
         securities.addAll(activity.database().selectSecurityAll())
     }
 
+    fun selectAccounts(searchKey: String) {
+
+        securities.clear()
+        securities.addAll(activity.database().selectSecuritiesBy(searchKey))
+    }
+
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         with(holder.binding) {

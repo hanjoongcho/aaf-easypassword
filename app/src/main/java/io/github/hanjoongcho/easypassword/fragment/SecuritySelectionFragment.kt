@@ -79,6 +79,11 @@ class SecuritySelectionFragment : Fragment() {
         }).start()
     }
 
+    fun filteringItems(searchKey: String) {
+        adapter?.selectAccounts(searchKey)
+        adapter?.notifyDataSetChanged()
+    }
+
     @SuppressLint("NewApi")
     private fun setUpGrid(securitiesView: RecyclerView) {
         with(securitiesView) {

@@ -4,10 +4,9 @@ import android.content.Context
 import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.utils.AesUtils
-import io.realm.Realm
-import io.realm.RealmConfiguration
-import io.realm.Sort
+import io.realm.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * Created by Administrator on 2017-11-17.
@@ -100,6 +99,13 @@ class DatabaseHelper private constructor(
         return realmInstance.where(Security::class.java).equalTo(Security.PRIMARY_KEY, sequence).findFirst()
     }
 
+    fun selectSecuritiesBy(searchKey: String): ArrayList<Security>  {
+        val realmResults = realmInstance.where(Security::class.java).beginGroup().contains(SECURITY_TITLE, searchKey, Case.INSENSITIVE).or().contains(SECURITY_SUMMARY, searchKey, Case.INSENSITIVE).endGroup().findAllSorted(SECURITY_TITLE, Sort.ASCENDING)
+        val list = ArrayList<Security>()
+        list.addAll(realmResults.subList(0, realmResults.size))
+        return list
+    }
+
     fun deleteSecurityBy(sequence: Int) {
         beginTransaction()
         realmInstance.where(Security::class.java).equalTo(Security.PRIMARY_KEY, sequence).findFirst()?.let {
@@ -119,6 +125,7 @@ class DatabaseHelper private constructor(
     companion object {
 
         const val SECURITY_TITLE = "title"
+        const val SECURITY_SUMMARY = "summary"
         const val DIARY_DB_NAME = "easy-password.realm"
 
         private var _instance: DatabaseHelper? = null
