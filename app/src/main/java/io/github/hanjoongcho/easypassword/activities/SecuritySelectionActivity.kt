@@ -9,7 +9,6 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityOptionsCompat
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -21,8 +20,6 @@ import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.helper.findFragmentById
 import io.github.hanjoongcho.easypassword.helper.replaceFragment
 import kotlinx.android.synthetic.main.activity_security_selection.*
-import android.widget.EditText
-
 
 
 /**
@@ -101,10 +98,10 @@ class SecuritySelectionActivity : CommonActivity() {
         super.onResume()
     }
 
-    private fun filteringItems(searchKey: String) {
+    private fun filteringItems(keyword: String) {
         val fragment = findFragmentById(R.id.category_container) ?: SecuritySelectionFragment()
         if (fragment is SecuritySelectionFragment) {
-            fragment.filteringItems(searchKey)
+            fragment.filteringItems(keyword)
         }
     }
 

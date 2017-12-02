@@ -7,7 +7,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.app.Fragment
@@ -33,6 +32,8 @@ import kotlinx.android.synthetic.main.fragment_securities.*
  */
 
 class SecuritySelectionFragment : Fragment() {
+
+    private var mKeyword: String? = ""
 
     private val adapter: SecurityAdapter? by lazy(LazyThreadSafetyMode.NONE) {
         SecurityAdapter(activity,
@@ -70,7 +71,7 @@ class SecuritySelectionFragment : Fragment() {
                 activity.database().initDatabase()
             }
             Handler(Looper.getMainLooper()).post {
-                adapter?.selectAccounts()
+                adapter?.selectAccounts(mKeyword ?: "")
                 adapter?.notifyDataSetChanged()
                 securities.visibility = View.VISIBLE
                 loadingProgress.visibility = View.INVISIBLE
@@ -79,8 +80,9 @@ class SecuritySelectionFragment : Fragment() {
         }).start()
     }
 
-    fun filteringItems(searchKey: String) {
-        adapter?.selectAccounts(searchKey)
+    fun filteringItems(keyword: String) {
+        mKeyword = keyword
+        adapter?.selectAccounts(keyword)
         adapter?.notifyDataSetChanged()
     }
 
