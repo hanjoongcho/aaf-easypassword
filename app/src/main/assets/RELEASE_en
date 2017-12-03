@@ -4,6 +4,9 @@
 
 ---------------------------------------------------
 
+# Changes in 0.2.0 (date: 2017/12/03)
+  * Add feature to search managed items
+
 # Changes in 0.1.5 (date: 2017/11/30)
   * Add Chinese support
   * Add Japanese support

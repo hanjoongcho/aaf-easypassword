@@ -21,8 +21,8 @@ android {
         applicationId "io.github.hanjoongcho.easypassword"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 6
-        versionName "0.1.5"
+        versionCode 7
+        versionName "0.2.0"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
