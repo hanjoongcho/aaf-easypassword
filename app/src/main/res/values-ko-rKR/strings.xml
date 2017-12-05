@@ -70,6 +70,7 @@
         <item>여행가방</item>
         <item>프로젝트 기획서</item>
         <item>VOD 인증번호</item>
+        <item>GitHub</item>
     </array>
 
     <array name="array_sample_security_summary">
@@ -79,6 +80,7 @@
         <item>노랑색 캐리어</item>
         <item>2018 모바일 프로젝트 화면정의서</item>
         <item>VOD 결재 인증번호</item>
+        <item>https://www.github.com</item>
     </array>
 
     <!-- Strings displayed only on Google Play Store. Optional, but good to have -->

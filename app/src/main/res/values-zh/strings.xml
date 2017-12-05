@@ -70,6 +70,7 @@
         <item>旅行包</item>
         <item>项目计划</item>
         <item>VOD 证书号码</item>
+        <item>GitHub</item>
     </array>
 
     <array name="array_sample_security_summary">
@@ -79,6 +80,7 @@
         <item>黄色的载体</item>
         <item>2018 移动项目屏幕定义声明</item>
         <item>VOD 批准授权号码</item>
+        <item>https://www.github.com</item>
     </array>
 
     <!-- Strings displayed only on Google Play Store. Optional, but good to have -->
