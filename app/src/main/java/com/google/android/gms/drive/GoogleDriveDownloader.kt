@@ -1,18 +1,12 @@
 package com.google.android.gms.drive
 
-import android.app.AlarmManager
-import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.os.Bundle
-import android.util.Log
 import com.google.android.gms.common.api.ResultCallback
-import io.github.hanjoongcho.easypassword.activities.CommonActivity
 import io.github.hanjoongcho.easypassword.activities.IntroActivity
 import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.persistence.DatabaseHelper
-import io.github.hanjoongcho.utils.CommonUtils
 import org.apache.commons.io.IOUtils
 import java.io.FileOutputStream
 
