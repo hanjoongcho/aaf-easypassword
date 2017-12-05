@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.content.IntentSender
 import android.os.Bundle
-import android.os.Parcelable
 import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.common.api.GoogleApiClient
@@ -43,7 +42,7 @@ open class GoogleDriveUtils : Activity(), GoogleApiClient.ConnectionCallbacks, G
         setContentView(R.layout.activity_google_drive)
     }
 
-            /**
+    /**
      * Called when `mGoogleApiClient` is trying to connect but failed.
      * Handle `result.getResolution()` if there is a resolution is
      * available.
