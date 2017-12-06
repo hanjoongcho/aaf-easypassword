@@ -70,6 +70,7 @@
         <item>Traveling Bag</item>
         <item>Project plan</item>
         <item>VOD authorization number</item>
+        <item>GitHub</item>
     </array>
 
     <array name="array_sample_security_summary">
@@ -79,6 +80,7 @@
         <item>Yellow bag</item>
         <item>2018 Mobile Project Screen Definition Statement</item>
         <item>VOD approval authorization number</item>
+        <item>https://www.github.com</item>
     </array>
 
     <!-- Strings displayed only on Google Play Store. Optional, but good to have -->

@@ -118,6 +118,16 @@ object EasyPasswordHelper {
                         categories[5],
                         null,
                         null
+                ),
+                Security(
+                        null,
+                        titles[6],
+                        "google!@123",
+                        4,
+                        summaries[6],
+                        categories[0],
+                        Account("bulbasaur@mail.com"),
+                        null
                 )
         )
     }
