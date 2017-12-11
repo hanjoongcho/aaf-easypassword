@@ -42,7 +42,7 @@ Step6. Define salt string into 'AesUtils.kt' file
 Step7. Register your package name and SHA-1 signature certificate fingerprint for Google Drive use.(https://console.developers.google.com/)
 Step8. Build 'aaf-easypassword' project with android studio.
 ```
-[Download miniman svg images from Flaticon](https://www.flaticon.com/packs/security-40)
+[Download security-40 svg images from Flaticon](https://www.flaticon.com/packs/security-40)
 
 # License
 [LICENSE][LICENSE.md]
