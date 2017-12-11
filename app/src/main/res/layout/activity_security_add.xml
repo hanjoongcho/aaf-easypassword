@@ -70,6 +70,7 @@
                             android:text="@string/security_summary"
                             style="@style/AccountEditLabel" />
                         <EditText
+                            android:inputType="textMultiLine|textNoSuggestions|textCapWords"
                             style="@style/AccountEditInputText"
                             android:id="@+id/security_summary" />
                     </LinearLayout>
