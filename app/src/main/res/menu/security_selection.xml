@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:icon="@drawable/search_15"
+        android:icon="@drawable/search_10"
         android:id="@+id/search"
         android:orderInCategory="100"
         android:title=""
@@ -11,6 +11,6 @@
         android:icon="@drawable/settings_7"
         android:id="@+id/setting"
         android:orderInCategory="100"
-        android:title=""
-        app:showAsAction="always" />
+        android:title="@string/settings"
+        app:showAsAction="never" />
 </menu>

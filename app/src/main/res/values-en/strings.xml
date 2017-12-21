@@ -21,7 +21,8 @@
 
     <!--SecuritySelectionActivityvity-->
     <string name="security_selection_title">Item List</string>
-
+    <string name="settings">Settings</string>
+    
     <!--SecuritySelectionFragment-->
     <string name="security_selection_init_item_message">Generating sample data...</string>
 
@@ -36,7 +37,7 @@
     <string name="security_add_title">Item Add</string>
 
     <!--SettingActivity-->
-    <string name="setting_title">Preferences</string>
+    <string name="setting_title">Settings</string>
     <string name="setting_pattern_lock">Set Lock Pattern</string>
     <string name="setting_pattern_lock_summary">Application lock and management pattern setting to be used for account encryption.</string>
     <string name="setting_rate_app">App rating</string>

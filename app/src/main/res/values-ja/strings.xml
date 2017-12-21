@@ -21,7 +21,8 @@
 
     <!--SecuritySelectionActivityvity-->
     <string name="security_selection_title">アイテムリスト</string>
-
+    <string name="settings">設定</string>
+    
     <!--SecuritySelectionFragment-->
     <string name="security_selection_init_item_message">サンプルデータの生成...</string>
 

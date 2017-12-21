@@ -39,10 +39,10 @@
                     android:textSize="@dimen/medium_text_size"
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content" />
                 <ImageView
                     android:id="@+id/toggleToolBar"
-                    android:src="@drawable/checkmark"
+                    android:src="@drawable/check_mark_10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>
