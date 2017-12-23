@@ -60,7 +60,6 @@ class GoogleDriveDownloader : GoogleDriveUtils() {
 
         val intent = Intent(this@GoogleDriveDownloader, IntroActivity::class.java).apply {
             putExtra(IntroActivity.INTRO_MODE, IntroActivity.INTRO_MODE_RESTART)
-            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
         }
         EasyPasswordHelper.startSettingActivityWithTransition(this@GoogleDriveDownloader, intent)
     }

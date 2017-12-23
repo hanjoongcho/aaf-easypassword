@@ -103,11 +103,7 @@ class SecuritySelectionActivity : CommonActivity() {
         val builder: AlertDialog.Builder = AlertDialog.Builder(this@SecuritySelectionActivity).apply {
             setMessage(getString(R.string.security_selection_back_press_confirm))
             setPositiveButton(getString(R.string.ok), ({ _, _ ->
-                val intent = Intent(this@SecuritySelectionActivity, IntroActivity::class.java).apply {
-                    putExtra(IntroActivity.INTRO_MODE, IntroActivity.INTRO_MODE_FINISH)
-                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                }
-                EasyPasswordHelper.startSettingActivityWithTransition(this@SecuritySelectionActivity, intent)
+                ActivityCompat.finishAffinity(this@SecuritySelectionActivity)
             }))
             setNegativeButton(getString(R.string.cancel), null)
         }

@@ -36,7 +36,6 @@ class IntroActivity : AppCompatActivity(), Handler.Callback {
         Log.i(TAG, "onResume INTRO_MODE: ${intent.getIntExtra(INTRO_MODE, INTRO_MODE_DEFAULT)}")
         when (intent.getIntExtra(INTRO_MODE, INTRO_MODE_DEFAULT)) {
             INTRO_MODE_DEFAULT -> Handler(this).sendEmptyMessageDelayed(START_MAIN_ACTIVITY, 1500)
-            INTRO_MODE_FINISH -> finish()
             INTRO_MODE_RESTART -> {
                 val context = this@IntroActivity
                 val introActivity = Intent(context, IntroActivity::class.java)
@@ -90,6 +89,5 @@ class IntroActivity : AppCompatActivity(), Handler.Callback {
         const val INTRO_MODE = "intro_mode"
         const val INTRO_MODE_DEFAULT = 0
         const val INTRO_MODE_RESTART = 1
-        const val INTRO_MODE_FINISH = 2
     }
 }
