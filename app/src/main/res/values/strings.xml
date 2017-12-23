@@ -13,15 +13,10 @@
     <string name="credit_card_cvc">CVC Number</string>
 
     <!--PatternLockActivity-->
-    <string name="pattern_lock_activity_unlock_message">Please enter lock pattern.</string>
-    <string name="pattern_lock_activity_setting_lock_message">Please setting lock pattern.</string>
-    <string name="pattern_lock_activity_verify_message">Enter the set lock pattern again.</string>
-    <string name="pattern_lock_activity_verify_reject">Lock pattern verification failed.</string>
     <string name="pattern_lock_progress_message">Encrypting management list...</string>
 
     <!--SecuritySelectionActivityvity-->
     <string name="security_selection_title">Item List</string>
-    <string name="settings">Settings</string>
 
     <!--SecuritySelectionFragment-->
     <string name="security_selection_init_item_message">Generating sample data...</string>
@@ -37,7 +32,6 @@
     <string name="security_add_title">Item Add</string>
 
     <!--SettingActivity-->
-    <string name="setting_title">Settings</string>
     <string name="setting_pattern_lock">Set Lock Pattern</string>
     <string name="setting_pattern_lock_summary">Application lock and management pattern setting to be used for account encryption.</string>
     <string name="setting_rate_app">App rating</string>

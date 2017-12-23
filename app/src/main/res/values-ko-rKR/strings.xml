@@ -13,15 +13,10 @@
     <string name="credit_card_cvc">CVC코드</string>
 
     <!--PatternLockActivity-->
-    <string name="pattern_lock_activity_unlock_message">잠금 패턴을 입력하세요.</string>
-    <string name="pattern_lock_activity_setting_lock_message">잠금 패턴을 설정하세요.</string>
-    <string name="pattern_lock_activity_verify_message">설정된 잠금 패턴을 한번 더 입력하세요.</string>
-    <string name="pattern_lock_activity_verify_reject">잠금 패턴 검증에 실패했습니다.</string>
     <string name="pattern_lock_progress_message">관리목록 암호화중...</string>
 
     <!--SecuritySelectionActivityvity-->
     <string name="security_selection_title">관리목록</string>
-    <string name="settings">환경설정</string>
     
     <!--SecuritySelectionFragment-->
     <string name="security_selection_init_item_message">샘플 데이터 생성중...</string>
@@ -37,7 +32,6 @@
     <string name="security_add_title">관리항목 추가</string>
 
     <!--SettingActivity-->
-    <string name="setting_title">환경설정</string>
     <string name="setting_pattern_lock">잠금패턴 설정</string>
     <string name="setting_pattern_lock_summary">어플리케이션 잠금 및 관리계정 암호화에 사용될 패턴정보를 설정합니다.</string>
     <string name="setting_rate_app">어플평가</string>

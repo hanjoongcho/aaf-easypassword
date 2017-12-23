@@ -13,15 +13,10 @@
     <string name="credit_card_cvc">CVC 番号</string>
 
     <!--PatternLockActivity-->
-    <string name="pattern_lock_activity_unlock_message">ロックパターンを入力してください.</string>
-    <string name="pattern_lock_activity_setting_lock_message">ロックパターンを設定してください.</string>
-    <string name="pattern_lock_activity_verify_message">設定したロックパターンをもう一度入力してください.</string>
-    <string name="pattern_lock_activity_verify_reject">ロックパターンの確認に失敗しました.</string>
     <string name="pattern_lock_progress_message">管理リストの暗号化...</string>
 
     <!--SecuritySelectionActivityvity-->
     <string name="security_selection_title">アイテムリスト</string>
-    <string name="settings">設定</string>
     
     <!--SecuritySelectionFragment-->
     <string name="security_selection_init_item_message">サンプルデータの生成...</string>
@@ -37,7 +32,6 @@
     <string name="security_add_title">アイテム追加</string>
 
     <!--SettingActivity-->
-    <string name="setting_title">設定</string>
     <string name="setting_pattern_lock">ロックパターンを設定する</string>
     <string name="setting_pattern_lock_summary">アカウントの暗号化に使用するアプリケーションのロックと管理パターンの設定.</string>
     <string name="setting_rate_app">アプリの評価</string>

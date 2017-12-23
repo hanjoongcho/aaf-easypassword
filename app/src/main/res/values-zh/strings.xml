@@ -13,15 +13,10 @@
     <string name="credit_card_cvc">CVC代码</string>
 
     <!--PatternLockActivity-->
-    <string name="pattern_lock_activity_unlock_message">请输入锁定模式.</string>
-    <string name="pattern_lock_activity_setting_lock_message">设置的锁定模式.</string>
-    <string name="pattern_lock_activity_verify_message">再次输入锁定模式.</string>
-    <string name="pattern_lock_activity_verify_reject">锁定模式验证失败.</string>
     <string name="pattern_lock_progress_message">加密管理列表...</string>
 
     <!--SecuritySelectionActivityvity-->
     <string name="security_selection_title">管理列表</string>
-    <string name="settings">设置</string>
     
     <!--SecuritySelectionFragment-->
     <string name="security_selection_init_item_message">生成示例数据...</string>
@@ -37,7 +32,6 @@
     <string name="security_add_title">添加托管项目</string>
 
     <!--SettingActivity-->
-    <string name="setting_title">设置</string>
     <string name="setting_pattern_lock">设置锁定模式</string>
     <string name="setting_pattern_lock_summary">设置在应用程序的锁定和加密管理帐目要使用的图案信息.</string>
     <string name="setting_rate_app">应用评分</string>

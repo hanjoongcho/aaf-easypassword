@@ -27,7 +27,7 @@ class SettingActivity : CommonActivity() {
         setContentView(R.layout.activity_setting)
         setSupportActionBar(toolbar)
         supportActionBar?.run {
-            title = getString(R.string.setting_title)
+            title = getString(R.string.settings)
             setDisplayHomeAsUpEnabled(true)
         }
 

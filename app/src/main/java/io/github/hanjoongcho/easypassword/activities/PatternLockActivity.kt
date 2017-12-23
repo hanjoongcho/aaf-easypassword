@@ -40,9 +40,9 @@ class PatternLockActivity : AppCompatActivity() {
 
         mMode = intent.getIntExtra(MODE, -1)
         when (mMode) {
-            UNLOCK, UNLOCK_RESUME -> guide_message.text = getString(R.string.pattern_lock_activity_unlock_message)
-            SETTING_LOCK -> guide_message.text = getString(R.string.pattern_lock_activity_setting_lock_message)
-            VERIFY -> guide_message.text = getString(R.string.pattern_lock_activity_verify_message)
+            UNLOCK, UNLOCK_RESUME -> guide_message.text = getString(R.string.insert_pattern)
+            SETTING_LOCK -> guide_message.text = getString(R.string.insert_pattern)
+            VERIFY -> guide_message.text = getString(R.string.repeat_pattern)
         }
 
         with(patterLockView) {
@@ -81,7 +81,7 @@ class PatternLockActivity : AppCompatActivity() {
                     } else {
                         patterLockView.clearPattern()
                         val unlockBuilder: AlertDialog.Builder = AlertDialog.Builder(this@PatternLockActivity).apply {
-                            setMessage(getString(R.string.pattern_lock_activity_verify_reject))
+                            setMessage(getString(R.string.wrong_pattern))
                             setPositiveButton("OK", ({ _, _ ->
                                 finish()
                             }))
@@ -146,7 +146,7 @@ class PatternLockActivity : AppCompatActivity() {
                         }
                     } else {
                         val builder: AlertDialog.Builder = AlertDialog.Builder(this@PatternLockActivity)
-                        builder.setMessage(getString(R.string.pattern_lock_activity_verify_reject))
+                        builder.setMessage(getString(R.string.wrong_pattern))
                         builder.setPositiveButton("OK", ({ _, _ ->
                             intent.putExtra(PatternLockActivity.MODE, PatternLockActivity.SETTING_LOCK)
                             EasyPasswordHelper.startSettingActivityWithTransition(this@PatternLockActivity, intent)
@@ -162,7 +162,7 @@ class PatternLockActivity : AppCompatActivity() {
                     } else {
                         patterLockView.clearPattern()
                         val unlockBuilder: AlertDialog.Builder = AlertDialog.Builder(this@PatternLockActivity).apply {
-                            setMessage(getString(R.string.pattern_lock_activity_verify_reject))
+                            setMessage(getString(R.string.wrong_pattern))
                             setPositiveButton("OK", ({ _, _ ->
                                 ActivityCompat.finishAffinity(this@PatternLockActivity)
                             }))
