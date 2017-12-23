@@ -17,6 +17,7 @@
 
     <!--SecuritySelectionActivityvity-->
     <string name="security_selection_title">관리목록</string>
+    <string name="security_selection_back_press_confirm">애플리케이션을 종료 하시겠습니까?</string>
     
     <!--SecuritySelectionFragment-->
     <string name="security_selection_init_item_message">샘플 데이터 생성중...</string>

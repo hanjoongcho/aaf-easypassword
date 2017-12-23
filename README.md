@@ -29,12 +29,12 @@ Step2. Import 'aaf-easypassword' project into android studio.
 Step3. Use below link download svg images from Flaticon.
 Step4. Import 6 svg files for your project from your Android studio.
        Project rightclick > New > Vector Asset... You can import from the menu and the resource names are:
-       001-password.svg    -> ic_password.xml
-       003-folder.svg      -> ic_folder.xml
-       005-credit-card.svg -> ic_credit_card.xml
-       009-lock.svg        -> ic_lock.xml
-       012-television.svg  -> ic_web.xml
-       015-home.svg        -> ic_home.xml
+       001-password.svg    -> icon_password.xml
+       003-folder.svg      -> icon_folder.xml
+       005-credit-card.svg -> icon_credit_card.xml
+       009-lock.svg        -> icon_lock.xml
+       012-television.svg  -> icon_web.xml
+       015-home.svg        -> icon_home.xml
 Step5. Generate your salt string from GenerateSaltString.kt android testcase.
        'GenerateSaltString.kt' file rightclick > Run(Android instrumented test) > GenerateSaltString 
        Apply filter name 'GenerateSaltString-testGenerateSaltString' to Logcat and copy salt string from log.

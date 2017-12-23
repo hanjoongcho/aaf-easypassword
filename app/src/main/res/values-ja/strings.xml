@@ -17,6 +17,7 @@
 
     <!--SecuritySelectionActivityvity-->
     <string name="security_selection_title">アイテムリスト</string>
+    <string name="security_selection_back_press_confirm">アプリケーションを終了しますか?</string>
     
     <!--SecuritySelectionFragment-->
     <string name="security_selection_init_item_message">サンプルデータの生成...</string>

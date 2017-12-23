@@ -74,7 +74,7 @@ class SecurityAdapter(
 
     private fun setCategoryIcon(security: Security, icon: ImageView) {
 
-        val imageRes = resources.getIdentifier("ic_${security.category?.resourceName}", "drawable", activity.packageName)
+        val imageRes = resources.getIdentifier("icon_${security.category?.resourceName}", "drawable", activity.packageName)
         icon.setImageResource(imageRes)
     }
 

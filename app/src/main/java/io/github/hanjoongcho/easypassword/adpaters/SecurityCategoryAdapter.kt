@@ -54,7 +54,7 @@ class SecurityCategoryAdapter(
             when (resourceName) {
                 "" -> it.setImageResource(0)
                 else -> {
-                    val imageRes = mContext.resources.getIdentifier("ic_$resourceName", "drawable", mContext.packageName)
+                    val imageRes = mContext.resources.getIdentifier("icon_$resourceName", "drawable", mContext.packageName)
                     it.setImageResource(imageRes)
                 }
             }

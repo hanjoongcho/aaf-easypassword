@@ -83,7 +83,7 @@ class PatternLockActivity : AppCompatActivity() {
                         val unlockBuilder: AlertDialog.Builder = AlertDialog.Builder(this@PatternLockActivity).apply {
                             setMessage(getString(R.string.wrong_pattern))
                             setPositiveButton("OK", ({ _, _ ->
-                                finish()
+                                ActivityCompat.finishAffinity(this@PatternLockActivity)
                             }))
                             setCancelable(false)
                         }

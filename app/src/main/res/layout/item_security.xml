@@ -19,7 +19,6 @@
             android:layout_gravity="center"
             android:id="@+id/category_icon"
             android:paddingRight="20dp"
-            app:srcCompat ="@drawable/ic_web"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </ImageView>

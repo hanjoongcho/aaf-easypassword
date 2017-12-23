@@ -17,6 +17,7 @@
 
     <!--SecuritySelectionActivityvity-->
     <string name="security_selection_title">管理列表</string>
+    <string name="security_selection_back_press_confirm">你确定要退出应用程序吗?</string>
     
     <!--SecuritySelectionFragment-->
     <string name="security_selection_init_item_message">生成示例数据...</string>

@@ -7,6 +7,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityOptionsCompat
+import android.support.v7.app.AlertDialog
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
@@ -98,6 +99,21 @@ class SecuritySelectionActivity : CommonActivity() {
         super.onResume()
     }
 
+    override fun onBackPressed() {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this@SecuritySelectionActivity).apply {
+            setMessage(getString(R.string.security_selection_back_press_confirm))
+            setPositiveButton(getString(R.string.ok), ({ _, _ ->
+                val intent = Intent(this@SecuritySelectionActivity, IntroActivity::class.java).apply {
+                    putExtra(IntroActivity.INTRO_MODE, IntroActivity.INTRO_MODE_FINISH)
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                }
+                EasyPasswordHelper.startSettingActivityWithTransition(this@SecuritySelectionActivity, intent)
+            }))
+            setNegativeButton(getString(R.string.cancel), null)
+        }
+        builder.create().show()
+    }
+    
     private fun filteringItems(keyword: String) {
         val fragment = findFragmentById(R.id.category_container) ?: SecuritySelectionFragment()
         if (fragment is SecuritySelectionFragment) {
