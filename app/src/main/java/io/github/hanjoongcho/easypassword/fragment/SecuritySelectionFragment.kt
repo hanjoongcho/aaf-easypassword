@@ -36,13 +36,15 @@ class SecuritySelectionFragment : Fragment() {
     private var mKeyword: String? = ""
 
     private val adapter: SecurityAdapter? by lazy(LazyThreadSafetyMode.NONE) {
-        SecurityAdapter(activity,
-                AdapterView.OnItemClickListener { _, v, position, _ ->
-                    adapter?.getItem(position)?.let {
-                        startAccountDetailActivityWithTransition(activity,
-                                v.findViewById(R.id.category_icon), it)
-                    }
-                })
+        activity?.let { activity ->
+            SecurityAdapter(activity,
+                    AdapterView.OnItemClickListener { _, v, position, _ ->
+                        adapter?.getItem(position)?.let {
+                            startAccountDetailActivityWithTransition(activity,
+                                    v.findViewById(R.id.category_icon), it)
+                        }
+                    })
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater,
@@ -55,29 +57,33 @@ class SecuritySelectionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setUpGrid(securities)
         add.setOnClickListener {
-            EasyPasswordHelper.startSettingActivityWithTransition(activity, SecurityAddActivity::class.java)
+            activity?.let {
+                EasyPasswordHelper.startSettingActivityWithTransition(it, SecurityAddActivity::class.java)    
+            }
         }
     }
 
     override fun onResume() {
         loadingProgress.visibility = View.VISIBLE
         super.onResume()
-        Thread({
-            if (activity.database().countSecurity() == 0) {
-                Handler(Looper.getMainLooper()).post({
-                    securities.visibility = View.INVISIBLE
-                    loadingProgressMessage.visibility = View.VISIBLE
-                })
-                activity.database().initDatabase()
-            }
-            Handler(Looper.getMainLooper()).post {
-                adapter?.selectAccounts(mKeyword ?: "")
-                adapter?.notifyDataSetChanged()
-                securities.visibility = View.VISIBLE
-                loadingProgress.visibility = View.INVISIBLE
-                loadingProgressMessage.visibility = View.INVISIBLE
-            }
-        }).start()
+        activity?.let { activity ->
+            Thread({
+                if (activity.database().countSecurity() == 0) {
+                    Handler(Looper.getMainLooper()).post({
+                        securities.visibility = View.INVISIBLE
+                        loadingProgressMessage.visibility = View.VISIBLE
+                    })
+                    activity.database().initDatabase()
+                }
+                Handler(Looper.getMainLooper()).post {
+                    adapter?.selectAccounts(mKeyword ?: "")
+                    adapter?.notifyDataSetChanged()
+                    securities.visibility = View.VISIBLE
+                    loadingProgress.visibility = View.INVISIBLE
+                    loadingProgressMessage.visibility = View.INVISIBLE
+                }
+            }).start()
+        }
     }
 
     fun filteringItems(keyword: String) {
@@ -92,7 +98,9 @@ class SecuritySelectionFragment : Fragment() {
             addItemDecoration(OffsetDecoration(context.resources
                     .getDimensionPixelSize(R.dimen.spacing_nano)))
             adapter = this@SecuritySelectionFragment.adapter
-            beforeDrawing { activity.supportStartPostponedEnterTransition() }
+            activity?.let {
+                beforeDrawing { it.supportStartPostponedEnterTransition() }    
+            }
         }
     }
 
@@ -107,11 +115,12 @@ class SecuritySelectionFragment : Fragment() {
     private fun startAccountDetailActivityWithTransition(activity: Activity, toolbar: View,
                                                          security: Security) {
 
-        val animationBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(activity,
+        val animationBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                activity,
                 *EasyPasswordHelper.createSafeTransitionParticipants(activity,
                         false,
-                        Pair(toolbar, getString(R.string.transition_category))))
-                .toBundle()
+                        Pair(toolbar, getString(R.string.transition_category)))
+        ).toBundle()
 
         // Start the activity with the participants, animating from one to the other.
         val startIntent = SecurityDetailActivity.getStartIntent(activity, security)

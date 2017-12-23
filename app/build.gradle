@@ -19,7 +19,7 @@ android {
 
     defaultConfig {
         applicationId "io.github.hanjoongcho.easypassword"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 8
         versionName "0.2.1"
@@ -109,6 +109,9 @@ dependencies {
     implementation 'com.andrognito.patternlockview:patternlockview-reactive:1.0.0'
 
     // apache commons
-    compile 'org.apache.commons:commons-lang3:3.0'
-    compile group: 'commons-io', name: 'commons-io', version: '2.4'
+    implementation 'org.apache.commons:commons-lang3:3.0'
+    implementation group: 'commons-io', name: 'commons-io', version: '2.4'
+
+    // https://github.com/SimpleMobileTools/Simple-Commons
+    implementation 'com.simplemobiletools:commons:3.3.12'
 }
