@@ -32,7 +32,7 @@
     <!--SecurityAddActivity-->
     <string name="security_add_title">添加托管项目</string>
 
-    <!--SettingActivity-->
+    SettingsActivityvity-->
     <string name="setting_pattern_lock">设置锁定模式</string>
     <string name="setting_pattern_lock_summary">设置在应用程序的锁定和加密管理帐目要使用的图案信息.</string>
     <string name="setting_rate_app">应用评分</string>

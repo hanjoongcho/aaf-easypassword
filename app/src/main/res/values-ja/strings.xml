@@ -32,7 +32,7 @@
     <!--SecurityAddActivity-->
     <string name="security_add_title">アイテム追加</string>
 
-    <!--SettingActivity-->
+    SettingsActivityvity-->
     <string name="setting_pattern_lock">ロックパターンを設定する</string>
     <string name="setting_pattern_lock_summary">アカウントの暗号化に使用するアプリケーションのロックと管理パターンの設定.</string>
     <string name="setting_rate_app">アプリの評価</string>

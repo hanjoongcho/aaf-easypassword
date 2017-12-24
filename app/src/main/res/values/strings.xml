@@ -32,7 +32,7 @@
     <!--SecurityAddActivity-->
     <string name="security_add_title">Item Add</string>
 
-    <!--SettingActivity-->
+    SettingsActivityvity-->
     <string name="setting_pattern_lock">Set Lock Pattern</string>
     <string name="setting_pattern_lock_summary">Application lock and management pattern setting to be used for account encryption.</string>
     <string name="setting_rate_app">App rating</string>

@@ -80,7 +80,7 @@ class SecuritySelectionActivity : CommonActivity() {
 
         when (item.itemId) {
             R.id.setting -> {
-                EasyPasswordHelper.startSettingActivityWithTransition(this@SecuritySelectionActivity, SettingActivity::class.java)
+                EasyPasswordHelper.startSettingActivityWithTransition(this@SecuritySelectionActivity, SettingsActivity::class.java)
             }
             R.id.search -> {
                 toolbar.visibility = View.GONE

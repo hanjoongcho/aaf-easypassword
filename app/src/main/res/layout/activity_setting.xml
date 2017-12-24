@@ -52,6 +52,21 @@
 
                 <TextView
                     style="@style/SettingActivityDivider" />
+                <LinearLayout
+                    android:id="@+id/settings_font_size_holder"
+                    android:orientation="vertical"
+                    style="@style/SettingActivityItem">
+                    <TextView
+                        android:id="@+id/settings_font_size_label"
+                        android:text="@string/font_size"
+                        style="@style/SettingActivityTitle" />
+                    <TextView
+                        android:id="@+id/settings_font_size"
+                        style="@style/SettingActivitySummary" />
+                </LinearLayout>
+                
+                <TextView
+                    style="@style/SettingActivityDivider" />
 
                 <LinearLayout
                     android:id="@+id/pref2"
