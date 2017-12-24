@@ -34,7 +34,7 @@
                 android:id="@+id/account_title"
                 android:textSize="@dimen/large_text_size"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:text="@{security.title}"
                 android:textAppearance="@style/Topeka.TextAppearance.CategoryItem"
