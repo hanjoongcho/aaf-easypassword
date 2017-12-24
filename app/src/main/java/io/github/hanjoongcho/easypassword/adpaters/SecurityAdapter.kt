@@ -3,6 +3,7 @@ package io.github.hanjoongcho.easypassword.adpaters
 import android.app.Activity
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.AdapterView
@@ -13,6 +14,7 @@ import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.easypassword.models.Theme
+import io.github.hanjoongcho.easypassword.extensions.getTextSize
 
 /**
  * Created by Administrator on 2017-11-17.
@@ -40,7 +42,6 @@ class SecurityAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
         with(holder.binding) {
             security = securities[position]
             executePendingBindings()
@@ -48,9 +49,11 @@ class SecurityAdapter(
             EasyPasswordHelper.setPasswordStrengthLevel(activity, security.passwordStrengthLevel, included.level1, included.level2, included.level3, included.level4, included.level5)
             with(accountTitle) {
                 setTextColor(EasyPasswordHelper.getColor(R.color.blackText, activity))
+                setTextSize(TypedValue.COMPLEX_UNIT_PX, context.getTextSize())
             }
             with(accountSummary) {
                 setTextColor(EasyPasswordHelper.getColor(Theme.white.textPrimaryColor, activity))
+                setTextSize(TypedValue.COMPLEX_UNIT_PX, context.getTextSize())
                 setBackgroundColor(EasyPasswordHelper.getColor(Theme.white.primaryColor, activity))
             }
         }
