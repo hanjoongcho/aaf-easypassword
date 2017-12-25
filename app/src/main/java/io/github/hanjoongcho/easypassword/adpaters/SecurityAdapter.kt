@@ -3,18 +3,17 @@ package io.github.hanjoongcho.easypassword.adpaters
 import android.app.Activity
 import android.databinding.DataBindingUtil
 import android.support.v7.widget.RecyclerView
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ImageView
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.databinding.ItemSecurityBinding
+import io.github.hanjoongcho.easypassword.extensions.initTextSize
 import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.easypassword.models.Theme
-import io.github.hanjoongcho.easypassword.extensions.getTextSize
 
 /**
  * Created by Administrator on 2017-11-17.
@@ -30,30 +29,28 @@ class SecurityAdapter(
     private var securities = mutableListOf<Security>()
 
     fun selectAccounts() {
-
         securities.clear()
         securities.addAll(activity.database().selectSecurityAll())
     }
 
     fun selectAccounts(searchKey: String) {
-
         securities.clear()
         securities.addAll(activity.database().selectSecuritiesBy(searchKey))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder.binding) {
+            initTextSize(categoryItem, activity);
+            
             security = securities[position]
             executePendingBindings()
             setCategoryIcon(security, categoryIcon)
             EasyPasswordHelper.setPasswordStrengthLevel(activity, security.passwordStrengthLevel, included.level1, included.level2, included.level3, included.level4, included.level5)
             with(accountTitle) {
                 setTextColor(EasyPasswordHelper.getColor(R.color.blackText, activity))
-                setTextSize(TypedValue.COMPLEX_UNIT_PX, context.getTextSize())
             }
             with(accountSummary) {
                 setTextColor(EasyPasswordHelper.getColor(Theme.white.textPrimaryColor, activity))
-                setTextSize(TypedValue.COMPLEX_UNIT_PX, context.getTextSize())
                 setBackgroundColor(EasyPasswordHelper.getColor(Theme.white.primaryColor, activity))
             }
         }
@@ -76,7 +73,6 @@ class SecurityAdapter(
     fun getItem(position: Int): Security = securities[position]
 
     private fun setCategoryIcon(security: Security, icon: ImageView) {
-
         val imageRes = resources.getIdentifier("icon_${security.category?.resourceName}", "drawable", activity.packageName)
         icon.setImageResource(imageRes)
     }
