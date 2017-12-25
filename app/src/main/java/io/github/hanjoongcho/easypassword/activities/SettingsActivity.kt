@@ -13,10 +13,11 @@ import com.google.android.gms.drive.GoogleDriveDownloader
 import com.google.android.gms.drive.GoogleDriveUploader
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.models.RadioItem
-import kotlinx.android.synthetic.main.activity_setting.*
 import io.github.hanjoongcho.easypassword.R
-import io.github.hanjoongcho.easypassword.helper.*
 import io.github.hanjoongcho.easypassword.extensions.config
+import io.github.hanjoongcho.easypassword.extensions.initTextSize
+import io.github.hanjoongcho.easypassword.helper.*
+import kotlinx.android.synthetic.main.activity_setting.*
 
 
 /**
@@ -53,10 +54,11 @@ class SettingsActivity : CommonActivity() {
     override fun onResume() {
         Log.i(IntroActivity.TAG, "SettingsActivity")
         super.onResume()
-
+        
+        // handle option click
         setupFontSize()
     }
-
+    
     private fun setupFontSize() {
         settings_font_size.text = getFontSizeText()
         settings_font_size_holder.setOnClickListener {
@@ -70,6 +72,7 @@ class SettingsActivity : CommonActivity() {
                 config.fontSize = it as Int
                 settings_font_size.text = getFontSizeText()
 //                updateWidget()
+                initTextSize(findViewById(android.R.id.content), this@SettingsActivity);
             }
         }
     }

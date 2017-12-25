@@ -1,10 +1,12 @@
 package io.github.hanjoongcho.easypassword.activities
 
+import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import io.github.hanjoongcho.easypassword.extensions.getThemeId
+import io.github.hanjoongcho.easypassword.extensions.initTextSize
 import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.utils.CommonUtils
 
@@ -44,6 +46,7 @@ open class CommonActivity : AppCompatActivity() {
                 EasyPasswordHelper.startSettingActivityWithTransition(this@CommonActivity, intent)
             }
         }
+        initTextSize(findViewById(R.id.content), this@CommonActivity);
     }
 
     companion object {
