@@ -32,7 +32,7 @@
     <!--SecurityAddActivity-->
     <string name="security_add_title">Item Add</string>
 
-    SettingsActivityvity-->
+    <!--SettingsActivity-->
     <string name="setting_pattern_lock">Set Lock Pattern</string>
     <string name="setting_pattern_lock_summary">Application lock and management pattern setting to be used for account encryption.</string>
     <string name="setting_rate_app">App rating</string>
@@ -42,6 +42,9 @@
     <string name="setting_google_drive_recovery">Recover managed account</string>
     <string name="setting_google_drive_recovery_summary">Recover your managed items stored on Google Drive. Recovered management items can only be decrypted using the lock pattern used at the time of backup.</string>
     <string name="setting_license_url">https://github.com/hanjoongcho/aaf-easypassword/blob/master/LICENSE.md</string>
+
+    <!--AboutActivity-->
+    <string name="copyright">v %1$s\nCopyright © Awesome Application Factory %2$d</string>
 
     <!--AesUtils-->
     <string name="aes_utils_decrypt_error">Encrypted data can not be decrypted with the lock pattern currently set.</string>

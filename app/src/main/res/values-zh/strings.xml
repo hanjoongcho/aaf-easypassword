@@ -32,7 +32,7 @@
     <!--SecurityAddActivity-->
     <string name="security_add_title">添加托管项目</string>
 
-    SettingsActivityvity-->
+    <!--SettingsActivity-->
     <string name="setting_pattern_lock">设置锁定模式</string>
     <string name="setting_pattern_lock_summary">设置在应用程序的锁定和加密管理帐目要使用的图案信息.</string>
     <string name="setting_rate_app">应用评分</string>
@@ -42,6 +42,9 @@
     <string name="setting_google_drive_recovery">恢复管理帐户</string>
     <string name="setting_google_drive_recovery_summary">恢复存储在Google云端硬盘中的托管项目. 恢复的管理条目只能使用备份期间使用的锁定模式进行解密.</string>
     <string name="setting_license_url">https://github.com/hanjoongcho/aaf-easypassword/blob/master/LICENSE.md</string>
+
+    <!--AboutActivity-->
+    <string name="copyright">v %1$s\nCopyright © Awesome Application Factory %2$d</string>
 
     <!--AesUtils-->
     <string name="aes_utils_decrypt_error">不能被解码成锁定模式本组加密数据.</string>

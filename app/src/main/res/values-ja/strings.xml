@@ -32,7 +32,7 @@
     <!--SecurityAddActivity-->
     <string name="security_add_title">アイテム追加</string>
 
-    SettingsActivityvity-->
+    <!--SettingsActivity-->
     <string name="setting_pattern_lock">ロックパターンを設定する</string>
     <string name="setting_pattern_lock_summary">アカウントの暗号化に使用するアプリケーションのロックと管理パターンの設定.</string>
     <string name="setting_rate_app">アプリの評価</string>
@@ -42,6 +42,9 @@
     <string name="setting_google_drive_recovery">管理アカウントを回復する</string>
     <string name="setting_google_drive_recovery_summary">Googleドライブに保存された管理対象アイテムを復元する. 復元された管理項目は、バックアップ時に使用されたロックパターンを使用してのみ解読できます.</string>
     <string name="setting_license_url">https://github.com/hanjoongcho/aaf-easypassword/blob/master/LICENSE.md</string>
+
+    <!--AboutActivity-->
+    <string name="copyright">v %1$s\nCopyright © Awesome Application Factory %2$d</string>
 
     <!--AesUtils-->
     <string name="aes_utils_decrypt_error">現在設定されているロックパターンで暗号化されたデータを復号することはできません.</string>

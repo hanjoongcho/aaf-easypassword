@@ -6,6 +6,10 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.MenuItem
+import com.simplemobiletools.commons.activities.AboutActivity
+import com.simplemobiletools.commons.helpers.APP_LICENSES
+import com.simplemobiletools.commons.helpers.APP_NAME
+import com.simplemobiletools.commons.helpers.APP_VERSION_NAME
 import io.github.hanjoongcho.easypassword.extensions.getThemeId
 import io.github.hanjoongcho.easypassword.extensions.initTextSize
 import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
@@ -57,6 +61,15 @@ open class CommonActivity : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    fun startAboutActivity(appNameId: Int, licenseMask: Int, versionName: String) {
+        Intent(applicationContext, AboutActivity::class.java).apply {
+            putExtra(APP_NAME, getString(appNameId))
+            putExtra(APP_LICENSES, licenseMask)
+            putExtra(APP_VERSION_NAME, versionName)
+            startActivity(this)
+        }
     }
 
     companion object {

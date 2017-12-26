@@ -91,13 +91,14 @@
 
             <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/about_copyright"
+                android:textSize="10sp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
                 android:layout_below="@+id/about_license"
                 android:gravity="center_horizontal|bottom"
                 android:paddingTop="@dimen/activity_margin"
-                android:text="v1.0\nCopyright © Simple Mobile Tools 2017"/>
+                android:text=""/>
 
         </RelativeLayout>
     </ScrollView>

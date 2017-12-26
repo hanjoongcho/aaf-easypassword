@@ -8,13 +8,14 @@ import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
 import android.view.View
-import com.simplemobiletools.commons.R
 import com.simplemobiletools.commons.activities.BaseSimpleActivity
 import com.simplemobiletools.commons.activities.LicenseActivity
 import com.simplemobiletools.commons.helpers.APP_LICENSES
 import com.simplemobiletools.commons.helpers.APP_NAME
 import com.simplemobiletools.commons.helpers.APP_VERSION_NAME
-import kotlinx.android.synthetic.main.activity_setting.*
+import io.github.hanjoongcho.easypassword.BuildConfig
+import io.github.hanjoongcho.easypassword.R
+import kotlinx.android.synthetic.main.activity_about.*
 import java.util.*
 
 /**
@@ -42,8 +43,8 @@ class AboutActivity : CommonActivity() {
 //        linkColor = if (isBlackAndWhiteTheme()) Color.WHITE else baseConfig.primaryColor
     }
 
-//    override fun onResume() {
-//        super.onResume()
+    override fun onResume() {
+        super.onResume()
 //        updateTextColors(about_holder)
 //
 //        setupWebsite()
@@ -55,8 +56,8 @@ class AboutActivity : CommonActivity() {
 //        setupDonate()
 //        setupFacebook()
 //        setupGPlus()
-//        setupCopyright()
-//    }
+        setupCopyright()
+    }
 //
 //    private fun setupWebsite() {
 //        val websiteText = String.format(getString(R.string.two_string_placeholder), getString(R.string.website_label), getString(R.string.my_website))
@@ -149,11 +150,12 @@ class AboutActivity : CommonActivity() {
 //        }
 //    }
 //
-//    private fun setupCopyright() {
+    private fun setupCopyright() {
 //        val versionName = intent.getStringExtra(APP_VERSION_NAME) ?: ""
-//        val year = Calendar.getInstance().get(Calendar.YEAR)
-//        about_copyright.text = String.format(getString(R.string.copyright), versionName, year)
-//    }
-//
+        val versionName = BuildConfig.VERSION_NAME
+        val year = Calendar.getInstance().get(Calendar.YEAR)
+        about_copyright.text = String.format(getString(R.string.copyright), versionName, year)
+    }
+
 //    private fun getStoreUrl() = "https://play.google.com/store/apps/details?id=$packageName"
 }

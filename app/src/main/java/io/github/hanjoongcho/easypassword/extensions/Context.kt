@@ -27,7 +27,12 @@ fun initTextSize(viewGroup: ViewGroup, context: Context) {
             .map { viewGroup.getChildAt(it) }
             .forEach {
                 when (it) {
-                    is TextView ->  it.setTextSize(TypedValue.COMPLEX_UNIT_PX, context.getTextSize())
+                    is TextView ->  {
+                        when (it.id != R.id.about_copyright) {
+                            true -> it.setTextSize(TypedValue.COMPLEX_UNIT_PX, context.getTextSize())
+                            false -> {}
+                        }
+                    }
 //                        is EditText->  it.setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize())
                     is ViewGroup -> initTextSize(it, context)
                 }

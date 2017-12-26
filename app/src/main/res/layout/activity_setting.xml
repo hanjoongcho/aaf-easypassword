@@ -28,14 +28,11 @@
             android:layout_height="match_parent">
 
             <LinearLayout
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:text="Application Setting"
-                    style="@style/SettingActivityCategory" />
-
+                android:layout_height="wrap_content">
                 <LinearLayout
                     android:id="@+id/pref1"
                     android:orientation="vertical"
@@ -50,9 +47,6 @@
                         style="@style/SettingActivitySummary" />
                 </LinearLayout>
 
-                <TextView
-                    style="@style/SettingActivityDivider" />
-                
                 <LinearLayout
                     android:id="@+id/settings_font_size_holder"
                     android:orientation="vertical"
@@ -65,9 +59,6 @@
                         android:id="@+id/settings_font_size"
                         style="@style/SettingActivitySummary" />
                 </LinearLayout>
-                
-                <TextView
-                    style="@style/SettingActivityDivider" />
 
                 <LinearLayout
                     android:id="@+id/pref2"
@@ -83,9 +74,6 @@
                         style="@style/SettingActivitySummary" />
                 </LinearLayout>
 
-                <TextView
-                    style="@style/SettingActivityDivider" />
-
                 <LinearLayout
                     android:id="@+id/pref3"
                     android:orientation="vertical"
@@ -99,10 +87,6 @@
                         android:text="@string/setting_google_drive_recovery_summary"
                         style="@style/SettingActivitySummary" />
                 </LinearLayout>
-
-                <TextView
-                    android:text="Application Information"
-                    style="@style/SettingActivityCategory" />
 
                 <LinearLayout
                     android:id="@+id/pref8"
@@ -118,9 +102,6 @@
                         style="@style/SettingActivitySummary" />
                 </LinearLayout>
 
-                <TextView
-                    style="@style/SettingActivityDivider" />
-
                 <LinearLayout
                     android:id="@+id/pref9"
                     android:orientation="vertical"
@@ -132,11 +113,8 @@
                         android:text="open source software notices"
                         style="@style/SettingActivitySummary" />
                 </LinearLayout>
-
             </LinearLayout>
-
         </ScrollView>
 
     </LinearLayout>
-
 </android.support.design.widget.CoordinatorLayout>
