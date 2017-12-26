@@ -44,7 +44,7 @@
     <string name="setting_license_url">https://github.com/hanjoongcho/aaf-easypassword/blob/master/LICENSE.md</string>
 
     <!--AboutActivity-->
-    <string name="copyright">v %1$s\nCopyright © Awesome Application Factory %2$d</string>
+    <string name="copyright">aaf-easypassword v %1$s\nCopyright © Awesome Application Factory %2$d</string>
 
     <!--AesUtils-->
     <string name="aes_utils_decrypt_error">암호화된 데이터를 현재 설정한 잠금패턴으로 복호화 할 수 없습니다.</string>

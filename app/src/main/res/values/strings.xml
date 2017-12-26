@@ -44,7 +44,10 @@
     <string name="setting_license_url">https://github.com/hanjoongcho/aaf-easypassword/blob/master/LICENSE.md</string>
 
     <!--AboutActivity-->
-    <string name="copyright">v %1$s\nCopyright © Awesome Application Factory %2$d</string>
+    <string name="website_label">For the source codes visit</string>
+    <string name="my_website">\nhttps://hanjoongcho.github.io/aaf/</string>
+    <string name="my_email">hanjoongcho@gmail.com</string>
+    <string name="copyright">aaf-easypassword v %1$s\nCopyright © Awesome Application Factory %2$d</string>
 
     <!--AesUtils-->
     <string name="aes_utils_decrypt_error">Encrypted data can not be decrypted with the lock pattern currently set.</string>
