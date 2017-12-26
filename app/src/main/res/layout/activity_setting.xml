@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -28,93 +27,111 @@
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <LinearLayout
-                    android:id="@+id/pref1"
-                    android:orientation="vertical"
-                    style="@style/SettingActivityItem">
-                    <TextView
-                        android:id="@+id/prefTitle1"
-                        android:text="@string/setting_pattern_lock"
-                        style="@style/SettingActivityTitle" />
-                    <TextView
-                        android:id="@+id/prefSummary1"
-                        android:text="@string/setting_pattern_lock_summary"
-                        style="@style/SettingActivitySummary" />
-                </LinearLayout>
 
-                <LinearLayout
+                <RelativeLayout
+                    android:id="@+id/pattern_lock_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:padding="@dimen/activity_margin"
+                    android:background="?attr/selectableItemBackground">
+                    <com.simplemobiletools.commons.views.MyTextView
+                        android:id="@+id/pattern_lock_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/medium_margin"
+                        android:paddingStart="@dimen/medium_margin"
+                        android:text="@string/setting_pattern_lock"/>
+
+                    <com.simplemobiletools.commons.views.MyTextView
+                        android:id="@+id/pattern_lock_summary"
+                        android:layout_below="@+id/pattern_lock_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/medium_margin"
+                        android:paddingStart="@dimen/medium_margin"
+                        android:text="@string/setting_pattern_lock_summary"/>
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:id="@+id/settings_font_size_holder"
-                    android:orientation="vertical"
-                    style="@style/SettingActivityItem">
-                    <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:padding="@dimen/activity_margin"
+                    android:background="?attr/selectableItemBackground">
+                    <com.simplemobiletools.commons.views.MyTextView
                         android:id="@+id/settings_font_size_label"
-                        android:text="@string/font_size"
-                        style="@style/SettingActivityTitle" />
-                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/medium_margin"
+                        android:paddingStart="@dimen/medium_margin"
+                        android:text="@string/font_size"/>
+
+                    <com.simplemobiletools.commons.views.MyTextView
                         android:id="@+id/settings_font_size"
-                        style="@style/SettingActivitySummary" />
-                </LinearLayout>
+                        android:layout_below="@+id/settings_font_size_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/medium_margin"
+                        android:paddingStart="@dimen/medium_margin"/>
+                </RelativeLayout>
 
-                <LinearLayout
-                    android:id="@+id/pref2"
-                    android:orientation="vertical"
-                    style="@style/SettingActivityItem">
-                    <TextView
-                        android:id="@+id/prefTitle2"
-                        android:text="@string/setting_google_drive_backup"
-                        style="@style/SettingActivityTitle" />
-                    <TextView
-                        android:id="@+id/prefSummary2"
-                        android:text="@string/setting_google_drive_backup_summary"
-                        style="@style/SettingActivitySummary" />
-                </LinearLayout>
+                <RelativeLayout
+                    android:id="@+id/google_drive_backup_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:padding="@dimen/activity_margin"
+                    android:background="?attr/selectableItemBackground">
+                    <com.simplemobiletools.commons.views.MyTextView
+                        android:id="@+id/google_drive_backup_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/medium_margin"
+                        android:paddingStart="@dimen/medium_margin"
+                        android:text="@string/setting_google_drive_backup"/>
 
-                <LinearLayout
-                    android:id="@+id/pref3"
-                    android:orientation="vertical"
-                    style="@style/SettingActivityItem">
-                    <TextView
-                        android:id="@+id/prefTitle3"
-                        android:text="@string/setting_google_drive_recovery"
-                        style="@style/SettingActivityTitle" />
-                    <TextView
-                        android:id="@+id/prefSummary3"
-                        android:text="@string/setting_google_drive_recovery_summary"
-                        style="@style/SettingActivitySummary" />
-                </LinearLayout>
+                    <com.simplemobiletools.commons.views.MyTextView
+                        android:id="@+id/google_drive_backup_summary"
+                        android:layout_below="@+id/google_drive_backup_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/medium_margin"
+                        android:paddingStart="@dimen/medium_margin"
+                        android:text="@string/setting_google_drive_backup_summary"/>
+                </RelativeLayout>
 
-                <LinearLayout
-                    android:id="@+id/pref8"
-                    android:orientation="vertical"
-                    style="@style/SettingActivityItem">
-                    <TextView
-                        android:id="@+id/prefTitle8"
-                        android:text="@string/setting_rate_app"
-                        style="@style/SettingActivityTitle" />
-                    <TextView
-                        android:id="@+id/prefSummary8"
-                        android:text=""
-                        style="@style/SettingActivitySummary" />
-                </LinearLayout>
+                <RelativeLayout
+                    android:id="@+id/google_drive_recovery_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/medium_margin"
+                    android:padding="@dimen/activity_margin"
+                    android:background="?attr/selectableItemBackground">
+                    <com.simplemobiletools.commons.views.MyTextView
+                        android:id="@+id/google_drive_recovery_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/medium_margin"
+                        android:paddingStart="@dimen/medium_margin"
+                        android:text="@string/setting_google_drive_recovery"/>
 
-                <LinearLayout
-                    android:id="@+id/pref9"
-                    android:orientation="vertical"
-                    style="@style/SettingActivityItem">
-                    <TextView
-                        android:text="Open Source Licenses"
-                        style="@style/SettingActivityTitle" />
-                    <TextView
-                        android:text="open source software notices"
-                        style="@style/SettingActivitySummary" />
-                </LinearLayout>
+                    <com.simplemobiletools.commons.views.MyTextView
+                        android:id="@+id/google_drive_recovery_summary"
+                        android:layout_below="@+id/google_drive_recovery_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/medium_margin"
+                        android:paddingStart="@dimen/medium_margin"
+                        android:text="@string/setting_google_drive_recovery_summary"/>
+                </RelativeLayout>
             </LinearLayout>
+            
         </ScrollView>
-
+        
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
