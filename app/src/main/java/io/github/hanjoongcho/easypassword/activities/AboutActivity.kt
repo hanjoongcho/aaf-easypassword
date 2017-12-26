@@ -18,6 +18,7 @@ import com.simplemobiletools.commons.extensions.launchViewIntent
 import com.simplemobiletools.commons.extensions.isBlackAndWhiteTheme
 import io.github.hanjoongcho.easypassword.BuildConfig
 import io.github.hanjoongcho.easypassword.R
+import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import kotlinx.android.synthetic.main.activity_about.*
 import java.util.*
 
@@ -42,7 +43,7 @@ class AboutActivity : CommonActivity() {
             setDisplayHomeAsUpEnabled(true)
         }
 
-//        appName = intent.getStringExtra(APP_NAME) ?: ""
+        appName = intent.getStringExtra(APP_NAME) ?: ""
         linkColor = if (isBlackAndWhiteTheme()) Color.WHITE else baseConfig.primaryColor
     }
 
@@ -55,7 +56,7 @@ class AboutActivity : CommonActivity() {
         setupMoreApps()
         setupRateUs()
         setupInvite()
-//        setupLicense()
+        setupLicense()
 //        setupDonate()
 //        setupFacebook()
 //        setupGPlus()
@@ -83,7 +84,7 @@ class AboutActivity : CommonActivity() {
 
     private fun setupMoreApps() {
         about_more_apps.setOnClickListener {
-            launchViewIntent("https://play.google.com/store/apps/dev?id=9070296388022589266")
+            launchViewIntent("https://play.google.com/store/apps/dev?id=5999113397113629620")
         }
         about_more_apps.setTextColor(linkColor)
     }
@@ -117,16 +118,20 @@ class AboutActivity : CommonActivity() {
         about_rate_us.setTextColor(linkColor)
     }
 
-//    private fun setupLicense() {
-//        about_license.setOnClickListener {
+    private fun setupLicense() {
+        about_license.setOnClickListener {
 //            Intent(applicationContext, LicenseActivity::class.java).apply {
 //                putExtra(APP_LICENSES, intent.getIntExtra(APP_LICENSES, 0))
 //                startActivity(this)
 //            }
-//        }
-//        about_license.setTextColor(linkColor)
-//    }
-//
+            EasyPasswordHelper.startSettingActivityWithTransition(
+                    this@AboutActivity,
+                    WebViewActivity.getStartIntent(this@AboutActivity, getString(R.string.setting_license_url))
+            )
+        }
+        about_license.setTextColor(linkColor)
+    }
+
 //    private fun setupDonate() {
 //        about_donate.setOnClickListener {
 //            launchViewIntent("https://simplemobiletools.github.io/donate/")
@@ -157,7 +162,7 @@ class AboutActivity : CommonActivity() {
 //        val versionName = intent.getStringExtra(APP_VERSION_NAME) ?: ""
         val versionName = BuildConfig.VERSION_NAME
         val year = Calendar.getInstance().get(Calendar.YEAR)
-        about_copyright.text = String.format(getString(R.string.copyright), versionName, year)
+        about_copyright.text = String.format(getString(R.string.aaf_copyright), versionName, year)
     }
 
     private fun getStoreUrl() = "https://play.google.com/store/apps/details?id=$packageName"
