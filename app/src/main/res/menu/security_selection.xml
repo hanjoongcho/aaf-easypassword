@@ -8,9 +8,13 @@
         android:title=""
         app:showAsAction="always" />
     <item
-        android:icon="@drawable/settings_7"
         android:id="@+id/setting"
         android:orderInCategory="100"
         android:title="@string/settings"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/about"
+        android:orderInCategory="100"
+        android:title="@string/about"
         app:showAsAction="never" />
 </menu>

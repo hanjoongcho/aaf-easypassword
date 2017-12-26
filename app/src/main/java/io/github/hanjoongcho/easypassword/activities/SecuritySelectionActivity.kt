@@ -22,15 +22,12 @@ import io.github.hanjoongcho.easypassword.helper.findFragmentById
 import io.github.hanjoongcho.easypassword.helper.replaceFragment
 import kotlinx.android.synthetic.main.activity_security_selection.*
 
-
 /**
  * Created by Administrator on 2017-11-15.
  */
 
 class SecuritySelectionActivity : CommonActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         DataBindingUtil
                 .setContentView<ActivitySecuritySelectionBinding>(this,
@@ -71,16 +68,17 @@ class SecuritySelectionActivity : CommonActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-
         menuInflater.inflate(R.menu.security_selection, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         when (item.itemId) {
             R.id.setting -> {
                 EasyPasswordHelper.startSettingActivityWithTransition(this@SecuritySelectionActivity, SettingsActivity::class.java)
+            }
+            R.id.about -> {
+                EasyPasswordHelper.startSettingActivityWithTransition(this@SecuritySelectionActivity, AboutActivity::class.java)
             }
             R.id.search -> {
                 toolbar.visibility = View.GONE

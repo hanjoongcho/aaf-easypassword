@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.MenuItem
 import io.github.hanjoongcho.easypassword.extensions.getThemeId
 import io.github.hanjoongcho.easypassword.extensions.initTextSize
 import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
@@ -47,6 +48,15 @@ open class CommonActivity : AppCompatActivity() {
             }
         }
         initTextSize(findViewById(R.id.content), this@CommonActivity);
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                this@CommonActivity.onBackPressed()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {
