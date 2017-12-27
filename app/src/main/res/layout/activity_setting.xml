@@ -27,6 +27,7 @@
             android:layout_height="match_parent">
 
             <LinearLayout
+                android:padding="@dimen/activity_margin"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -35,8 +36,7 @@
                     android:id="@+id/pattern_lock_holder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/medium_margin"
-                    android:padding="@dimen/activity_margin"
+                    android:layout_marginBottom="@dimen/medium_margin"
                     android:background="?attr/selectableItemBackground">
                     <com.simplemobiletools.commons.views.MyTextView
                         android:id="@+id/pattern_lock_label"
@@ -60,8 +60,7 @@
                     android:id="@+id/settings_font_size_holder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/medium_margin"
-                    android:padding="@dimen/activity_margin"
+                    android:layout_marginBottom="@dimen/medium_margin"
                     android:background="?attr/selectableItemBackground">
                     <com.simplemobiletools.commons.views.MyTextView
                         android:id="@+id/settings_font_size_label"
@@ -84,8 +83,7 @@
                     android:id="@+id/google_drive_backup_holder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/medium_margin"
-                    android:padding="@dimen/activity_margin"
+                    android:layout_marginBottom="@dimen/medium_margin"
                     android:background="?attr/selectableItemBackground">
                     <com.simplemobiletools.commons.views.MyTextView
                         android:id="@+id/google_drive_backup_label"
@@ -109,8 +107,7 @@
                     android:id="@+id/google_drive_recovery_holder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/medium_margin"
-                    android:padding="@dimen/activity_margin"
+                    android:layout_marginBottom="@dimen/medium_margin"
                     android:background="?attr/selectableItemBackground">
                     <com.simplemobiletools.commons.views.MyTextView
                         android:id="@+id/google_drive_recovery_label"

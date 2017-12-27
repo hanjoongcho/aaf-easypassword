@@ -14,6 +14,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import com.simplemobiletools.commons.helpers.APP_NAME
+import com.simplemobiletools.commons.helpers.APP_VERSION_NAME
+import io.github.hanjoongcho.easypassword.BuildConfig
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.databinding.ActivitySecuritySelectionBinding
 import io.github.hanjoongcho.easypassword.fragment.SecuritySelectionFragment
@@ -78,7 +81,12 @@ class SecuritySelectionActivity : CommonActivity() {
                 EasyPasswordHelper.startSettingActivityWithTransition(this@SecuritySelectionActivity, SettingsActivity::class.java)
             }
             R.id.about -> {
-                EasyPasswordHelper.startSettingActivityWithTransition(this@SecuritySelectionActivity, AboutActivity::class.java)
+                val intent = Intent(applicationContext, AboutActivity::class.java).apply {
+                    putExtra(APP_NAME, getString(R.string.app_name))
+//                    putExtra(APP_LICENSES, licenseMask)
+                    putExtra(APP_VERSION_NAME, BuildConfig.VERSION_NAME)
+                }
+                EasyPasswordHelper.startSettingActivityWithTransition(this@SecuritySelectionActivity, intent)
             }
             R.id.search -> {
                 toolbar.visibility = View.GONE

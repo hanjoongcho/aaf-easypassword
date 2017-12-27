@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Easy\nPassword</string>
+    <string name="app_name">Easy Password</string>
 
     <!--Common-->
     <string name="security_manage_category">托管实体分类</string>

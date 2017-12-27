@@ -36,6 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:autoLink="web"
+                android:paddingBottom="@dimen/activity_margin"
                 android:text="@string/aaf_my_website"
                 android:textColorLink="@color/color_primary"/>
 

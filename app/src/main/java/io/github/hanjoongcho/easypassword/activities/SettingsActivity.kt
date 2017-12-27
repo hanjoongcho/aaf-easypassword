@@ -109,16 +109,4 @@ class SettingsActivity : CommonActivity() {
         FONT_SIZE_LARGE -> R.string.large
         else -> R.string.extra_large
     })
-
-    private fun getPackageVersion(): String? {
-
-        var packageInfo: PackageInfo? = null
-        try {
-            packageInfo = packageManager.getPackageInfo(packageName, 0)
-        } catch (e: PackageManager.NameNotFoundException) {
-            e.printStackTrace()
-        }
-
-        return packageInfo?.versionName
-    }
 }

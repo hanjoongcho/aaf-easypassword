@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">이지\n패스워드</string>
+    <string name="app_name">이지 패스워드</string>
 
     <!--Common-->
     <string name="security_manage_category">관리항목 분류</string>
