@@ -22,5 +22,5 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/spacing_double"
         app:backgroundTint="@color/colorPrimary"
-        app:srcCompat="@drawable/logout_w" />
+        app:srcCompat="@drawable/ic_cross" />
 </android.support.design.widget.CoordinatorLayout>
