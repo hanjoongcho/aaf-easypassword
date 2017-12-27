@@ -1,6 +1,5 @@
 package io.github.hanjoongcho.easypassword.activities
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -10,6 +9,7 @@ import com.simplemobiletools.commons.activities.AboutActivity
 import com.simplemobiletools.commons.helpers.APP_LICENSES
 import com.simplemobiletools.commons.helpers.APP_NAME
 import com.simplemobiletools.commons.helpers.APP_VERSION_NAME
+import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.extensions.getThemeId
 import io.github.hanjoongcho.easypassword.extensions.initTextSize
 import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
@@ -27,7 +27,8 @@ open class CommonActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         if (useDynamicTheme) {
-            setTheme(getThemeId())
+//            setTheme(getThemeId())
+            setTheme(R.style.AppTheme_AAF)
         }
 
         super.onCreate(savedInstanceState)
@@ -51,7 +52,7 @@ open class CommonActivity : AppCompatActivity() {
                 EasyPasswordHelper.startSettingActivityWithTransition(this@CommonActivity, intent)
             }
         }
-        initTextSize(findViewById(R.id.content), this@CommonActivity);
+        initTextSize(findViewById(android.R.id.content), this@CommonActivity);
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
