@@ -64,13 +64,13 @@ class AboutActivity : CommonActivity() {
     }
 
     private fun setupWebsite() {
-        val websiteText = String.format(getString(R.string.two_string_placeholder), getString(R.string.website_label), getString(R.string.my_website))
+        val websiteText = String.format(getString(R.string.two_string_placeholder), getString(R.string.website_label), getString(R.string.aaf_my_website))
         about_website.text = websiteText
     }
 
     private fun setupEmail() {
         val label = getString(R.string.email_label)
-        val email = getString(R.string.my_email)
+        val email = getString(R.string.aaf_my_email)
 
         val appVersion = String.format(getString(R.string.app_version, intent.getStringExtra(APP_VERSION_NAME)))
         val deviceOS = String.format(getString(R.string.device_os), Build.VERSION.RELEASE)
