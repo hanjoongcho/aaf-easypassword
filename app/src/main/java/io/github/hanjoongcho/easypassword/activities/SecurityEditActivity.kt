@@ -30,14 +30,12 @@ import kotlinx.android.synthetic.main.activity_setting.*
  */
 
 class SecurityEditActivity : CommonActivity() {
-
     private var mBinding: ActivitySecurityEditBinding? = null
     private var mSecurity: Security? = null
     private var mSequence:Int = -1
     private var mTempStrengthLevel = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_security_edit)
         mSequence = intent.getIntExtra(Security.PRIMARY_KEY, -1)
@@ -61,7 +59,6 @@ class SecurityEditActivity : CommonActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         when (item.itemId) {
             android.R.id.home -> this@SecurityEditActivity.onBackPressed()
             else -> {
@@ -76,7 +73,6 @@ class SecurityEditActivity : CommonActivity() {
 //    }
 
     private fun bindEvent() {
-
         mBinding?.let { binding ->
             binding.save.setOnClickListener({ view ->
                 view.visibility = View.INVISIBLE
@@ -110,7 +106,6 @@ class SecurityEditActivity : CommonActivity() {
     }
 
     private fun decryptField() {
-
         val password = mSecurity?.password ?: ""
         val serial = mSecurity?.creditCard?.serial ?: ""
         val expireDate = mSecurity?.creditCard?.expireDate ?: ""
@@ -152,8 +147,8 @@ class SecurityEditActivity : CommonActivity() {
     }
 
     private fun initCategorySpinner() {
-
         val adapter: ArrayAdapter<Category> = SecurityCategoryAdapter(this@SecurityEditActivity, R.layout.item_category, EasyPasswordHelper.getCategories(this@SecurityEditActivity))
+
         mBinding?.run {
             securityCategory.adapter = adapter
             securityCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -169,7 +164,6 @@ class SecurityEditActivity : CommonActivity() {
     }
 
     private fun changeCategoryContainer() {
-
         mBinding?.run {
             val item: Category = securityCategory.selectedItem as Category
             when (item.index) {
@@ -190,7 +184,6 @@ class SecurityEditActivity : CommonActivity() {
     }
 
     companion object {
-
         const val TAG = "SecurityEditActivity"
 
         fun getStartIntent(context: Context, sequence: Int): Intent {

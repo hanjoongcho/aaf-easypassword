@@ -1,12 +1,13 @@
 package io.github.hanjoongcho.easypassword.helper
 
 import android.content.Context
-import com.simplemobiletools.commons.R
 import com.simplemobiletools.commons.helpers.BaseConfig
-import com.simplemobiletools.commons.helpers.PRIMARY_COLOR
 
 /**
  * Created by CHO HANJOONG on 2017-12-24.
+ * This code based 'Simple-Commons' package
+ * You can see original 'Simple-Commons' from below link.
+ * https://github.com/SimpleMobileTools/Simple-Commons
  */
 
 class Config(context: Context) : BaseConfig(context) {

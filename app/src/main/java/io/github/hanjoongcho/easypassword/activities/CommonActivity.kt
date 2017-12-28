@@ -10,7 +10,6 @@ import com.simplemobiletools.commons.helpers.APP_LICENSES
 import com.simplemobiletools.commons.helpers.APP_NAME
 import com.simplemobiletools.commons.helpers.APP_VERSION_NAME
 import io.github.hanjoongcho.easypassword.R
-import io.github.hanjoongcho.easypassword.extensions.getThemeId
 import io.github.hanjoongcho.easypassword.extensions.initTextSize
 import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.utils.CommonUtils

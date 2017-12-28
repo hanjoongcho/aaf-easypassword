@@ -30,6 +30,7 @@ import kotlinx.android.synthetic.main.activity_security_selection.*
  */
 
 class SecuritySelectionActivity : CommonActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         DataBindingUtil

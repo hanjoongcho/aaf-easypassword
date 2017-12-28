@@ -1,16 +1,12 @@
 package io.github.hanjoongcho.easypassword.activities
 
 import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.support.v7.app.AlertDialog
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -23,7 +19,6 @@ import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Category
 import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.utils.AesUtils
-import io.github.hanjoongcho.utils.PasswordStrengthUtils
 import kotlinx.android.synthetic.main.activity_setting.*
 
 /**
@@ -31,7 +26,6 @@ import kotlinx.android.synthetic.main.activity_setting.*
  */
 
 class SecurityDetailActivity : CommonActivity() {
-
     private var mBinding: ActivitySecurityDetailBinding? = null
     private var mSecurity: Security? = null
     private var mSequence:Int = -1
@@ -57,7 +51,6 @@ class SecurityDetailActivity : CommonActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-
         when (item.itemId) {
             android.R.id.home ->  this@SecurityDetailActivity.onBackPressed()
             R.id.delete -> {
@@ -118,7 +111,6 @@ class SecurityDetailActivity : CommonActivity() {
     }
 
     private fun refreshItem() {
-
         mSecurity = this@SecurityDetailActivity.database().selectSecurityBy(mSequence)
         initCategorySpinner()
         changeCategoryContainer()
@@ -126,7 +118,6 @@ class SecurityDetailActivity : CommonActivity() {
     }
 
     private fun bindEvent() {
-
         mBinding?.run {
             update?.setOnClickListener({ _ ->
                 EasyPasswordHelper.startSettingActivityWithTransition(this@SecurityDetailActivity, SecurityEditActivity.getStartIntent(this@SecurityDetailActivity, mSequence))
@@ -135,7 +126,6 @@ class SecurityDetailActivity : CommonActivity() {
     }
 
     private fun changeCategoryContainer() {
-
         mBinding?.run {
             val item: Category = securityCategory.selectedItem as Category
             when (item.index) {
@@ -156,7 +146,6 @@ class SecurityDetailActivity : CommonActivity() {
     }
 
     private fun initCategorySpinner() {
-
         val adapter: ArrayAdapter<Category> = SecurityCategoryAdapter(this@SecurityDetailActivity, R.layout.item_category, EasyPasswordHelper.getCategories(this@SecurityDetailActivity))
         mBinding?.run {
             securityCategory.adapter = adapter
@@ -166,7 +155,6 @@ class SecurityDetailActivity : CommonActivity() {
     }
 
     companion object {
-
         fun getStartIntent(context: Context, security: Security): Intent {
             return Intent(context, SecurityDetailActivity::class.java)
                     .apply { putExtra(Security.PRIMARY_KEY, security.sequence) }

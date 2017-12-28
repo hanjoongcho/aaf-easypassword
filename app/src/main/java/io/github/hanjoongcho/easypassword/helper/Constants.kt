@@ -2,6 +2,9 @@ package io.github.hanjoongcho.easypassword.helper
 
 /**
  * Created by CHO HANJOONG on 2017-12-24.
+ * This code based 'Simple-Commons' package
+ * You can see original 'Simple-Commons' from below link.
+ * https://github.com/SimpleMobileTools/Simple-Commons
  */
 
 // shared preferences

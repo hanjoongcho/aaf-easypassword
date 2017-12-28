@@ -21,25 +21,12 @@ import io.github.hanjoongcho.easypassword.models.Account
 import io.github.hanjoongcho.easypassword.models.Category
 import io.github.hanjoongcho.easypassword.models.CreditCard
 import io.github.hanjoongcho.easypassword.models.Security
-import io.github.hanjoongcho.utils.PasswordStrengthUtils
-import me.gosimple.nbvcxz.resources.Configuration
-import me.gosimple.nbvcxz.resources.ConfigurationBuilder
-import me.gosimple.nbvcxz.resources.Dictionary
 
 /**
  * Created by CHO HANJOONG on 2017-11-18.
  */
 
 object EasyPasswordHelper {
-//    var listCategory: List<Category> = mutableListOf(
-//            Category(0, "웹사이트", "web"),
-//            Category(1, "신용카드", "credit_card"),
-//            Category(2, "도어락", "home"),
-//            Category(3, "자물쇠", "lock"),
-//            Category(4, "전자문서", "folder"),
-//            Category(5, "미분류", "password")
-//    )
-
     private var listCategory: MutableList<Category>? = null
 
     fun getCategories(context: Context): MutableList<Category> {

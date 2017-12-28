@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_web_view.*
  */
 
 class WebViewActivity : CommonActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_web_view)

@@ -32,7 +32,6 @@ import kotlinx.android.synthetic.main.fragment_securities.*
  */
 
 class SecuritySelectionFragment : Fragment() {
-
     private var mKeyword: String? = ""
 
     private val adapter: SecurityAdapter? by lazy(LazyThreadSafetyMode.NONE) {

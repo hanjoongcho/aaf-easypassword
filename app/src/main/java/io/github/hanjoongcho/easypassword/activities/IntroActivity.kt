@@ -53,7 +53,6 @@ class IntroActivity : AppCompatActivity(), Handler.Callback {
     }
 
     override fun handleMessage(message: Message): Boolean {
-
         when (message.what) {
             START_MAIN_ACTIVITY -> {
                 val savedPattern =  CommonUtils.loadStringPreference(this@IntroActivity, PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
