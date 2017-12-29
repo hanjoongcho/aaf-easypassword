@@ -1,6 +1,5 @@
 package io.github.hanjoongcho.easypassword.activities
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -202,7 +201,7 @@ class PatternLockActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        CommonUtils.saveLongPreference(this@PatternLockActivity, CommonActivity.SETTING_PAUSE_MILLIS, System.currentTimeMillis())
+        CommonUtils.saveLongPreference(this@PatternLockActivity, SimpleActivity.SETTING_PAUSE_MILLIS, System.currentTimeMillis())
     }
 
     override fun onBackPressed() {

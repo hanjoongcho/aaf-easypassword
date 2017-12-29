@@ -8,7 +8,7 @@ import com.google.android.gms.common.ConnectionResult
 import com.google.android.gms.common.GoogleApiAvailability
 import com.google.android.gms.common.api.GoogleApiClient
 import io.github.hanjoongcho.easypassword.R
-import io.github.hanjoongcho.easypassword.activities.CommonActivity
+import io.github.hanjoongcho.easypassword.activities.SimpleActivity
 import io.github.hanjoongcho.utils.CommonUtils
 
 /**
@@ -102,7 +102,7 @@ open class GoogleDriveUtils : Activity(), GoogleApiClient.ConnectionCallbacks, G
      */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        CommonUtils.saveLongPreference(this@GoogleDriveUtils, CommonActivity.SETTING_PAUSE_MILLIS, System.currentTimeMillis())
+        CommonUtils.saveLongPreference(this@GoogleDriveUtils, SimpleActivity.SETTING_PAUSE_MILLIS, System.currentTimeMillis())
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
                 REQUEST_CODE_RESOLUTION ->  mGoogleApiClient?.connect()

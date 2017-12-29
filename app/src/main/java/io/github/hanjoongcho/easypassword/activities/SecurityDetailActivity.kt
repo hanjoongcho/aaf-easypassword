@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.activity_setting.*
  * Created by CHO HANJOONG on 2017-11-18.
  */
 
-class SecurityDetailActivity : CommonActivity() {
+class SecurityDetailActivity : SimpleActivity() {
     private var mBinding: ActivitySecurityDetailBinding? = null
     private var mSecurity: Security? = null
     private var mSequence:Int = -1

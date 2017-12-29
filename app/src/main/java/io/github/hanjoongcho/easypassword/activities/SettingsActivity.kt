@@ -1,12 +1,8 @@
 package io.github.hanjoongcho.easypassword.activities
 
-import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -27,7 +23,7 @@ import kotlinx.android.synthetic.main.activity_setting.*
  * Created by CHO HANJOONG on 2017-11-21.
  */
 
-class SettingsActivity : CommonActivity() {
+class SettingsActivity : SimpleActivity() {
     lateinit var res: Resources
     private var linkColor = 0
     

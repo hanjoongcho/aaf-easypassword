@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.activity_web_view.*
  * Created by CHO HANJOONG on 2017-11-24.
  */
 
-class WebViewActivity : CommonActivity() {
+class WebViewActivity : SimpleActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
