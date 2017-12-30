@@ -30,16 +30,11 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <TextView
-                    style="@style/SettingsDivider" />
                 
                 <RelativeLayout
-                    android:id="@+id/pattern_lock_holder"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/spacing_double"
-                    android:background="?attr/selectableItemBackground">
+                    android:layout_marginTop="@dimen/spacing_normal"
+                    style="@style/SettingsItemHolder"
+                    android:id="@+id/pattern_lock_holder">
                     <com.simplemobiletools.commons.views.MyTextView
                         android:id="@+id/pattern_lock_label"
                         android:layout_width="match_parent"
@@ -54,15 +49,9 @@
                         android:text="@string/setting_pattern_lock_summary"/>
                 </RelativeLayout>
 
-                <TextView
-                    style="@style/SettingsDivider" />
-
                 <RelativeLayout
-                    android:id="@+id/settings_font_size_holder"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/spacing_double"
-                    android:background="?attr/selectableItemBackground">
+                    style="@style/SettingsItemHolder"
+                    android:id="@+id/settings_font_size_holder">
                     <com.simplemobiletools.commons.views.MyTextView
                         android:id="@+id/settings_font_size_label"
                         android:layout_width="match_parent"
@@ -76,15 +65,9 @@
                         android:layout_height="wrap_content"/>
                 </RelativeLayout>
 
-                <TextView
-                    style="@style/SettingsDivider" />
-                
                 <RelativeLayout
-                    android:id="@+id/google_drive_backup_holder"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/spacing_double"
-                    android:background="?attr/selectableItemBackground">
+                    style="@style/SettingsItemHolder"
+                    android:id="@+id/google_drive_backup_holder">
                     <com.simplemobiletools.commons.views.MyTextView
                         android:id="@+id/google_drive_backup_label"
                         android:layout_width="match_parent"
@@ -99,15 +82,9 @@
                         android:text="@string/setting_google_drive_backup_summary"/>
                 </RelativeLayout>
 
-                <TextView
-                    style="@style/SettingsDivider" />
-                
                 <RelativeLayout
-                    android:id="@+id/google_drive_recovery_holder"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/spacing_double"
-                    android:background="?attr/selectableItemBackground">
+                    style="@style/SettingsItemHolder"
+                    android:id="@+id/google_drive_recovery_holder">
                     <com.simplemobiletools.commons.views.MyTextView
                         android:id="@+id/google_drive_recovery_label"
                         android:layout_width="match_parent"

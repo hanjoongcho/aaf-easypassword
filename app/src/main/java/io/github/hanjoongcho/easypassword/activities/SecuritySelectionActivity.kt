@@ -16,7 +16,6 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.simplemobiletools.commons.helpers.APP_NAME
 import com.simplemobiletools.commons.helpers.APP_VERSION_NAME
-import io.github.hanjoongcho.commons.activities.AboutActivity
 import io.github.hanjoongcho.commons.helpers.*
 import io.github.hanjoongcho.easypassword.BuildConfig
 import io.github.hanjoongcho.easypassword.R
