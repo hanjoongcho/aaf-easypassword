@@ -27,23 +27,23 @@
             android:layout_height="match_parent">
 
             <LinearLayout
-                android:padding="@dimen/activity_margin"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <TextView
+                    style="@style/SettingsDivider" />
+                
                 <RelativeLayout
                     android:id="@+id/pattern_lock_holder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/medium_margin"
+                    android:padding="@dimen/spacing_double"
                     android:background="?attr/selectableItemBackground">
                     <com.simplemobiletools.commons.views.MyTextView
                         android:id="@+id/pattern_lock_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/medium_margin"
-                        android:paddingStart="@dimen/medium_margin"
                         android:text="@string/setting_pattern_lock"/>
 
                     <com.simplemobiletools.commons.views.MyTextView
@@ -51,46 +51,44 @@
                         android:layout_below="@+id/pattern_lock_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/medium_margin"
-                        android:paddingStart="@dimen/medium_margin"
                         android:text="@string/setting_pattern_lock_summary"/>
                 </RelativeLayout>
+
+                <TextView
+                    style="@style/SettingsDivider" />
 
                 <RelativeLayout
                     android:id="@+id/settings_font_size_holder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/medium_margin"
+                    android:padding="@dimen/spacing_double"
                     android:background="?attr/selectableItemBackground">
                     <com.simplemobiletools.commons.views.MyTextView
                         android:id="@+id/settings_font_size_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/medium_margin"
-                        android:paddingStart="@dimen/medium_margin"
                         android:text="@string/font_size"/>
 
                     <com.simplemobiletools.commons.views.MyTextView
                         android:id="@+id/settings_font_size"
                         android:layout_below="@+id/settings_font_size_label"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/medium_margin"
-                        android:paddingStart="@dimen/medium_margin"/>
+                        android:layout_height="wrap_content"/>
                 </RelativeLayout>
 
+                <TextView
+                    style="@style/SettingsDivider" />
+                
                 <RelativeLayout
                     android:id="@+id/google_drive_backup_holder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/medium_margin"
+                    android:padding="@dimen/spacing_double"
                     android:background="?attr/selectableItemBackground">
                     <com.simplemobiletools.commons.views.MyTextView
                         android:id="@+id/google_drive_backup_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/medium_margin"
-                        android:paddingStart="@dimen/medium_margin"
                         android:text="@string/setting_google_drive_backup"/>
 
                     <com.simplemobiletools.commons.views.MyTextView
@@ -98,23 +96,22 @@
                         android:layout_below="@+id/google_drive_backup_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/medium_margin"
-                        android:paddingStart="@dimen/medium_margin"
                         android:text="@string/setting_google_drive_backup_summary"/>
                 </RelativeLayout>
 
+                <TextView
+                    style="@style/SettingsDivider" />
+                
                 <RelativeLayout
                     android:id="@+id/google_drive_recovery_holder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/medium_margin"
+                    android:padding="@dimen/spacing_double"
                     android:background="?attr/selectableItemBackground">
                     <com.simplemobiletools.commons.views.MyTextView
                         android:id="@+id/google_drive_recovery_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/medium_margin"
-                        android:paddingStart="@dimen/medium_margin"
                         android:text="@string/setting_google_drive_recovery"/>
 
                     <com.simplemobiletools.commons.views.MyTextView
@@ -122,8 +119,6 @@
                         android:layout_below="@+id/google_drive_recovery_label"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="@dimen/medium_margin"
-                        android:paddingStart="@dimen/medium_margin"
                         android:text="@string/setting_google_drive_recovery_summary"/>
                 </RelativeLayout>
             </LinearLayout>

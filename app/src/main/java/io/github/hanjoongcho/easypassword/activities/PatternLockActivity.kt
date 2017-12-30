@@ -17,6 +17,7 @@ import com.andrognito.patternlockview.utils.PatternLockUtils
 import com.andrognito.patternlockview.utils.ResourceUtils
 import com.andrognito.rxpatternlockview.RxPatternLockView
 import com.andrognito.rxpatternlockview.events.PatternLockCompoundEvent
+import io.github.hanjoongcho.commons.extensions.baseConfig
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.helper.database
@@ -201,7 +202,7 @@ class PatternLockActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        CommonUtils.saveLongPreference(this@PatternLockActivity, SimpleActivity.SETTING_PAUSE_MILLIS, System.currentTimeMillis())
+        baseConfig.aafPatternLockPauseMillis = System.currentTimeMillis()
     }
 
     override fun onBackPressed() {

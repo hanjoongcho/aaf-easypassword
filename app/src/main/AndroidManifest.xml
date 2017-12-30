@@ -27,7 +27,7 @@
         <activity android:name="com.google.android.gms.drive.GoogleDriveUploader" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
         <activity android:name="com.google.android.gms.drive.GoogleDriveDownloader" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
         <activity android:name=".activities.SettingsActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
-        <activity android:name=".activities.AboutActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
+        <activity android:name="io.github.hanjoongcho.commons.activities.AboutActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
         <activity android:name=".activities.WebViewActivity" android:label="" android:theme="@style/AppTheme.NoActionBar" android:screenOrientation="portrait" />
     </application>
 

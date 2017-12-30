@@ -3,6 +3,7 @@ package io.github.hanjoongcho.easypassword.activities
 import android.content.Intent
 import android.util.Log
 import io.github.hanjoongcho.commons.activities.BaseSimpleActivity
+import io.github.hanjoongcho.commons.extensions.baseConfig
 import io.github.hanjoongcho.commons.helpers.TransitionHelper
 import io.github.hanjoongcho.utils.CommonUtils
 import io.github.hanjoongcho.easypassword.extensions.initTextSize
@@ -14,12 +15,12 @@ import io.github.hanjoongcho.easypassword.extensions.initTextSize
 open class SimpleActivity : BaseSimpleActivity() {
     override fun onPause() {
         super.onPause()
-        CommonUtils.saveLongPreference(this@SimpleActivity, SETTING_PAUSE_MILLIS, System.currentTimeMillis())
+        baseConfig.aafPatternLockPauseMillis = System.currentTimeMillis()
     }
 
     override fun onResume() {
         super.onResume()
-        val pauseMillis = CommonUtils.loadLongPreference(this@SimpleActivity, SETTING_PAUSE_MILLIS, 0L)
+        val pauseMillis = baseConfig.aafPatternLockPauseMillis
         Log.i(IntroActivity.TAG, "pauseMillis: ${System.currentTimeMillis() - pauseMillis}")
         if (pauseMillis != 0L) {
             if (System.currentTimeMillis() - pauseMillis > 1000) {
