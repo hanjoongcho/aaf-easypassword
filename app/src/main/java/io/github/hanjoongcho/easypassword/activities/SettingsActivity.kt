@@ -12,6 +12,7 @@ import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.baseConfig
 import com.simplemobiletools.commons.extensions.isBlackAndWhiteTheme
 import com.simplemobiletools.commons.models.RadioItem
+import io.github.hanjoongcho.commons.helpers.TransitionHelper
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.extensions.config
 import io.github.hanjoongcho.easypassword.extensions.initTextSize
@@ -82,19 +83,19 @@ class SettingsActivity : SimpleActivity() {
         pattern_lock_holder.setOnClickListener {
             val intent = Intent(this, PatternLockActivity::class.java)
             intent.putExtra(PatternLockActivity.MODE, PatternLockActivity.SETTING_LOCK)
-            EasyPasswordHelper.startSettingActivityWithTransition(this@SettingsActivity, intent)
+            TransitionHelper.startActivityWithTransition(this@SettingsActivity, intent)
         }
         pattern_lock_label.setTextColor(linkColor)
     }
     
     private fun setupGoogleDrive() {
         google_drive_backup_holder.setOnClickListener {
-            EasyPasswordHelper.startSettingActivityWithTransition(this@SettingsActivity, GoogleDriveUploader::class.java)
+            TransitionHelper.startActivityWithTransition(this@SettingsActivity, GoogleDriveUploader::class.java)
         }
         google_drive_backup_label.setTextColor(linkColor)
 
         google_drive_recovery_holder.setOnClickListener {
-            EasyPasswordHelper.startSettingActivityWithTransition(this@SettingsActivity, GoogleDriveDownloader::class.java)
+            TransitionHelper.startActivityWithTransition(this@SettingsActivity, GoogleDriveDownloader::class.java)
         }
         google_drive_recovery_label.setTextColor(linkColor)
     }

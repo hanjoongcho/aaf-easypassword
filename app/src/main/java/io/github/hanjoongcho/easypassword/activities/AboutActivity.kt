@@ -13,7 +13,7 @@ import com.simplemobiletools.commons.extensions.launchViewIntent
 import com.simplemobiletools.commons.helpers.APP_NAME
 import com.simplemobiletools.commons.helpers.APP_VERSION_NAME
 import io.github.hanjoongcho.easypassword.BuildConfig
-import io.github.hanjoongcho.commons.R
+import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.commons.activities.WebViewActivity
 import io.github.hanjoongcho.commons.helpers.TransitionHelper
 import kotlinx.android.synthetic.main.activity_about.*
@@ -121,9 +121,9 @@ class AboutActivity : SimpleActivity() {
 //                putExtra(APP_LICENSES, intent.getIntExtra(APP_LICENSES, 0))
 //                startActivity(this)
 //            }
-            TransitionHelper.startSettingActivityWithTransition(
+            TransitionHelper.startActivityWithTransition(
                     this@AboutActivity,
-                    WebViewActivity.getStartIntent(this@AboutActivity, getString(R.string.setting_license_url))
+                    WebViewActivity.getStartIntent(this@AboutActivity, getString(R.string.aaf_license_url))
             )
         }
         about_license.setTextColor(linkColor)

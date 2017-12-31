@@ -41,12 +41,10 @@
     <string name="setting_google_drive_backup_summary">すべての管理項目をGoogleドライブにバックアップする.</string>
     <string name="setting_google_drive_recovery">管理アカウントを回復する</string>
     <string name="setting_google_drive_recovery_summary">Googleドライブに保存された管理対象アイテムを復元する. 復元された管理項目は、バックアップ時に使用されたロックパターンを使用してのみ解読できます.</string>
-    <string name="setting_license_url">https://github.com/hanjoongcho/aaf-easypassword/blob/master/LICENSE.md</string>
 
     <!--AboutActivity-->
-    <string name="aaf_my_website">\nhttps://hanjoongcho.github.io/aaf/</string>
-    <string name="aaf_my_email">hanjoongcho@gmail.com</string>
     <string name="aaf_copyright">aaf-easypassword v %1$s\nCopyright © Awesome Application Factory %2$d</string>
+    <string name="aaf_license_url">https://github.com/hanjoongcho/aaf-easypassword/blob/master/LICENSE.md</string>
     
     <!--AesUtils-->
     <string name="aes_utils_decrypt_error">現在設定されているロックパターンで暗号化されたデータを復号することはできません.</string>

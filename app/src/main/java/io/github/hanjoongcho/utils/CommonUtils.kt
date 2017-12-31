@@ -23,16 +23,16 @@ class CommonUtils {
             edit.apply()
         }
 
-        fun loadLongPreference(context: Context, key: String, defaultValue: Long): Long {
-            val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-            return preferences.getLong(key, defaultValue)
-        }
+//        fun loadLongPreference(context: Context, key: String, defaultValue: Long): Long {
+//            val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+//            return preferences.getLong(key, defaultValue)
+//        }
 
-        fun saveLongPreference(context: Context, key: String, value: Long) {
-            val preferences = PreferenceManager.getDefaultSharedPreferences(context)
-            val edit = preferences.edit()
-            edit.putLong(key, value)
-            edit.apply()
-        }
+//        fun saveLongPreference(context: Context, key: String, value: Long) {
+//            val preferences = PreferenceManager.getDefaultSharedPreferences(context)
+//            val edit = preferences.edit()
+//            edit.putLong(key, value)
+//            edit.apply()
+//        }
     }
 }

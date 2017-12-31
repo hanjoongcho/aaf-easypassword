@@ -41,12 +41,10 @@
     <string name="setting_google_drive_backup_summary">이지 패스워드에 저장된 모든 관리항목을 구글드라이브에 백업합니다.</string>
     <string name="setting_google_drive_recovery">관리계정 복구</string>
     <string name="setting_google_drive_recovery_summary">구글드라이브에 저장된 관리항목을 복구합니다. 복구된 관리항목은 백업시 사용된 잠금패턴을 이용해서만 복호화가 가능합니다.</string>
-    <string name="setting_license_url">https://github.com/hanjoongcho/aaf-easypassword/blob/master/LICENSE.md</string>
 
     <!--AboutActivity-->
-    <string name="aaf_my_website">\nhttps://hanjoongcho.github.io/aaf/</string>
-    <string name="aaf_my_email">hanjoongcho@gmail.com</string>
     <string name="aaf_copyright">aaf-easypassword v %1$s\nCopyright © Awesome Application Factory %2$d</string>
+    <string name="aaf_license_url">https://github.com/hanjoongcho/aaf-easypassword/blob/master/LICENSE.md</string>
 
     <!--AesUtils-->
     <string name="aes_utils_decrypt_error">암호화된 데이터를 현재 설정한 잠금패턴으로 복호화 할 수 없습니다.</string>

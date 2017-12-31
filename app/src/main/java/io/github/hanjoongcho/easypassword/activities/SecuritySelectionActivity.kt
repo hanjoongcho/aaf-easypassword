@@ -80,7 +80,7 @@ class SecuritySelectionActivity : SimpleActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.setting -> {
-                EasyPasswordHelper.startSettingActivityWithTransition(this@SecuritySelectionActivity, SettingsActivity::class.java)
+                TransitionHelper.startActivityWithTransition(this@SecuritySelectionActivity, SettingsActivity::class.java)
             }
             R.id.about -> {
                 val intent = Intent(applicationContext, AboutActivity::class.java).apply {
@@ -88,7 +88,7 @@ class SecuritySelectionActivity : SimpleActivity() {
 //                    putExtra(APP_LICENSES, licenseMask)
                     putExtra(APP_VERSION_NAME, BuildConfig.VERSION_NAME)
                 }
-                TransitionHelper.startSettingActivityWithTransition(this@SecuritySelectionActivity, intent)
+                TransitionHelper.startActivityWithTransition(this@SecuritySelectionActivity, intent)
             }
             R.id.search -> {
                 toolbar.visibility = View.GONE

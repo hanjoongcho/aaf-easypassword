@@ -28,7 +28,7 @@ open class SimpleActivity : BaseSimpleActivity() {
                     putExtra(PatternLockActivity.MODE, PatternLockActivity.UNLOCK_RESUME)
 //                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                 }
-                TransitionHelper.startSettingActivityWithTransition(this@SimpleActivity, intent)
+                TransitionHelper.startActivityWithTransition(this@SimpleActivity, intent)
             }
         }
         initTextSize(findViewById(android.R.id.content), this@SimpleActivity);
