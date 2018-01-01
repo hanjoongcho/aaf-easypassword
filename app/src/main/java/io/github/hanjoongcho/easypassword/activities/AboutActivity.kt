@@ -14,7 +14,8 @@ import com.simplemobiletools.commons.helpers.APP_NAME
 import com.simplemobiletools.commons.helpers.APP_VERSION_NAME
 import io.github.hanjoongcho.easypassword.BuildConfig
 import io.github.hanjoongcho.easypassword.R
-import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
+import io.github.hanjoongcho.commons.activities.WebViewActivity
+import io.github.hanjoongcho.commons.helpers.TransitionHelper
 import kotlinx.android.synthetic.main.activity_about.*
 import java.util.*
 
@@ -25,7 +26,7 @@ import java.util.*
  * https://github.com/SimpleMobileTools/Simple-Commons
  */
 
-class AboutActivity : CommonActivity() {
+class AboutActivity : SimpleActivity() {
     private var appName = ""
     private var linkColor = 0
 
@@ -35,7 +36,7 @@ class AboutActivity : CommonActivity() {
 
         setSupportActionBar(toolbar)
         supportActionBar?.run {
-            title = getString(io.github.hanjoongcho.easypassword.R.string.about)
+            title = getString(R.string.about)
             setDisplayHomeAsUpEnabled(true)
         }
 
@@ -103,32 +104,32 @@ class AboutActivity : CommonActivity() {
 //        if (baseConfig.appRunCount < 5) {
 //            about_rate_us.visibility = View.GONE
 //        } else {
-            about_rate_us.setOnClickListener {
-                try {
-                    launchViewIntent("market://details?id=$packageName")
-                } catch (ignored: ActivityNotFoundException) {
-                    launchViewIntent(getStoreUrl())
-                }
+        about_rate_us.setOnClickListener {
+            try {
+                launchViewIntent("market://details?id=$packageName")
+            } catch (ignored: ActivityNotFoundException) {
+                launchViewIntent(getStoreUrl())
             }
+        }
 //        }
         about_rate_us.setTextColor(linkColor)
     }
 
     private fun setupLicense() {
         about_license.setOnClickListener {
-//            Intent(applicationContext, LicenseActivity::class.java).apply {
+            //            Intent(applicationContext, LicenseActivity::class.java).apply {
 //                putExtra(APP_LICENSES, intent.getIntExtra(APP_LICENSES, 0))
 //                startActivity(this)
 //            }
-            EasyPasswordHelper.startSettingActivityWithTransition(
+            TransitionHelper.startActivityWithTransition(
                     this@AboutActivity,
-                    WebViewActivity.getStartIntent(this@AboutActivity, getString(R.string.setting_license_url))
+                    WebViewActivity.getStartIntent(this@AboutActivity, getString(R.string.aaf_license_url))
             )
         }
         about_license.setTextColor(linkColor)
     }
 
-//    private fun setupDonate() {
+    //    private fun setupDonate() {
 //        about_donate.setOnClickListener {
 //            launchViewIntent("https://simplemobiletools.github.io/donate/")
 //        }

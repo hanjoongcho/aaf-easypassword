@@ -4,8 +4,8 @@ import android.content.Intent
 import android.content.IntentSender
 import android.os.Bundle
 import com.google.android.gms.common.api.ResultCallback
+import io.github.hanjoongcho.commons.helpers.TransitionHelper
 import io.github.hanjoongcho.easypassword.activities.IntroActivity
-import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.persistence.DatabaseHelper
 import org.apache.commons.io.IOUtils
 import java.io.FileOutputStream
@@ -61,6 +61,6 @@ class GoogleDriveDownloader : GoogleDriveUtils() {
         val intent = Intent(this@GoogleDriveDownloader, IntroActivity::class.java).apply {
             putExtra(IntroActivity.INTRO_MODE, IntroActivity.INTRO_MODE_RESTART)
         }
-        EasyPasswordHelper.startSettingActivityWithTransition(this@GoogleDriveDownloader, intent)
+        TransitionHelper.startActivityWithTransition(this@GoogleDriveDownloader, intent)
     }
 }

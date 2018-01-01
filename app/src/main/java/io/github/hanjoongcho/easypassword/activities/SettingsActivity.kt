@@ -1,12 +1,8 @@
 package io.github.hanjoongcho.easypassword.activities
 
-import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.graphics.Color
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -16,6 +12,7 @@ import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.baseConfig
 import com.simplemobiletools.commons.extensions.isBlackAndWhiteTheme
 import com.simplemobiletools.commons.models.RadioItem
+import io.github.hanjoongcho.commons.helpers.TransitionHelper
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.extensions.config
 import io.github.hanjoongcho.easypassword.extensions.initTextSize
@@ -27,7 +24,7 @@ import kotlinx.android.synthetic.main.activity_setting.*
  * Created by CHO HANJOONG on 2017-11-21.
  */
 
-class SettingsActivity : CommonActivity() {
+class SettingsActivity : SimpleActivity() {
     lateinit var res: Resources
     private var linkColor = 0
     
@@ -86,19 +83,19 @@ class SettingsActivity : CommonActivity() {
         pattern_lock_holder.setOnClickListener {
             val intent = Intent(this, PatternLockActivity::class.java)
             intent.putExtra(PatternLockActivity.MODE, PatternLockActivity.SETTING_LOCK)
-            EasyPasswordHelper.startSettingActivityWithTransition(this@SettingsActivity, intent)
+            TransitionHelper.startActivityWithTransition(this@SettingsActivity, intent)
         }
         pattern_lock_label.setTextColor(linkColor)
     }
     
     private fun setupGoogleDrive() {
         google_drive_backup_holder.setOnClickListener {
-            EasyPasswordHelper.startSettingActivityWithTransition(this@SettingsActivity, GoogleDriveUploader::class.java)
+            TransitionHelper.startActivityWithTransition(this@SettingsActivity, GoogleDriveUploader::class.java)
         }
         google_drive_backup_label.setTextColor(linkColor)
 
         google_drive_recovery_holder.setOnClickListener {
-            EasyPasswordHelper.startSettingActivityWithTransition(this@SettingsActivity, GoogleDriveDownloader::class.java)
+            TransitionHelper.startActivityWithTransition(this@SettingsActivity, GoogleDriveDownloader::class.java)
         }
         google_drive_recovery_label.setTextColor(linkColor)
     }

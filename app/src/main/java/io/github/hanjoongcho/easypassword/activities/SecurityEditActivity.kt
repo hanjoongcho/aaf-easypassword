@@ -29,7 +29,7 @@ import kotlinx.android.synthetic.main.activity_setting.*
  * Created by CHO HANJOONG on 2017-11-18.
  */
 
-class SecurityEditActivity : CommonActivity() {
+class SecurityEditActivity : SimpleActivity() {
     private var mBinding: ActivitySecurityEditBinding? = null
     private var mSecurity: Security? = null
     private var mSequence:Int = -1

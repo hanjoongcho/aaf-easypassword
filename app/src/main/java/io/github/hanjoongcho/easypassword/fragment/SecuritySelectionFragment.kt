@@ -16,6 +16,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import io.github.hanjoongcho.commons.helpers.TransitionHelper
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.activities.SecurityAddActivity
 import io.github.hanjoongcho.easypassword.activities.SecurityDetailActivity
@@ -57,7 +58,7 @@ class SecuritySelectionFragment : Fragment() {
         setUpGrid(securities)
         add.setOnClickListener {
             activity?.let {
-                EasyPasswordHelper.startSettingActivityWithTransition(it, SecurityAddActivity::class.java)    
+                TransitionHelper.startActivityWithTransition(it, SecurityAddActivity::class.java)    
             }
         }
     }
@@ -116,7 +117,7 @@ class SecuritySelectionFragment : Fragment() {
 
         val animationBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 activity,
-                *EasyPasswordHelper.createSafeTransitionParticipants(activity,
+                *TransitionHelper.createSafeTransitionParticipants(activity,
                         false,
                         Pair(toolbar, getString(R.string.transition_category)))
         ).toBundle()

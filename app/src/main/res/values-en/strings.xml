@@ -41,18 +41,13 @@
     <string name="setting_google_drive_backup_summary">Backup all management items to Google Drive.</string>
     <string name="setting_google_drive_recovery">Recover managed account</string>
     <string name="setting_google_drive_recovery_summary">Recover your managed items stored on Google Drive. Recovered management items can only be decrypted using the lock pattern used at the time of backup.</string>
-    <string name="setting_license_url">https://github.com/hanjoongcho/aaf-easypassword/blob/master/LICENSE.md</string>
 
     <!--AboutActivity-->
-    <string name="aaf_my_website">\nhttps://hanjoongcho.github.io/aaf/</string>
-    <string name="aaf_my_email">hanjoongcho@gmail.com</string>
     <string name="aaf_copyright">aaf-easypassword v %1$s\nCopyright © Awesome Application Factory %2$d</string>
+    <string name="aaf_license_url">https://github.com/hanjoongcho/aaf-easypassword/blob/master/LICENSE.md</string>
 
     <!--AesUtils-->
     <string name="aes_utils_decrypt_error">Encrypted data can not be decrypted with the lock pattern currently set.</string>
-
-    <!--GoogleDriveUtils-->
-    <string name="google_drive_connect_message">Google Drive in sync...</string>
 
     <!--EasyPasswordHelper-->
     <array name="array_category_name">

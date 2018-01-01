@@ -11,6 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
+import io.github.hanjoongcho.commons.helpers.TransitionHelper
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.adpaters.SecurityCategoryAdapter
 import io.github.hanjoongcho.easypassword.databinding.ActivitySecurityDetailBinding
@@ -25,7 +26,7 @@ import kotlinx.android.synthetic.main.activity_setting.*
  * Created by CHO HANJOONG on 2017-11-18.
  */
 
-class SecurityDetailActivity : CommonActivity() {
+class SecurityDetailActivity : SimpleActivity() {
     private var mBinding: ActivitySecurityDetailBinding? = null
     private var mSecurity: Security? = null
     private var mSequence:Int = -1
@@ -120,7 +121,7 @@ class SecurityDetailActivity : CommonActivity() {
     private fun bindEvent() {
         mBinding?.run {
             update?.setOnClickListener({ _ ->
-                EasyPasswordHelper.startSettingActivityWithTransition(this@SecurityDetailActivity, SecurityEditActivity.getStartIntent(this@SecurityDetailActivity, mSequence))
+                TransitionHelper.startActivityWithTransition(this@SecurityDetailActivity, SecurityEditActivity.getStartIntent(this@SecurityDetailActivity, mSequence))
             })
         }
     }

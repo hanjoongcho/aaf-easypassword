@@ -16,6 +16,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.simplemobiletools.commons.helpers.APP_NAME
 import com.simplemobiletools.commons.helpers.APP_VERSION_NAME
+import io.github.hanjoongcho.commons.helpers.*
 import io.github.hanjoongcho.easypassword.BuildConfig
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.databinding.ActivitySecuritySelectionBinding
@@ -29,7 +30,7 @@ import kotlinx.android.synthetic.main.activity_security_selection.*
  * Created by Administrator on 2017-11-15.
  */
 
-class SecuritySelectionActivity : CommonActivity() {
+class SecuritySelectionActivity : SimpleActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,7 +80,7 @@ class SecuritySelectionActivity : CommonActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.setting -> {
-                EasyPasswordHelper.startSettingActivityWithTransition(this@SecuritySelectionActivity, SettingsActivity::class.java)
+                TransitionHelper.startActivityWithTransition(this@SecuritySelectionActivity, SettingsActivity::class.java)
             }
             R.id.about -> {
                 val intent = Intent(applicationContext, AboutActivity::class.java).apply {
@@ -87,7 +88,7 @@ class SecuritySelectionActivity : CommonActivity() {
 //                    putExtra(APP_LICENSES, licenseMask)
                     putExtra(APP_VERSION_NAME, BuildConfig.VERSION_NAME)
                 }
-                EasyPasswordHelper.startSettingActivityWithTransition(this@SecuritySelectionActivity, intent)
+                TransitionHelper.startActivityWithTransition(this@SecuritySelectionActivity, intent)
             }
             R.id.search -> {
                 toolbar.visibility = View.GONE

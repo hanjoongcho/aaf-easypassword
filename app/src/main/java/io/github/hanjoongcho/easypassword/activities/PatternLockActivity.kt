@@ -1,6 +1,5 @@
 package io.github.hanjoongcho.easypassword.activities
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -18,11 +17,11 @@ import com.andrognito.patternlockview.utils.PatternLockUtils
 import com.andrognito.patternlockview.utils.ResourceUtils
 import com.andrognito.rxpatternlockview.RxPatternLockView
 import com.andrognito.rxpatternlockview.events.PatternLockCompoundEvent
+import io.github.hanjoongcho.commons.extensions.baseConfig
+import io.github.hanjoongcho.commons.helpers.TransitionHelper
 import io.github.hanjoongcho.easypassword.R
-import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.utils.AesUtils
-import io.github.hanjoongcho.utils.CommonUtils
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.activity_pattern_lock.*
 
@@ -71,12 +70,12 @@ class PatternLockActivity : AppCompatActivity() {
 //                SecuritySelectionActivity.start(this@PatternLockActivity)
 //            }))
 //            builder.create().show()
-            val savedPattern = CommonUtils.loadStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
+            val savedPattern = baseConfig.aafPatternLockSaved
             when (mMode) {
                 UNLOCK -> {
                     if (savedPattern == patternLockCompleteEvent.pattern.toString()) {
 //                        SecuritySelectionActivity.start(this@PatternLockActivity)
-                        EasyPasswordHelper.startSettingActivityWithTransition(this@PatternLockActivity, SecuritySelectionActivity::class.java)
+                        TransitionHelper.startActivityWithTransition(this@PatternLockActivity, SecuritySelectionActivity::class.java)
                         finish()
                     } else {
                         patterLockView.clearPattern()
@@ -94,15 +93,15 @@ class PatternLockActivity : AppCompatActivity() {
                     val intent = Intent(this, PatternLockActivity::class.java)
                     intent.putExtra(PatternLockActivity.MODE, PatternLockActivity.VERIFY)
                     intent.putExtra(PatternLockActivity.REQUEST_PATTERN, patternLockCompleteEvent.pattern.toString())
-                    EasyPasswordHelper.startSettingActivityWithTransition(this@PatternLockActivity, intent)
+                    TransitionHelper.startActivityWithTransition(this@PatternLockActivity, intent)
                     finish()
                 }
                 VERIFY -> {
                     if (intent.getStringExtra(PatternLockActivity.REQUEST_PATTERN) == patternLockCompleteEvent.pattern.toString()) {
-                        val previousPattern = CommonUtils.loadStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
-                        CommonUtils.saveStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, patternLockCompleteEvent.pattern.toString())
+                        val previousPattern = baseConfig.aafPatternLockSaved
+                        baseConfig.aafPatternLockSaved = patternLockCompleteEvent.pattern.toString()
                         if (this@PatternLockActivity.database().countSecurity() < 1) {
-                            EasyPasswordHelper.startSettingActivityWithTransition(this@PatternLockActivity, SecuritySelectionActivity::class.java)
+                            TransitionHelper.startActivityWithTransition(this@PatternLockActivity, SecuritySelectionActivity::class.java)
                             finish()
                         } else {
                             progressBar.visibility = View.VISIBLE
@@ -149,7 +148,7 @@ class PatternLockActivity : AppCompatActivity() {
                         builder.setMessage(getString(R.string.wrong_pattern))
                         builder.setPositiveButton("OK", ({ _, _ ->
                             intent.putExtra(PatternLockActivity.MODE, PatternLockActivity.SETTING_LOCK)
-                            EasyPasswordHelper.startSettingActivityWithTransition(this@PatternLockActivity, intent)
+                            TransitionHelper.startActivityWithTransition(this@PatternLockActivity, intent)
                             finish()
                         }))
                         builder.create().show()
@@ -202,7 +201,7 @@ class PatternLockActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        CommonUtils.saveLongPreference(this@PatternLockActivity, CommonActivity.SETTING_PAUSE_MILLIS, System.currentTimeMillis())
+        baseConfig.aafPatternLockPauseMillis = System.currentTimeMillis()
     }
 
     override fun onBackPressed() {
@@ -229,12 +228,8 @@ class PatternLockActivity : AppCompatActivity() {
     }
 
     companion object {
-
-        const val TAG = "PatternLockActivity"
         const val MODE = "mMode"
         const val REQUEST_PATTERN = "request_pattern"
-        const val SAVED_PATTERN = "saved_pattern"
-        const val SAVED_PATTERN_DEFAULT = "NA"
         const val UNLOCK = 1
         const val SETTING_LOCK = 2
         const val VERIFY = 3

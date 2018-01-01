@@ -22,7 +22,7 @@ import kotlinx.android.synthetic.main.activity_setting.*
  * Created by CHO HANJOONG on 2017-11-18.
  */
 
-class SecurityAddActivity : CommonActivity() {
+class SecurityAddActivity : SimpleActivity() {
 
     private var mBinding: ActivitySecurityAddBinding? = null
     private var mTempStrengthLevel = 1

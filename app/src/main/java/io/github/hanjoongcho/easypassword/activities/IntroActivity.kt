@@ -1,11 +1,9 @@
 package io.github.hanjoongcho.easypassword.activities
 
-import android.annotation.TargetApi
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -14,9 +12,10 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.util.Pair
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import io.github.hanjoongcho.commons.helpers.TransitionHelper
+import io.github.hanjoongcho.commons.extensions.baseConfig
 import io.github.hanjoongcho.easypassword.R
-import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
-import io.github.hanjoongcho.utils.CommonUtils
+import io.github.hanjoongcho.commons.helpers.AAF_PATTERN_LOCK_DEFAULT
 import kotlinx.android.synthetic.main.activity_intro.*
 
 /**
@@ -55,31 +54,44 @@ class IntroActivity : AppCompatActivity(), Handler.Callback {
     override fun handleMessage(message: Message): Boolean {
         when (message.what) {
             START_MAIN_ACTIVITY -> {
-                val savedPattern =  CommonUtils.loadStringPreference(this@IntroActivity, PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
+                val savedPattern =  baseConfig.aafPatternLockSaved
                 when (savedPattern) {
-                    PatternLockActivity.SAVED_PATTERN_DEFAULT -> startActivityWithTransition(PatternLockActivity.SETTING_LOCK)
-                    else -> startActivityWithTransition(PatternLockActivity.UNLOCK)
+                    AAF_PATTERN_LOCK_DEFAULT -> {
+                        TransitionHelper.startActivityWithTransition(
+                                this@IntroActivity,
+                                Intent(this, PatternLockActivity::class.java).apply {
+                                    putExtra(PatternLockActivity.MODE, PatternLockActivity.SETTING_LOCK)
+                                },
+                                ActivityOptionsCompat.makeSceneTransitionAnimation(this@IntroActivity,
+                                        *TransitionHelper.createSafeTransitionParticipants(
+                                                this@IntroActivity,
+                                                false,
+                                                Pair(app_icon, getString(R.string.transition_app_icon))
+                                        )
+                                ).toBundle()
+                        )
+                    }
+                    else -> {
+                        TransitionHelper.startActivityWithTransition(
+                                this@IntroActivity,
+                                Intent(this, PatternLockActivity::class.java).apply {
+                                    putExtra(PatternLockActivity.MODE, PatternLockActivity.UNLOCK)
+                                },
+                                ActivityOptionsCompat.makeSceneTransitionAnimation(this@IntroActivity,
+                                        *TransitionHelper.createSafeTransitionParticipants(
+                                                this@IntroActivity,
+                                                false,
+                                                Pair(app_icon, getString(R.string.transition_app_icon))
+                                        )
+                                ).toBundle()
+                        )
+                    }
                 }
             }
             else -> {
             }
         }
         return false
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private fun startActivityWithTransition(mode: Int) {
-
-        val animationBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(this@IntroActivity,
-                *EasyPasswordHelper.createSafeTransitionParticipants(this@IntroActivity,
-                        false,
-                        Pair(app_icon, getString(R.string.transition_app_icon))))
-                .toBundle()
-
-        // Start the activity with the participants, animating from one to the other.
-        val intent = Intent(this, PatternLockActivity::class.java)
-        intent.putExtra(PatternLockActivity.MODE, mode)
-        ActivityCompat.startActivity(this@IntroActivity, intent, animationBundle)
     }
 
     companion object {

@@ -4,8 +4,8 @@ import android.content.IntentSender
 import android.os.Bundle
 import com.google.android.gms.common.api.ResultCallback
 import io.github.hanjoongcho.easypassword.persistence.DatabaseHelper
-import io.github.hanjoongcho.utils.DateUtils
 import org.apache.commons.io.FileUtils
+import utils.DateUtils
 import java.io.File
 import java.io.IOException
 
@@ -32,7 +32,7 @@ class GoogleDriveUploader : GoogleDriveUtils() {
         }
 
         val metadataChangeSet = MetadataChangeSet.Builder()
-                .setTitle(DatabaseHelper.DIARY_DB_NAME + "_" + DateUtils.getFullPatternDate(System.currentTimeMillis()))
+                .setTitle(DatabaseHelper.DIARY_DB_NAME + "_" + DateUtils.getDateStringFromTimeMillis(System.currentTimeMillis(), DateUtils.SIMPLE_DATE_FORMAT_FULL))
                 .setMimeType(DatabaseHelper.getInstance(this@GoogleDriveUploader).getMimeType()).build()
         val intentSender = Drive.DriveApi
                 .newCreateFileActivityBuilder()
