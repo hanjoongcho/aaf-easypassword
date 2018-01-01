@@ -20,10 +20,8 @@ import com.andrognito.rxpatternlockview.events.PatternLockCompoundEvent
 import io.github.hanjoongcho.commons.extensions.baseConfig
 import io.github.hanjoongcho.commons.helpers.TransitionHelper
 import io.github.hanjoongcho.easypassword.R
-import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.utils.AesUtils
-import io.github.hanjoongcho.utils.CommonUtils
 import io.reactivex.functions.Consumer
 import kotlinx.android.synthetic.main.activity_pattern_lock.*
 
@@ -72,7 +70,7 @@ class PatternLockActivity : AppCompatActivity() {
 //                SecuritySelectionActivity.start(this@PatternLockActivity)
 //            }))
 //            builder.create().show()
-            val savedPattern = CommonUtils.loadStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
+            val savedPattern = baseConfig.aafPatternLockSaved
             when (mMode) {
                 UNLOCK -> {
                     if (savedPattern == patternLockCompleteEvent.pattern.toString()) {
@@ -100,8 +98,8 @@ class PatternLockActivity : AppCompatActivity() {
                 }
                 VERIFY -> {
                     if (intent.getStringExtra(PatternLockActivity.REQUEST_PATTERN) == patternLockCompleteEvent.pattern.toString()) {
-                        val previousPattern = CommonUtils.loadStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
-                        CommonUtils.saveStringPreference(this@PatternLockActivity, PatternLockActivity.SAVED_PATTERN, patternLockCompleteEvent.pattern.toString())
+                        val previousPattern = baseConfig.aafPatternLockSaved
+                        baseConfig.aafPatternLockSaved = patternLockCompleteEvent.pattern.toString()
                         if (this@PatternLockActivity.database().countSecurity() < 1) {
                             TransitionHelper.startActivityWithTransition(this@PatternLockActivity, SecuritySelectionActivity::class.java)
                             finish()
@@ -230,12 +228,8 @@ class PatternLockActivity : AppCompatActivity() {
     }
 
     companion object {
-
-        const val TAG = "PatternLockActivity"
         const val MODE = "mMode"
         const val REQUEST_PATTERN = "request_pattern"
-        const val SAVED_PATTERN = "saved_pattern"
-        const val SAVED_PATTERN_DEFAULT = "NA"
         const val UNLOCK = 1
         const val SETTING_LOCK = 2
         const val VERIFY = 3

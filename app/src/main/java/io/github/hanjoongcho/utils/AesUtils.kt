@@ -4,8 +4,8 @@ import android.content.Context
 import com.tozny.crypto.android.AesCbcWithIntegrity
 import com.tozny.crypto.android.AesCbcWithIntegrity.CipherTextIvMac
 import com.tozny.crypto.android.AesCbcWithIntegrity.keyString
+import io.github.hanjoongcho.commons.extensions.baseConfig
 import io.github.hanjoongcho.easypassword.R
-import io.github.hanjoongcho.easypassword.activities.PatternLockActivity
 
 /**
  * Created by Administrator on 2017-11-21.
@@ -22,7 +22,7 @@ class AesUtils {
         fun encryptPassword(context: Context, plainText: String): String = when (plainText) {
             "" -> ""
             else -> {
-                val savedPattern = CommonUtils.loadStringPreference(context , PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
+                val savedPattern = context.baseConfig.aafPatternLockSaved
                 val key: AesCbcWithIntegrity.SecretKeys = AesCbcWithIntegrity.generateKeyFromPassword(savedPattern, SALT_STRING)
 
                 // The encryption / storage & display:
@@ -34,7 +34,7 @@ class AesUtils {
         fun decryptPassword(context: Context, cipherText: String): String = when (cipherText) {
             "" -> ""
             else -> {
-                val savedPattern = CommonUtils.loadStringPreference(context , PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
+                val savedPattern = context.baseConfig.aafPatternLockSaved
                 decryptPassword(context, cipherText, savedPattern)
             }
         }

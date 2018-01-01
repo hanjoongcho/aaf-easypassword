@@ -5,7 +5,6 @@ import android.util.Log
 import io.github.hanjoongcho.commons.activities.BaseSimpleActivity
 import io.github.hanjoongcho.commons.extensions.baseConfig
 import io.github.hanjoongcho.commons.helpers.TransitionHelper
-import io.github.hanjoongcho.utils.CommonUtils
 import io.github.hanjoongcho.easypassword.extensions.initTextSize
 
 /**

@@ -49,9 +49,6 @@
     <!--AesUtils-->
     <string name="aes_utils_decrypt_error">암호화된 데이터를 현재 설정한 잠금패턴으로 복호화 할 수 없습니다.</string>
 
-    <!--GoogleDriveUtils-->
-    <string name="google_drive_connect_message">Google Drive 연동중...</string>
-
     <!--EasyPasswordHelper-->
     <array name="array_category_name">
         <item>웹사이트</item>

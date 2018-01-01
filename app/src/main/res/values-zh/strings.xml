@@ -49,9 +49,6 @@
     <!--AesUtils-->
     <string name="aes_utils_decrypt_error">不能被解码成锁定模式本组加密数据.</string>
 
-    <!--GoogleDriveUtils-->
-    <string name="google_drive_connect_message">Google云端硬盘集成...</string>
-
     <!--EasyPasswordHelper-->
     <array name="array_category_name">
         <item>网站</item>

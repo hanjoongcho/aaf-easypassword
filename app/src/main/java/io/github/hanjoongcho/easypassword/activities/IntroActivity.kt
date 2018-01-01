@@ -13,9 +13,9 @@ import android.support.v4.util.Pair
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import io.github.hanjoongcho.commons.helpers.TransitionHelper
+import io.github.hanjoongcho.commons.extensions.baseConfig
 import io.github.hanjoongcho.easypassword.R
-import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
-import io.github.hanjoongcho.utils.CommonUtils
+import io.github.hanjoongcho.commons.helpers.AAF_PATTERN_LOCK_DEFAULT
 import kotlinx.android.synthetic.main.activity_intro.*
 
 /**
@@ -54,9 +54,9 @@ class IntroActivity : AppCompatActivity(), Handler.Callback {
     override fun handleMessage(message: Message): Boolean {
         when (message.what) {
             START_MAIN_ACTIVITY -> {
-                val savedPattern =  CommonUtils.loadStringPreference(this@IntroActivity, PatternLockActivity.SAVED_PATTERN, PatternLockActivity.SAVED_PATTERN_DEFAULT)
+                val savedPattern =  baseConfig.aafPatternLockSaved
                 when (savedPattern) {
-                    PatternLockActivity.SAVED_PATTERN_DEFAULT -> {
+                    AAF_PATTERN_LOCK_DEFAULT -> {
                         TransitionHelper.startActivityWithTransition(
                                 this@IntroActivity,
                                 Intent(this, PatternLockActivity::class.java).apply {

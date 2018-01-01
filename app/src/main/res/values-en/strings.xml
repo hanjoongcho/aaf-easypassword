@@ -49,9 +49,6 @@
     <!--AesUtils-->
     <string name="aes_utils_decrypt_error">Encrypted data can not be decrypted with the lock pattern currently set.</string>
 
-    <!--GoogleDriveUtils-->
-    <string name="google_drive_connect_message">Google Drive in sync...</string>
-
     <!--EasyPasswordHelper-->
     <array name="array_category_name">
         <item>Website</item>
