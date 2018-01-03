@@ -13,13 +13,6 @@
     <!--SecurityDetailActivity-->
     <dimen name="account_detail_padding">20dp</dimen>
 
-    <!--PatternActivity-->
-
-    <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-    <!--++++ xlarge layout                                                        -->
-    <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-    <dimen name="xlarge_toolbar_icon_width_and_height">40dp</dimen>
-
     <dimen name="spacing_nano">2dp</dimen>
     <dimen name="spacing_micro">4dp</dimen>
     <dimen name="spacing_normal">8dp</dimen>
@@ -39,4 +32,10 @@
 
     <dimen name="size_edit_text">18sp</dimen>
     <dimen name="category_item_text_size">14sp</dimen>
+
+    <!--https://github.com/SimpleMobileTools/Simple-Commons-->
+    <dimen name="smaller_text_size">14sp</dimen>
+    <dimen name="bigger_text_size">15sp</dimen>
+    <dimen name="big_text_size">16sp</dimen>
+    <dimen name="extra_big_text_size">17sp</dimen>
 </resources>
