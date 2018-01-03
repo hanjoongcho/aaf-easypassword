@@ -1,45 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/colorPrimary"
-    android:orientation="vertical"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <TextView
-        android:padding="10dp"
-        android:text="Awesome Application Factory"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:id="@+id/companyName"
-        android:gravity="left"
-        android:textColor="@color/whiteText"
-        android:textSize="@dimen/intro_company_text"
-        android:textStyle="bold" />
-
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
     <LinearLayout
-        android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:src="@drawable/padlock_10"
-            android:id="@+id/app_icon"
-            android:layout_width="100dp"
-            android:layout_height="100dp" />
+        <TextView
+            android:padding="10dp"
+            android:text="Awesome Application Factory"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:id="@+id/companyName"
+            android:gravity="left"
+            android:textColor="@color/whiteText"
+            android:textSize="@dimen/intro_company_text"
+            android:textStyle="bold" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:padding="10dp"
-        android:text="Easy Password"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center_horizontal"
-        android:textColor="@color/whiteText"
-        android:textSize="@dimen/intro_app_text"
-        android:id="@+id/appName"
-        android:textStyle="bold" />
+            <ImageView
+                android:src="@drawable/padlock_10"
+                android:id="@+id/app_icon"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
 
-</LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:padding="10dp"
+            android:text="Easy Password"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:textColor="@color/whiteText"
+            android:textSize="@dimen/intro_app_text"
+            android:id="@+id/appName"
+            android:textStyle="bold" />
+
+    </LinearLayout>    
+</android.support.design.widget.CoordinatorLayout>    

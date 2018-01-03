@@ -24,7 +24,7 @@ fun Context.getTextSize() =
 
 val Context.config: Config get() = Config.newInstance(applicationContext)
 
-fun initTextSize(viewGroup: ViewGroup, context: Context) {
+fun Context.initTextSize(viewGroup: ViewGroup, context: Context) {
     val cnt = viewGroup.childCount
     (0 until cnt)
             .map { viewGroup.getChildAt(it) }

@@ -40,7 +40,7 @@ class SecurityAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         with(holder.binding) {
-            initTextSize(categoryItem, activity);
+            activity.initTextSize(categoryItem, activity);
             
             security = securities[position]
             executePendingBindings()
