@@ -17,10 +17,10 @@ This application uses pattern locks to manage information that requires security
 ```
 
 # Screen Shots
-<img src="screenshots/common/01.jpg">&nbsp;
-<img src="screenshots/common/02.jpg">   
-<img src="screenshots/common/03.jpg">&nbsp;
-<img src="screenshots/common/04.jpg">
+<img src="screenshots/common/en_01_s.png">&nbsp;
+<img src="screenshots/common/en_02_s.png">   
+<img src="screenshots/common/en_03_s.png">&nbsp;
+<img src="screenshots/common/en_04_s.png">
 
 # How to build
 ```
