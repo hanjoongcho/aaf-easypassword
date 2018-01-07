@@ -94,6 +94,8 @@ class IntroActivity : AppCompatActivity(), Handler.Callback {
         return false
     }
 
+    override fun onBackPressed() {}
+    
     companion object {
         const val TAG = "RESTORE"
         const val START_MAIN_ACTIVITY = 0
