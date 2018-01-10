@@ -21,8 +21,8 @@ android {
         applicationId "io.github.hanjoongcho.easypassword"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 14
-        versionName "0.4.0"
+        versionCode 15
+        versionName "1.0.0"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -44,17 +44,13 @@ android {
         }
         release {
             minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//            signingConfig getSigningConfig()
-//            applicationVariants.all { variant ->
-//                variant.outputs.each { output ->
-//                    def date = new Date();
-//                    def formattedDate = date.format('yyyyMMddHHmmss')
-//                    output.outputFile = new File(output.outputFile.parent,
-//                            output.outputFile.name.replace("-release", "-easy_password-" + formattedDate)
-//                    )
-//                }
-//            }
+            applicationVariants.all { variant ->
+                variant.outputs.each { output ->
+                    def releaseFileName = "easy_password-$versionName-release.apk"
+                    println("test message: $releaseFileName")
+                    output.outputFileName = releaseFileName
+                }
+            }
         }
     }
     sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/main/assets/'] } }
