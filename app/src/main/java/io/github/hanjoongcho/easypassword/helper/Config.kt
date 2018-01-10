@@ -1,7 +1,7 @@
 package io.github.hanjoongcho.easypassword.helper
 
 import android.content.Context
-import com.simplemobiletools.commons.helpers.BaseConfig
+import io.github.hanjoongcho.commons.helpers.BaseConfig
 
 /**
  * Created by CHO HANJOONG on 2017-12-24.
