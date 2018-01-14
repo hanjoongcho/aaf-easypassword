@@ -82,14 +82,14 @@ class SecuritySelectionActivity : SimpleActivity() {
             R.id.setting -> {
                 TransitionHelper.startActivityWithTransition(this@SecuritySelectionActivity, SettingsActivity::class.java)
             }
-            R.id.about -> {
-                val intent = Intent(applicationContext, AboutActivity::class.java).apply {
-                    putExtra(APP_NAME, getString(R.string.app_name))
-//                    putExtra(APP_LICENSES, licenseMask)
-                    putExtra(APP_VERSION_NAME, BuildConfig.VERSION_NAME)
-                }
-                TransitionHelper.startActivityWithTransition(this@SecuritySelectionActivity, intent)
-            }
+//            R.id.about -> {
+//                val intent = Intent(applicationContext, AboutActivity::class.java).apply {
+//                    putExtra(APP_NAME, getString(R.string.app_name))
+////                    putExtra(APP_LICENSES, licenseMask)
+//                    putExtra(APP_VERSION_NAME, BuildConfig.VERSION_NAME)
+//                }
+//                TransitionHelper.startActivityWithTransition(this@SecuritySelectionActivity, intent)
+//            }
             R.id.search -> {
                 toolbar.visibility = View.GONE
                 searchViewContainer.visibility = View.VISIBLE

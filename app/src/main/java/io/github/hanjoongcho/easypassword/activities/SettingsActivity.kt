@@ -11,13 +11,16 @@ import com.google.android.gms.drive.GoogleDriveUploader
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
 import com.simplemobiletools.commons.extensions.baseConfig
 import com.simplemobiletools.commons.extensions.isBlackAndWhiteTheme
+import com.simplemobiletools.commons.helpers.APP_NAME
+import com.simplemobiletools.commons.helpers.APP_VERSION_NAME
 import com.simplemobiletools.commons.models.RadioItem
 import io.github.hanjoongcho.commons.helpers.TransitionHelper
+import io.github.hanjoongcho.easypassword.BuildConfig
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.extensions.config
 import io.github.hanjoongcho.easypassword.extensions.initTextSize
 import io.github.hanjoongcho.easypassword.helper.*
-import kotlinx.android.synthetic.main.activity_setting.*
+import kotlinx.android.synthetic.main.activity_settings.*
 
 
 /**
@@ -30,7 +33,7 @@ class SettingsActivity : SimpleActivity() {
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_setting)
+        setContentView(R.layout.activity_settings)
         res = resources
         linkColor = if (isBlackAndWhiteTheme()) Color.WHITE else baseConfig.primaryColor
         
@@ -58,6 +61,7 @@ class SettingsActivity : SimpleActivity() {
         setupFontSize()
         setupPatternLock()
         setupGoogleDrive()
+        setupAbout()
     }
     
     private fun setupFontSize() {
@@ -98,6 +102,17 @@ class SettingsActivity : SimpleActivity() {
             TransitionHelper.startActivityWithTransition(this@SettingsActivity, GoogleDriveDownloader::class.java)
         }
         google_drive_recovery_label.setTextColor(linkColor)
+    }
+
+    private fun setupAbout() {
+        about_label.setTextColor(linkColor)
+        about_holder.setOnClickListener {
+            val aboutIntent = Intent(this@SettingsActivity, AboutActivity::class.java).apply {
+                putExtra(APP_NAME, getString(R.string.app_name))
+                putExtra(APP_VERSION_NAME, BuildConfig.VERSION_NAME)
+            }
+            TransitionHelper.startActivityWithTransition(this@SettingsActivity, aboutIntent)
+        }
     }
     
     private fun getFontSizeText() = getString(when (config.fontSize) {

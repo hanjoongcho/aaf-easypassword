@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:foreground="@drawable/selector_subtle"
             tools:ignore="UseCompoundDrawables">
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/account_title"
                 android:textSize="@dimen/large_text_size"
                 android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                 android:transitionName="name..."
                 android:ellipsize="end"
                 tools:targetApi="lollipop"/>
-            <TextView
+            <com.simplemobiletools.commons.views.MyTextView
                 android:id="@+id/account_summary"
                 android:textSize="@dimen/small_text_size"
                 android:layout_width="match_parent"

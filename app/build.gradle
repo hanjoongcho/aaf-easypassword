@@ -21,8 +21,8 @@ android {
         applicationId "io.github.hanjoongcho.easypassword"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 16
-        versionName "1.0.1-test"
+        versionCode 17
+        versionName "1.0.2"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -109,6 +109,6 @@ dependencies {
     implementation 'com.simplemobiletools:commons:3.5.4'
 //    implementation project(":commons")
 
-    implementation 'io.github.hanjoongcho:commons-android:0.0.5'
+    implementation 'io.github.hanjoongcho:commons-android:0.0.6'
 //    implementation project(":commons-android")
 }

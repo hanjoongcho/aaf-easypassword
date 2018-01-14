@@ -3,9 +3,13 @@ package io.github.hanjoongcho.easypassword.extensions
 import android.content.Context
 import android.util.TypedValue
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.EditText
+import com.simplemobiletools.commons.views.MyTextView
 import io.github.hanjoongcho.easypassword.R
-import io.github.hanjoongcho.easypassword.helper.*
+import io.github.hanjoongcho.easypassword.helper.Config
+import io.github.hanjoongcho.easypassword.helper.FONT_SIZE_EXTRA_LARGE
+import io.github.hanjoongcho.easypassword.helper.FONT_SIZE_LARGE
+import io.github.hanjoongcho.easypassword.helper.FONT_SIZE_SMALL
 
 /**
  * Created by CHO HANJOONG on 2017-12-24.
@@ -30,13 +34,13 @@ fun Context.initTextSize(viewGroup: ViewGroup, context: Context) {
             .map { viewGroup.getChildAt(it) }
             .forEach {
                 when (it) {
-                    is TextView ->  {
+                    is MyTextView ->  {
                         when (it.id != R.id.about_copyright) {
-                            true -> it.setTextSize(TypedValue.COMPLEX_UNIT_PX, context.getTextSize())
+                            true -> it.setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize())
                             false -> {}
                         }
                     }
-//                        is EditText->  it.setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize())
+                    is EditText ->  it.setTextSize(TypedValue.COMPLEX_UNIT_PX, getTextSize())
                     is ViewGroup -> initTextSize(it, context)
                 }
             }

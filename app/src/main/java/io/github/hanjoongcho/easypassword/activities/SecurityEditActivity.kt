@@ -23,7 +23,7 @@ import io.github.hanjoongcho.easypassword.models.Category
 import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.utils.AesUtils
 import io.github.hanjoongcho.utils.PasswordStrengthUtils
-import kotlinx.android.synthetic.main.activity_setting.*
+import kotlinx.android.synthetic.main.activity_security_edit.*
 
 /**
  * Created by CHO HANJOONG on 2017-11-18.

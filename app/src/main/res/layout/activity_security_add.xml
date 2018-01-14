@@ -38,7 +38,7 @@
                         <!--Common-->
                         <LinearLayout
                             style="@style/AccountEditItemContainer">
-                            <TextView
+                            <com.simplemobiletools.commons.views.MyTextView
                                 android:text="@string/security_manage_category"
                                 style="@style/AccountEditLabel" />
                             <Spinner
@@ -50,7 +50,7 @@
                         </LinearLayout>
                         <LinearLayout
                             style="@style/AccountEditItemContainer">
-                            <TextView
+                            <com.simplemobiletools.commons.views.MyTextView
                                 android:text="@string/security_manage_target"
                                 style="@style/AccountEditLabel" />
                             <EditText
@@ -59,7 +59,7 @@
                         </LinearLayout>
                         <LinearLayout
                             style="@style/AccountEditItemContainer">
-                            <TextView
+                            <com.simplemobiletools.commons.views.MyTextView
                                 android:text="@string/security_password"
                                 style="@style/AccountEditLabel" />
                             <EditText
@@ -71,7 +71,7 @@
                         </LinearLayout>
                         <LinearLayout
                             style="@style/AccountEditItemContainer">
-                            <TextView
+                            <com.simplemobiletools.commons.views.MyTextView
                                 android:text="@string/security_summary"
                                 style="@style/AccountEditLabel" />
                             <EditText
@@ -89,7 +89,7 @@
                             android:layout_height="match_parent">
                             <LinearLayout
                                 style="@style/AccountEditItemContainer">
-                                <TextView
+                                <com.simplemobiletools.commons.views.MyTextView
                                     android:text="@string/security_id"
                                     style="@style/AccountEditLabel" />
                                 <EditText
@@ -107,7 +107,7 @@
                             android:layout_height="match_parent">
                             <LinearLayout
                                 style="@style/AccountEditItemContainer">
-                                <TextView
+                                <com.simplemobiletools.commons.views.MyTextView
                                     android:text="@string/credit_card_serial"
                                     style="@style/AccountEditLabel" />
                                 <EditText
@@ -117,7 +117,7 @@
 
                             <LinearLayout
                                 style="@style/AccountEditItemContainer">
-                                <TextView
+                                <com.simplemobiletools.commons.views.MyTextView
                                     android:text="@string/credit_card_cvc"
                                     style="@style/AccountEditLabel" />
                                 <EditText
@@ -127,7 +127,7 @@
 
                             <LinearLayout
                                 style="@style/AccountEditItemContainer">
-                                <TextView
+                                <com.simplemobiletools.commons.views.MyTextView
                                     android:text="@string/credit_card_expire_date"
                                     style="@style/AccountEditLabel" />
                                 <EditText

@@ -37,6 +37,7 @@ class AboutActivity : SimpleActivity() {
         supportActionBar?.run {
             title = getString(R.string.about)
             setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_cross);
         }
 
         appName = intent.getStringExtra(APP_NAME) ?: ""
