@@ -16,12 +16,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import com.simplemobiletools.commons.dialogs.StoragePickerDialog
+import com.simplemobiletools.commons.models.FileDirItem
+import com.simplemobiletools.commons.views.Breadcrumbs
+import com.simplemobiletools.commons.views.MyRecyclerView
 import io.github.hanjoongcho.commons.helpers.TransitionHelper
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.activities.SecurityAddActivity
 import io.github.hanjoongcho.easypassword.activities.SecurityDetailActivity
 import io.github.hanjoongcho.easypassword.adpaters.SecurityAdapter
-import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.helper.beforeDrawing
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Security
@@ -32,12 +35,13 @@ import kotlinx.android.synthetic.main.fragment_securities.*
  * Created by CHO HANJOONG on 2017-11-17.
  */
 
-class SecuritySelectionFragment : Fragment() {
+class SecuritySelectionFragment : Fragment(), SecurityAdapter.ItemOperationsListener, Breadcrumbs.BreadcrumbsListener {
     private var mKeyword: String? = ""
 
     private val adapter: SecurityAdapter? by lazy(LazyThreadSafetyMode.NONE) {
         activity?.let { activity ->
             SecurityAdapter(activity,
+                    this@SecuritySelectionFragment,
                     AdapterView.OnItemClickListener { _, v, position, _ ->
                         adapter?.getItem(position)?.let {
                             startAccountDetailActivityWithTransition(activity,
@@ -61,6 +65,13 @@ class SecuritySelectionFragment : Fragment() {
                 TransitionHelper.startActivityWithTransition(it, SecurityAddActivity::class.java)    
             }
         }
+
+        items_fastscroller.setViews(securities, items_swipe_refresh) {
+//            val item = storedItems.getOrNull(it)
+//            items_fastscroller.updateBubbleText(item?.getBubbleText() ?: "")
+        }
+
+        items_swipe_refresh.setOnRefreshListener { refreshItems() }
     }
 
     override fun onResume() {
@@ -86,6 +97,22 @@ class SecuritySelectionFragment : Fragment() {
         }
     }
 
+    override fun refreshItems() {
+//        openPath(currentPath)
+        items_swipe_refresh?.isRefreshing = false
+    }
+
+    override fun breadcrumbClicked(id: Int) {
+        if (id == 0) {
+//            StoragePickerDialog(activity!!, currentPath) {
+//                openPath(it)
+//            }
+        } else {
+//            val item = breadcrumbs.getChildAt(id).tag as FileDirItem
+//            openPath(item.path)
+        }
+    }
+    
     fun filteringItems(keyword: String) {
         mKeyword = keyword
         adapter?.selectAccounts(keyword)
@@ -93,7 +120,7 @@ class SecuritySelectionFragment : Fragment() {
     }
 
     @SuppressLint("NewApi")
-    private fun setUpGrid(securitiesView: RecyclerView) {
+    private fun setUpGrid(securitiesView: MyRecyclerView) {
         with(securitiesView) {
             addItemDecoration(OffsetDecoration(context.resources
                     .getDimensionPixelSize(R.dimen.spacing_nano)))

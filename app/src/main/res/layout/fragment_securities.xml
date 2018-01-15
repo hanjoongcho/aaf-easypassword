@@ -1,24 +1,51 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_sign_in_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.RecyclerView
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:id="@+id/securities"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/items_swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        
+        <RelativeLayout
+            android:id="@+id/items_wrapper"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="@dimen/spacing_nano"
-            android:clipToPadding="false"
-            android:scrollbarStyle="outsideOverlay"
-            android:scrollbars="vertical"
-            app:layoutManager="android.support.v7.widget.GridLayoutManager"
-            android:transitionGroup="false"
-            app:spanCount="1" tools:ignore="UnusedAttribute" />
+            android:layout_height="wrap_content">
 
+            <com.simplemobiletools.commons.views.Breadcrumbs
+                android:id="@+id/breadcrumbs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/activity_margin"/>
+
+            <com.simplemobiletools.commons.views.MyRecyclerView
+                android:id="@+id/securities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/breadcrumbs"
+                android:clipToPadding="false"
+                android:scrollbars="none"
+                app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+
+            <com.simplemobiletools.commons.views.FastScroller
+                android:id="@+id/items_fastscroller"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/breadcrumbs"
+                android:paddingLeft="@dimen/normal_margin"
+                android:paddingStart="@dimen/normal_margin">
+
+                <include layout="@layout/fastscroller_handle_vertical"/>
+
+            </com.simplemobiletools.commons.views.FastScroller>
+        </RelativeLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+    
     <android.support.design.widget.FloatingActionButton
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"

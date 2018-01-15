@@ -14,6 +14,8 @@ import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Security
 import io.github.hanjoongcho.easypassword.models.Theme
+import java.io.File
+import java.util.ArrayList
 
 /**
  * Created by Administrator on 2017-11-17.
@@ -21,6 +23,7 @@ import io.github.hanjoongcho.easypassword.models.Theme
 
 class SecurityAdapter(
         private val activity: Activity,
+        val listener: ItemOperationsListener?,
         private val onItemClickListener: AdapterView.OnItemClickListener
 ) : RecyclerView.Adapter<SecurityAdapter.ViewHolder>() {
 
@@ -78,4 +81,8 @@ class SecurityAdapter(
     }
 
     class ViewHolder(val binding: ItemSecurityBinding) : RecyclerView.ViewHolder(binding.root)
+
+    interface ItemOperationsListener {
+        fun refreshItems()
+    }
 }
