@@ -4,47 +4,33 @@
     android:id="@+id/fragment_sign_in_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/items_swipe_refresh"
+        
+    <RelativeLayout
+        android:id="@+id/items_wrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        
-        <RelativeLayout
-            android:id="@+id/items_wrapper"
+
+        <com.simplemobiletools.commons.views.MyRecyclerView
+            android:id="@+id/securities"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:scrollbars="none"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
 
-            <com.simplemobiletools.commons.views.Breadcrumbs
-                android:id="@+id/breadcrumbs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/activity_margin"/>
+        <com.simplemobiletools.commons.views.FastScroller
+            android:id="@+id/items_fastscroller"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="@dimen/normal_margin"
+            android:paddingStart="@dimen/normal_margin">
 
-            <com.simplemobiletools.commons.views.MyRecyclerView
-                android:id="@+id/securities"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/breadcrumbs"
-                android:clipToPadding="false"
-                android:scrollbars="none"
-                app:layoutManager="android.support.v7.widget.LinearLayoutManager"/>
+            <include layout="@layout/fastscroller_handle_vertical"/>
 
-            <com.simplemobiletools.commons.views.FastScroller
-                android:id="@+id/items_fastscroller"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/breadcrumbs"
-                android:paddingLeft="@dimen/normal_margin"
-                android:paddingStart="@dimen/normal_margin">
-
-                <include layout="@layout/fastscroller_handle_vertical"/>
-
-            </com.simplemobiletools.commons.views.FastScroller>
-        </RelativeLayout>
-    </android.support.v4.widget.SwipeRefreshLayout>
+        </com.simplemobiletools.commons.views.FastScroller>
+    </RelativeLayout>
     
     <android.support.design.widget.FloatingActionButton
         xmlns:android="http://schemas.android.com/apk/res/android"

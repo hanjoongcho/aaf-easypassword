@@ -11,20 +11,17 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.app.Fragment
 import android.support.v4.util.Pair
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import com.simplemobiletools.commons.dialogs.StoragePickerDialog
-import com.simplemobiletools.commons.models.FileDirItem
-import com.simplemobiletools.commons.views.Breadcrumbs
 import com.simplemobiletools.commons.views.MyRecyclerView
 import io.github.hanjoongcho.commons.helpers.TransitionHelper
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.activities.SecurityAddActivity
 import io.github.hanjoongcho.easypassword.activities.SecurityDetailActivity
 import io.github.hanjoongcho.easypassword.adpaters.SecurityAdapter
+import io.github.hanjoongcho.easypassword.extensions.config
 import io.github.hanjoongcho.easypassword.helper.beforeDrawing
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Security
@@ -35,8 +32,9 @@ import kotlinx.android.synthetic.main.fragment_securities.*
  * Created by CHO HANJOONG on 2017-11-17.
  */
 
-class SecuritySelectionFragment : Fragment(), SecurityAdapter.ItemOperationsListener, Breadcrumbs.BreadcrumbsListener {
+class SecuritySelectionFragment : Fragment(), SecurityAdapter.ItemOperationsListener {
     private var mKeyword: String? = ""
+    private var storedItems = mutableListOf<Security>()
 
     private val adapter: SecurityAdapter? by lazy(LazyThreadSafetyMode.NONE) {
         activity?.let { activity ->
@@ -66,12 +64,9 @@ class SecuritySelectionFragment : Fragment(), SecurityAdapter.ItemOperationsList
             }
         }
 
-        items_fastscroller.setViews(securities, items_swipe_refresh) {
-//            val item = storedItems.getOrNull(it)
-//            items_fastscroller.updateBubbleText(item?.getBubbleText() ?: "")
-        }
-
-        items_swipe_refresh.setOnRefreshListener { refreshItems() }
+       
+        
+//        items_swipe_refresh.setOnRefreshListener { refreshItems() }
     }
 
     override fun onResume() {
@@ -87,36 +82,33 @@ class SecuritySelectionFragment : Fragment(), SecurityAdapter.ItemOperationsList
                     activity.database().initDatabase()
                 }
                 Handler(Looper.getMainLooper()).post {
-                    adapter?.selectAccounts(mKeyword ?: "")
-                    adapter?.notifyDataSetChanged()
+                    filteringItems(mKeyword ?: "")
                     securities.visibility = View.VISIBLE
                     loadingProgress.visibility = View.INVISIBLE
                     loadingProgressMessage.visibility = View.INVISIBLE
                 }
             }).start()
         }
+
+        items_fastscroller.setViews(securities, null) {
+            val item = storedItems.getOrNull(it)
+            items_fastscroller.updateBubbleText(item?.getBubbleText() ?: "")
+        }
+        items_fastscroller.allowBubbleDisplay = context!!.config.showInfoBubble
     }
 
     override fun refreshItems() {
 //        openPath(currentPath)
-        items_swipe_refresh?.isRefreshing = false
-    }
-
-    override fun breadcrumbClicked(id: Int) {
-        if (id == 0) {
-//            StoragePickerDialog(activity!!, currentPath) {
-//                openPath(it)
-//            }
-        } else {
-//            val item = breadcrumbs.getChildAt(id).tag as FileDirItem
-//            openPath(item.path)
-        }
+//        items_swipe_refresh?.isRefreshing = false
     }
     
     fun filteringItems(keyword: String) {
-        mKeyword = keyword
-        adapter?.selectAccounts(keyword)
-        adapter?.notifyDataSetChanged()
+        adapter?.let {
+            mKeyword = keyword
+            storedItems.clear()
+            storedItems.addAll(it.selectAccounts(keyword))
+            adapter?.notifyDataSetChanged()
+        }
     }
 
     @SuppressLint("NewApi")
@@ -130,13 +122,6 @@ class SecuritySelectionFragment : Fragment(), SecurityAdapter.ItemOperationsList
             }
         }
     }
-
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-//        if (requestCode == REQUEST_CATEGORY && resultCode == R.id.solved) {
-//            adapter?.notifyItemChanged(data.getStringExtra(JsonAttributes.ID))
-//        }
-//        super.onActivityResult(requestCode, resultCode, data)
-//    }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private fun startAccountDetailActivityWithTransition(activity: Activity, toolbar: View,

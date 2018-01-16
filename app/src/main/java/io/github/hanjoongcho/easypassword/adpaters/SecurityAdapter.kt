@@ -36,9 +36,10 @@ class SecurityAdapter(
         securities.addAll(activity.database().selectSecurityAll())
     }
 
-    fun selectAccounts(searchKey: String) {
+    fun selectAccounts(searchKey: String): MutableList<Security> {
         securities.clear()
         securities.addAll(activity.database().selectSecuritiesBy(searchKey))
+        return securities
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

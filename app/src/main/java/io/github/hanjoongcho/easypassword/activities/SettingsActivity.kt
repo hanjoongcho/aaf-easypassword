@@ -62,6 +62,7 @@ class SettingsActivity : SimpleActivity() {
         setupPatternLock()
         setupGoogleDrive()
         setupAbout()
+        setupShowInfoBubble()
     }
     
     private fun setupFontSize() {
@@ -112,6 +113,15 @@ class SettingsActivity : SimpleActivity() {
                 putExtra(APP_VERSION_NAME, BuildConfig.VERSION_NAME)
             }
             TransitionHelper.startActivityWithTransition(this@SettingsActivity, aboutIntent)
+        }
+    }
+
+    private fun setupShowInfoBubble() {
+        settings_show_info_bubble_label.setTextColor(linkColor)
+        settings_show_info_bubble.isChecked = config.showInfoBubble
+        settings_show_info_bubble_holder.setOnClickListener {
+            settings_show_info_bubble.toggle()
+            config.showInfoBubble = settings_show_info_bubble.isChecked
         }
     }
     

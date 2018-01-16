@@ -21,4 +21,8 @@ open class Security(
     companion object {
         const val PRIMARY_KEY = "sequence"
     }
+    
+    fun getBubbleText(): String {
+        return title
+    }
 }

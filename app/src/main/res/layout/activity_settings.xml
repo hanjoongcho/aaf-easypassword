@@ -116,8 +116,31 @@
                         android:layout_height="wrap_content"
                         android:text="@string/setting_google_drive_recovery_summary"/>
                 </RelativeLayout>
+
+                <LinearLayout
+                    style="@style/SettingsItemHolder"
+                    android:orientation="horizontal"
+                    android:id="@+id/settings_show_info_bubble_holder">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content">
+                        <com.simplemobiletools.commons.views.MyTextView
+                            android:id="@+id/settings_show_info_bubble_label"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/show_info_bubble"/>
+                    </LinearLayout>
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/settings_show_info_bubble"
+                        android:clickable="false"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
             </LinearLayout>
-            
         </ScrollView>
         
     </LinearLayout>
