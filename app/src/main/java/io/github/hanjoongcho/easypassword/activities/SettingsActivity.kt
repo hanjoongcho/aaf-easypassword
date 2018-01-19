@@ -14,6 +14,7 @@ import com.simplemobiletools.commons.extensions.isBlackAndWhiteTheme
 import com.simplemobiletools.commons.helpers.APP_NAME
 import com.simplemobiletools.commons.helpers.APP_VERSION_NAME
 import com.simplemobiletools.commons.models.RadioItem
+import io.github.hanjoongcho.commons.activities.BaseCustomizationActivity
 import io.github.hanjoongcho.commons.helpers.TransitionHelper
 import io.github.hanjoongcho.easypassword.BuildConfig
 import io.github.hanjoongcho.easypassword.R
@@ -58,11 +59,19 @@ class SettingsActivity : SimpleActivity() {
         super.onResume()
         
         // handle option click
+        setupCustomizeColors()
         setupFontSize()
         setupPatternLock()
         setupGoogleDrive()
         setupAbout()
         setupShowInfoBubble()
+    }
+
+    private fun setupCustomizeColors() {
+        settings_customize_colors.setTextColor(linkColor)
+        settings_customize_colors_holder.setOnClickListener {
+            startActivity(Intent(this, CustomizationActivity::class.java))
+        }
     }
     
     private fun setupFontSize() {

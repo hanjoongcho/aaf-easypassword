@@ -32,8 +32,4 @@ open class SimpleActivity : BaseSimpleActivity() {
         }
         initTextSize(findViewById(android.R.id.content), this@SimpleActivity);
     }
-
-    companion object {
-        const val SETTING_PAUSE_MILLIS = "setting_pause_millis"
-    }
 }
