@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.ScrollView
-import com.simplemobiletools.commons.extensions.updateTextColors
+import io.github.hanjoongcho.commons.extensions.updateTextColors
 import io.github.hanjoongcho.commons.activities.BaseSimpleActivity
 import io.github.hanjoongcho.commons.extensions.baseConfig
 import io.github.hanjoongcho.commons.helpers.TransitionHelper

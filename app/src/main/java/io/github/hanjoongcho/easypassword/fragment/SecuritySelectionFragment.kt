@@ -15,6 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import com.simplemobiletools.commons.extensions.onGlobalLayout
 import com.simplemobiletools.commons.views.MyRecyclerView
 import io.github.hanjoongcho.commons.helpers.TransitionHelper
 import io.github.hanjoongcho.easypassword.R
@@ -86,15 +87,20 @@ class SecuritySelectionFragment : Fragment(), SecurityAdapter.ItemOperationsList
                     securities.visibility = View.VISIBLE
                     loadingProgress.visibility = View.INVISIBLE
                     loadingProgressMessage.visibility = View.INVISIBLE
+
+                    items_fastscroller.updatePrimaryColor()
+                    items_fastscroller.updateBubbleColors()
+                    items_fastscroller.allowBubbleDisplay = context!!.config.showInfoBubble
+                    items_fastscroller.setViews(securities, null) {
+                        val item = storedItems.getOrNull(it)
+                        items_fastscroller.updateBubbleText(item?.getBubbleText() ?: "")
+                    }
+                    securities.onGlobalLayout {
+                        items_fastscroller.setScrollTo(securities.computeVerticalScrollOffset())
+                    }
                 }
             }).start()
         }
-
-        items_fastscroller.setViews(securities, null) {
-            val item = storedItems.getOrNull(it)
-            items_fastscroller.updateBubbleText(item?.getBubbleText() ?: "")
-        }
-        items_fastscroller.allowBubbleDisplay = context!!.config.showInfoBubble
     }
 
     override fun refreshItems() {
@@ -119,6 +125,15 @@ class SecuritySelectionFragment : Fragment(), SecurityAdapter.ItemOperationsList
             adapter = this@SecuritySelectionFragment.adapter
             activity?.let {
                 beforeDrawing { it.supportStartPostponedEnterTransition() }    
+            }
+
+            items_fastscroller.allowBubbleDisplay = context!!.config.showInfoBubble
+            items_fastscroller.setViews(securitiesView, null) {
+                val item = storedItems.getOrNull(it)
+                items_fastscroller.updateBubbleText(item?.getBubbleText() ?: "")
+            }
+            securities.onGlobalLayout {
+                items_fastscroller.setScrollTo(securities.computeVerticalScrollOffset())
             }
         }
     }
