@@ -2,9 +2,15 @@ package io.github.hanjoongcho.easypassword.activities
 
 import android.content.Intent
 import android.util.Log
+import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.ScrollView
+import com.simplemobiletools.commons.extensions.updateTextColors
 import io.github.hanjoongcho.commons.activities.BaseSimpleActivity
 import io.github.hanjoongcho.commons.extensions.baseConfig
 import io.github.hanjoongcho.commons.helpers.TransitionHelper
+import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.extensions.initTextSize
 
 /**
@@ -31,5 +37,8 @@ open class SimpleActivity : BaseSimpleActivity() {
             }
         }
         initTextSize(findViewById(android.R.id.content), this@SimpleActivity);
+        updateTextColors(findViewById(android.R.id.content))
     }
+
+    override fun getMainViewGroup(): ViewGroup? = findViewById(R.id.main_holder)
 }

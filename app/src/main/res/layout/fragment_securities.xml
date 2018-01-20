@@ -32,7 +32,7 @@
         </com.simplemobiletools.commons.views.FastScroller>
     </RelativeLayout>
     
-    <android.support.design.widget.FloatingActionButton
+    <com.simplemobiletools.commons.views.MyFloatingActionButton
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/add"

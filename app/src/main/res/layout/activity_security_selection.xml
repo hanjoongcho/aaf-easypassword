@@ -55,13 +55,17 @@
 
             </android.support.design.widget.AppBarLayout>
 
-            <FrameLayout android:id="@+id/category_container"
+            <LinearLayout
+                android:id="@+id/main_holder"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context="activity.QuizSelectionActivity"
-                tools:ignore="MergeRootFrame">
-            </FrameLayout>
-
+                android:layout_height="match_parent">
+                <FrameLayout android:id="@+id/category_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:context="activity.QuizSelectionActivity"
+                    tools:ignore="MergeRootFrame">
+                </FrameLayout>
+            </LinearLayout>
         </LinearLayout>
     </android.support.design.widget.CoordinatorLayout>    
     

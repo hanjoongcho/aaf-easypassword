@@ -106,9 +106,9 @@ dependencies {
     implementation group: 'commons-io', name: 'commons-io', version: '2.4'
 
     // https://github.com/SimpleMobileTools/Simple-Commons
-//    implementation 'com.simplemobiletools:commons:3.5.4'
-    implementation project(":commons")
+    implementation 'com.simplemobiletools:commons:3.5.4'
+//    implementation project(":commons")
 
-//    implementation 'io.github.hanjoongcho:commons-android:0.0.6'
-    implementation project(":commons-android")
+    implementation 'io.github.hanjoongcho:commons-android:0.0.7-beta'
+//    implementation project(":commons-android")
 }
