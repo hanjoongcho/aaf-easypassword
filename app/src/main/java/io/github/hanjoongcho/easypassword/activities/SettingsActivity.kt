@@ -15,14 +15,15 @@ import com.simplemobiletools.commons.extensions.isBlackAndWhiteTheme
 import com.simplemobiletools.commons.helpers.APP_NAME
 import com.simplemobiletools.commons.helpers.APP_VERSION_NAME
 import com.simplemobiletools.commons.models.RadioItem
-import io.github.hanjoongcho.commons.activities.BaseCustomizationActivity
-import io.github.hanjoongcho.commons.extensions.updateTextColors
 import io.github.hanjoongcho.commons.helpers.TransitionHelper
 import io.github.hanjoongcho.easypassword.BuildConfig
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.extensions.config
 import io.github.hanjoongcho.easypassword.extensions.initTextSize
-import io.github.hanjoongcho.easypassword.helper.*
+import io.github.hanjoongcho.easypassword.helper.FONT_SIZE_EXTRA_LARGE
+import io.github.hanjoongcho.easypassword.helper.FONT_SIZE_LARGE
+import io.github.hanjoongcho.easypassword.helper.FONT_SIZE_MEDIUM
+import io.github.hanjoongcho.easypassword.helper.FONT_SIZE_SMALL
 import kotlinx.android.synthetic.main.activity_settings.*
 
 
@@ -72,7 +73,6 @@ class SettingsActivity : SimpleActivity() {
     override fun getMainViewGroup(): ViewGroup? = findViewById(R.id.main_holder)
 
     private fun setupCustomizeColors() {
-        settings_customize_colors.setTextColor(linkColor)
         settings_customize_colors_holder.setOnClickListener {
             startActivity(Intent(this, CustomizationActivity::class.java))
         }
@@ -94,7 +94,6 @@ class SettingsActivity : SimpleActivity() {
                 initTextSize(findViewById(android.R.id.content), this@SettingsActivity);
             }
         }
-        settings_font_size_label.setTextColor(linkColor)
     }
 
     private fun setupPatternLock() {
@@ -103,23 +102,19 @@ class SettingsActivity : SimpleActivity() {
             intent.putExtra(PatternLockActivity.MODE, PatternLockActivity.SETTING_LOCK)
             TransitionHelper.startActivityWithTransition(this@SettingsActivity, intent)
         }
-        pattern_lock_label.setTextColor(linkColor)
     }
     
     private fun setupGoogleDrive() {
         google_drive_backup_holder.setOnClickListener {
             TransitionHelper.startActivityWithTransition(this@SettingsActivity, GoogleDriveUploader::class.java)
         }
-        google_drive_backup_label.setTextColor(linkColor)
 
         google_drive_recovery_holder.setOnClickListener {
             TransitionHelper.startActivityWithTransition(this@SettingsActivity, GoogleDriveDownloader::class.java)
         }
-        google_drive_recovery_label.setTextColor(linkColor)
     }
 
     private fun setupAbout() {
-        about_label.setTextColor(linkColor)
         about_holder.setOnClickListener {
             val aboutIntent = Intent(this@SettingsActivity, AboutActivity::class.java).apply {
                 putExtra(APP_NAME, getString(R.string.app_name))
@@ -130,7 +125,6 @@ class SettingsActivity : SimpleActivity() {
     }
 
     private fun setupShowInfoBubble() {
-        settings_show_info_bubble_label.setTextColor(linkColor)
         settings_show_info_bubble.isChecked = config.showInfoBubble
         settings_show_info_bubble_holder.setOnClickListener {
             settings_show_info_bubble.toggle()

@@ -3,6 +3,7 @@
         <variable name="security" type="io.github.hanjoongcho.easypassword.models.Security" />
     </data>
     <LinearLayout
+        android:id="@+id/item_holder"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"

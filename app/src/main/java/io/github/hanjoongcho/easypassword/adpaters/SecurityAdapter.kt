@@ -56,11 +56,11 @@ class SecurityAdapter(
             }
             with(accountSummary) {
                 setTextColor(context.baseConfig.textColor)
-                setBackgroundColor(EasyPasswordHelper.getColor(Theme.white.primaryColor, activity))
+//                setBackgroundColor(EasyPasswordHelper.getColor(Theme.white.primaryColor, activity))
             }
         }
         with(holder.itemView) {
-            setBackgroundColor(EasyPasswordHelper.getColor(Theme.white.windowBackgroundColor, activity))
+            setBackgroundColor(context.baseConfig.backgroundColor)
             setOnClickListener {
                 onItemClickListener.onItemClick(null, it, holder.adapterPosition, holder.itemId)
             }
