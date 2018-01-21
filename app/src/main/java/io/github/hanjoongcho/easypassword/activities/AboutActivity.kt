@@ -8,6 +8,7 @@ import io.github.hanjoongcho.commons.activities.BaseWebViewActivity
 import io.github.hanjoongcho.commons.extensions.updateTextColors
 import io.github.hanjoongcho.commons.helpers.TransitionHelper
 import io.github.hanjoongcho.easypassword.R
+import io.github.hanjoongcho.easypassword.extensions.initTextSize
 import io.github.hanjoongcho.easypassword.extensions.pausePatternLock
 import io.github.hanjoongcho.easypassword.extensions.resumePatternLock
 import java.util.*
@@ -41,7 +42,7 @@ class AboutActivity : BaseAboutActivity() {
 //        setupFacebook()
 //        setupGPlus()
         setupCopyright()
-        updateTextColors(findViewById(R.id.main_holder))
+        initTextSize(findViewById(R.id.main_holder), this@AboutActivity);
     }
 
     override fun setupLicense() {
