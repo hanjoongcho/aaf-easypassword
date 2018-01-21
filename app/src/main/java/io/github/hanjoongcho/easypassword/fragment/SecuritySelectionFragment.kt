@@ -92,13 +92,6 @@ class SecuritySelectionFragment : Fragment(), SecurityAdapter.ItemOperationsList
                     items_fastscroller.updatePrimaryColor()
                     items_fastscroller.updateBubbleColors()
                     items_fastscroller.allowBubbleDisplay = context!!.config.showInfoBubble
-//                    items_fastscroller.setViews(securities, null) {
-//                        val item = storedItems.getOrNull(it)
-//                        items_fastscroller.updateBubbleText(item?.getBubbleText() ?: "")
-//                    }
-                    securities.onGlobalLayout {
-                        items_fastscroller.setScrollTo(securities.computeVerticalScrollOffset())
-                    }
                 }
             }).start()
         }
@@ -115,9 +108,17 @@ class SecuritySelectionFragment : Fragment(), SecurityAdapter.ItemOperationsList
             storedItems.clear()
             storedItems.addAll(it.selectAccounts(keyword))
             adapter?.notifyDataSetChanged()
+
+            items_fastscroller.setViews(securities, null) {
+                val item = storedItems.getOrNull(it)
+                items_fastscroller.updateBubbleText(item?.getBubbleText() ?: "")
+            }
+            securities.onGlobalLayout {
+                items_fastscroller.setScrollTo(securities.computeVerticalScrollOffset())
+            }
         }
     }
-
+    
     @SuppressLint("NewApi")
     private fun setUpGrid(securitiesView: MyRecyclerView) {
         with(securitiesView) {
@@ -128,14 +129,14 @@ class SecuritySelectionFragment : Fragment(), SecurityAdapter.ItemOperationsList
                 beforeDrawing { it.supportStartPostponedEnterTransition() }    
             }
 
-            items_fastscroller.allowBubbleDisplay = context!!.config.showInfoBubble
-            items_fastscroller.setViews(securitiesView, null) {
-                val item = storedItems.getOrNull(it)
-                items_fastscroller.updateBubbleText(item?.getBubbleText() ?: "")
-            }
-            securities.onGlobalLayout {
-                items_fastscroller.setScrollTo(securities.computeVerticalScrollOffset())
-            }
+//            items_fastscroller.allowBubbleDisplay = context!!.config.showInfoBubble
+//            items_fastscroller.setViews(securitiesView, null) {
+//                val item = storedItems.getOrNull(it)
+//                items_fastscroller.updateBubbleText(item?.getBubbleText() ?: "")
+//            }
+//            securities.onGlobalLayout {
+//                items_fastscroller.setScrollTo(securities.computeVerticalScrollOffset())
+//            }
         }
     }
 
