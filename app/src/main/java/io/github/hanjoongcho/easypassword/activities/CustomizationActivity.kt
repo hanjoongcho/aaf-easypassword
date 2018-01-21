@@ -1,6 +1,7 @@
 package io.github.hanjoongcho.easypassword.activities
 
 import io.github.hanjoongcho.commons.activities.BaseCustomizationActivity
+import io.github.hanjoongcho.commons.extensions.updateTextColors
 import io.github.hanjoongcho.easypassword.extensions.pausePatternLock
 import io.github.hanjoongcho.easypassword.extensions.resumePatternLock
 
@@ -17,5 +18,6 @@ class CustomizationActivity : BaseCustomizationActivity() {
     override fun onResume() {
         super.onResume()
         resumePatternLock()
+        updateTextColors(findViewById(android.R.id.content))
     }
 }

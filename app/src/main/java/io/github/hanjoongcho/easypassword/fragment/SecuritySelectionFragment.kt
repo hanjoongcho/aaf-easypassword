@@ -91,10 +91,10 @@ class SecuritySelectionFragment : Fragment(), SecurityAdapter.ItemOperationsList
                     items_fastscroller.updatePrimaryColor()
                     items_fastscroller.updateBubbleColors()
                     items_fastscroller.allowBubbleDisplay = context!!.config.showInfoBubble
-                    items_fastscroller.setViews(securities, null) {
-                        val item = storedItems.getOrNull(it)
-                        items_fastscroller.updateBubbleText(item?.getBubbleText() ?: "")
-                    }
+//                    items_fastscroller.setViews(securities, null) {
+//                        val item = storedItems.getOrNull(it)
+//                        items_fastscroller.updateBubbleText(item?.getBubbleText() ?: "")
+//                    }
                     securities.onGlobalLayout {
                         items_fastscroller.setScrollTo(securities.computeVerticalScrollOffset())
                     }

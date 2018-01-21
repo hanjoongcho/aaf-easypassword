@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.ViewGroup
 import com.google.android.gms.drive.GoogleDriveDownloader
 import com.google.android.gms.drive.GoogleDriveUploader
 import com.simplemobiletools.commons.dialogs.RadioGroupDialog
@@ -15,6 +16,7 @@ import com.simplemobiletools.commons.helpers.APP_NAME
 import com.simplemobiletools.commons.helpers.APP_VERSION_NAME
 import com.simplemobiletools.commons.models.RadioItem
 import io.github.hanjoongcho.commons.activities.BaseCustomizationActivity
+import io.github.hanjoongcho.commons.extensions.updateTextColors
 import io.github.hanjoongcho.commons.helpers.TransitionHelper
 import io.github.hanjoongcho.easypassword.BuildConfig
 import io.github.hanjoongcho.easypassword.R
@@ -66,6 +68,8 @@ class SettingsActivity : SimpleActivity() {
         setupAbout()
         setupShowInfoBubble()
     }
+
+    override fun getMainViewGroup(): ViewGroup? = findViewById(R.id.main_holder)
 
     private fun setupCustomizeColors() {
         settings_customize_colors.setTextColor(linkColor)

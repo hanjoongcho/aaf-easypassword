@@ -1,9 +1,11 @@
 package io.github.hanjoongcho.easypassword.activities
 
+import android.view.ViewGroup
 import com.simplemobiletools.commons.helpers.APP_VERSION_NAME
 import com.simplemobiletools.commons.views.MyTextView
 import io.github.hanjoongcho.commons.activities.BaseAboutActivity
 import io.github.hanjoongcho.commons.activities.BaseWebViewActivity
+import io.github.hanjoongcho.commons.extensions.updateTextColors
 import io.github.hanjoongcho.commons.helpers.TransitionHelper
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.extensions.pausePatternLock
@@ -39,6 +41,7 @@ class AboutActivity : BaseAboutActivity() {
 //        setupFacebook()
 //        setupGPlus()
         setupCopyright()
+        updateTextColors(findViewById(R.id.main_holder))
     }
 
     override fun setupLicense() {
@@ -62,4 +65,6 @@ class AboutActivity : BaseAboutActivity() {
         val year = Calendar.getInstance().get(Calendar.YEAR)
         aboutCopyright.text = String.format(getString(R.string.aaf_copyright), versionName, year)
     }
+
+    override fun getMainViewGroup(): ViewGroup? = findViewById(R.id.main_holder)
 }
