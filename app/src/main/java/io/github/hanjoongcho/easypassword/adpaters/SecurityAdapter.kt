@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ImageView
+import com.simplemobiletools.commons.extensions.baseConfig
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.databinding.ItemSecurityBinding
 import io.github.hanjoongcho.easypassword.extensions.initTextSize
@@ -51,10 +52,10 @@ class SecurityAdapter(
             setCategoryIcon(security, categoryIcon)
             EasyPasswordHelper.setPasswordStrengthLevel(activity, security.passwordStrengthLevel, included.level1, included.level2, included.level3, included.level4, included.level5)
             with(accountTitle) {
-                setTextColor(EasyPasswordHelper.getColor(R.color.blackText, activity))
+                setTextColor(context.baseConfig.textColor)
             }
             with(accountSummary) {
-                setTextColor(EasyPasswordHelper.getColor(Theme.white.textPrimaryColor, activity))
+                setTextColor(context.baseConfig.textColor)
                 setBackgroundColor(EasyPasswordHelper.getColor(Theme.white.primaryColor, activity))
             }
         }
