@@ -17,6 +17,7 @@ import android.view.inputmethod.InputMethodManager
 import com.simplemobiletools.commons.extensions.updateTextColors
 import com.simplemobiletools.commons.helpers.APP_NAME
 import com.simplemobiletools.commons.helpers.APP_VERSION_NAME
+import io.github.hanjoongcho.commons.extensions.baseConfig
 import io.github.hanjoongcho.commons.helpers.*
 import io.github.hanjoongcho.easypassword.BuildConfig
 import io.github.hanjoongcho.easypassword.R
@@ -106,6 +107,7 @@ class SecuritySelectionActivity : SimpleActivity() {
 
     override fun onResume() {
         super.onResume()
+        searchViewContainer.setBackgroundColor(baseConfig.primaryColor)
     }
 
     override fun onBackPressed() {

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.support.v4.app.ActivityCompat
+import android.support.v4.graphics.ColorUtils
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -197,6 +198,11 @@ class PatternLockActivity : AppCompatActivity() {
                         }
                     }
                 })
+    }
+
+    override fun onResume() {
+        super.onResume()
+        main_holder.setBackgroundColor(ColorUtils.setAlphaComponent(baseConfig.primaryColor, 255))
     }
 
     override fun onPause() {

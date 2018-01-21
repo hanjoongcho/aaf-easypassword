@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.Message
 import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityOptionsCompat
+import android.support.v4.graphics.ColorUtils
 import android.support.v4.util.Pair
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
@@ -49,6 +50,7 @@ class IntroActivity : AppCompatActivity(), Handler.Callback {
                 System.exit(0)
             }
         }
+        main_holder.setBackgroundColor(ColorUtils.setAlphaComponent(baseConfig.primaryColor, 255))
     }
 
     override fun handleMessage(message: Message): Boolean {
