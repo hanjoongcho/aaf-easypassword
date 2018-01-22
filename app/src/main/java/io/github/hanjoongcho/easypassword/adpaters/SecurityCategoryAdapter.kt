@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.simplemobiletools.commons.extensions.baseConfig
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.models.Category
 
@@ -37,6 +38,11 @@ class SecurityCategoryAdapter(
             holder = row.tag as ViewHolder
         }
 
+        row?.run {
+            setBackgroundColor(mContext.baseConfig.backgroundColor)
+            findViewById<TextView>(R.id.textView).setTextColor(mContext.baseConfig.textColor)
+        }
+        
         holder.textView?.text = mList[position].name
         if (mList[position].name == "") {
             holder.imageView?.visibility = View.GONE
@@ -44,12 +50,10 @@ class SecurityCategoryAdapter(
             holder.imageView?.visibility = View.VISIBLE
         }
         initCategoryIcon(holder.imageView, mList[position].resourceName)
-
         return row
     }
 
     private fun initCategoryIcon(imageView: ImageView?, resourceName: String) {
-
         imageView?.let {
             when (resourceName) {
                 "" -> it.setImageResource(0)
@@ -65,5 +69,4 @@ class SecurityCategoryAdapter(
         internal var textView: TextView? = null
         internal var imageView: ImageView? = null
     }
-
 }
