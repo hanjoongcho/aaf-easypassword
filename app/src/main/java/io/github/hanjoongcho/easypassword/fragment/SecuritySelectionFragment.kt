@@ -27,7 +27,6 @@ import io.github.hanjoongcho.easypassword.extensions.config
 import io.github.hanjoongcho.easypassword.helper.beforeDrawing
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Security
-import io.github.hanjoongcho.easypassword.widget.OffsetDecoration
 import kotlinx.android.synthetic.main.fragment_securities.*
 
 /**
@@ -141,14 +140,12 @@ class SecuritySelectionFragment : Fragment(), SecurityAdapter.ItemOperationsList
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private fun startAccountDetailActivityWithTransition(activity: Activity, toolbar: View,
+    private fun startAccountDetailActivityWithTransition(activity: Activity, view: View,
                                                          security: Security) {
 
         val animationBundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
                 activity,
-                *TransitionHelper.createSafeTransitionParticipants(activity,
-                        false,
-                        Pair(toolbar, getString(R.string.transition_category)))
+                *TransitionHelper.createSafeTransitionParticipants(activity, false)
         ).toBundle()
 
         // Start the activity with the participants, animating from one to the other.

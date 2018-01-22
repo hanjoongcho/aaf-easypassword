@@ -44,7 +44,6 @@
                                 android:text="@string/security_manage_category"
                                 style="@style/AccountEditLabel" />
                             <Spinner
-                                android:transitionName="@string/transition_category"
                                 android:id="@+id/security_category"
                                 android:spinnerMode="dropdown"
                                 android:layout_width="match_parent"
