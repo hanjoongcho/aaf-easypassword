@@ -31,7 +31,7 @@
                 <ScrollView
                     android:id="@+id/main_holder"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
@@ -54,7 +54,7 @@
                             <com.simplemobiletools.commons.views.MyTextView
                                 android:text="@string/security_manage_target"
                                 style="@style/AccountEditLabel" />
-                            <EditText
+                            <com.simplemobiletools.commons.views.MyEditText
                                 style="@style/AccountEditInputText"
                                 android:id="@+id/security_title" />
                         </LinearLayout>
@@ -63,7 +63,7 @@
                             <com.simplemobiletools.commons.views.MyTextView
                                 android:text="@string/security_password"
                                 style="@style/AccountEditLabel" />
-                            <EditText
+                            <com.simplemobiletools.commons.views.MyEditText
                                 style="@style/AccountEditInputText"
                                 android:id="@+id/security_password" />
                             <include
@@ -75,7 +75,7 @@
                             <com.simplemobiletools.commons.views.MyTextView
                                 android:text="@string/security_summary"
                                 style="@style/AccountEditLabel" />
-                            <EditText
+                            <com.simplemobiletools.commons.views.MyEditText
                                 android:inputType="textMultiLine|textNoSuggestions|textCapWords"
                                 style="@style/AccountEditInputText"
                                 android:id="@+id/security_summary" />
@@ -93,7 +93,7 @@
                                 <com.simplemobiletools.commons.views.MyTextView
                                     android:text="@string/security_id"
                                     style="@style/AccountEditLabel" />
-                                <EditText
+                                <com.simplemobiletools.commons.views.MyEditText
                                     style="@style/AccountEditInputText"
                                     android:id="@+id/account_id" />
                             </LinearLayout>
@@ -111,7 +111,7 @@
                                 <com.simplemobiletools.commons.views.MyTextView
                                     android:text="@string/credit_card_serial"
                                     style="@style/AccountEditLabel" />
-                                <EditText
+                                <com.simplemobiletools.commons.views.MyEditText
                                     style="@style/AccountEditInputText"
                                     android:id="@+id/credit_card_serial" />
                             </LinearLayout>
@@ -121,7 +121,7 @@
                                 <com.simplemobiletools.commons.views.MyTextView
                                     android:text="@string/credit_card_cvc"
                                     style="@style/AccountEditLabel" />
-                                <EditText
+                                <com.simplemobiletools.commons.views.MyEditText
                                     style="@style/AccountEditInputText"
                                     android:id="@+id/credit_card_cvc" />
                             </LinearLayout>
@@ -131,7 +131,7 @@
                                 <com.simplemobiletools.commons.views.MyTextView
                                     android:text="@string/credit_card_expire_date"
                                     style="@style/AccountEditLabel" />
-                                <EditText
+                                <com.simplemobiletools.commons.views.MyEditText
                                     style="@style/AccountEditInputText"
                                     android:id="@+id/credit_card_expire_date" />
                             </LinearLayout>
@@ -141,7 +141,7 @@
 
             </LinearLayout>
 
-            <android.support.design.widget.FloatingActionButton
+            <com.simplemobiletools.commons.views.MyFloatingActionButton
                 android:id="@+id/save"
                 app:fabSize="normal"
                 android:layout_width="wrap_content"
