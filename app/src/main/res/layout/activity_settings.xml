@@ -157,7 +157,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/show_info_bubble"/>
                     </LinearLayout>
-                    <android.support.v7.widget.SwitchCompat
+                    <com.simplemobiletools.commons.views.MySwitchCompat
                         android:id="@+id/settings_show_info_bubble"
                         android:clickable="false"
                         android:layout_gravity="center"

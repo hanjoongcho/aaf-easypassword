@@ -12,6 +12,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.Menu
 import android.view.MenuItem
+import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import com.simplemobiletools.commons.extensions.updateTextColors
@@ -27,6 +28,7 @@ import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.helper.findFragmentById
 import io.github.hanjoongcho.easypassword.helper.replaceFragment
 import kotlinx.android.synthetic.main.activity_security_selection.*
+import kotlinx.android.synthetic.main.fragment_securities.*
 
 /**
  * Created by Administrator on 2017-11-15.
@@ -51,6 +53,7 @@ class SecuritySelectionActivity : SimpleActivity() {
         toggleToolBar.setOnClickListener({
             toolbar.visibility = View.VISIBLE
             searchViewContainer.visibility = View.GONE
+            modal_holder.visibility = View.GONE
             val focusView = this.currentFocus
             if (focusView != null) {
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -72,6 +75,8 @@ class SecuritySelectionActivity : SimpleActivity() {
                 filteringItems(p0.toString())
             }
         })
+
+        modal_holder.setOnTouchListener { _, _ -> true }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -95,9 +100,11 @@ class SecuritySelectionActivity : SimpleActivity() {
             R.id.search -> {
                 toolbar.visibility = View.GONE
                 searchViewContainer.visibility = View.VISIBLE
+                modal_holder.visibility = View.VISIBLE
                 searchView.requestFocus()
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.showSoftInput(searchView, InputMethodManager.SHOW_IMPLICIT)
+                scrollTop()
             }
             else -> {
             }
@@ -119,6 +126,13 @@ class SecuritySelectionActivity : SimpleActivity() {
             setNegativeButton(getString(R.string.cancel), null)
         }
         builder.create().show()
+    }
+    
+    private fun scrollTop() {
+        val fragment = findFragmentById(R.id.category_container) ?: SecuritySelectionFragment()
+        if (fragment is SecuritySelectionFragment) {
+            fragment.securities?.smoothScrollToPosition(0)
+        }
     }
     
     private fun filteringItems(keyword: String) {

@@ -55,17 +55,26 @@
 
             </android.support.design.widget.AppBarLayout>
 
-            <LinearLayout
+            <FrameLayout
                 android:id="@+id/main_holder"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <FrameLayout android:id="@+id/category_container"
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:id="@+id/category_container"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:context="activity.QuizSelectionActivity"
                     tools:ignore="MergeRootFrame">
-                </FrameLayout>
-            </LinearLayout>
+                </LinearLayout>
+                <io.github.hanjoongcho.commons.views.ModalView
+                    android:id="@+id/modal_holder"
+                    android:visibility="gone"
+                    android:background="?attr/colorPrimary"
+                    android:alpha="0.3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </FrameLayout>
         </LinearLayout>
     </android.support.design.widget.CoordinatorLayout>    
     
