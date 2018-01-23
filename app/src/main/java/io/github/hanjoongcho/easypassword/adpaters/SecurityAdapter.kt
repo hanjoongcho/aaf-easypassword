@@ -14,9 +14,6 @@ import io.github.hanjoongcho.easypassword.extensions.initTextSize
 import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Security
-import io.github.hanjoongcho.easypassword.models.Theme
-import java.io.File
-import java.util.ArrayList
 
 /**
  * Created by Administrator on 2017-11-17.

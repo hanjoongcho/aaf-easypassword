@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimaryDark">#089C90</color>
-    <color name="colorPrimary">#07ABB3</color>
     <color name="colorPrimaryWithAlpha">#1007ABB3</color>
-    <color name="colorAccent">#0f90e1</color>
     <color name="appBackground">#3307ABB3</color>
 
+    <color name="color_primary">@color/colorPrimary</color>
+    <color name="color_primary_dark">@color/colorPrimaryDark</color>
+    <color name="color_accent">@color/colorAccent</color>
+    
     <!-- common text color -->
     <color name="whiteText">#FFFFFF</color>
     <color name="blackText">#000000</color>
@@ -21,45 +22,4 @@
 
     <!--common view color-->
     <color name="progress_white">#ffffff</color>
-
-    <!-- theme colors -->
-    <color name="theme_blue_background">#84ffff</color>
-    <color name="theme_blue_primary">#03a9f4</color>
-    <color name="theme_blue_accent">#ff193a</color>
-    <color name="theme_blue_text">@color/text_light</color>
-    <color name="theme_blue_primary_dark">#038dcc</color>
-
-    <color name="theme_green_background">#b9f6ca</color>
-    <color name="theme_green_primary">#1de9b6</color>
-    <color name="theme_green_accent">#e919ff</color>
-    <color name="theme_green_text">@color/text_dark</color>
-    <color name="theme_green_primary_dark">#19cc9f</color>
-
-    <color name="theme_purple_background">#b388ff</color>
-    <color name="theme_purple_primary">#7e57c2</color>
-    <color name="theme_purple_accent">#ff9419</color>
-    <color name="theme_purple_text">@color/text_light</color>
-    <color name="theme_purple_primary_dark">#6c4aa6</color>
-
-    <color name="theme_red_background">#ff8a80</color>
-    <color name="theme_red_primary">#ff5252</color>
-    <color name="theme_red_accent">#fffc19</color>
-    <color name="theme_red_text">@color/text_light</color>
-    <color name="theme_red_primary_dark">#e64a4a</color>
-
-    <color name="theme_white_background">#ffffff</color>
-    <color name="theme_white_primary">#ffffff</color>
-    <color name="theme_white_accent">#fffc19</color>
-    <color name="theme_white_text">@color/blackTextLight</color>
-    <color name="theme_white_primary_dark">#e64a4a</color>
-
-    <color name="theme_yellow_background">#ffff8d</color>
-    <color name="theme_yellow_primary">#ffeb3b</color>
-    <color name="theme_yellow_accent">#19dcff</color>
-    <color name="theme_yellow_text">@color/text_dark</color>
-    <color name="theme_yellow_primary_dark">#e6d335</color>
-
-    <color name="green">#00e676</color>
-    <color name="red">#ff5252</color>
-    <color name="light_grey">#f5f5f5</color>
 </resources>

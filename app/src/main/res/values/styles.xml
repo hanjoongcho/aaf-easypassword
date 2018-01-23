@@ -10,10 +10,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <color name="color_primary">@color/colorPrimary</color>
-    <color name="color_primary_dark">@color/colorPrimaryDark</color>
-    <color name="color_accent">@color/colorAccent</color>
-
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -32,100 +28,6 @@
         <item name="colorAccent">@color/white</item>
     </style>
 
-    <!-- Exists for inheritance purposes -->
-    <style name="Topeka" parent="Topeka.Base" />
-
-    <style name="Topeka.Base" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColorPrimary">@android:color/black</item>
-        <item name="android:textColorPrimaryInverse">@color/text_light</item>
-        <item name="android:statusBarColor" tools:targetApi="lollipop">
-            @color/colorPrimaryDark
-        </item>
-        <item name="android:textColor">@color/text_dark</item>
-        <item name="android:radioButtonStyle">@style/Topeka.CompoundButton.Radio</item>
-        <item name="android:buttonStyle">@style/Topeka.CompoundButton</item>
-        <item name="android:windowBackground">@color/light_grey</item>
-        <item name="android:colorBackground">@color/light_grey</item>
-    </style>
-
-    <style name="Topeka.CompoundButton" parent="Widget.AppCompat.Button.Borderless">
-        <item name="android:background">@drawable/selector_button</item>
-        <item name="android:button">@null</item>
-    </style>
-
-    <style name="Topeka.CompoundButton.Radio" parent="Topeka.CompoundButton">
-        <item name="android:background">@drawable/selector_checkable</item>
-    </style>
-
-
-    <style name="Topeka.TextAppearance.Title" parent="TextAppearance.AppCompat.Title">
-        <item name="android:textColor">@color/colorPrimary</item>
-    </style>
-    <style name="Topeka.TextAppearance.Title.Inverse" parent="TextAppearance.AppCompat.Title">
-        <item name="android:textColor">@android:color/white</item>
-    </style>
-    <style name="Topeka.TextAppearance.CategoryItem" parent="TextAppearance.AppCompat.Small">
-        <item name="android:textSize">@dimen/category_item_text_size</item>
-    </style>
-
-    <style name="Topeka.Blue">
-        <item name="colorPrimary">@color/theme_blue_primary</item>
-        <item name="colorPrimaryDark">@color/theme_blue_primary</item>
-        <item name="android:textColorPrimary">@color/theme_blue_text</item>
-        <item name="android:statusBarColor" tools:targetApi="lollipop">
-            @color/theme_blue_primary_dark
-        </item>
-        <item name="android:windowBackground">@color/theme_blue_background</item>
-        <item name="colorAccent">@color/theme_blue_accent</item>
-    </style>
-
-    <style name="Topeka.Green">
-        <item name="colorPrimary">@color/theme_green_primary</item>
-        <item name="colorPrimaryDark">@color/theme_green_primary</item>
-        <item name="android:textColorPrimary">@color/theme_green_text</item>
-        <item name="android:statusBarColor" tools:targetApi="lollipop">
-            @color/theme_green_primary_dark
-        </item>
-        <item name="android:windowBackground">@color/theme_green_background</item>
-        <item name="colorAccent">@color/theme_green_accent</item>
-    </style>
-
-    <style name="Topeka.Purple">
-        <item name="colorPrimary">@color/theme_purple_primary</item>
-        <item name="colorPrimaryDark">@color/theme_purple_primary</item>
-        <item name="android:textColorPrimary">@color/theme_purple_text</item>
-        <item name="android:statusBarColor" tools:targetApi="lollipop">
-            @color/theme_purple_primary_dark
-        </item>
-        <item name="android:windowBackground">@color/theme_purple_background</item>
-        <item name="colorAccent">@color/theme_purple_accent</item>
-    </style>
-
-    <style name="Topeka.Red">
-        <item name="colorPrimary">@color/theme_red_primary</item>
-        <item name="colorPrimaryDark">@color/theme_red_primary</item>
-        <item name="android:textColorPrimary">@color/theme_red_text</item>
-        <item name="android:statusBarColor" tools:targetApi="lollipop">
-            @color/theme_red_primary_dark
-        </item>
-        <item name="android:windowBackground">@color/theme_red_background</item>
-        <item name="colorAccent">@color/theme_red_accent</item>
-    </style>
-
-    <style name="Topeka.Yellow">
-        <item name="colorPrimary">@color/theme_yellow_primary</item>
-        <item name="colorPrimaryDark">@color/theme_yellow_primary</item>
-        <item name="android:textColorPrimary">@color/theme_yellow_text</item>
-        <item name="android:statusBarColor" tools:targetApi="lollipop">
-            @color/theme_yellow_primary_dark
-        </item>
-        <item name="android:windowBackground">@color/theme_yellow_background</item>
-        <item name="colorAccent">@color/theme_yellow_accent</item>
-    </style>
-
     <!--Common-->
     <style name="CommonStrengthLabel">
         <item name="android:textSize">@dimen/small_text_size</item>
@@ -141,8 +43,6 @@
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">5dp</item>
     </style>
-
-    <!--SecuritySelectionFragment-->
 
     <!--SecurityDetailActivity-->
     <style name="AccountDetailItemContainer">
