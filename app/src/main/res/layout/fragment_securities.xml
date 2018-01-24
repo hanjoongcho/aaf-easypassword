@@ -57,7 +57,7 @@
             android:text="@string/security_selection_init_item_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/default_text_color"
             android:textSize="@dimen/medium_text_size"/>
         <ProgressBar
             android:id="@+id/loadingProgress"
