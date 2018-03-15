@@ -1,4 +1,6 @@
 # Easy Password
+[![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/unicodeveloper/awesome-opensource-apps)
+[![Awesome Kotlin Badge](https://kotlin.link/awesome-kotlin.svg)](https://github.com/KotlinBy/awesome-kotlin)
 [![License][licensesvg]][LICENSE.md]
 
 <img src="screenshots/ic_launcher.png" >
@@ -17,10 +19,12 @@ This application uses pattern locks to manage information that requires security
 ```
 
 # Screen Shots
-<img src="screenshots/common/en_01_s.png">&nbsp;
-<img src="screenshots/common/en_02_s.png">   
-<img src="screenshots/common/en_03_s.png">&nbsp;
-<img src="screenshots/common/en_04_s.png">
+<img src="screenshots/common/en_01_s.png" width="288" height="512">&nbsp;
+<img src="screenshots/common/en_02_s.png" width="288" height="512">   
+<img src="screenshots/common/en_03_s.png" width="288" height="512">&nbsp;
+<img src="screenshots/common/en_04_s.png" width="288" height="512">   
+<img src="screenshots/common/01.gif" width="288" height="512">&nbsp;
+<img src="screenshots/common/02.gif" width="288" height="512">
 
 # How to build
 ```
