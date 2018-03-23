@@ -2,6 +2,7 @@ package io.github.hanjoongcho.easypassword.adpaters
 
 import android.app.Activity
 import android.databinding.DataBindingUtil
+import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import com.simplemobiletools.commons.extensions.baseConfig
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.databinding.ItemSecurityBinding
 import io.github.hanjoongcho.easypassword.extensions.initTextSize
+import io.github.hanjoongcho.easypassword.extensions.updateTextColors
 import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Security
@@ -57,11 +59,12 @@ class SecurityAdapter(
             }
         }
         with(holder.itemView) {
-            setBackgroundColor(context.baseConfig.backgroundColor)
+//            setBackgroundColor(context.baseConfig.backgroundColor)
             setOnClickListener {
                 onItemClickListener.onItemClick(null, it, holder.adapterPosition, holder.itemId)
             }
         }
+        if (holder.itemView is CardView) holder.itemView.setCardBackgroundColor(activity.baseConfig.backgroundColor)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =

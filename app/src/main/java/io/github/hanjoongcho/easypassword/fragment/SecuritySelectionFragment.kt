@@ -11,6 +11,7 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v4.app.Fragment
 import android.support.v4.util.Pair
+import android.support.v7.content.res.AppCompatResources
 import android.support.v7.widget.DividerItemDecoration
 import android.view.LayoutInflater
 import android.view.View
@@ -122,7 +123,11 @@ class SecuritySelectionFragment : Fragment(), SecurityAdapter.ItemOperationsList
     private fun setUpGrid(securitiesView: MyRecyclerView) {
         with(securitiesView) {
 //            addItemDecoration(OffsetDecoration(context.resources.getDimensionPixelSize(R.dimen.spacing_nano)))
-            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+            val dividerItemDecoration = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+            AppCompatResources.getDrawable(context, R.drawable.divider_transparent)?.let {
+                dividerItemDecoration.setDrawable(it)
+            }
+//            securitiesView.addItemDecoration(dividerItemDecoration) 
             adapter = this@SecuritySelectionFragment.adapter
             activity?.let {
                 beforeDrawing { it.supportStartPostponedEnterTransition() }    

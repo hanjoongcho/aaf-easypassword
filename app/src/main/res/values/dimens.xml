@@ -1,8 +1,11 @@
 <resources>
-    <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-    <!--++++ normal layout                                                        -->
-    <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
-    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="card_radius">3dp</dimen>
+    <dimen name="card_layout_padding">5dp</dimen>
+    <dimen name="card_layout_margin">3dp</dimen>
+    <dimen name="card_contents_padding">12dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="card_divider_height">0dp</dimen>
+    
     <dimen name="large_text_size">20dp</dimen>
     <dimen name="medium_text_size">17dp</dimen>
     <dimen name="small_text_size">14dp</dimen>

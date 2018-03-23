@@ -25,6 +25,16 @@
     </style>
 
     <!--Common-->
+    <style name="SecurityCard">
+        <item name="contentPadding">@dimen/card_contents_padding</item>
+        <item name="cardCornerRadius">@dimen/card_radius</item>
+        <item name="cardPreventCornerOverlap">true</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+    </style>
     <style name="CommonStrengthLabel">
         <item name="android:textSize">@dimen/small_text_size</item>
         <item name="android:textColor">@color/strength_bad</item>

@@ -7,6 +7,8 @@ package io.github.hanjoongcho.easypassword.helper
  * https://github.com/SimpleMobileTools/Simple-Commons
  */
 
+const val APP_BACKGROUND_ALPHA = 90
+
 // shared preferences
 val FONT_SIZE = "font_size"
 
