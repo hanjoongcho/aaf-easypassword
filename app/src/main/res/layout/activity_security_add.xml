@@ -1,5 +1,4 @@
 <layout>
-    
     <android.support.design.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,12 +9,10 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
                 <android.support.design.widget.AppBarLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -28,117 +25,125 @@
                         app:popupTheme="@style/AppTheme.PopupOverlay" />
                 </android.support.design.widget.AppBarLayout>
 
-                <ScrollView
+                <RelativeLayout
                     android:id="@+id/main_holder"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <!--Common-->
-                        <LinearLayout
-                            style="@style/AccountEditItemContainer">
-                            <com.simplemobiletools.commons.views.MyTextView
-                                android:text="@string/security_manage_category"
-                                style="@style/AccountEditLabel" />
-                            <Spinner
-                                android:id="@+id/security_category"
-                                android:spinnerMode="dropdown"
+                    <android.support.v7.widget.CardView
+                        xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_height="match_parent"
+                        style="@style/SecurityCard">
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <LinearLayout
+                                android:orientation="vertical"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
-                            </Spinner>
-                        </LinearLayout>
-                        <LinearLayout
-                            style="@style/AccountEditItemContainer">
-                            <com.simplemobiletools.commons.views.MyTextView
-                                android:text="@string/security_manage_target"
-                                style="@style/AccountEditLabel" />
-                            <com.simplemobiletools.commons.views.MyEditText
-                                style="@style/AccountEditInputText"
-                                android:id="@+id/security_title" />
-                        </LinearLayout>
-                        <LinearLayout
-                            style="@style/AccountEditItemContainer">
-                            <com.simplemobiletools.commons.views.MyTextView
-                                android:text="@string/security_password"
-                                style="@style/AccountEditLabel" />
-                            <com.simplemobiletools.commons.views.MyEditText
-                                style="@style/AccountEditInputText"
-                                android:id="@+id/security_password" />
-                            <include
-                                android:id="@+id/included"
-                                layout="@layout/view_password_strength" />
-                        </LinearLayout>
-                        <LinearLayout
-                            style="@style/AccountEditItemContainer">
-                            <com.simplemobiletools.commons.views.MyTextView
-                                android:text="@string/security_summary"
-                                style="@style/AccountEditLabel" />
-                            <com.simplemobiletools.commons.views.MyEditText
-                                android:inputType="textMultiLine|textNoSuggestions|textCapWords"
-                                style="@style/AccountEditInputText"
-                                android:id="@+id/security_summary" />
-                        </LinearLayout>
+                                <!--Common-->
+                                <LinearLayout
+                                    style="@style/AccountEditItemContainer">
+                                    <com.simplemobiletools.commons.views.MyTextView
+                                        android:text="@string/security_manage_category"
+                                        style="@style/AccountEditLabel" />
+                                    <Spinner
+                                        android:id="@+id/security_category"
+                                        android:spinnerMode="dropdown"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+                                    </Spinner>
+                                </LinearLayout>
+                                <LinearLayout
+                                    style="@style/AccountEditItemContainer">
+                                    <com.simplemobiletools.commons.views.MyTextView
+                                        android:text="@string/security_manage_target"
+                                        style="@style/AccountEditLabel" />
+                                    <com.simplemobiletools.commons.views.MyEditText
+                                        style="@style/AccountEditInputText"
+                                        android:id="@+id/security_title" />
+                                </LinearLayout>
+                                <LinearLayout
+                                    style="@style/AccountEditItemContainer">
+                                    <com.simplemobiletools.commons.views.MyTextView
+                                        android:text="@string/security_password"
+                                        style="@style/AccountEditLabel" />
+                                    <com.simplemobiletools.commons.views.MyEditText
+                                        style="@style/AccountEditInputText"
+                                        android:id="@+id/security_password" />
+                                    <include
+                                        android:id="@+id/included"
+                                        layout="@layout/view_password_strength" />
+                                </LinearLayout>
+                                <LinearLayout
+                                    style="@style/AccountEditItemContainer">
+                                    <com.simplemobiletools.commons.views.MyTextView
+                                        android:text="@string/security_summary"
+                                        style="@style/AccountEditLabel" />
+                                    <com.simplemobiletools.commons.views.MyEditText
+                                        android:inputType="textMultiLine|textNoSuggestions|textCapWords"
+                                        style="@style/AccountEditInputText"
+                                        android:id="@+id/security_summary" />
+                                </LinearLayout>
 
-                        <!--Security Account-->
-                        <LinearLayout
-                            xmlns:android="http://schemas.android.com/apk/res/android"
-                            android:id="@+id/account_container"
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-                            <LinearLayout
-                                style="@style/AccountEditItemContainer">
-                                <com.simplemobiletools.commons.views.MyTextView
-                                    android:text="@string/security_id"
-                                    style="@style/AccountEditLabel" />
-                                <com.simplemobiletools.commons.views.MyEditText
-                                    style="@style/AccountEditInputText"
-                                    android:id="@+id/account_id" />
+                                <!--Security Account-->
+                                <LinearLayout
+                                    xmlns:android="http://schemas.android.com/apk/res/android"
+                                    android:id="@+id/account_container"
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+                                    <LinearLayout
+                                        style="@style/AccountEditItemContainer">
+                                        <com.simplemobiletools.commons.views.MyTextView
+                                            android:text="@string/security_id"
+                                            style="@style/AccountEditLabel" />
+                                        <com.simplemobiletools.commons.views.MyEditText
+                                            style="@style/AccountEditInputText"
+                                            android:id="@+id/account_id" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <!--Security Credit Card-->
+                                <LinearLayout
+                                    xmlns:android="http://schemas.android.com/apk/res/android"
+                                    android:id="@+id/credit_card_container"
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent">
+                                    <LinearLayout
+                                        style="@style/AccountEditItemContainer">
+                                        <com.simplemobiletools.commons.views.MyTextView
+                                            android:text="@string/credit_card_serial"
+                                            style="@style/AccountEditLabel" />
+                                        <com.simplemobiletools.commons.views.MyEditText
+                                            style="@style/AccountEditInputText"
+                                            android:id="@+id/credit_card_serial" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        style="@style/AccountEditItemContainer">
+                                        <com.simplemobiletools.commons.views.MyTextView
+                                            android:text="@string/credit_card_cvc"
+                                            style="@style/AccountEditLabel" />
+                                        <com.simplemobiletools.commons.views.MyEditText
+                                            style="@style/AccountEditInputText"
+                                            android:id="@+id/credit_card_cvc" />
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        style="@style/AccountEditItemContainer">
+                                        <com.simplemobiletools.commons.views.MyTextView
+                                            android:text="@string/credit_card_expire_date"
+                                            style="@style/AccountEditLabel" />
+                                        <com.simplemobiletools.commons.views.MyEditText
+                                            style="@style/AccountEditInputText"
+                                            android:id="@+id/credit_card_expire_date" />
+                                    </LinearLayout>
+                                </LinearLayout>
                             </LinearLayout>
-                        </LinearLayout>
-
-                        <!--Security Credit Card-->
-                        <LinearLayout
-                            xmlns:android="http://schemas.android.com/apk/res/android"
-                            android:id="@+id/credit_card_container"
-                            android:orientation="vertical"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-                            <LinearLayout
-                                style="@style/AccountEditItemContainer">
-                                <com.simplemobiletools.commons.views.MyTextView
-                                    android:text="@string/credit_card_serial"
-                                    style="@style/AccountEditLabel" />
-                                <com.simplemobiletools.commons.views.MyEditText
-                                    style="@style/AccountEditInputText"
-                                    android:id="@+id/credit_card_serial" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                style="@style/AccountEditItemContainer">
-                                <com.simplemobiletools.commons.views.MyTextView
-                                    android:text="@string/credit_card_cvc"
-                                    style="@style/AccountEditLabel" />
-                                <com.simplemobiletools.commons.views.MyEditText
-                                    style="@style/AccountEditInputText"
-                                    android:id="@+id/credit_card_cvc" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                style="@style/AccountEditItemContainer">
-                                <com.simplemobiletools.commons.views.MyTextView
-                                    android:text="@string/credit_card_expire_date"
-                                    style="@style/AccountEditLabel" />
-                                <com.simplemobiletools.commons.views.MyEditText
-                                    style="@style/AccountEditInputText"
-                                    android:id="@+id/credit_card_expire_date" />
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                </ScrollView>
-
+                        </ScrollView>
+                    </android.support.v7.widget.CardView>
+                </RelativeLayout>
             </LinearLayout>
 
             <com.simplemobiletools.commons.views.MyFloatingActionButton
@@ -154,5 +159,4 @@
                 app:backgroundTint="@color/colorPrimary" />
         </FrameLayout>
     </android.support.design.widget.CoordinatorLayout>    
-    
 </layout>
