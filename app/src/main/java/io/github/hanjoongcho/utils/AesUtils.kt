@@ -17,7 +17,7 @@ class AesUtils {
 
         // Define salt string from GenerateSaltString test case
         // Generated salt string must be 172 characters
-        const val SALT_STRING = "RjaXrZURG40sMzDlVjaRKIdCT7vfok1u8gAOmwnaedDUpyAENeDTCWnc62y33seezkdqzXhAnDqzrTi+mvvDIRHYdLVllQmhXmUbFAnwyG9jkWgWkfk49ieM6QsM7LcsFU79auMK84ELHRQT1pj0ABJnDFVokePKA3C6wysd6P8="
+        const val SALT_STRING = ""
 
         fun encryptPassword(context: Context, plainText: String): String = when (plainText) {
             "" -> ""
