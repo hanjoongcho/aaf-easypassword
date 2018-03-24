@@ -6,6 +6,7 @@ import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.extensions.initTextSize
 import io.github.hanjoongcho.easypassword.extensions.pausePatternLock
 import io.github.hanjoongcho.easypassword.extensions.resumePatternLock
+import io.github.hanjoongcho.easypassword.extensions.updateTextColors
 import io.github.hanjoongcho.easypassword.helper.APP_BACKGROUND_ALPHA
 
 /**
@@ -23,7 +24,7 @@ open class SimpleActivity : BaseSimpleActivity() {
         super.onResume()
         resumePatternLock()
         initTextSize(findViewById(android.R.id.content), this@SimpleActivity);
-//        updateTextColors(findViewById(android.R.id.content))
+        updateTextColors(findViewById(android.R.id.content))
     }
 
     override fun getMainViewGroup(): ViewGroup? = findViewById(R.id.main_holder)
