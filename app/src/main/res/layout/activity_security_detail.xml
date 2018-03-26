@@ -31,8 +31,7 @@
                     android:layout_height="match_parent">
                     <android.support.v7.widget.CardView
                         xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:layout_height="match_parent"
-                        style="@style/SecurityCard">
+                        style="@style/AppCard.SecurityDetail">
                         <ScrollView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
@@ -43,10 +42,10 @@
                                 android:layout_height="wrap_content">
                                 <!--Common-->
                                 <LinearLayout
-                                    style="@style/AccountEditItemContainer">
+                                    style="@style/layout_account_detail_item_container">
                                     <com.simplemobiletools.commons.views.MyTextView
                                         android:text="@string/security_manage_category"
-                                        style="@style/AccountEditLabel" />
+                                        style="@style/text_view_account_detail_label" />
                                     <Spinner
                                         android:id="@+id/security_category"
                                         android:spinnerMode="dropdown"
@@ -55,47 +54,47 @@
                                     </Spinner>
                                 </LinearLayout>
                                 <LinearLayout
-                                    style="@style/AccountDetailItemContainer">
+                                    style="@style/layout_account_detail_item_container">
                                     <com.simplemobiletools.commons.views.MyTextView
                                         android:text="@string/security_manage_target"
-                                        style="@style/AccountDetailLabel" />
+                                        style="@style/text_view_account_detail_label" />
                                     <com.simplemobiletools.commons.views.MyTextView
-                                        style="@style/AccountDetailInputText"
+                                        style="@style/text_view_account_detail_input"
                                         android:id="@+id/security_title" />
                                 </LinearLayout>
                                 <LinearLayout
-                                    style="@style/AccountDetailItemContainer">
+                                    style="@style/layout_account_detail_item_container">
                                     <com.simplemobiletools.commons.views.MyTextView
                                         android:text="@string/security_password"
                                         android:layout_gravity="left"
                                         android:layout_width="wrap_content"
-                                        style="@style/AccountDetailLabel" />
+                                        style="@style/text_view_account_detail_label" />
                                     <com.simplemobiletools.commons.views.MyTextView
-                                        style="@style/AccountDetailInputText"
+                                        style="@style/text_view_account_detail_input"
                                         android:id="@+id/security_password" />
                                     <include
                                         android:id="@+id/included"
                                         layout="@layout/view_password_strength" />
                                 </LinearLayout>
                                 <LinearLayout
-                                    style="@style/AccountDetailItemContainer">
+                                    style="@style/layout_account_detail_item_container">
                                     <com.simplemobiletools.commons.views.MyTextView
                                         android:text="@string/security_summary"
-                                        style="@style/AccountDetailLabel" />
+                                        style="@style/text_view_account_detail_label" />
                                     <com.simplemobiletools.commons.views.MyTextView
-                                        style="@style/AccountDetailInputText"
+                                        style="@style/text_view_account_detail_input"
                                         android:id="@+id/security_summary" />
                                 </LinearLayout>
 
                                 <!--Security Account-->
                                 <LinearLayout
                                     android:id="@+id/account_container"
-                                    style="@style/AccountDetailItemContainer">
+                                    style="@style/layout_account_detail_item_container">
                                     <com.simplemobiletools.commons.views.MyTextView
                                         android:text="@string/security_id"
-                                        style="@style/AccountDetailLabel" />
+                                        style="@style/text_view_account_detail_label" />
                                     <com.simplemobiletools.commons.views.MyTextView
-                                        style="@style/AccountDetailInputText"
+                                        style="@style/text_view_account_detail_input"
                                         android:id="@+id/account_id" />
                                 </LinearLayout>
 
@@ -108,32 +107,32 @@
                                     android:layout_height="match_parent">
 
                                     <LinearLayout
-                                        style="@style/AccountEditItemContainer">
+                                        style="@style/layout_account_detail_item_container">
                                         <com.simplemobiletools.commons.views.MyTextView
                                             android:text="@string/credit_card_serial"
-                                            style="@style/AccountEditLabel" />
+                                            style="@style/text_view_account_detail_label" />
                                         <com.simplemobiletools.commons.views.MyTextView
-                                            style="@style/AccountEditInputText"
+                                            style="@style/text_view_account_detail_input"
                                             android:id="@+id/credit_card_serial" />
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        style="@style/AccountEditItemContainer">
+                                        style="@style/layout_account_detail_item_container">
                                         <com.simplemobiletools.commons.views.MyTextView
                                             android:text="@string/credit_card_cvc"
-                                            style="@style/AccountEditLabel" />
+                                            style="@style/text_view_account_detail_label" />
                                         <com.simplemobiletools.commons.views.MyTextView
-                                            style="@style/AccountEditInputText"
+                                            style="@style/text_view_account_detail_input"
                                             android:id="@+id/credit_card_cvc" />
                                     </LinearLayout>
 
                                     <LinearLayout
-                                        style="@style/AccountEditItemContainer">
+                                        style="@style/layout_account_detail_item_container">
                                         <com.simplemobiletools.commons.views.MyTextView
                                             android:text="@string/credit_card_expire_date"
-                                            style="@style/AccountEditLabel" />
+                                            style="@style/text_view_account_detail_label" />
                                         <com.simplemobiletools.commons.views.MyTextView
-                                            style="@style/AccountEditInputText"
+                                            style="@style/text_view_account_detail_input"
                                             android:id="@+id/credit_card_expire_date" />
                                     </LinearLayout>
                                 </LinearLayout>

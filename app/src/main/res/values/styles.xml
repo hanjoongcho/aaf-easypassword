@@ -1,57 +1,45 @@
 <resources>
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
+    <!--App theme-->
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
-    <style name="AppFullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowActionBar">false</item>
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-    </style>
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
-        <item name="colorAccent">@color/white</item>
-    </style>
-
-    <!--Common-->
-    <style name="SecurityCard">
-        <item name="contentPadding">@dimen/card_contents_padding</item>
-        <item name="cardCornerRadius">@dimen/card_radius</item>
+    
+    <style name="AppCard.SecurityItem">
         <item name="cardPreventCornerOverlap">true</item>
         <item name="cardUseCompatPadding">true</item>
         <item name="cardElevation">@dimen/card_elevation</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:foreground">?attr/selectableItemBackground</item>
     </style>
-    <style name="CommonStrengthLabel">
+    <style name="AppCard.SecurityDetail">
+        <item name="android:layout_height">match_parent</item>
+        <item name="cardPreventCornerOverlap">true</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+    </style>
+    <style name="AppCard.Settings">
+        <item name="android:layout_height">match_parent</item>
+        <item name="cardPreventCornerOverlap">true</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="contentPadding">0dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+    </style>
+
+    <!--App View Style-->
+    <style name="text_view_strength_label">
         <item name="android:textSize">@dimen/small_text_size</item>
         <item name="android:textColor">@color/strength_bad</item>
         <item name="android:layout_marginRight">5dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
-    <style name="CommonStrengthLevel">
+    <style name="image_view_strength_level">
         <item name="android:background">@color/strength_default</item>
         <item name="android:layout_marginRight">5dp</item>
         <item name="android:layout_weight">1</item>
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">5dp</item>
     </style>
-
-    <!--SecurityDetailActivity-->
-    <style name="AccountDetailItemContainer">
+    <style name="layout_account_detail_item_container">
         <item name="android:orientation">vertical</item>
         <item name="android:paddingTop">@dimen/account_detail_padding</item>
         <item name="android:paddingLeft">@dimen/account_detail_padding</item>
@@ -59,64 +47,18 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
-    <style name="AccountDetailLabel">
+    <style name="text_view_account_detail_label">
         <item name="android:textSize">@dimen/large_text_size</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
-    <style name="AccountDetailInputText">
+    <style name="text_view_account_detail_input">
         <item name="android:textSize">@dimen/medium_text_size</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
-
-    <!--SecurityEditActivity-->
-    <style name="AccountEditItemContainer" parent="AccountDetailItemContainer">
-    </style>
-    <style name="AccountEditLabel" parent="AccountDetailLabel">
-    </style>
-    <style name="AccountEditInputText" parent="AccountDetailInputText">
+    <style name="edit_text_account_detail_input" parent="text_view_account_detail_input">
         <item name="android:imeOptions">actionNext</item>
         <item name="android:inputType">textNoSuggestions|textCapWords</item>
-    </style>
-
-    <!--SettingsActivity-->
-    <style name="SettingActivityCategory">
-        <item name="android:layout_marginTop">5dp</item>
-        <item name="android:paddingTop">5dp</item>
-        <item name="android:paddingRight">5dp</item>
-        <item name="android:paddingBottom">5dp</item>
-        <item name="android:paddingLeft">10dp</item>
-        <item name="android:background">@color/colorPrimary</item>
-        <item name="android:textSize">@dimen/medium_text_size</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-    <style name="SettingActivityItem">
-        <item name="android:background">@drawable/click_effect_setting_item</item>
-        <item name="android:orientation">horizontal</item>
-        <item name="android:gravity">center</item>
-        <item name="android:paddingTop">10dp</item>
-        <item name="android:paddingRight">20dp</item>
-        <item name="android:paddingLeft">20dp</item>
-        <item name="android:paddingBottom">10dp</item>
-        <item name="android:textSize">@dimen/medium_text_size</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-    <style name="SettingActivityDivider">
-        <item name="android:background">@color/colorPrimaryWithAlpha</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">1dp</item>
-    </style>
-    <style name="SettingActivityTitle">
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">@dimen/medium_text_size</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
-    <style name="SettingActivitySummary" parent="SettingActivityTitle">
-        <item name="android:textStyle">normal</item>
-        <item name="android:textSize">@dimen/medium_text_size</item>
     </style>
 </resources>

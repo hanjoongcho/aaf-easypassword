@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimaryWithAlpha">#1007ABB3</color>
-    <color name="appBackground">#3307ABB3</color>
-
-    <color name="color_primary">@color/colorPrimary</color>
-    <color name="color_primary_dark">@color/colorPrimaryDark</color>
-    <color name="color_accent">@color/colorAccent</color>
-    
-    <color name="touch_effect">#9ccc</color>
-    <color name="text_light">@android:color/white</color>
-    <color name="text_dark">#616161</color>
-
-    <color name="strength_default">#bcb9b9</color>
-    <color name="strength_good">#339ee1</color>
-    <color name="strength_bad">#f50622</color>
-
-    <!--common view color-->
-    <color name="progress_white">#ffffff</color>
+    <color name="touch_effect">#9CCC</color>
+    <color name="strength_default">#BCB9B9</color>
+    <color name="strength_good">#339EE1</color>
+    <color name="strength_bad">#F50622</color>
 </resources>

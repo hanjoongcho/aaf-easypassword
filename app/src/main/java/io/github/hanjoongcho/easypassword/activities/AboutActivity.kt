@@ -12,6 +12,7 @@ import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.extensions.initTextSize
 import io.github.hanjoongcho.easypassword.extensions.pausePatternLock
 import io.github.hanjoongcho.easypassword.extensions.resumePatternLock
+import io.github.hanjoongcho.easypassword.helper.APP_BACKGROUND_ALPHA
 import java.util.*
 
 /**
@@ -29,6 +30,7 @@ class AboutActivity : BaseAboutActivity() {
     }
     
     override fun onResume() {
+        isBackgroundColorFromPrimaryColor = true
         resumePatternLock()
         super.onResume()
 //        updateTextColors(about_holder)
@@ -43,7 +45,7 @@ class AboutActivity : BaseAboutActivity() {
 //        setupFacebook()
 //        setupGPlus()
         setupCopyright()
-        initTextSize(findViewById(R.id.main_holder), this@AboutActivity);
+        initTextSize(findViewById(R.id.main_holder), this@AboutActivity)
     }
 
     override fun setupLicense() {
@@ -67,4 +69,5 @@ class AboutActivity : BaseAboutActivity() {
     }
 
     override fun getMainViewGroup(): ViewGroup? = findViewById(R.id.main_holder)
+    override fun getBackgroundAlpha(): Int = APP_BACKGROUND_ALPHA
 }

@@ -39,7 +39,7 @@ class SecurityCategoryAdapter(
         }
 
         row?.run {
-//            setBackgroundColor(mContext.baseConfig.backgroundColor)
+            setBackgroundColor(mContext.baseConfig.backgroundColor)
             findViewById<TextView>(R.id.textView).setTextColor(mContext.baseConfig.textColor)
         }
         

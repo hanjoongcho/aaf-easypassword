@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:screenOrientation="portrait"
-            android:theme="@style/AppFullScreenTheme"
+            android:theme="@style/AppTheme.FullScreen"
             android:name=".activities.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
