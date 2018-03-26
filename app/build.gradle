@@ -21,8 +21,8 @@ android {
         applicationId "io.github.hanjoongcho.easypassword"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 20
-        versionName "1.0.5"
+        versionCode 21
+        versionName "1.0.6-beta"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -44,6 +44,7 @@ android {
         }
         release {
             minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             applicationVariants.all { variant ->
                 variant.outputs.each { output ->
                     def releaseFileName = "easy_password-$versionName-release.apk"
