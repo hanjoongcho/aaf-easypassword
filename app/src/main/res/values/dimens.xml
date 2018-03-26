@@ -1,42 +1,10 @@
 <resources>
-    <dimen name="card_radius">3dp</dimen>
-    <dimen name="card_layout_padding">5dp</dimen>
-    <dimen name="card_layout_margin">3dp</dimen>
-    <dimen name="card_contents_padding">12dp</dimen>
-    <dimen name="card_elevation">2dp</dimen>
-    <dimen name="card_divider_height">0dp</dimen>
-    
-    <dimen name="large_text_size">20dp</dimen>
-    <dimen name="medium_text_size">17dp</dimen>
-    <dimen name="small_text_size">14dp</dimen>
-
+    <!--App dimens-->
+    <dimen name="card_divider_height">3dp</dimen>
     <dimen name="intro_company_text">15dp</dimen>
     <dimen name="intro_app_text">20dp</dimen>
 
-    <!--SecurityDetailActivity-->
-    <dimen name="account_detail_padding">20dp</dimen>
-
-    <dimen name="spacing_nano">2dp</dimen>
-    <dimen name="spacing_micro">4dp</dimen>
-    <dimen name="spacing_normal">8dp</dimen>
-    <dimen name="spacing_double">16dp</dimen>
-    <dimen name="spacing_huge">72dp</dimen>
-
-    <dimen name="size_fab">56dp</dimen>
-    <dimen name="size_avatar_toolbar">40dp</dimen>
-    <dimen name="size_score_mark">24dp</dimen>
-
-    <dimen name="elevation_header">4dp</dimen>
-
-    <dimen name="min_height_touch_target">48dp</dimen>
-    <dimen name="min_height_question">144dp</dimen>
-
-    <dimen name="stroke_width_avatar">4dp</dimen>
-
-    <dimen name="size_edit_text">18sp</dimen>
-    <dimen name="category_item_text_size">14sp</dimen>
-
-    <!--https://github.com/SimpleMobileTools/Simple-Commons-->
+    <!--Override third party dimens-->
     <dimen name="smaller_text_size">14sp</dimen>
     <dimen name="bigger_text_size">15sp</dimen>
     <dimen name="big_text_size">16sp</dimen>

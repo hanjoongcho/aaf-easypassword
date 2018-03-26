@@ -23,6 +23,7 @@
 
         <RelativeLayout
             android:id="@+id/main_holder"
+            android:padding="@dimen/card_layout_padding"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <android.support.v7.widget.CardView
@@ -38,7 +39,7 @@
 
                         <LinearLayout
                             style="@style/SettingsItemHolder"
-                            android:layout_marginTop="@dimen/spacing_normal"
+                            android:layout_marginTop="@dimen/medium_margin"
                             android:orientation="vertical"
                             android:id="@+id/about_holder">
                             <com.simplemobiletools.commons.views.MyTextView
@@ -57,7 +58,6 @@
 
                         <LinearLayout
                             style="@style/SettingsItemHolder"
-                            android:layout_marginTop="@dimen/spacing_normal"
                             android:orientation="vertical"
                             android:id="@+id/settings_customize_colors_holder">
                             <com.simplemobiletools.commons.views.MyTextView
@@ -75,7 +75,6 @@
                         </LinearLayout>
 
                         <RelativeLayout
-                            android:layout_marginTop="@dimen/spacing_normal"
                             style="@style/SettingsItemHolder"
                             android:id="@+id/pattern_lock_holder">
                             <com.simplemobiletools.commons.views.MyTextView
@@ -148,6 +147,7 @@
 
                         <LinearLayout
                             style="@style/SettingsItemHolder"
+                            android:layout_marginBottom="@dimen/medium_margin"
                             android:orientation="horizontal"
                             android:id="@+id/settings_show_info_bubble_holder">
                             <LinearLayout

@@ -51,7 +51,7 @@ class AboutActivity : BaseAboutActivity() {
     override fun setupLicense() {
         val aboutLicense: MyTextView = findViewById<MyTextView>(io.github.hanjoongcho.commons.R.id.about_license)
         aboutLicense.setOnClickListener {
-            val licenseIntent = Intent(this, BaseWebViewActivity::class.java)
+            val licenseIntent = Intent(this, WebViewActivity::class.java)
             licenseIntent.putExtra(BaseWebViewActivity.OPEN_URL_INFO, getString(R.string.aaf_license_url))
             TransitionHelper.startActivityWithTransition(
                     this@AboutActivity,

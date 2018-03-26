@@ -127,7 +127,7 @@ class SecuritySelectionFragment : Fragment(), SecurityAdapter.ItemOperationsList
             AppCompatResources.getDrawable(context, R.drawable.divider_transparent)?.let {
                 dividerItemDecoration.setDrawable(it)
             }
-//            securitiesView.addItemDecoration(dividerItemDecoration) 
+            securitiesView.addItemDecoration(dividerItemDecoration) 
             adapter = this@SecuritySelectionFragment.adapter
             activity?.let {
                 beforeDrawing { it.supportStartPostponedEnterTransition() }    
