@@ -12,7 +12,6 @@ import com.simplemobiletools.commons.extensions.baseConfig
 import io.github.hanjoongcho.easypassword.R
 import io.github.hanjoongcho.easypassword.databinding.ItemSecurityBinding
 import io.github.hanjoongcho.easypassword.extensions.initTextSize
-import io.github.hanjoongcho.easypassword.extensions.updateTextColors
 import io.github.hanjoongcho.easypassword.helper.EasyPasswordHelper
 import io.github.hanjoongcho.easypassword.helper.database
 import io.github.hanjoongcho.easypassword.models.Security

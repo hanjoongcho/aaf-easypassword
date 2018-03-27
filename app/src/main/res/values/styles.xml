@@ -35,11 +35,12 @@
         <item name="android:orientation">vertical</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginBottom">@dimen/spacing_double</item>
+        <item name="android:layout_marginBottom">@dimen/spacing_treble</item>
     </style>
     <style name="text_view_account_detail_label">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
     </style>
     <style name="text_view_account_detail_input">
         <item name="android:layout_width">match_parent</item>
