@@ -1,11 +1,11 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/fragment_sign_in_content"
+    android:id="@+id/main_holder"
+    android:padding="@dimen/card_layout_padding"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout
         android:id="@+id/items_wrapper"
-        android:padding="@dimen/card_layout_padding"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <com.simplemobiletools.commons.views.MyRecyclerView
