@@ -47,7 +47,6 @@ class SecuritySelectionActivity : SimpleActivity() {
         toggleToolBar.setOnClickListener({
             toolbar.visibility = View.VISIBLE
             searchViewContainer.visibility = View.GONE
-            modal_holder.visibility = View.GONE
             val focusView = this.currentFocus
             if (focusView != null) {
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -69,8 +68,6 @@ class SecuritySelectionActivity : SimpleActivity() {
                 filteringItems(p0.toString())
             }
         })
-
-        modal_holder.setOnTouchListener { _, _ -> true }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -94,7 +91,6 @@ class SecuritySelectionActivity : SimpleActivity() {
             R.id.search -> {
                 toolbar.visibility = View.GONE
                 searchViewContainer.visibility = View.VISIBLE
-                modal_holder.visibility = View.VISIBLE
                 searchView.requestFocus()
                 val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.showSoftInput(searchView, InputMethodManager.SHOW_IMPLICIT)
