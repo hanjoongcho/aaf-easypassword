@@ -8,6 +8,9 @@
 Easy Password is password management application.   
 This application uses pattern locks to manage information that requires security.   
 
+# Precautions
+Can be exposed to brute-force attacks if Realm db files are hijacked.
+
 # Support Features
 ```
 01. Application lock with pattern
