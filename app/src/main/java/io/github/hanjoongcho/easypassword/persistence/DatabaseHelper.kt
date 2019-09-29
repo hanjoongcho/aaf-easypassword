@@ -41,7 +41,7 @@ class DatabaseHelper private constructor(
         val currentVersion = realmInstance.version.toInt()
         val easyDiaryMimeType = arrayOfNulls<String>(currentVersion)
         for (i in 0 until currentVersion) {
-            easyDiaryMimeType[i] = "text/aaf_v" + (i + 1)
+            easyDiaryMimeType[i] = "text/easypassword_v" + (i + 1)
         }
         return easyDiaryMimeType
     }
