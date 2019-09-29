@@ -34,7 +34,7 @@ class DatabaseHelper private constructor(
     fun getDatabasePath(): String = realmInstance.path
 
     fun getMimeType(): String {
-        return "text/aaf_v" + realmInstance.version
+        return "text/easypassword_v" + realmInstance.version
     }
 
     fun getMimeTypeAll(): Array<String?> {
